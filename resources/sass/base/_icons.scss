@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'fontello';
+    src: url('/storage/fonts/fontello.eot');
+    src: url('/storage/fonts/fontello.eot#iefix') format('embedded-opentype'),
+         url('/storage/fonts/fontello.woff2') format('woff2'),
+         url('/storage/fonts/fontello.woff') format('woff'),
+         url('/storage/fonts/fontello.ttf') format('truetype'),
+         url('/storage/fonts/fontello.svg#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  [class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin: 0;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+
+  .icon-search:before { content: '\e800'; } /* '' */
+  .icon-truck:before { content: '\e801'; } /* '' */
+  .icon-star:before { content: '\e802'; } /* '' */
+  .icon-chat:before { content: '\e803'; } /* '' */
+  .icon-basket:before { content: '\e804'; } /* '' */
+  .icon-blogger:before { content: '\e805'; } /* '' */
+  .icon-phone:before { content: '\e806'; } /* '' */
+  .icon-credit-card:before { content: '\e807'; } /* '' */
+  .icon-basket-1:before { content: '\e808'; } /* '' */
+  .icon-basket-2:before { content: '\e809'; } /* '' */
+  .icon-bag:before { content: '\e80a'; } /* '' */
+  .icon-login:before { content: '\e80b'; } /* '' */
+  .icon-pencil:before { content: '\e80c'; } /* '' */
+  .icon-cancel:before { content: '\e80d'; } /* '' */
+  .icon-trash-empty:before { content: '\e80e'; } /* '' */
+  .icon-box:before { content: '\e80f'; } /* '' */
+  .icon-heart-empty:before { content: '\e810'; } /* '' */
+  .icon-heart:before { content: '\e811'; } /* '' */
+  .icon-user:before { content: '\e812'; } /* '' */
+  .icon-lock:before { content: '\e813'; } /* '' */
+  .icon-star-empty:before { content: '\e814'; } /* '' */
+  .icon-bell:before { content: '\e815'; } /* '' */
+  .icon-clock:before { content: '\e816'; } /* '' */
+  .icon-home:before { content: '\e817'; } /* '' */
+  .icon-star-1:before { content: '\e818'; } /* '' */
+  .icon-tags:before { content: '\e819'; } /* '' */
+  .icon-arrows-cw:before { content: '\e81a'; } /* '' */
+  .icon-th:before { content: '\e81b'; } /* '' */
+  .icon-th-list:before { content: '\e81c'; } /* '' */
+  .icon-emo-unhappy:before { content: '\e81d'; } /* '' */
+  .icon-facebook-messenger:before { content: '\e81e'; } /* '' */
+  .icon-play-circled2:before { content: '\e81f'; } /* '' */
+  .icon-login-1:before { content: '\e820'; } /* '' */
+  .icon-lupa:before { content: '\e821'; } /* '' */
+  .icon-fale-conosco:before { content: '\e822'; } /* '' */
+  .icon-meu-pedidos:before { content: '\e823'; } /* '' */
+  .icon-carrinho:before { content: '\e824'; } /* '' */
+  .icon-agricultura-precisão:before { content: '\e825'; } /* '' */
+  .icon-tecnologia:before { content: '\e826'; } /* '' */
+  .icon-diesel:before { content: '\e827'; } /* '' */
+  .icon-drones:before { content: '\e828'; } /* '' */
+  .icon-left-open:before { content: '\e829'; } /* '' */
+  .icon-right-open:before { content: '\e82a'; } /* '' */
+  .icon-servicos-campo:before { content: '\e82b'; } /* '' */
+  .icon-usados:before { content: '\e82c'; } /* '' */
+  .icon-telefone:before { content: '\e82d'; } /* '' */
+  .icon-atendimento:before { content: '\e82e'; } /* '' */
+  .icon-chat-1:before { content: '\e82f'; } /* '' */
+  .icon-icheck:before { content: '\e830'; } /* '' */
+  .icon-check:before { content: '\e831'; } /* '' */
+  .icon-arrow-down:before { content: '\e832'; } /* '' */
+  .icon-book-with-bookmark:before { content: '\e833'; } /* '' */
+  .icon-frete:before { content: '\e834'; } /* '' */
+  .icon-newsletter:before { content: '\e835'; } /* '' */
+  .icon-cartao-credito:before { content: '\e836'; } /* '' */
+  .icon-arrow-right:before { content: '\e837'; } /* '' */
+  .icon-arrow-up:before { content: '\e838'; } /* '' */
+  .icon-arrow-left:before { content: '\e839'; } /* '' */
+  .icon-chair:before { content: '\e83a'; } /* '' */
+  .icon-college-students:before { content: '\e83b'; } /* '' */
+  .icon-credit-card-1:before { content: '\e83c'; } /* '' */
+  .icon-delivery:before { content: '\e83d'; } /* '' */
+  .icon-dental-drill:before { content: '\e83e'; } /* '' */
+  .icon-discount:before { content: '\e83f'; } /* '' */
+  .icon-endodontia:before { content: '\e840'; } /* '' */
+  .icon-female-graduate-student:before { content: '\e841'; } /* '' */
+  .icon-shopping-list:before { content: '\e842'; } /* '' */
+  .icon-shopping-list-02:before { content: '\e843'; } /* '' */
+  .icon-smiling-lips:before { content: '\e844'; } /* '' */
+  .icon-todas-as-categorias:before { content: '\e845'; } /* '' */
+  .icon-tooth:before { content: '\e846'; } /* '' */
+  .icon-web-page-home:before { content: '\e847'; } /* '' */
+  .icon-noun_coat_750294:before { content: '\e848'; } /* '' */
+  .icon-ortodontia:before { content: '\e849'; } /* '' */
+  .icon-padlock:before { content: '\e84a'; } /* '' */
+  .icon-right-arrow1:before { content: '\e84b'; } /* '' */
+  .icon-fidelidade:before { content: '\e84c'; } /* '' */
+  .icon-gear:before { content: '\e84d'; } /* '' */
+  .icon-gloves:before { content: '\e84e'; } /* '' */
+  .icon-implantodontia:before { content: '\e84f'; } /* '' */
+  .icon-magnifying-glass:before { content: '\e850'; } /* '' */
+  .icon-medicine:before { content: '\e851'; } /* '' */
+  .icon-noun_cart:before { content: '\e852'; } /* '' */
+  .icon-chat2:before { content: '\e853'; } /* '' */
+  .icon-comparar:before { content: '\e854'; } /* '' */
+  .icon-wallet:before { content: '\e855'; } /* '' */
+  .icon-insta:before { content: '\e856'; } /* '' */
+  .icon-insta2:before { content: '\e857'; } /* '' */
+  .icon-login-2:before { content: '\e858'; } /* '' */
+  .icon-loja:before { content: '\e859'; } /* '' */
+  .icon-lupa-1:before { content: '\e85a'; } /* '' */
+  .icon-newsletter-1:before { content: '\e85b'; } /* '' */
+  .icon-telefone-1:before { content: '\e85c'; } /* '' */
+  .icon-twitter2:before { content: '\e85d'; } /* '' */
+  .icon-youtube2:before { content: '\e85e'; } /* '' */
+  .icon-cafe:before { content: '\e85f'; } /* '' */
+  .icon-central-consumidor:before { content: '\e860'; } /* '' */
+  .icon-cesta:before { content: '\e861'; } /* '' */
+  .icon-chats:before { content: '\e862'; } /* '' */
+  .icon-endereco:before { content: '\e863'; } /* '' */
+  .icon-face:before { content: '\e864'; } /* '' */
+  .icon-favoritos:before { content: '\e865'; } /* '' */
+  .icon-flecha_direita:before { content: '\e866'; } /* '' */
+  .icon-flecha_esquerda:before { content: '\e867'; } /* '' */
+  .icon-location:before { content: '\f031'; } /* '' */
+  .icon-trash:before { content: '\f083'; } /* '' */
+  .icon-twitter:before { content: '\f099'; } /* '' */
+  .icon-facebook:before { content: '\f09a'; } /* '' */
+  .icon-menu:before { content: '\f0c9'; } /* '' */
+  .icon-gplus:before { content: '\f0d5'; } /* '' */
+  .icon-mail-alt:before { content: '\f0e0'; } /* '' */
+  .icon-linkedin:before { content: '\f0e1'; } /* '' */
+  .icon-angle-double-right:before { content: '\f101'; } /* '' */
+  .icon-youtube:before { content: '\f167'; } /* '' */
+  .icon-instagram:before { content: '\f16d'; } /* '' */
+  .icon-skype:before { content: '\f17e'; } /* '' */
+  .icon-spotify:before { content: '\f1bc'; } /* '' */
+  .icon-pinterest:before { content: '\f231'; } /* '' */
+  .icon-whatsapp:before { content: '\f232'; } /* '' */
+  .icon-shopping-bag:before { content: '\f290'; } /* '' */
+  .icon-wordpress:before { content: '\f31d'; } /* '' */

@@ -1,0 +1,203 @@
+footer {
+    @media screen and (min-width: 770px) {
+        margin-top: -115px;
+    }
+
+    .footer-primary-container {
+        padding: 80px 0;
+        background: url("/storage/images/footer/bgfooter.png");
+        border-bottom: solid 2px #8c7264;
+
+        .container {
+            display: flex;
+        }
+    }
+
+    .footer-link-list {
+        li {
+            margin-bottom: 10px;
+            font-family: "Montserrat",sans-serif;
+            font-size: 13.5px;
+            color: $color-primary-dark;
+            font-weight: 400;
+        }
+    }
+
+    .footer-desc {
+        width: 100%;
+        @media screen and (min-width: 770px) {
+            width: 25%;
+        }
+
+        .desc-container {
+            padding-right: 65px;
+            img {
+                max-width: 186px;
+                width: 186px;
+                margin: 0 auto 10px;
+                display: block;
+            }
+            p {
+                text-align: justify;
+                color: $color-primary-dark;
+                font-size: 12.5px;
+                overflow: hidden;
+                white-space: normal;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 8;
+                -webkit-box-orient: vertical;
+
+            }
+        }
+    }
+
+    .footer-lists {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        @media screen and (min-width: 770px) {
+            width: 50%;
+        }
+        .footer-list-wrapper {
+            width: 33%;
+            h4 {
+                font-weight: 700;
+                font-size: 17px;
+                margin-top: 25px;
+                margin-bottom: 15px;
+                color: $color-primary-dark;
+                font-family: $font-museo700;
+            }
+            .footer-link-list {
+                li {
+                    a {
+                        font-size: 12.5px;
+                    }
+                }
+            }
+        }
+        .contact-us {
+            width: 100%;
+
+            .contact-us-container {
+                background-color: $color-white;
+                width: 90%;
+                padding: 8px 25px 0px;
+                margin-top: 20px;
+                border-radius: 4px;
+
+                ul {
+                    color: $color-primary-dark;
+                    display: flex;
+                    align-items: center;
+
+                    li {
+                        display: flex;
+                        justify-content: center;
+
+                        i {
+                            font-size: 48px;
+                            color: #e0c390;
+                            margin-right: 4px;
+                            margin-bottom: 0;
+                            right: 3px;
+                            position: relative;
+                        }
+                        span {
+                            font-size: 14px;
+                            font-weight: 600;
+                            line-height: 1.4;
+                            font-family: $font-museo700;
+                        }
+                        a {
+                            font-family: "Montserrat",sans-serif;
+                            color: #6d5a50;
+                            font-size: 13px;
+                            font-weight: 500;
+                        }
+                        &:first-child {
+                            width: 58%;
+                            position: relative;
+                            align-items: center;
+
+                            &::after {
+                                content: '';
+                                height: 30px;
+                                top: 30%;
+                                right: 0;
+                                position: absolute;
+                                width: 1px;
+                                background-color: #d5ae68;
+                            }
+                        }
+                        &:nth-child(2) {
+                            width: 25%;
+                            margin: 0 auto;
+                            a:first-of-type {
+                                margin-top: -12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .social-links-container {
+        .page-link {
+            margin-top: 20px;
+        }
+
+        .social-media-links
+        {
+            display: flex;
+            li {
+                margin: 12px 10px 0 0;
+                a {
+                    background: #d5ae68;
+                    color: #fff;
+                    width: 35px;
+                    height: 35px;
+                    line-height: 35px;
+                    display: block;
+                    text-align: center;
+                    border-radius: 5px;
+                    transition: all 400ms ease;
+                    i {
+                        font-size: 25px;
+                        margin: 0 auto;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+}
+.store-location-header {
+    height: 0;
+}
+.store-location-header .header-content {
+    border-radius: 5px;
+    background-color: #3a2419;
+    width: 530px;
+    height: 80px;
+    font-family: Museo700;
+    color: #d5ae68;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 23px 0;
+    position: relative;
+    bottom: 40px;
+    i {
+        font-size: 29px;
+        color: #fff;
+        position: relative;
+    }
+}
