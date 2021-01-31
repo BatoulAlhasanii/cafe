@@ -1,4 +1,7 @@
 .home-slider {
+    img {
+        width: 100%;
+    }
     .owl-nav button.owl-prev {
         left: 20%;
         &::before {
@@ -37,6 +40,11 @@
 .coffee-favours {
     position: relative;
 
+    @media only screen and (max-width: 730.8px){
+        margin: 8rem 0 20px 0;
+
+    }
+
     &:before {
         content: '';
         background: #f1f1f1;
@@ -46,21 +54,42 @@
         top: 20%;
         height: 80%;
         z-index: -1;
+        @media only screen and (max-width: 1100.8px) {
+            top: 30%;
+            height: 70%;
+        }
+        @media only screen and (max-width: 730.8px) {
+            background: unset;
+        }
     }
 
     .coffee-favours-container {
         display: flex;
         gap: 40px;
 
+        @media only screen and (max-width: 1100.8px) {
+            flex-direction: column;
+            gap: 0px;
+        }
+        @media only screen and (max-width: 730.8px) {
+            width: 90%;
+            margin: 0 auto;
+            border: 1px solid #f4f4f4;
+            border-radius: 5px;
+            padding: 10px 0 20px;
+        }
         .coffee-favours--title {
             h3 {
                 white-space: nowrap;
                 margin-top: 65%;
-                padding: 12px 0px;
+                padding: 12px 12px;
                 font-size: 30px;
                 color: $color-primary-light;
                 font-family: $font-museo700;
-
+                @media only screen and (max-width: 1100.8px) {
+                    text-align: center;
+                    margin: 0;
+                }
                 span {
                     font-family: $font-museo400;
                     color: $color-grey-light;
@@ -78,17 +107,73 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                li a {
-                    text-align: center;
-                    font-family: $font-museo700;
-                    color: #846d61;
-                    font-size: 14px;
-                    transition: color 0.3s ease;
+                gap: 1rem;
+                padding: 0 0 0 10px;
+                @media only screen and (max-width: 1100.8px){
+                    justify-content: center;
+                    gap: 2rem;
+                }
+                @media only screen and (max-width: 730.8px) {
+                    flex-wrap: wrap;
+                    gap: 0;
+                    row-gap: 15px;
+                }
+
+                li {
+                    @media only screen and (max-width: 730.8px) {
+                        flex: 0 0 33%;
+                        flex-direction: row;
+
+                        a:last-of-type{
+                            align-self: flex-end;
+                        }
+                    }
+                    @media only screen and (max-width: 540.8px) {
+                        flex-direction: column;
+                        a:last-of-type{
+                            align-self: center;
+                        }
+                    }
+                    a {
+                        text-align: center;
+                        font-family: $font-museo700;
+                        color: #846d61;
+                        font-size: 14px;
+                        transition: color 0.3s ease;
+
+                        img {
+                            &.Intenso {
+                                height: 10rem;
+                                width: auto;
+                            }
+
+                            &:not(.Intenso) {
+                                width: 7.7rem;
+                            }
+
+                            &:not(.Intenso) , &.Intenso {
+                                @media only screen and (max-width: 730.8px) {
+                                    width: auto;
+                                    height: auto;
+                                }
+                            }
+                        }
+
+                    }
                 }
                 .coffee-cup {
                     img {
                         width: 100%;
                         max-width: 383px;
+                    }
+                    @media only screen and (max-width: 730.8px) {
+                        display: none;
+                        flex: 0 0 100%;
+                        img {
+                            width: 30rem;
+                            margin: 0 auto;
+                            display: block;
+                        }
                     }
                 }
             }
@@ -134,13 +219,23 @@
         flex-wrap: wrap;
         gap: 30px 25px;
         margin-bottom: 60px;
+        @media only screen and (max-width: 650.8px) {
+            gap: 30px 4%;
+        }
+
 
         .item {
-            width: calc(25% - 18.8px);
+            width: calc( (100% - (3 * 25px)) / 4 );
             padding: 1%;
             background: #f6f6f5;
             transition: all 200ms ease;
 
+            @media only screen and (max-width: 769.8px) {
+                width: calc( (100% - (2 * 25px)) / 3 );
+            }
+            @media only screen and (max-width: 650.8px) {
+                width: calc( (100% - 4%) / 2 );
+            }
             &:hover {
                 box-shadow: 1px 0px 9px 0px rgb(16 16 16 / 45%);
             }
@@ -153,7 +248,7 @@
             }
             .infobox {
                 margin-top: 10px;
-                min-height: 130px;
+                min-height: 170px;
                 text-align: center;
                 display: flex;
                 flex-direction: column;
@@ -211,6 +306,35 @@
                     }
                 }
 
+                .price-box {
+                    font-family: "Montserrat",sans-serif;
+                    color: #454545;
+                    line-height: 1;
+                    margin-top: 10px;
+                    position: relative;
+                    font-size: 1.5rem;
+                    .old-price {
+                        top: 3px;
+                        margin: 0;
+                        color: #898989;
+                        display: inline-block;
+                        .price {
+                            font-weight: 500;
+                            text-decoration: line-through;
+                        }
+                    }
+                    .special-price, .regular-price {
+                        display: inline-block;
+                        margin: 0 0 5px 0;
+                        .price {
+                            color: #aa0f14;
+                            font-weight: bold;
+                            font-size: 2rem;
+                        }
+                    }
+                }
+
+
                 .bt-add {
                     margin-top: auto;
                     .btn-ajax {
@@ -236,11 +360,20 @@
 .recipes-slider {
     background: url("/storage/images/recipes-slider/bgreceitas.png") no-repeat;
 
+    min-height: 885px;
+    background-position-y: 125px;
+
     @media screen and (min-width: 770px) {
-            min-height: 885px;
-            background-position-y: 125px;
+        margin-bottom: -115px;
     }
 
+    @media screen and (max-width: 769.8px) {
+        min-height: 700px;
+    }
+    @media screen and (max-width: 530.8px) {
+        min-height: 550px;
+        background-position-y: 12px;
+    }
     .recipe-slide {
 
         .slide-img {
@@ -311,11 +444,7 @@
     }
 
     .owl-nav button.owl-prev {
-        @media screen and (min-width: 770px)
-        {
             left: 26%;
-        }
-
         &::before {
             margin-left: 8px;
             transform: rotate(315deg);
@@ -323,10 +452,7 @@
 
     }
     .owl-nav button.owl-next {
-        @media screen and (min-width: 770px)
-        {
-            right: 26%;
-        }
+        right: 26%;
         &::before {
             margin-right: 8px;
             transform: rotate(135deg);
@@ -336,10 +462,7 @@
         width: 26px;
         height: 26px;
         position: absolute;
-        @media screen and (min-width: 770px)
-        {
-            top: 95%;
-        }
+        top: 95%;
         &::before {
             content: '';
             display: inline-block;

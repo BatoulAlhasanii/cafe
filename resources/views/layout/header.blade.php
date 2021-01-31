@@ -9,7 +9,7 @@
                     <span></span>
                 </div>
             </div>
-            <div class="opensearch display-none">
+            <div class="opensearch">
                 <i class="icon-search"></i>
             </div>
             <div class="logo-wrapper">
@@ -23,7 +23,7 @@
                 </h1>
             </div>
             <div class="header-wrapper">
-                <div class="header-gutter header-gutter--1">
+                <div class="display-none header-gutter header-gutter--1">
                     <div id="menu" class="show-fixed">
                         <span class="abremenu">
                             <div class="icone">
@@ -36,13 +36,13 @@
                             <b>Menu</b>
                         </span>
                     </div>
-                    <ul class="top-header-item hide-fixed">
+                    <ul class="top-header-item hide-on-small-screens">
                         <li><a class="fw700" href="https://www.cafeodebrecht.com.br/customer/account/login" rel="nofollow">Login</a></li>
                         <li>or&nbsp;<a class="fw700" href="https://www.cafeodebrecht.com.br/customer/account/create/" rel="nofollow">Register</a></li>
                     </ul>
                 </div>
                 <div class="header-gutter header-gutter--2">
-                    <ul class="top-header-item central">
+                    <ul class="top-header-item central hide-on-small-screens">
                         <li>Central</li>
                         <li class="fale"><a>Consumer</a>
                             <ul class="tooltip display-none">
@@ -67,10 +67,18 @@
                 </div>
 
                 <div class="header-gutter header-gutter--4">
-                    <ul>
-                        <li class="top-header-item lojas"><a href="https://www.cafeodebrecht.com.br/unidades"><span>Our</span>Stores</a></li>
-                        <li class="top-header-item favoritos"><i></i><a href="https://www.cafeodebrecht.com.br/sales/order/history/" rel="nofollow"><span>My</span>Favourites</a></li>
+                    <ul class="hide-on-small-screens">
+                        <li class="display-none top-header-item lojas"><a href="https://www.cafeodebrecht.com.br/unidades"><span>Our</span>Stores</a></li>
+                        <li class="display-none top-header-item favoritos"><i></i><a href="https://www.cafeodebrecht.com.br/sales/order/history/" rel="nofollow"><span>My</span>Favourites</a></li>
                     </ul>
+                    <div class="cart-container">
+                        <a class="icone" href="https://www.cafeodebrecht.com.br/checkout/cart" title="Ir para Meu Carrinho">
+                            <div class="cart-qtd">
+                                <p class="amount">1</p>
+                            </div>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -91,3 +99,17 @@
         </div>
     </div>
 </div>
+<div class="nav-mobile-container">
+    <nav id="navMobile">
+        <ul class="cat level1">
+            <li class="item1-1"><a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html">Café Torrado e Moído</a></li>
+            <li class="item2-1"><a href="https://www.cafeodebrecht.com.br/cafe-em-grao.html">Café em Grão</a></li>
+            <li class="item3-1"><a href="https://www.cafeodebrecht.com.br/achocolatado-1.html">Achocolatado</a></li>
+            <li class="item4-1"><a href="https://www.cafeodebrecht.com.br/soluvel.html">Solúvel</a></li>
+            <li class="item5-1"><a href="https://www.cafeodebrecht.com.br/cappuccino.html">Cappuccino</a></li>
+            <li class="item6-1"><a href="https://www.cafeodebrecht.com.br/maquinas.html">Máquinas</a></li>
+        </ul>
+    </nav>
+</div>
+<div class="mobile-space"></div>
+<div id="shadow-layer" class=""></div>

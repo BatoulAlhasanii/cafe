@@ -2,10 +2,20 @@
     display: none;
 }
 
+.hide-on-small-screens {
+    @media only screen and (max-width: 769.8px) {
+        display: none;
+    }
+}
+
 .container {
     width: 100%;
     max-width: 1170px;
     margin: 0 auto;
+    @media only screen and (max-width: 769.8px) {
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 
 .flex-column {
