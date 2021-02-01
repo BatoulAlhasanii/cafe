@@ -51,3 +51,27 @@ button, input, optgroup, select, textarea {
     line-height: 1;
     margin: 0;
 }
+
+input.input-text, textarea {
+    appearance: none;
+}
+
+input.input-text, select, textarea {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #888;
+    box-sizing: border-box;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+input.input-text, textarea {
+    padding: 7px 10px;
+    text-overflow: ellipsis;
+}
+
+input.qty {
+    width: 3em;
+    text-align: center;
+}
+

@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/single-product', function () {
     return view('products.view');
 });
+
+Route::get('/cart', function () {
+    return view('order.cart');
+});
