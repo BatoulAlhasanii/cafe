@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCustomerAddressesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('customer_addresses', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('surname');
+            $table->string('postcode')->nullable();
+            $table->string('phone1');
+            $table->string('phone2');
+            $table->text('address');
+            $table->bigInteger('city_id')->unsigned();
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->bigInteger('country_id')->unsigned();
+            $table->foreign('country_id')->references('id')->on('cities');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('customer_addresses');
+    }
+}
