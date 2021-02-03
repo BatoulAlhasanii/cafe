@@ -23,7 +23,7 @@ class CreateCouponsTable extends Migration
             $table->decimal('total_deducted', 8, 2)->nullable()->default(0);
             $table->boolean('is_active')->default(1);
             $table->timestamp('expiry_date')->nullable();
-            $table->bigInteger('created_by')->unsigned();
+            $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users');
             $table->timestamps();
         });

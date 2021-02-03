@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->text('payment_transaction_id')->nullable();
             $table->string('creditcard_last4digits', 4)->nullable();
 
-            $table->bigInteger('customer_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers');
 
             $table->string('name');
@@ -32,9 +32,9 @@ class CreateOrdersTable extends Migration
             $table->text('address');
 
 
-            $table->bigInteger('city_id')->unsigned();
+            $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
-            $table->bigInteger('country_id')->unsigned();
+            $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('cities');
             $table->decimal('sub_total', 8, 2);
             $table->decimal('shipping_fees', 8, 2)->default( 0 );
@@ -46,7 +46,7 @@ class CreateOrdersTable extends Migration
 
 
 
-            $table->bigInteger('coupon_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('coupon_id')->nullable();
             $table->foreign('coupon_id')->references('id')->on('coupons');
             $table->string('coupon_code')->nullable();
             $table->foreign('coupon_code')->references('code')->on('coupons');
