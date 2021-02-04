@@ -16,6 +16,9 @@ class CreateCountryTranslationsTable extends Migration
         Schema::create('country_translations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('country_id');
+            $table->foreign('country_id')->references('id')->on('countries');
+            $table->char('lang',2);
             $table->timestamps();
         });
     }

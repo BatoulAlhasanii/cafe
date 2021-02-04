@@ -16,6 +16,9 @@ class CreateCityTranslationsTable extends Migration
         Schema::create('city_translations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->char('lang',2);
             $table->timestamps();
         });
     }

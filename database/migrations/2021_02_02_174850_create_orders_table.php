@@ -35,7 +35,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->unsignedBigInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('cities');
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->decimal('sub_total', 8, 2);
             $table->decimal('shipping_fees', 8, 2)->default( 0 );
             $table->decimal('total', 8, 2);
