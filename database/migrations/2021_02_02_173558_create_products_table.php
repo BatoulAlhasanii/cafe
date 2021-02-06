@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->decimal('discount_price' , 8, 2)->default(0)->nullable();
             $table->text('images');
             $table->integer('unit_amount')->nullable();
-            $table->string('sku');
+            $table->string('sku')->nullable();
             $table->integer('stock')->default(0);
             $table->boolean('is_featured')->default(0)->index();
             $table->boolean('is_active')->default(1)->index();

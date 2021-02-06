@@ -13,7 +13,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        \App\Permission::createMany([
+        \App\Models\Permission::insert([
             [
                 'name' => 'Manage Database',
                 'slug' => 'manage-database'

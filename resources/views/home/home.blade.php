@@ -24,23 +24,23 @@
             <div class="coffee-favours--items">
                 <ul class="favours">
                     <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=49"><img alt="Extraforte" title="Extraforte" src="{{asset('/storage/images/home/Extraforte.png')}}"></a>
+                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=49"><img alt="Extraforte" title="Extraforte" src="{{asset('/storage/images/intensity/Extraforte.png')}}"></a>
                         <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=49">Extraforte</a>
                     </li>
                     <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=50"><img alt="Classico" title="Classico" src="{{asset('/storage/images/home/Classico.png')}}"></a>
+                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=50"><img alt="Classico" title="Classico" src="{{asset('/storage/images/intensity/Classico.png')}}"></a>
                         <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=50">Classico</a>
                     </li>
                     <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=51"><img alt="Suave" title="Suave" src="{{asset('/storage/images/home/Suave.png')}}"></a>
+                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=51"><img alt="Suave" title="Suave" src="{{asset('/storage/images/intensity/Suave.png')}}"></a>
                         <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=51">Suave</a>
                     </li>
                     <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=52"><img alt="Descafeinado" title="Descafeinado" src="{{asset('/storage/images/home/Descafeinado.png')}}"></a>
+                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=52"><img alt="Descafeinado" title="Descafeinado" src="{{asset('/storage/images/intensity/Descafeinado.png')}}"></a>
                         <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=52">Descafeinado</a>
                     </li>
                     <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=53"><img class="Intenso" alt="Intenso" title="Intenso" src="{{asset('/storage/images/home/Intenso.png')}}"></a>
+                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=53"><img class="Intenso" alt="Intenso" title="Intenso" src="{{asset('/storage/images/intensity/Intenso.png')}}"></a>
                         <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=53">Intenso</a>
                     </li>
                     <li class="coffee-cup"><img src="{{asset('/storage/images/home/cafe.png')}}"></li>

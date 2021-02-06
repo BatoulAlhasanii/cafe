@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \App\Role::createMany([
+        \App\Models\User::insert([
             [
                 'name' => 'admin1',
                 'email' => 'admin1@test.com',
