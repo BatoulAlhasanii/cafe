@@ -15,7 +15,6 @@ class CategorySeeder extends Seeder
     {
         \App\Models\Category::create(
             [
-                'image' => '',
                 'sequence' => 1,
                 'parent_id' => 0,
                 'is_active' => true,
