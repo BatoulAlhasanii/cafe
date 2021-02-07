@@ -142,16 +142,16 @@
                         transition: color 0.3s ease;
 
                         img {
-                            &.Intenso {
+                            &.intenso {
                                 height: 10rem;
                                 width: auto;
                             }
 
-                            &:not(.Intenso) {
+                            &:not(.intenso) {
                                 width: 7.7rem;
                             }
 
-                            &:not(.Intenso) , &.Intenso {
+                            &:not(.intenso) , &.intenso {
                                 @media only screen and (max-width: 730.8px) {
                                     width: auto;
                                     height: auto;

@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands');
+            $table->string('slug');
             $table->decimal('price' , 8, 2);
             $table->decimal('discount_price' , 8, 2)->default(0)->nullable();
             $table->text('images');

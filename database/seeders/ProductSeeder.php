@@ -17,6 +17,7 @@ class ProductSeeder extends Seeder
             [
                 'category_id' => 6,
                 'brand_id' => 1,
+                'slug' => 'café-odebrecht-superior',
                 'price' => 10.00,
                 'discount_price' => 9.00,
                 'images' => '/storage/images/products/7896295001012_1_1_1200_72_rgb.png,/storage/images/products/7896295001012_11_1_1200_72_rgb.png,/storage/images/products/7896295001012_12_1_1200_72_rgb.png',
@@ -49,6 +50,7 @@ class ProductSeeder extends Seeder
                 'brand_id' => 1,
                 'price' => 10.00,
                 'discount_price' => 9.00,
+                'slug' => 'café-odebrecht-superior-250g',
                 'images' => '/storage/images/products/7896295001012_1_1_1200_72_rgb.png,/storage/images/products/7896295001012_11_1_1200_72_rgb.png,/storage/images/products/7896295001012_12_1_1200_72_rgb.png',
                 'unit_amount' => 500,
                 'sku' => '000204P',
@@ -79,6 +81,7 @@ class ProductSeeder extends Seeder
                 'brand_id' => 1,
                 'price' => 10.00,
                 'discount_price' => 9.00,
+                'slug' => 'café-odebrecht-superior-250g',
                 'images' => '/storage/images/products/7896295001012_1_1_1200_72_rgb.png,/storage/images/products/7896295001012_11_1_1200_72_rgb.png,/storage/images/products/7896295001012_12_1_1200_72_rgb.png',
                 'unit_amount' => 500,
                 'sku' => '000204P',

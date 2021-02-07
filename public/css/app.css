@@ -1732,15 +1732,15 @@ footer .social-links-container .social-media-links li a i {
   font-size: 14px;
   transition: color 0.3s ease;
 }
-.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img.Intenso {
+.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img.intenso {
   height: 10rem;
   width: auto;
 }
-.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img:not(.Intenso) {
+.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img:not(.intenso) {
   width: 7.7rem;
 }
 @media only screen and (max-width: 730.8px) {
-  .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img:not(.Intenso), .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img.Intenso {
+  .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img:not(.intenso), .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img.intenso {
     width: auto;
     height: auto;
   }
