@@ -5,25 +5,21 @@ namespace App\Http\Controllers\Site;
 use Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
-use App\Services\PayPalService;
 use App\Contracts\OrderContract;
 use App\Http\Controllers\Controller;
 
 class CheckoutController extends Controller
 {
-    protected $payPal;
-
     protected $orderRepository;
 
-    public function __construct(OrderContract $orderRepository, PayPalService $payPal)
+    public function __construct(OrderContract $orderRepository)
     {
-        $this->payPal = $payPal;
         $this->orderRepository = $orderRepository;
     }
 
-    public function getCheckout()
+    public function index()
     {
-        return view('site.pages.checkout');
+        return view('site.order.checkout');
     }
 
     public function placeOrder(Request $request)

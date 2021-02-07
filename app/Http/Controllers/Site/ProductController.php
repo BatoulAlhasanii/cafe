@@ -39,8 +39,8 @@ class ProductController extends Controller
 
     public function showCart(Request $request)
     {
-        $this->getCart($request);
-        return view('site.order.cart');
+        $cart = $this->getCart($request);
+        return view('site.order.cart', compact('cart'));
     }
 
     public function getCart($request)

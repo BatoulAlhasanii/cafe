@@ -217,7 +217,7 @@
             $.ajax({
                 url: "/product/add-to-cart",
                 type: "POST",
-                data: { _token: _token, productId: productId, qty: qty },
+                data: { _token: _token, productId: productId, quantity: qty },
                 success: function(data) {
 
                 }
