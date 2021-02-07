@@ -40,18 +40,14 @@ class ProductController extends Controller
     public function showCart(Request $request)
     {
         $cart = $this->getCart($request);
+
         $productsInfo = $cart->getCartProducts();
 
+      //  dd(Session::get('cart')->getCartCount());
+     //   dd(Session::get('cart')->getTotalCartAmount());
+    //    dd(Session::get('cart')->getCartProducts());
 
-        dd($productsInfo);
-        foreach ($productsInfo as $product) {
-
-            dd($product->qty);
-            dd($product->id);
-            dd($product->price);
-        }
-
-        return view('site.order.cart', compact('cart'));
+        return view('site.order.cart', compact('productsInfo'));
     }
 
     public function getCart($request)

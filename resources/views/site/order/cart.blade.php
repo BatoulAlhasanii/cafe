@@ -26,7 +26,18 @@
                     </ul>
                 </li>
                 </ul>
-           {{print_r($cart)}}
+@foreach ($productsInfo as $index => $product)
+<h1> product #{{$index+1}} </h1>
+<p> {{$product->id}}  </p>
+<p> {{$product->price}}  </p>
+<p>  {{$product->qty}} </p>
+
+@endforeach
+
+<h2> number of products </h2>
+{{Session::get('cart')->getCartCount()}}
+<h2> total cart amount </h2>
+{{Session::get('cart')->getTotalCartAmount()}}
 
 
 
