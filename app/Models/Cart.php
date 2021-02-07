@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 class Cart
 {
     public $items;
@@ -71,7 +70,7 @@ class Cart
         }
     }
 
-    public function setProduct($product, $id, $qtyToSet)
+    public function setProductQty($product, $id, $qtyToSet
     {
         $qtyToSet = $this->equalize($qtyToSet);
         $product->price = $this->equalize($product->price);
