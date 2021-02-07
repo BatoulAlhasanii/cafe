@@ -27,6 +27,7 @@ class ProductController extends Controller
 
     public function addToCart(Request $request)
     {
+        dd($request->all());
         $product = $this->productRepository->findProductById($request->input('productId'));
         $options = $request->except('_token', 'productId', 'price', 'qty');
 

@@ -272,7 +272,6 @@
 @endsection
 
 @section('javascript-scripts')
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="{{ asset('/owl-carousel/owl.carousel.min.js') }}"></script>
 
 <script type="text/javascript">

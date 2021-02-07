@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//without lang
+Route::post('/product/add-to-cart', 'App\Http\Controllers\Site\ProductController@addToCart')->name('product.add.cart');
+
+
+
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/cart', function () {
