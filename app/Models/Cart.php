@@ -70,7 +70,7 @@ class Cart
         }
     }
 
-    public function setProductQty($product, $id, $qtyToSet
+    public function setProductQty($product, $id, $qtyToSet)
     {
         $qtyToSet = $this->equalize($qtyToSet);
         $product->price = $this->equalize($product->price);

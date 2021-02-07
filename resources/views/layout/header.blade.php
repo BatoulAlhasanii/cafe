@@ -72,7 +72,7 @@
                         <li class="display-none top-header-item favoritos"><i></i><a href="https://www.cafeodebrecht.com.br/sales/order/history/" rel="nofollow"><span>My</span>Favourites</a></li>
                     </ul>
                     <div class="cart-container">
-                        <a class="icone" href="https://www.cafeodebrecht.com.br/checkout/cart" title="Ir para Meu Carrinho">
+                        <a class="icone" href="{{ route('cart.show') }}" title="Ir para Meu Carrinho">
                             <div class="cart-qtd">
                                 <p class="amount">1</p>
                             </div>

@@ -36,6 +36,13 @@ class ProductController extends Controller
 
         return redirect()->back()->with('message', 'Item added to cart successfully.');
     }*/
+
+    public function showCart(Request $request)
+    {
+        $this->getCart($request);
+        return view('site.order.cart');
+    }
+
     public function getCart($request)
     {
      //   dd($request->session());

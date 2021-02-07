@@ -19,11 +19,6 @@ Route::post('/product/add-to-cart', 'App\Http\Controllers\Site\ProductController
 
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
-
-Route::get('/cart', function () {
-    return view('site.order.cart');
-});
-
 Route::get('/category/{slug}', 'App\Http\Controllers\Site\CategoryController@show')->name('category.show');
-
 Route::get('/product/{slug}', 'App\Http\Controllers\Site\ProductController@show')->name('product.show');
+Route::get('/cart', 'App\Http\Controllers\Site\ProductController@showCart')->name('cart.show');
