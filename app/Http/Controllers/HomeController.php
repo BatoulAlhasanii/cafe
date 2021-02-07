@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Contracts\CategoryContract;
 
 class HomeController extends Controller
 {
 
+    protected $categoryRepository;
+
+    public function __construct(CategoryContract $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
+
     public function index() {
-        $categories = \App\Models\Category::where('parent_id', \App\Models\Category::$coffeeId)
-        ->where('is_active', true)
-        ->with(array('CategoryTranslations' => function($query) {
-            $query->where('lang', app()->getLocale())->select('category_id', 'name');
-        }))->get();
+        $categories = $this->categoryRepository->getCoffeeCategories();
 
         return view('site.home.home', compact('categories'));
     }
