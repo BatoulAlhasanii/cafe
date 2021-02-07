@@ -17,8 +17,7 @@ class BrandController extends BaseController
      * CategoryController constructor.
      * @param BrandContract $brandRepository
      */
-    public function __construct(BrandContract $brandRepository)
-    {
+    public function __construct(BrandContract $brandRepository) {
         $this->brandRepository = $brandRepository;
     }
 
