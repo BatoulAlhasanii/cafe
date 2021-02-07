@@ -78,4 +78,16 @@ class Cart
         $this->addToCart($product, $id, $qtyToSet);
         $this->removeFromCart($product, $id, $this->items[$id]['qty'] - $qtyToSet);
     }
+
+    public function getData()
+    {
+        $data = [];
+        foreach ($this->items as $item) {
+            foreach ($item as $key => $value) {
+                $data[$key] = $value;
+            }
+        }
+
+        return $data;
+    }
 }

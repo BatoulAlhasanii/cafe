@@ -26,7 +26,10 @@
                     </ul>
                 </li>
                 </ul>
-                {{print_r($cart)}}
+           {{print_r($cart)}}
+
+
+
 
                 <form action="https://www.cafeodebrecht.com.br/checkout/cart/updatePost/" method="post" class="the-cart-form">
                     <input name="form_key" type="hidden" value="TNgRvcDLNgl0LW6z">
