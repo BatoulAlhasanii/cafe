@@ -156,4 +156,15 @@ class CategoryRepository extends BaseRepository implements CategoryContract
             }))
             ->first();
     }
+
+    public function getCoffeeCategories()
+    {
+        $categories = Category::where('parent_id', \App\Models\Category::$coffeeId)
+        ->where('is_active', true)
+        ->with(array('CategoryTranslations' => function($query) {
+            $query->where('lang', app()->getLocale())->select('category_id', 'name');
+        }))->get();
+
+        return $categories;
+    }
 }
