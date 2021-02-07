@@ -40,14 +40,23 @@ class ProductController extends Controller
     public function showCart(Request $request)
     {
         $cart = $this->getCart($request);
-        $cart = $cart->getCartProducts();
+        $productsInfo = $cart->getCartProducts();
+
+
+        dd($productsInfo);
+        foreach ($productsInfo as $product) {
+
+            dd($product->qty);
+            dd($product->id);
+            dd($product->price);
+        }
 
         return view('site.order.cart', compact('cart'));
     }
 
     public function getCart($request)
     {
-     //   dd($request->session());
+        //   dd($request->session());
         if (Session::has('cart')) {
             $cart = Session::get('cart');
         } else {
@@ -111,5 +120,4 @@ class ProductController extends Controller
         //  return redirect()->back()->with('message', 'Item removed from cart successfully.');
 
     }
-
 }

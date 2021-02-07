@@ -81,14 +81,22 @@ class Cart
 
     public function getCartProducts()
     {
-        $data = [];
+        $productsInfo = [];
         foreach ($this->items as $item) {
-            foreach ($item as $key => $value) {
-                $data[$key] = $value;
-            }
+            $product = $item["item"];
+            $product->qty = $item["qty"];
+
+           /* foreach ($item as $key => $value) {
+                if($key != "item") {
+                    $data[$key] = $value;
+                }
+               // $data[$key] = $value;
+            }*/
+
+            $productsInfo[] = $product;
         }
 
-        return $data;
+        return $productsInfo;
     }
 
     public function getTotalCartAmount() {
