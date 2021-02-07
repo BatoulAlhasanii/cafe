@@ -32,13 +32,12 @@
                 <div class="large-5 column">
                     <div class="xzoom-container">
                         <div class="xzoom-img-container">
-                            <img class="xzoom4" id="xzoom-fancy" src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_11_1_1200_72_rgb.png" xoriginal="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_11_1_1200_72_rgb.png" />
+                            <img class="xzoom4" id="xzoom-fancy" src="{{ asset( explode(',', $product->images)[0] )}}" xoriginal="{{ asset( explode(',', $product->images)[0] )}}" />
                         </div>
                         <div class="xzoom-thumbs">
-                            <a href="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_11_1_1200_72_rgb.png"><img class="xzoom-gallery4" width="80" src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_11_1_1200_72_rgb.png"  xpreview="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_11_1_1200_72_rgb.png" title="The description goes here"></a>
-                            <a href="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_1_1_1200_72_rgb.png"><img class="xzoom-gallery4" width="80" src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_1_1_1200_72_rgb.png" title="The description goes here"></a>
-                            <a href="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png"><img class="xzoom-gallery4" width="80" src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png" title="The description goes here"></a>
-                            <a href="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_8_1_1200_72_rgb.png"><img class="xzoom-gallery4" width="80" src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_8_1_1200_72_rgb.png" title="The description goes here"></a>
+                            @foreach(explode(',', $product->images) as $image)
+                            <a href="{{ asset( $image ) }}"><img class="xzoom-gallery4" width="80" src="{{ asset( $image ) }}" title="The description goes here"></a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -48,16 +47,16 @@
             <div class="product-details">
                 <div class="product-shop">
                     <div class="product-name">
-						<h2 itemprop="name">Café Odebrecht Superior</h2>
+						<h2 itemprop="name">{{ $product->productTranslations[0]->name }}</h2>
                     </div>
                     <div id="info-secondaria" class="bloco-info-produto grid12-12 no-gutter">
 						<div class="grid12-4 no-gutter a-left">
 							<div class="availability in-stock">
-								<span class="title-rating">Produto:</span> <span class="disponivel">Em estoque</span>
+								<span class="title-rating">Produto:</span> <span class="disponivel">{{ $product->stock > 0 ? 'Available' : 'Unavailable' }}</span>
 							</div>
                         </div>
                         <div class="grid12-3 no-gutter sku-align">
-                            <span><span class="title-rating">SKU: </span><span>000204P</span></span>
+                            <span><span class="title-rating">SKU: </span><span>{{ $product->sku }}</span></span>
                         </div>
 						<div class="grid12-5 no-gutter a-right">
                             <div class="no-ratings">
@@ -112,16 +111,16 @@
                             <div class="price-box">
                                 <p class="old-price">
                                     <span class="price-label">De:</span>
-                                    <span class="price" id="old-price-52">R$ 10,00</span>
+                                    <span class="price" id="old-price-52">R$ {{ $product->price }}</span>
                                 </p>
 
                                 <p class="special-price">
                                     <span class="price-label">Por:</span>
-                                    <span class="price" id="product-price-52">R$ 9,00</span>
+                                    <span class="price" id="product-price-52">R$ {{ $product->discount_price }}</span>
                                 </p>
                                 <div class="parcelaBloco no-display" data-maximo_parcelas="12" data-valor_produto="9.0000" data-maximo_parcelas_sem_juros="3" data-juros="" data-multiplos_juros="|0|0|0|0|0|6.16|6.96|7.77|8.59|9.41|10.24" data-juros_tipo="0" data-valor_minimo="30">
                                     <div class="parcela-semjuros">
-                                        em até<span class="parcela" data-parcela="1">1</span><span class="xparc">x</span> de <span class="price">R$&nbsp;9,00</span>
+                                        em até<span class="parcela" data-parcela="1">1</span><span class="xparc">x</span> de <span class="price">{{ $product->discount_price }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -165,61 +164,24 @@
                     </li>
 			    </ul>
                         <div id="descricao" class="tab-content">
-                            O Café Odebrecht Superior é uma seleção dos melhores cafés paranaenses blendados com os melhores grãos do sul de minas o que determina sabor forte e encorpado de qualidade superior, torra média escura, moagem média fina. O resultado é um produto que atende as exigências de consumidores que exigem um sabor encorpado e um aroma forte.
+                            {{ $product->productTranslations[0]->description }}
                             <br>
                             <br>
 						</div>
                         <div id="atributos" class="tab-content is-open" style="display: block;">
+                            <br>
 						    <table class="data-table" id="product-attribute-specs-table">
                                 <colgroup>
                                     <col width="25%">
                                     <col>
                                 </colgroup>
                                 <tbody>
+                                    @foreach(json_decode( strval($product->productTranslations[0]->attribute_value) ) as $key => $value)
                                     <tr class="first odd">
-                                        <th class="label">Tipo de Envase</th>
-                                        <td class="data last">Alto Vácuo</td>
+                                        <th class="label">{{ $key }}</th>
+                                        <td class="data last">{{ $value }}</td>
                                     </tr>
-                                    <tr class="even">
-                                        <th class="label">Validade</th>
-                                        <td class="data last">540 dias após data de fabricação</td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <th class="label">Tipo de embalagem interna</th>
-                                        <td class="data last">Aluminizada</td>
-                                    </tr>
-                                    <tr class="even">
-                                        <th class="label">Tipo de embalagem externa</th>
-                                        <td class="data last">Caixa de papelão</td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <th class="label">Peso da embalagem</th>
-                                        <td class="data last">9 gramas (embalagem interna) + 26 gramas (caixinha)</td>
-                                    </tr>
-                                    <tr class="even">
-                                        <th class="label">Peso da reembalagem</th>
-                                        <td class="data last">360g</td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <th class="label">Composição</th>
-                                        <td class="data last">100% Café Arábica</td>
-                                    </tr>
-                                    <tr class="even">
-                                        <th class="label">Condições de Armazenamento</th>
-                                        <td class="data last">Local seco e árido longe de presença de sol e produtos químicos.</td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <th class="label">Empilhamento Máximo</th>
-                                        <td class="data last">8 caixas</td>
-                                    </tr>
-                                    <tr class="even">
-                                        <th class="label">Código de barra do produto</th>
-                                        <td class="data last">7896295001012</td>
-                                    </tr>
-                                    <tr class="last odd">
-                                        <th class="label">Marca</th>
-                                        <td class="data last">Café Odebrecht</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

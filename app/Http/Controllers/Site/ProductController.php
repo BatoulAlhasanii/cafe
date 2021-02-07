@@ -13,20 +13,17 @@ class ProductController extends Controller
 {
     protected $productRepository;
 
-    protected $attributeRepository;
 
-    public function __construct(ProductContract $productRepository, AttributeContract $attributeRepository)
+    public function __construct(ProductContract $productRepository)
     {
         $this->productRepository = $productRepository;
-        $this->attributeRepository = $attributeRepository;
     }
 
     public function show($slug)
     {
         $product = $this->productRepository->findProductBySlug($slug);
-        $attributes = $this->attributeRepository->listAttributes();
 
-        return view('site.pages.product', compact('product', 'attributes'));
+        return view('site.products.view', compact('product'));
     }
 
     /*  public function addToCart(Request $request)

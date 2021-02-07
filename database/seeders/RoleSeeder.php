@@ -13,7 +13,7 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        \App\Role::createMany([
+        \App\Models\Role::insert([
             [
                 'name' => 'admin',
                 'slug' => 'admin'

@@ -150,7 +150,10 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     {
         return Category::with('products')
             ->where('slug', $slug)
-            ->where('menu', 1)
+            ->where('is_active', true)
+            ->with(array('products.productTranslations' => function($query) {
+                $query->where('lang', app()->getLocale())->select('product_id', 'name');
+            }))
             ->first();
     }
 }

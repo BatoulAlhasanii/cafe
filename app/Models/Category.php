@@ -9,7 +9,10 @@ class Category extends Model
 {
     use HasFactory;
 
+    public static $coffeeId = 1;
+
     public $fillable = [
+        'slug',
         'image',
         'sequence',
         'parent_id',

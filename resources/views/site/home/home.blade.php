@@ -23,26 +23,12 @@
             </div>
             <div class="coffee-favours--items">
                 <ul class="favours">
+                    @foreach($categories as $category)
                     <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=49"><img alt="Extraforte" title="Extraforte" src="{{asset('/storage/images/home/Extraforte.png')}}"></a>
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=49">Extraforte</a>
+                        <a href="{{ route('category.show', ['slug' => $category->slug ]) }}"><img  class="{{ $category->slug }}" alt="{{ $category->categoryTranslations[0]->name }}" title="{{ $category->categoryTranslations[0]->name }}" src="{{asset( $category->image )}}"></a>
+                        <a href="{{ route('category.show', ['slug' => $category->slug ]) }}">{{ $category->categoryTranslations[0]->name }}</a>
                     </li>
-                    <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=50"><img alt="Classico" title="Classico" src="{{asset('/storage/images/home/Classico.png')}}"></a>
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=50">Classico</a>
-                    </li>
-                    <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=51"><img alt="Suave" title="Suave" src="{{asset('/storage/images/home/Suave.png')}}"></a>
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=51">Suave</a>
-                    </li>
-                    <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=52"><img alt="Descafeinado" title="Descafeinado" src="{{asset('/storage/images/home/Descafeinado.png')}}"></a>
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=52">Descafeinado</a>
-                    </li>
-                    <li class="flex-column">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=53"><img class="Intenso" alt="Intenso" title="Intenso" src="{{asset('/storage/images/home/Intenso.png')}}"></a>
-                        <a href="https://www.cafeodebrecht.com.br/cafe-torrado-e-moido.html?intensidade=53">Intenso</a>
-                    </li>
+                    @endforeach
                     <li class="coffee-cup"><img src="{{asset('/storage/images/home/cafe.png')}}"></li>
                 </ul>
             </div>

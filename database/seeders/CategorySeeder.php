@@ -15,11 +15,12 @@ class CategorySeeder extends Seeder
     {
         \App\Models\Category::create(
             [
+                'slug' => 'coffee',
                 'sequence' => 1,
                 'parent_id' => 0,
                 'is_active' => true,
             ]
-        )->categoriesTranslations()->createMany([
+        )->categoryTranslations()->createMany([
             [
                 'name' => 'Coffee',
                 'lang' => 'en',
@@ -29,5 +30,101 @@ class CategorySeeder extends Seeder
                 'lang' => 'tr',
             ]
         ]);
+
+        \App\Models\Category::create(
+            [
+                'slug' => 'extraforte',
+                'image' => '/storage/images/intensity/Extraforte.png',
+                'sequence' => 2,
+                'parent_id' => 1,
+                'is_active' => true,
+            ]
+        )->categoryTranslations()->createMany([
+            [
+                'name' => 'Extraforte',
+                'lang' => 'en',
+            ],
+            [
+                'name' => 'Extraforte',
+                'lang' => 'tr',
+            ]
+        ]);
+
+        \App\Models\Category::create(
+            [
+                'slug' => 'classico',
+                'image' => '/storage/images/intensity/Classico.png',
+                'sequence' => 2,
+                'parent_id' => 1,
+                'is_active' => true,
+            ]
+        )->categoryTranslations()->createMany([
+            [
+                'name' => 'Classico',
+                'lang' => 'en',
+            ],
+            [
+                'name' => 'Classico',
+                'lang' => 'tr',
+            ]
+        ]);
+
+        \App\Models\Category::create(
+            [
+                'slug' => 'suave',
+                'image' => '/storage/images/intensity/Suave.png',
+                'sequence' => 2,
+                'parent_id' => 1,
+                'is_active' => true,
+            ]
+        )->categoryTranslations()->createMany([
+            [
+                'name' => 'Suave',
+                'lang' => 'en',
+            ],
+            [
+                'name' => 'Suave',
+                'lang' => 'tr',
+            ]
+        ]);
+
+        \App\Models\Category::create(
+            [
+                'slug' => 'descafeinado',
+                'image' => '/storage/images/intensity/Descafeinado.png',
+                'sequence' => 2,
+                'parent_id' => 1,
+                'is_active' => true,
+            ]
+        )->categoryTranslations()->createMany([
+            [
+                'name' => 'Descafeinado',
+                'lang' => 'en',
+            ],
+            [
+                'name' => 'Descafeinado',
+                'lang' => 'tr',
+            ]
+        ]);
+
+        \App\Models\Category::create(
+            [
+                'slug' => 'intenso',
+                'image' => '/storage/images/intensity/Intenso.png',
+                'sequence' => 2,
+                'parent_id' => 1,
+                'is_active' => true,
+            ]
+        )->categoryTranslations()->createMany([
+            [
+                'name' => 'Intenso',
+                'lang' => 'en',
+            ],
+            [
+                'name' => 'Intenso',
+                'lang' => 'tr',
+            ]
+        ]);
+
     }
 }
