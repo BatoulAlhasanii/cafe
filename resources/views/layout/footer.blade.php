@@ -3,7 +3,7 @@
         <div class="container">
             <div class="footer-desc">
                 <div class="desc-container">
-                    <img src="https://www.cafeodebrecht.com.br/media/wysiwyg/logo-footer.png" alt="">
+                    <img src="{{asset('/storage/images/footer/logo-footer.png')}}" alt="">
                     <p>Há mais de meio século depois da fundação, a Odebrecht é uma empresa sólida, constando atualmente entre as 10 maiores empresas de café torrado e moído do Brasil e a primeira da região sul, exportando seus produtos para mais de 20 países.&nbsp;<span style="color: #ffffff;"><strong><a href="/quem-somos">Leia mais</a></strong></span></p>
                 </div>
             </div>
@@ -11,49 +11,49 @@
                 <div class="footer-list-wrapper">
                     <h4>Ajuda</h4>
                     <ul class="footer-link-list">
-                        <li><a href="/quem-somos">Quem somos</a></li>
-                        <li><a href="/unidades">Unidades</a></li>
-                        <li><a href="/historia-do-cafe">História do café</a></li>
-                        <li><a href="/como-comprar">Como comprar</a></li>
-                        <li><a href="/pagamento-e-envio">Pagamento e envio</a></li>
-                        <li><a href="/perguntas-frequentes">Perguntas Frequentes</a></li>
-                        <li><a href="/trabalhe-conosco">Tabalhe Conosco</a></li>
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Unidades</a></li>
+                        <li><a href="#">História do café</a></li>
+                        <li><a href="#">Como comprar</a></li>
+                        <li><a href="#">Pagamento e envio</a></li>
+                        <li><a href="#">Perguntas Frequentes</a></li>
+                        <li><a href="#">Tabalhe Conosco</a></li>
                     </ul>
                 </div>
                 <div class="footer-list-wrapper">
                     <h4>Minha Conta</h4>
                     <ul class="footer-link-list">
-                    <li><a rel="nofollow" href="/customer/account/edit/">Meu Cadastro</a></li>
-                    <li><a rel="nofollow" href="/sales/order/history/">Meus Pedidos</a></li>
-                    <li><a rel="nofollow" href="/customer/account/edit/changepass/1/">Alterar Senha</a></li>
-                    <li><a rel="nofollow" href="/customer/account/edit/">Alterar Cadastro</a></li>
+                    <li><a href="#">Meu Cadastro</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                    <li><a href="#">Alterar Senha</a></li>
+                    <li><a href="#">Alterar Cadastro</a></li>
                     </ul>
                 </div>
                 <div class="footer-list-wrapper">
                     <h4>Políticas</h4>
                     <ul class="footer-link-list">
-                        <li><a href="/termos-de-uso">Termos de Uso e Condições Gerais</a></li>
-                        <li><a href="/privacidade">Política de privacidade</a></li>
+                        <li><a href="#">Termos de Uso e Condições Gerais</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
                     </ul>
                 </div>
             </div>
             <div class="social-links-container">
                 <div class="page-link">
-                        <a href="https://pt-br.facebook.com/cafeodebrecht">Café Odebrecht</a>
+                        <a href="#">Café Odebrecht</a>
                 </div>
                 <ul class="social-media-links footer-link-list">
                     <li>
-                        <a href="https://pt-br.facebook.com/cafeodebrecht" target="_blank">
+                        <a href="#" target="_blank">
                             <i class="icon-facebook"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://web.whatsapp.com/send?phone=5543999848084&amp;text=Oi!%20Estou%20entrando%20em%20contato%20pelo%20chat%20Whatsapp%20da%20sua%20loja%20virtual.%20Poderia%20me%20ajudar?" target="_blank">
+                        <a href="#" target="_blank">
                             <i class="icon-whatsapp"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/cafeodebrecht" target="_blank">
+                        <a href="#" target="_blank">
                             <i class="icon-instagram"></i>
                         </a>
                     </li>

@@ -5,11 +5,16 @@ table {
     empty-cells: show;
     font-size: 100%;
 }
+.a-center {
+    text-align: center;
+}
+.a-right {
+    text-align: right !important;
+}
+
 .data-table {
-    clear: both;
     width: 100%;
     margin: 0 0 10px;
-    text-align: left;
     thead {
         background-color: #f8f8f8;
     }
@@ -32,7 +37,6 @@ table {
     .product-image {
         background: none repeat scroll 0 0 #FFFFFF;
         width: 100px;
-        float: left;
         text-align: center;
     }
     .product-name {

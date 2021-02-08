@@ -43,14 +43,15 @@
                 </h2>
             </div>
             <ul class="products-grid">
+                @foreach($products as $product)
                 <li class="item">
                     <div class="product-image-wrapper">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior" class="product-image">
+                        <a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Superior" class="product-image">
                             <img src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/small_image/240x290/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png" alt="Café Odebrecht Superior">
                         </a>
                     </div>
                     <div class="infobox">
-                        <h3 class="product-name"><a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior">Café Odebrecht Superior em Cápsula Compatível com Nespresso</a></h3>
+                        <h3 class="product-name"><a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Superior">{{ $product->productTranslations[0]->name }}</a></h3>
                         <div class="no-ratings">
                             <div class="rating-box">
                                 <div class="rating" style="width:0%"></div>
@@ -58,173 +59,19 @@
                         </div>
                         <div class="price-box">
                             <p class="old-price">
-                                <span class="price" id="old-price-116">R$ 15,00</span>
+                                <span class="price" id="old-price-116">{{ $product->price }}</span>
                             </p>
                             <p class="special-price">
-                                <span class="price" id="product-price-116">R$ 9,90</span>
+                                <span class="price" id="product-price-116">{{ $product->discount_price }}</span>
                             </p>
                         </div>
                         <div class="bt-add">
-                            <button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>
+                            <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Details</span></a>
+                            <!--<button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>-->
                         </div>
                     </div>
                 </li>
-                <li class="item">
-                    <div class="product-image-wrapper">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior" class="product-image">
-                            <img src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/small_image/240x290/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png" alt="Café Odebrecht Superior">
-                        </a>
-                    </div>
-                    <div class="infobox">
-                        <h3 class="product-name"><a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior">Café Odebrecht Superior</a></h3>
-                        <div class="no-ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="price-box">
-                            <p class="old-price">
-                                <span class="price" id="old-price-116">R$ 15,00</span>
-                            </p>
-                            <p class="special-price">
-                                <span class="price" id="product-price-116">R$ 9,90</span>
-                            </p>
-                        </div>
-                        <div class="bt-add">
-                            <button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="product-image-wrapper">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior" class="product-image">
-                            <img src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/small_image/240x290/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png" alt="Café Odebrecht Superior">
-                        </a>
-                    </div>
-                    <div class="infobox">
-                        <h3 class="product-name"><a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior">Café Odebrecht Superior</a></h3>
-                        <div class="no-ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="price-box">
-                            <p class="old-price">
-                                <span class="price" id="old-price-116">R$ 15,00</span>
-                            </p>
-                            <p class="special-price">
-                                <span class="price" id="product-price-116">R$ 9,90</span>
-                            </p>
-                        </div>
-                        <div class="bt-add">
-                            <button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="product-image-wrapper">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior" class="product-image">
-                            <img src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/small_image/240x290/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png" alt="Café Odebrecht Superior">
-                        </a>
-                    </div>
-                    <div class="infobox">
-                        <h3 class="product-name"><a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior">Café Odebrecht Superior</a></h3>
-                        <div class="no-ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="price-box">
-                            <p class="old-price">
-                                <span class="price" id="old-price-116">R$ 15,00</span>
-                            </p>
-                            <p class="special-price">
-                                <span class="price" id="product-price-116">R$ 9,90</span>
-                            </p>
-                        </div>
-                        <div class="bt-add">
-                            <button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="product-image-wrapper">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior" class="product-image">
-                            <img src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/small_image/240x290/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png" alt="Café Odebrecht Superior">
-                        </a>
-                    </div>
-                    <div class="infobox">
-                        <h3 class="product-name"><a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior">Café Odebrecht Superior</a></h3>
-                        <div class="no-ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="price-box">
-                            <p class="old-price">
-                                <span class="price" id="old-price-116">R$ 15,00</span>
-                            </p>
-                            <p class="special-price">
-                                <span class="price" id="product-price-116">R$ 9,90</span>
-                            </p>
-                        </div>
-                        <div class="bt-add">
-                            <button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="product-image-wrapper">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior" class="product-image">
-                            <img src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/small_image/240x290/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png" alt="Café Odebrecht Superior">
-                        </a>
-                    </div>
-                    <div class="infobox">
-                        <h3 class="product-name"><a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior">Café Odebrecht Superior</a></h3>
-                        <div class="no-ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="price-box">
-                            <p class="old-price">
-                                <span class="price" id="old-price-116">R$ 15,00</span>
-                            </p>
-                            <p class="special-price">
-                                <span class="price" id="product-price-116">R$ 9,90</span>
-                            </p>
-                        </div>
-                        <div class="bt-add">
-                            <button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>
-                        </div>
-                    </div>
-                </li>
-                <li class="item">
-                    <div class="product-image-wrapper">
-                        <a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior" class="product-image">
-                            <img src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/small_image/240x290/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png" alt="Café Odebrecht Superior">
-                        </a>
-                    </div>
-                    <div class="infobox">
-                        <h3 class="product-name"><a href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="Café Odebrecht Superior">Café Odebrecht Superior</a></h3>
-                        <div class="no-ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="price-box">
-                            <p class="old-price">
-                                <span class="price" id="old-price-116">R$ 15,00</span>
-                            </p>
-                            <p class="special-price">
-                                <span class="price" id="product-price-116">R$ 9,90</span>
-                            </p>
-                        </div>
-                        <div class="bt-add">
-                            <button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>
-                        </div>
-                    </div>
-                </li>
+                @endforeach
             </ul>
         </div>
     </section>
@@ -235,15 +82,15 @@
                     <ul>
                         <li>
                             <figure class="slide-img">
-                                <a href="https://www.cafeodebrecht.com.br/receitas/shot_cappuccino/" title="Shot de cappuccino com baunilha e sal" tabindex="-1">
+                                <a href="#/" title="Shot de cappuccino com baunilha e sal" tabindex="-1">
                                     <img src="{{asset('/storage/images/recipes-slider/shot-cappuccino-baunilha_4.jpg')}}" alt="Shot de cappuccino com baunilha e sal">
                                 </a>
                             </figure>
                             <div class="title">conheça nossas</div>
                             <div class="subtitle">Deliciosas Receitas</div>
-                            <a href="https://www.cafeodebrecht.com.br/receitas/shot_cappuccino/" tabindex="-1">Shot de cappuccino com baunilha e sal</a>
+                            <a href="#/" tabindex="-1">Shot de cappuccino com baunilha e sal</a>
                             <div class="text-content"><p>Confira a receita deste delicioso&nbsp;Shot de cappuccino com baunilha e sal</p></div>
-                            <a class="read-more" href="https://www.cafeodebrecht.com.br/receitas/shot_cappuccino/" tabindex="-1">Leia Mais</a>
+                            <a class="read-more" href="#/" tabindex="-1">Leia Mais</a>
                         </li>
                     </ul>
                 </div>
@@ -251,15 +98,15 @@
                     <ul>
                         <li>
                             <figure class="slide-img">
-                                <a href="https://www.cafeodebrecht.com.br/receitas/shot_cappuccino/" title="Shot de cappuccino com baunilha e sal" tabindex="-1">
+                                <a href="#" title="Shot de cappuccino com baunilha e sal" tabindex="-1">
                                     <img src="{{asset('/storage/images/recipes-slider/shot-cappuccino-baunilha_4.jpg')}}" alt="Shot de cappuccino com baunilha e sal">
                                 </a>
                             </figure>
                             <div class="title">conheça nossas</div>
                             <div class="subtitle">Deliciosas Receitas</div>
-                            <a href="https://www.cafeodebrecht.com.br/receitas/shot_cappuccino/" tabindex="-1">Shot de cappuccino com baunilha e sal</a>
+                            <a href="#" tabindex="-1">Shot de cappuccino com baunilha e sal</a>
                             <div class="text-content"><p>Confira a receita deste delicioso&nbsp;Shot de cappuccino com baunilha e sal</p></div>
-                            <a class="read-more" href="https://www.cafeodebrecht.com.br/receitas/shot_cappuccino/" tabindex="-1">Leia Mais</a>
+                            <a class="read-more" href="#" tabindex="-1">Leia Mais</a>
                         </li>
                     </ul>
                 </div>

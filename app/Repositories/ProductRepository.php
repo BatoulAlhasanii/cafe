@@ -40,6 +40,14 @@ class ProductRepository extends BaseRepository implements ProductContract
         return $this->all($columns, $order, $sort);
     }
 
+    public function listFeaturedProducts()
+    {
+        return Product::where(['is_active' => true, 'is_featured' => true])
+                ->with(array('productTranslations' => function($query) {
+                    $query->where('lang', app()->getLocale())->select('product_id', 'name');
+                }))->get();
+    }
+
     /**
      * @param int $id
      * @return mixed
