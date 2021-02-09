@@ -56,4 +56,11 @@ class Product extends Model
     {
         return $this->hasMany(\App\Models\ProductTranslation::class, 'product_id');
     }
+    public function getCurrentPrice() {
+        if ($this->discount_price !== 0.00) {
+            return $this->discount_price;
+        } else {
+            return $this->price;
+        }
+    }
 }

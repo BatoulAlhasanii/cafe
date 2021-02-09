@@ -34,7 +34,10 @@ class CountryRepository extends BaseRepository implements CountryContract
      */
     public function listCountries(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
     {
-        return $this->all($columns, $order, $sort);
+        return Country::where('is_active', true)
+                ->with('countryTranslations', function($query) {
+                    $query->where('lang', app()->getLocale());
+                })->get();
     }
 
     /**

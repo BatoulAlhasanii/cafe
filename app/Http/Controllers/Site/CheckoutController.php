@@ -6,31 +6,44 @@ use Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Contracts\OrderContract;
+use App\Contracts\CountryContract;
+use App\Contracts\CityContract;
 use App\Http\Controllers\Controller;
 
 class CheckoutController extends Controller
 {
     protected $orderRepository;
+    protected $countryRepository;
+    protected $cityRepository;
 
-    public function __construct(OrderContract $orderRepository)
+    public function __construct(OrderContract $orderRepository, CountryContract  $countryRepository, CityContract  $cityRepository)
     {
         $this->orderRepository = $orderRepository;
+        $this->countryRepository = $countryRepository;
+        $this->cityRepository = $cityRepository;
     }
 
     public function index()
     {
-        return view('site.order.checkout');
+        $country = $this->countryRepository->listCountries()[0];
+        $cities = $this->cityRepository->listCitiesByCountry($country->id);
+
+        return view('site.order.checkout', compact(['country', 'cities']));
     }
 
     public function placeOrder(Request $request)
     {
-        // Before storing the order we should implement the
-        // request validation which I leave it to you
-        $order = $this->orderRepository->storeOrderDetails($request->all());
+        //when to check if items are available?
+        $this->validate($request, Order::rules());
+
+        $order = $this->orderRepository->storeOrderDetails($request);
 
         // You can add more control here to handle if the order is not stored properly
         if ($order) {
-            $this->payPal->processPayment($order);
+            //$this->payPal->processPayment($order);
+            //Do Payment
+            //flush cart
+            return redirect()->back()->with('message','Order was placed');
         }
 
         return redirect()->back()->with('message','Order not placed');

@@ -16,3 +16,7 @@
     transition: 0.25s linear;
     text-align: center;
 }
+
+button:hover:enabled {
+    cursor: pointer!important;
+}

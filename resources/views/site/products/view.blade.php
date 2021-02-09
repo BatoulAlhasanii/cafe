@@ -70,34 +70,11 @@
                             </div>
                         </div>
                         <div id="info-extra" class="grid12-12 no-gutter">
-                            <div class="extrahint-wrapper">
-                                <div class="product-pricing">Café Odebrecht Superior is available for purchase in increments of 1</div>
-                            </div>
                             <br>
                             <div class="block">
                                 <div class="block-title">
                                     <strong><span>Pdf Indisponível</span></strong>
                                     <br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-additional bloco-info-produto">
-                            <div class="container2-wrapper">
-                                <div class="product-options" id="product-options-wrapper">
-                                    <div id="atributos-principal">
-                                        <div class="containerAtributo">
-                                            <h3>Tamanho</h3>
-                                            <ul class="outros-lista-atributos" id="dados_tamanho">
-                                                <li>
-                                                    <a onclick="Cores.selecionar(this);" title="500g" data-idatributo="133" data-index="0" data-atributo="tamanho" data-valor="47" class="">500g</a>
-                                                </li>
-                                                <li>
-                                                    <a onclick="Cores.selecionar(this);" title="250g" data-idatributo="133" data-index="0" data-atributo="tamanho" data-valor="25" class="selecionado">250g</a>
-                                                </li>
-                                            </ul>
-                                            <input id="campo_tamanho" data-campolabel="Tamanho" data-campocode="tamanho" data-campoindex="0" class="campos_atributo" name="atributos[tamanho]" type="hidden" value="25">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -189,7 +166,7 @@
                                 </tbody>
                             </table>
                         </div>
-        </div>
+                    </div>
 			    <div class="clear"></div>
 		    </div>
         </section>

@@ -37,6 +37,14 @@ class CityRepository extends BaseRepository implements CityContract
         return $this->all($columns, $order, $sort);
     }
 
+    public function listCitiesByCountry($countryId)
+    {
+        return City::where(['country_id' => $countryId, 'is_active' => true])
+                ->with('cityTranslations', function($query) {
+                    $query->where('lang', app()->getLocale());
+                })->get();
+    }
+
     /**
      * @param int $id
      * @return mixed

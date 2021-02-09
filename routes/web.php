@@ -23,3 +23,4 @@ Route::get('/category/{slug}', 'App\Http\Controllers\Site\CategoryController@sho
 Route::get('/product/{slug}', 'App\Http\Controllers\Site\ProductController@show')->name('product.show');
 Route::get('/cart', 'App\Http\Controllers\Site\ProductController@showCart')->name('cart.show');
 Route::get('/checkout', 'App\Http\Controllers\Site\CheckoutController@index')->name('checkout.index');
+Route::post('/checkout', 'App\Http\Controllers\Site\CheckoutController@placeOrder')->name('checkout.placeOrder');

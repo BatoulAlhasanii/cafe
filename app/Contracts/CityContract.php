@@ -17,6 +17,12 @@ interface CityContract
     public function listCities(string $order = 'id', string $sort = 'desc', array $columns = ['*']);
 
     /**
+     * @param int $countryId
+     * @return mixed
+     */
+    public function listCitiesByCountry(int $countryId);
+
+    /**
      * @param int $id
      * @return mixed
      */

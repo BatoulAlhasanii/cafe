@@ -73,9 +73,9 @@
                     </ul>
                     <div class="cart-container">
                         <a class="icone" href="{{ route('cart.show') }}" title="Ir para Meu Carrinho">
-                            @if (Session::get('cart')->getCartCount() > 0)
+                            @if (Session::has('cart') && Session::get('cart')->getCartCount() > 0)
                             <div class="cart-qtd">
-                                <p class="amount">{{ Session::get('cart')->getCartCount() > 0 ?? ''}}</p>
+                                <p class="amount">{{ Session::get('cart')->getCartCount() > 0 ? Session::get('cart')->getCartCount() : ''}}</p>
                             </div>
                             @endif
                         </a>

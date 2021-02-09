@@ -3,8 +3,10 @@
 namespace App\Repositories;
 
 use Cart;
+use Session;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\City;
 use App\Models\OrderItem;
 use App\Contracts\OrderContract;
 
@@ -16,44 +18,54 @@ class OrderRepository extends BaseRepository implements OrderContract
         $this->model = $model;
     }
 
-    public function storeOrderDetails($params)
+    public function storeOrderDetails($request)
     {
-        $order = Order::create([
-            'order_number'      =>  'ORD-'.strtoupper(uniqid()),
-            'user_id'           => auth()->user()->id,
-            'status'            =>  'pending',
-            'grand_total'       =>  Cart::getSubTotal(),
-            'item_count'        =>  Cart::getTotalQuantity(),
-            'payment_status'    =>  0,
-            'payment_method'    =>  null,
-            'first_name'        =>  $params['first_name'],
-            'last_name'         =>  $params['last_name'],
-            'address'           =>  $params['address'],
-            'city'              =>  $params['city'],
-            'country'           =>  $params['country'],
-            'post_code'         =>  $params['post_code'],
-            'phone_number'      =>  $params['phone_number'],
-            'notes'             =>  $params['notes']
+
+        $order = new Order();
+        $order->fill([
+            'status' => Order::$statusPending,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'postcode' => $request->postcode,
+            'phone1' => $request->phone1,
+            'phone2' => $request->phone2,
+            'address' => $request->address,
+            'city_id' => $request->city_id,
+            'country_id' => $request->country_id
         ]);
 
+        $sub_total = 0.00;
+        $total = 0.00;
+
         if ($order) {
-
-            $items = Cart::getContent();
-
+            //If cart has items
+            //TODO
+            $items = Session::get('cart')->getCartProducts();
+            $orderItems = [];
             foreach ($items as $item)
             {
-                // A better way will be to bring the product id with the cart items
-                // you can explore the package documentation to send product id with the cart
-                $product = Product::where('name', $item->name)->first();
+                $product = Product::find($item->id);
 
-                $orderItem = new OrderItem([
-                    'product_id'    =>  $product->id,
-                    'quantity'      =>  $item->quantity,
-                    'price'         =>  $item->getPriceSum()
+                $orderItems[] = new OrderItem([
+                    'product_id' => $product->id,
+                    'product_price' =>  $item->qty * $product->getCurrentPrice(),
+                    'qty' => $item->qty
                 ]);
 
-                $order->items()->save($orderItem);
+                $sub_total += $item->qty * $product->getCurrentPrice();
             }
+
+            $city = City::find($request->city_id);
+            $total = $sub_total + $city->shipping_fees;
+
+            $order->sub_total = $sub_total;
+            $order->shipping_fees = $city->shipping_fees;
+            $order->total = $total;
+        }
+
+        $orderCreated = $order->save();
+        if ($orderCreated) {
+            $order->orderItems()->saveMany($orderItems);
         }
 
         return $order;

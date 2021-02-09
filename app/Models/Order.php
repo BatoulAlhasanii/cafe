@@ -33,6 +33,35 @@ class Order extends Model
         'amount_deducted'
     ];
 
+    public static $orderStatus = [
+        1 => [
+            'id' => 1,
+            'name' => 'pending'
+        ],
+        2 => [
+            'id' => 2,
+            'name' => 'processing'
+        ],
+        3 => [
+            'id' => 3,
+            'name' => 'paid'
+        ],
+        4 => [
+            'id' => 4,
+            'name' => 'delivered'
+        ],
+        5 => [
+            'id' => 5,
+            'name' => 'declined'
+        ]
+    ];
+    public static $statusPending = 1;
+    public static $statusProcessing = 2;
+    public static $statusPaid = 3;
+    public static $statusDelivered = 4;
+    public static $statusDeclined = 5;
+
+
     public static function rules()
     {
         return [
@@ -44,8 +73,8 @@ class Order extends Model
             'phone1' => 'required|string|max:255',
             'phone2' => 'required|string|max:255',
             'address' => 'required|string',
-            'city_id' => 'nullable|exists:cities,id',
-            'country_id' => 'nullable|exists:countries,id',
+            'city_id' => 'required|exists:cities,id',
+            'country_id' => 'required|exists:countries,id',
             'lat' => 'nullable|numeric',
             'lng' => 'nullable|numeric',
             'coupon_code' => 'nullable|exists:coupons,code'
