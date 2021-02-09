@@ -27,6 +27,8 @@
                 </li>
             </ul>
         </div>
+        <ul class="messages">
+        </ul>
         <section class="product-img-details">
             <div class="product-image-gallery">
                 <div class="large-5 column">
@@ -82,8 +84,9 @@
                             <div class="add-to-box grid12-12 no-gutter">
                                 <div class="add-to-cart v-centered-content">
                                     <div class="qty-wrapper">
-                                        <span class="arrow dec" title="Diminuir">-</span><input type="text" name="qty" id="qty" maxlength="3" value="1" title="Quantidade" class="input-text qty"><span class="arrow inc" title="Aumentar">+</span>
+                                        <span id="product-dec-qty-{{ $product->id }}" class="arrow dec">-</span><input type="number" name="qty" id="product-qty-field-{{ $product->id }}"  min="{{ $product->stock > 0 ? 1 : 0 }}" max="{{ $product->stock }}" value="{{ $product->stock > 0 ? 1 : 0 }}" class="input-text qty"><span id="product-inc-qty-{{ $product->id }}" class="arrow inc">+</span>
                                     </div>
+                                    <div id="warning-msg-{{ $product->id }}" class="warning-msg">Only {{ $product->stock }} items left!</div>
                                 </div>
                             </div>
                             <div class="preco-prod grid12-12 no-gutter">
@@ -97,7 +100,7 @@
                                         <span class="price-label">Por:</span>
                                         <span class="price" id="product-price-52">R$ {{ $product->discount_price }}</span>
                                     </p>
-                                    <div class="parcelaBloco no-display" data-maximo_parcelas="12" data-valor_produto="9.0000" data-maximo_parcelas_sem_juros="3" data-juros="" data-multiplos_juros="|0|0|0|0|0|6.16|6.96|7.77|8.59|9.41|10.24" data-juros_tipo="0" data-valor_minimo="30">
+                                    <div class="parcelaBloco no-display">
                                         <div class="parcela-semjuros">
                                             em até<span class="parcela" data-parcela="1">1</span><span class="xparc">x</span> de <span class="price">{{ $product->discount_price }}</span>
                                         </div>
@@ -187,6 +190,8 @@
         $("#add-to-cart-btn").click(function(e) {
             e.preventDefault();
 
+            $('.messages').empty();
+
             var _token = $("input[name='_token']").val();
             var productId = $("input[name='product-id']").val();
             var qty = $("input[name='qty']").val();
@@ -196,11 +201,19 @@
                 type: "POST",
                 data: { _token: _token, productId: productId, quantity: qty },
                 success: function(data) {
+                    if ( data.status ) {
+                        $('.messages').html(
+                        '<li class="success-msg">'+
+                            '<ul>'+
+                                '<li>' + data.message + '</li>'+
+                            '</ul>'+
+                        '</li>');
+                    }
 
                 }
             });
         });
-    });
+
     (function ($) {
     $(document).ready(function() {
         $('.xzoom4, .xzoom-gallery4').xzoom({tint: '#006699', Xoffset: 15});

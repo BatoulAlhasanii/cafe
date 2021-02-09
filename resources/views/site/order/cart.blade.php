@@ -16,16 +16,9 @@
                 </div>
             </div>
             <ul class="messages">
-                <li class="success-msg">
-                    <ul>
-                        <li>
-                            <span></span>
-                        </li>
-                    </ul>
-                </li>
             </ul>
-            <form action="https://www.cafeodebrecht.com.br/checkout/cart/updatePost/" method="post" class="the-cart-form">
-                <input name="form_key" type="hidden" value="TNgRvcDLNgl0LW6z">
+            <form method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="cart-table-wrapper">
                     <table id="shopping-cart-table" class="data-table cart-table">
                         <thead>
@@ -63,8 +56,11 @@
                                     </h2>
                                 </td>
                                 <td class="a-center qty">
-                                    <div class="box-qty">
-                                        <input name="cart[1437][qty]" value="{{ $product->qty }}" size="4" title="Qtd." class="input-text qty" maxlength="12"><span class="arrow inc" title="Aumentar">+</span><span class="arrow dec" title="Diminuir">-</span>
+                                    <div>
+                                        <div class="box-qty">
+                                            <input type="number" name="qty" id="product-qty-field-{{ $product->id }}" value="{{ $product->qty }}" min="{{ $product->stock > 0 ? 1 : 0 }}" max="{{ $product->stock }}" class="product-qty-field input-text qty"><span id="product-inc-qty-{{ $product->id }}" class="arrow inc" title="Aumentar">+</span><span id="product-dec-qty-{{ $product->id }}" class="arrow dec" title="Diminuir">-</span>
+                                        </div>
+                                        <div id="warning-msg-{{ $product->id }}" class="warning-msg">Only {{ $product->stock }} items left!</div>
                                     </div>
                                 </td>
                                 <td class="a-center unitario">
@@ -74,7 +70,7 @@
                                     <span class="cart-price"><span class="price">R$ {{ $product->discount_price }}</span></span>
                                 </td>
                                 <td class="a-center remove last">
-                                    <a href="https://www.cafeodebrecht.com.br/checkout/cart/delete/id/1437/form_key/TNgRvcDLNgl0LW6z/uenc/aHR0cHM6Ly93d3cuY2FmZW9kZWJyZWNodC5jb20uYnIvY2hlY2tvdXQvY2FydC8,/" title="Remover item" class="small remover remove-ajax">
+                                    <a data-product-id="{{ $product->id }}" title="Remover item" class="remove-item-btn small remover remove-ajax">
                                         <i class="icon-cancel"></i>
                                     </a>
                                 </td>
@@ -121,5 +117,8 @@
 
 
 @section('javascript-scripts')
+<script>
 
+
+</script>
 @endsection

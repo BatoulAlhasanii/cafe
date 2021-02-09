@@ -1,6 +1,5 @@
 
 .messages {
-    display: none;
     margin: 0 0 10px;
     font-family: "Open Sans", sans-serif;
     li {
@@ -29,6 +28,20 @@
     background-color: #F5DAD3;
     background-image: url('/storage/images/others/error-msg-icon.png');
     color: #c02230;
+}
+
+.warning-msg {
+    display: none;
+    color: #c02230;
+    margin-top: 7px;
+}
+
+.display-msg {
+    display: inline-block!important;
+}
+
+.cart .display-msg {
+    max-width: 180px;
 }
 
 input.error, select.error {

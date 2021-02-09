@@ -238,6 +238,8 @@
             }
             .add-to-cart {
                 margin: 0 0 15px 0;
+                width: min-content;
+
                 .qty-wrapper {
                     width: 130px;
                     margin-right: 10px;

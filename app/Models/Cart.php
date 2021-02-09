@@ -70,6 +70,13 @@ class Cart
         }
     }
 
+    public function removeItem($id)
+    {
+        if (!empty($this->items) && array_key_exists($id, $this->items)) {
+            unset($this->items[$id]);
+        }
+    }
+
     public function setProductQty($product, $id, $qtyToSet)
     {
         $qtyToSet = $this->equalize($qtyToSet);

@@ -140,17 +140,16 @@
                 font-size: 0;
                 left: 0;
                 width: 20px;
-                height: 20px;
+                height: auto;
                 cursor: pointer;
                 &:before {
                     display: block;
-                    margin-top: 5px;
                     content: '';
                     width: 0;
                     height: 0;
                 }
                 &.inc {
-                    top: 0;
+                    top: 5px;
                     &:before {
                         border-right: 10px solid transparent;
                         border-left: 10px solid transparent;
@@ -158,7 +157,7 @@
                     }
                 }
                 &.dec {
-                    bottom: 0;
+                    bottom: 5px;
                     &:before {
                         border-right: 10px solid transparent;
                         border-left: 10px solid transparent;

@@ -288,8 +288,6 @@
 @section('javascript-scripts')
 <script>
     $(document).ready(function() {
-
-
         $('.submit-checkout-form').click(function () {
             var isValid = true;
             $('.submit-checkout-form').attr('disabled', true);
@@ -302,14 +300,12 @@
                 }
             });
 
-
             if (isValid) {
                 $('#checkout-form').submit();
             } else {
                 $('.submit-checkout-form').attr('disabled', false);
             }
         });
-
     });
 </script>
 @endsection
