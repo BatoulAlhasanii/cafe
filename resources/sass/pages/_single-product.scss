@@ -457,7 +457,9 @@
             clear: both;
             /** End Media Query 770 **/
 
-
+            &.is-open {
+                display: block!important;
+            }
             .data-table {
                 text-align: left;
                 th {

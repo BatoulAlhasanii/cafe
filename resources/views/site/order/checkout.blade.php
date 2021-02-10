@@ -222,7 +222,7 @@
                                                     Subtotal
                                                 </td>
                                                 <td style="" class="a-right">
-                                                    <span class="price">R$ 49,74</span>
+                                                    <span class="price">{{ Session::get('cart')->getCartTotals()['sub_total'] }} {{ config('currency.' . app()->getLocale()) }}</span>
                                                 </td>
                                             </tr>
                                                 <tr>
@@ -230,7 +230,7 @@
                                                     <strong>Valor Total</strong>
                                                 </td>
                                                 <td style="" class="a-right">
-                                                    <strong><span class="price">R$ 49,74</span></strong>
+                                                    <strong><span class="price">{{ Session::get('cart')->getCartTotals()['total'] }} {{ config('currency.' . app()->getLocale()) }}</span></strong>
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -246,13 +246,13 @@
                                                 </td>
                                                 <td class="a-right">
                                                     <span class="cart-price">
-                                                        <span class="price">R$ {{ $product->price }}</span>
+                                                        <span class="price">{{ $product->current_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                                     </span>
                                                 </td>
                                                 <td class="a-center">{{ $product->qty }}</td>
                                                 <td class="a-right">
                                                     <span class="cart-price">
-                                                            <span class="price">R$ {{ $product->price }}</span>
+                                                            <span class="price">{{ $product->qty * $product->current_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                                     </span>
                                                 </td>
                                             </tr>

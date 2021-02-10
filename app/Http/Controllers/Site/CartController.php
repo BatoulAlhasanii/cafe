@@ -50,12 +50,13 @@ class CartController extends Controller
         $cart->addToCart($product, $productId, $qtyToAdd);
         return response()->json([
             'status' => 'true',
-            'message' => 'Item added to cart successfully.'
+            'message' => 'Item added to cart successfully.',
+            'cart_count' => Session::get('cart')->getCartCount()
         ]);
 
         //  return redirect()->back()->with('message', 'Item added to cart successfully.');
     }
-
+/*
     public function removeFromCart(Request $request)
     {
         $productId = $request->input('productId');
@@ -73,7 +74,7 @@ class CartController extends Controller
 
         //  return redirect()->back()->with('message', 'Item removed from cart successfully.');
     }
-
+*/
     public function removeItem(Request $request)
     {
         $productId = $request->input('productId');
@@ -83,7 +84,10 @@ class CartController extends Controller
 
         return response()->json([
             'status' => 'true',
-            'message' => 'Item removed from cart successfully.'
+            'message' => 'Item removed from cart successfully.',
+            'cart_count' => Session::get('cart')->getCartCount(),
+            'cart_totals' => Session::get('cart')->getCartTotals(),
+            'currency' => config('currency.' . app()->getLocale())
         ]);
 
         //  return redirect()->back()->with('message', 'Item removed from cart successfully.');
@@ -93,7 +97,6 @@ class CartController extends Controller
     {
         $productId = $request->input('productId');
         $qtyToSet = $request->input('quantity');
-
         $product = $this->productRepository->findProductById($productId);
 
         $cart = $this->getCart($request);
@@ -101,7 +104,11 @@ class CartController extends Controller
 
         return response()->json([
             'status' => 'true',
-            'message' => 'Item quantity updated successfully.'
+            'message' => 'Item quantity updated successfully.',
+            'cart_count' => Session::get('cart')->getCartCount(),
+            'product' => Session::get('cart')->getCartProductById($productId),
+            'cart_totals' => Session::get('cart')->getCartTotals(),
+            'currency' => config('currency.' . app()->getLocale())
         ]);
 
         //  return redirect()->back()->with('message', 'Item removed from cart successfully.');

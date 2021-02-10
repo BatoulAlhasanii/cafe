@@ -44,7 +44,7 @@
                         </tfoot>
                         <tbody>
                             @foreach(Session::get('cart')->getCartProducts() as $product)
-                            <tr>
+                            <tr id="product-row-{{ $product->id }}">
                                 <td class="a-center">
                                     <a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Espresso em Cápsula Compatível com Nespresso" class="product-image">
                                         <img src="{{ asset( explode(',', $product->images)[0] )}}" width="120" height="120" alt="Café Odebrecht Espresso em Cápsula Compatível com Nespresso">
@@ -63,11 +63,11 @@
                                         <div id="warning-msg-{{ $product->id }}" class="warning-msg">Only {{ $product->stock }} items left!</div>
                                     </div>
                                 </td>
-                                <td class="a-center unitario">
-                                    <span class="cart-price"><span class="price">R$ {{ $product->price }}</span</span>
+                                <td class="a-center">
+                                    <span class="cart-price"><span id="current-price-{{ $product->id }}" class="price">{{ $product->getCurrentPrice() }} {{ config('currency.' . app()->getLocale()) }}</span</span>
                                 </td>
                                 <td class="a-center total">
-                                    <span class="cart-price"><span class="price">R$ {{ $product->discount_price }}</span></span>
+                                    <span class="cart-price"><span id="total-price-{{ $product->id }}" class="price">{{ $product->getCurrentPrice() * $product->qty }} {{ config('currency.' . app()->getLocale()) }}</span></span>
                                 </td>
                                 <td class="a-center remove last">
                                     <a data-product-id="{{ $product->id }}" title="Remover item" class="remove-item-btn small remover remove-ajax">
@@ -78,6 +78,11 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div id="load-overlay">
+                        <div class="wrapper-spinner">
+                            <div class="loader"></div>
+                        </div>
+                    </div>
                 </div>
             </form>
             <div class="cart-collaterals">
@@ -90,7 +95,7 @@
                                         <strong>Valor Total</strong>
                                     </td>
                                     <td class="a-right">
-                                        <strong><span class="price">R$ {{ Session::get('cart')->getTotalCartAmount() }}</span></strong>
+                                        <strong><span id="cart-total" class="price">{{ Session::get('cart')->getCartTotals()['total'] }} {{ config('currency.' . app()->getLocale()) }}</span></strong>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -99,7 +104,7 @@
                                     <td class="a-right">
                                         Subtotal    </td>
                                     <td class="a-right">
-                                        <span class="price">R$ {{ Session::get('cart')->getTotalCartAmount() }}</span></td>
+                                        <span id="cart-sub-total" class="price">{{ Session::get('cart')->getCartTotals()['sub_total'] }} {{ config('currency.' . app()->getLocale()) }}</span></td>
                                 </tr>
                             </tbody>
                         </table>

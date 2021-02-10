@@ -402,12 +402,11 @@
         }
 
         #nav {
-            width: 100%;
-
             @media screen and (min-width: 770px)
             {
                 position: absolute;
-                padding-left: 18rem;
+                margin-left: 18rem;
+                width: calc(100% - 18rem);
                 bottom: 4rem;
             }
 

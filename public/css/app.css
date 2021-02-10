@@ -1,4 +1,71 @@
 @charset "UTF-8";
+#load-overlay {
+  background-color: #fbfbfb2e;
+  z-index: 51;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  transition: visibility 0.8s;
+}
+
+.display-overlay {
+  display: block !important;
+}
+
+.wrapper-spinner .loader {
+  border: 7px solid rgba(0, 0, 0, 0.09);
+  border-top: 7px solid #f3f3f3;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: 2s linear infinite;
+          animation: 2s linear infinite;
+  -webkit-animation-name: spin;
+          animation-name: spin;
+  margin: 0 auto;
+}
+
+@-webkit-keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.wrapper-spinner {
+  width: 150px;
+  position: absolute;
+  height: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button span.submitting {
+  display: none;
+}
+
+button span.show {
+  display: block !important;
+}
+
+button span.hide {
+  display: none !important;
+}
+
+.cursor-wait {
+  cursor: wait;
+}
+
 *,
 *::after,
 *::before {
@@ -860,6 +927,7 @@ button:hover:enabled {
 }
 .messages li li {
   margin: 0;
+  font-size: 13px;
 }
 
 .error-msg, .success-msg, .note-msg, .notice-msg {
@@ -1296,13 +1364,11 @@ input.error, select.error {
     display: none;
   }
 }
-.header-container .nav-container #nav {
-  width: 100%;
-}
 @media screen and (min-width: 770px) {
   .header-container .nav-container #nav {
     position: absolute;
-    padding-left: 18rem;
+    margin-left: 18rem;
+    width: calc(100% - 18rem);
     bottom: 4rem;
   }
 }
@@ -2575,6 +2641,9 @@ footer .social-links-container .social-media-links li a i {
   clear: both;
   /** End Media Query 770 **/
 }
+#tabs-produto .tab-content.is-open {
+  display: block !important;
+}
 #tabs-produto .tab-content .data-table {
   text-align: left;
 }
@@ -2649,6 +2718,9 @@ footer .social-links-container .social-media-links li a i {
 }
 .cart fieldset {
   clear: both;
+}
+.cart .cart-table-wrapper {
+  position: relative;
 }
 @media only screen and (max-width: 1210px) {
   .cart .cart-table-wrapper {
@@ -2969,7 +3041,6 @@ footer .social-links-container .social-media-links li a i {
   border-right: 1px solid #DDDDDD;
   border-bottom: 1px solid #DDDDDD;
   border-top: none;
-  min-height: 270px;
   margin-bottom: 10px;
 }
 .checkout .columns-container .col3-left {

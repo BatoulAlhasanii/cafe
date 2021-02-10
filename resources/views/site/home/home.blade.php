@@ -59,10 +59,10 @@
                         </div>
                         <div class="price-box">
                             <p class="old-price">
-                                <span class="price" id="old-price-116">{{ $product->price }}</span>
+                                <span class="price" id="old-price-116">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
                             </p>
                             <p class="special-price">
-                                <span class="price" id="product-price-116">{{ $product->discount_price }}</span>
+                                <span class="price" id="product-price-116">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                             </p>
                         </div>
                         <div class="bt-add">

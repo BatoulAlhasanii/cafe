@@ -49,6 +49,8 @@
         clear: both;
     }
     .cart-table-wrapper {
+        position: relative;
+
         @media only screen and (max-width: 1210px) {
             overflow-x: scroll;
         }

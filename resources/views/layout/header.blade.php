@@ -72,7 +72,7 @@
                         <li class="display-none top-header-item favoritos"><i></i><a href="#" rel="nofollow"><span>My</span>Favourites</a></li>
                     </ul>
                     <div class="cart-container">
-                        <a class="icone" href="{{ route('cart.show') }}" title="Ir para Meu Carrinho">
+                        <a id="header-cart-container" class="icone" href="{{ route('cart.show') }}" title="Ir para Meu Carrinho">
                             @if (Session::has('cart') && Session::get('cart')->getCartCount() > 0)
                             <div class="cart-qtd">
                                 <p class="amount">{{ Session::get('cart')->getCartCount() > 0 ? Session::get('cart')->getCartCount() : ''}}</p>

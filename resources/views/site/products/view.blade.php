@@ -93,12 +93,12 @@
                                 <div class="price-box">
                                     <p class="old-price">
                                         <span class="price-label">De:</span>
-                                        <span class="price" id="old-price-52">R$ {{ $product->price }}</span>
+                                        <span class="price" id="old-price-52">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                     </p>
 
                                     <p class="special-price">
                                         <span class="price-label">Por:</span>
-                                        <span class="price" id="product-price-52">R$ {{ $product->discount_price }}</span>
+                                        <span class="price" id="product-price-52">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                     </p>
                                     <div class="parcelaBloco no-display">
                                         <div class="parcela-semjuros">
@@ -110,7 +110,7 @@
                         </div>
                         <div class="add-to-cart-btn-container add-to-cart v-centered-content">
                                 <input type="hidden" name="product-id" value="{{ $product->id }}">
-                                <button type="button" id="add-to-cart-btn" title="Comprar" class="btn-special btn-cart">Comprar</button>
+                                <button type="button" id="add-to-cart-btn" title="Comprar" class="btn-special btn-cart"><span class="submitting">Adding..</span><span class="submit">Add to cart</span></button>
                         </div>
                         <div id="socialWrap">
                             <h4 class="pr15">Compartilhe:</h4>
@@ -136,23 +136,22 @@
         <section class="grid-container-spaced">
             <div id="tabs-produto">
                 <div class="tab-header-and-content">
-                <ul class="accordion-tabs-minimal">
-					<li class="">
-						<a href="#descricao" class="tab-link">
-							Descrição
-						</a>
-
-					</li>
-					<li class="">
-                        <a href="#atributos" class="tab-link is-active" id="tab-atributos">Especificações</a>
-                    </li>
-			    </ul>
-                        <div id="descricao" class="tab-content">
+                        <ul class="accordion-tabs-minimal">
+                            <li class="">
+                                <a href="#descricao" class="tab-link is-active">
+                                    Descrição
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="#atributos" class="tab-link" id="tab-atributos">Especificações</a>
+                            </li>
+                        </ul>
+                        <div id="descricao" class="tab-content is-open">
                             {{ $product->productTranslations[0]->description }}
                             <br>
                             <br>
 						</div>
-                        <div id="atributos" class="tab-content is-open" style="display: block;">
+                        <div id="atributos" class="tab-content">
                             <br>
 						    <table class="data-table" id="product-attribute-specs-table">
                                 <colgroup>
@@ -187,6 +186,18 @@
 <script type="text/javascript" src="{{ asset('/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/example/hammer.js/1.0.5/jquery.hammer.min.js') }}"></script>
 <script>
     $(document).ready(function() {
+
+        $('.tab-link').on('click', function(e) {
+            e.preventDefault();
+
+
+            $('.tab-link').removeClass('is-active');
+            $(this).addClass('is-active');
+            $('.tab-content').removeClass('is-open');
+            $($(this).attr('href')).addClass('is-open');
+        });
+
+
         $("#add-to-cart-btn").click(function(e) {
             e.preventDefault();
 
@@ -194,25 +205,44 @@
 
             var _token = $("input[name='_token']").val();
             var productId = $("input[name='product-id']").val();
-            var qty = $("input[name='qty']").val();
+            var qty = parseInt($("input[name='qty']").val());
 
             $.ajax({
                 url: "/product/add-to-cart",
                 type: "POST",
                 data: { _token: _token, productId: productId, quantity: qty },
+                beforeSend: function() {
+                    $("#add-to-cart-btn .submitting").addClass("show");
+                    $("#add-to-cart-btn .submit").addClass("hide");
+                    $("#add-to-cart-btn").attr("disabled", true);
+                    $("#add-to-cart-btn").addClass("cursor-wait");
+                },
                 success: function(data) {
+                    $("#add-to-cart-btn .submitting").removeClass("show");
+                    $("#add-to-cart-btn .submit").removeClass("hide");
+                    $("#add-to-cart-btn").attr("disabled", false);
+                    $("#add-to-cart-btn").removeClass("cursor-wait");
+
+
                     if ( data.status ) {
                         $('.messages').html(
-                        '<li class="success-msg">'+
-                            '<ul>'+
-                                '<li>' + data.message + '</li>'+
-                            '</ul>'+
-                        '</li>');
+                        `<li class="success-msg">
+                            <ul>
+                                <li> ${data.message} </li>
+                            </ul>
+                        </li>`);
+
+                        $('#header-cart-container').html(
+                        `<div class="cart-qtd">
+                            <p class="amount">${data.cart_count}</p>
+                        </div>`);
                     }
 
                 }
             });
         });
+
+    });
 
     (function ($) {
     $(document).ready(function() {

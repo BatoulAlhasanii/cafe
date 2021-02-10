@@ -1,0 +1,54 @@
+#load-overlay {
+    background-color: #fbfbfb2e;
+    z-index: 51;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    transition: visibility 0.8s;
+}
+
+.display-overlay {
+    display: block!important;
+}
+
+.wrapper-spinner .loader {
+    border: 7px solid rgba(0,0,0,0.09);
+    border-top: 7px solid #f3f3f3;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: 2s linear infinite;
+    animation-name: spin;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.wrapper-spinner {
+    width: 150px;
+    position: absolute;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+button span.submitting {
+    display: none;
+}
+button span.show {
+    display: block!important;
+}
+button span.hide {
+    display: none!important;
+}
+.cursor-wait {
+    cursor: wait;
+}
