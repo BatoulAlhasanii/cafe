@@ -239,8 +239,8 @@
                                             <tr class="bodies-osc">
                                                 <td>
                                                     <div class="img-wrapper">
-                                                        <img class="img-product" src="{{ asset( explode(',', $product->images)[0] )}}" width="50">
-                                                        <div class="hover-img"> <img src="{{ asset( explode(',', $product->images)[0] )}}"> </div>
+                                                        <img class="img-product" src="{{ asset( '/storage/' . explode(',', $product->images)[0] )}}" width="50">
+                                                        <div class="hover-img"> <img src="{{ asset( '/storage/' . explode(',', $product->images)[0] )}}"> </div>
                                                     </div>
                                                     <h3 class="product-name">{{ $product->productTranslations[0]->name }}</h3>
                                                 </td>

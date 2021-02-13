@@ -23,7 +23,9 @@ class Category extends Model
         return [
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'is_active' => 'required|boolean',
-            'category.*.name' => 'required|string|max:255'
+            'category' => 'required|array',
+            'category.*' => 'required|array',
+            'category.*.name' => 'required|string|max:255',
         ];
     }
 

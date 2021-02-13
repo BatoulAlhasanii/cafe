@@ -2,6 +2,8 @@
 
 namespace App\Contracts;
 
+
+
 /**
  * Interface CategoryContract
  * @package App\Contracts
@@ -26,13 +28,13 @@ interface CategoryContract
      * @param array $params
      * @return mixed
      */
-    public function createCategory(array $params);
+    public function createCategory($request);
 
     /**
      * @param array $params
      * @return mixed
      */
-    public function updateCategory(array $params);
+    public function updateCategory($request);
 
     /**
      * @param $id

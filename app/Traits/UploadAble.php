@@ -20,10 +20,10 @@ trait UploadAble
      */
     public function uploadOne(UploadedFile $file, $folder = null, $disk = 'public', $filename = null)
     {
-        $name = !is_null($filename) ? $filename : str_random(25);
+        $name = !is_null($filename) ? $filename : uniqid();
 
         return $file->storeAs(
-            $folder,
+            '/images/uploads'.'/'.$folder.'/'.date('Y') .'/'. date('m'),
             $name . "." . $file->getClientOriginalExtension(),
             $disk
         );

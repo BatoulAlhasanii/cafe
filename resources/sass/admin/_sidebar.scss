@@ -1,0 +1,60 @@
+.admin {
+    .sidebar {
+        overflow-y: scroll;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 24rem;
+        height: 100%;
+        z-index: 1;
+        padding: 80px 16px 0;
+        background: linear-gradient(170deg, #3f0a05 0%, #7e2b1d 100%);
+        ul {
+
+            li {
+                text-align: center;
+                &.img-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 50px;
+                    img {
+                        width: 100%;
+                    }
+                }
+                &:not(:first-of-type) {
+                    margin-bottom: 2.8rem;
+                }
+                .sidebar-nav-link {
+                    font-size: 2rem;
+                    color: #d5ae68;
+                    font-family: "museo700", sans-serif;
+                }
+            }
+        }
+    }
+
+    #navbarNav {
+        max-height: 100vh;
+        height: 100vh;
+    }
+    #navbarNav::-webkit-scrollbar {
+        width: 3px;
+        height: 90%;
+        margin: 0 5px;
+    }
+    #navbarNav::-webkit-scrollbar:hover {
+        display: block;
+    }
+    #navbarNav::-webkit-scrollbar-track {
+        background: #7e2b1d;
+        border-radius: 10px;
+    }
+    #navbarNav::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background:#d5ae68;
+
+    }
+    #navbarNav::-webkit-scrollbar-thumb:hover {
+        background: #7e2b1d;
+    }
+}

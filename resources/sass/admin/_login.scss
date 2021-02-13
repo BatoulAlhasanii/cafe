@@ -1,0 +1,30 @@
+.login-page {
+    background: linear-gradient(170deg, #3f0a05 0%, #7e2b1d 100%);
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .container {
+        .card {
+            width: 46.8rem;;
+            padding: 4rem;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 2px solid #d5ae68;
+
+            @media only screen and (max-width: 420px) {
+                width: 100%;
+            }
+
+            .card-header {
+                img {
+                    margin: 0 auto;
+                    display: block;
+                }
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}

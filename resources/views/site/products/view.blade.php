@@ -34,11 +34,11 @@
                 <div class="large-5 column">
                     <div class="xzoom-container">
                         <div class="xzoom-img-container">
-                            <img class="xzoom4" id="xzoom-fancy" src="{{ asset( explode(',', $product->images)[0] )}}" xoriginal="{{ asset( explode(',', $product->images)[0] )}}" />
+                            <img class="xzoom4" id="xzoom-fancy" src="{{ asset( '/storage/' . explode(',', $product->images)[0] )}}" xoriginal="{{ asset( '/storage/' . explode(',', $product->images)[0] )}}" />
                         </div>
                         <div class="xzoom-thumbs">
                             @foreach(explode(',', $product->images) as $image)
-                            <a href="{{ asset( $image ) }}"><img class="xzoom-gallery4" width="80" src="{{ asset( $image ) }}" title="The description goes here"></a>
+                            <a href="{{ asset( '/storage/' . $image ) }}"><img class="xzoom-gallery4" width="80" src="{{ asset( '/storage/' . $image ) }}" title="The description goes here"></a>
                             @endforeach
                         </div>
                     </div>

@@ -3,12 +3,15 @@
 namespace App\Repositories;
 
 use App\Models\Category;
+use App\Models\CategoryTranslation;
 use App\Traits\UploadAble;
 use Illuminate\Http\UploadedFile;
 use App\Contracts\CategoryContract;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 /**
  * Class CategoryRepository
@@ -37,8 +40,15 @@ class CategoryRepository extends BaseRepository implements CategoryContract
      */
     public function listCategories(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
     {
-        return $this->all($columns, $order, $sort);
+        if ($order !== 'id') {
+            return $this->model->where('parent_id', Category::$coffeeId)
+            ->with(['categoryTranslations' => function($query) use ($order, $sort) {
+                $query->where('lang', 'en')->select('category_id', 'name')->orderBy($order, $sort);
+            }])->get();
+        }
+        return $this->model->where('parent_id', Category::$coffeeId)->paginate(config('settings.items_per_page'));
     }
+
 
     /**
      * @param int $id
@@ -61,25 +71,41 @@ class CategoryRepository extends BaseRepository implements CategoryContract
      * @param array $params
      * @return Category|mixed
      */
-    public function createCategory(array $params)
+    public function createCategory($request)
     {
         try {
-            $collection = collect($params);
 
-            $image = null;
-
-            if ($collection->has('image') && ($params['image'] instanceof  UploadedFile)) {
-                $image = $this->uploadOne($params['image'], 'categories');
+            if ($request->image && ($request->image instanceof  UploadedFile)) {
+                $image = $this->uploadOne($request->image, 'categories');
             }
 
-            $featured = $collection->has('featured') ? 1 : 0;
-            $menu = $collection->has('menu') ? 1 : 0;
 
-            $merge = $collection->merge(compact('menu', 'image', 'featured'));
+            $category = new Category();
+            $category->fill([
+                'slug' => Str::slug(strtolower($request->category['en']['name']), "-"),
+                'image' => $image ?? null,
+                'sequence' => 2,
+                'parent_id' => Category::$coffeeId,
+                'is_active' => $request->is_active
+            ]);
 
-            $category = new Category($merge->all());
+            if ($category) {
 
-            $category->save();
+                $categoryTranslations = [];
+                foreach ($request->category as $lang => $translation)
+                {
+                    $categoryTranslations[] = new CategoryTranslation([
+                        'name' => $translation['name'],
+                        'lang' =>  $lang
+                    ]);
+
+                }
+
+            }
+
+            if ($category->save()) {
+                $category->categoryTranslations()->saveMany($categoryTranslations);
+            }
 
             return $category;
 
@@ -92,27 +118,46 @@ class CategoryRepository extends BaseRepository implements CategoryContract
      * @param array $params
      * @return mixed
      */
-    public function updateCategory(array $params)
+    public function updateCategory($request)
     {
-        $category = $this->findCategoryById($params['id']);
+        $category = $this->findCategoryById($request->id);
 
-        $collection = collect($params)->except('_token');
-
-        if ($collection->has('image') && ($params['image'] instanceof  UploadedFile)) {
+        if ($request->image && ($request->image instanceof  UploadedFile)) {
 
             if ($category->image != null) {
                 $this->deleteOne($category->image);
             }
 
-            $image = $this->uploadOne($params['image'], 'categories');
+            $image = $this->uploadOne($request->image, 'categories');
         }
 
-        $featured = $collection->has('featured') ? 1 : 0;
-        $menu = $collection->has('menu') ? 1 : 0;
 
-        $merge = $collection->merge(compact('menu', 'image', 'featured'));
+        $updated = $category->update([
+            'slug' => Str::slug(strtolower($request->category['en']['name']), "-"),
+            'image' => $image ?? null,
+            'sequence' => 2,
+            'parent_id' => Category::$coffeeId,
+            'is_active' => $request->is_active
+        ]);
 
-        $category->update($merge->all());
+        if($updated) {
+            foreach($request->category as $lang => $translation) {
+
+                if ($translation['id']) {
+                    $categoryTranslation = CategoryTranslation::find($translation['id']);
+                    if ($categoryTranslation) {
+                        $categoryTranslation->name = $translation['name'];
+                        $categoryTranslation->save();
+                    }
+                } else {
+                    $newCategoryTranslations = new CategoryTranslation([
+                        'name' => $translation['name'],
+                        'lang' =>  $lang
+                    ]);
+                    $category->categoryTranslations()->save($newCategoryTranslations);
+                }
+            }
+        }
 
         return $category;
     }
@@ -161,7 +206,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     {
         $categories = Category::where('parent_id', \App\Models\Category::$coffeeId)
         ->where('is_active', true)
-        ->with(array('CategoryTranslations' => function($query) {
+        ->with(array('categoryTranslations' => function($query) {
             $query->where('lang', app()->getLocale())->select('category_id', 'name');
         }))->get();
 

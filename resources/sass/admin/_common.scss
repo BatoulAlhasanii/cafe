@@ -1,0 +1,32 @@
+.admin {
+    .main-footer-wrapper {
+        main {
+            padding-bottom: 6rem;
+        }
+    }
+
+    .page-content.container {
+        @media only screen and (max-width: 1465px) {
+            padding: 0 4rem;
+        }
+    }
+
+    .pagination-wrapper {
+        svg {
+            width: 2rem;
+        }
+    }
+
+    .custom-btn {
+        color: #3a2419;
+        font-weight: 600;
+        font-size: 15px;
+        padding: 10px 20px;
+        background-color: #efd995;
+        border-radius: 5px;
+        display: inline-block;
+        margin-bottom: 4rem;
+        border: 1px solid #d5af69;
+        box-shadow: 0 0.5rem 1rem rgba(110, 0, 255, .15);
+    }
+}

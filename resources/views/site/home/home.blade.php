@@ -25,7 +25,7 @@
                 <ul class="favours">
                     @foreach($categories as $category)
                     <li class="flex-column">
-                        <a href="{{ route('category.show', ['slug' => $category->slug ]) }}"><img  class="{{ $category->slug }}" alt="{{ $category->categoryTranslations[0]->name }}" title="{{ $category->categoryTranslations[0]->name }}" src="{{asset( $category->image )}}"></a>
+                        <a href="{{ route('category.show', ['slug' => $category->slug ]) }}"><img  class="{{ $category->slug }}" alt="{{ $category->categoryTranslations[0]->name }}" title="{{ $category->categoryTranslations[0]->name }}" src="{{asset( '/storage/' . $category->image )}}"></a>
                         <a href="{{ route('category.show', ['slug' => $category->slug ]) }}">{{ $category->categoryTranslations[0]->name }}</a>
                     </li>
                     @endforeach
@@ -47,7 +47,7 @@
                 <li class="item">
                     <div class="product-image-wrapper">
                         <a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Superior" class="product-image">
-                            <img src="https://www.cafeodebrecht.com.br/media/catalog/product/cache/1/small_image/240x290/9df78eab33525d08d6e5fb8d27136e95/7/8/7896295001012_12_1_1200_72_rgb.png" alt="Café Odebrecht Superior">
+                            <img src="{{ asset( '/storage/' . explode(',', $product->images)[0] ) }}" alt="Café Odebrecht Superior">
                         </a>
                     </div>
                     <div class="infobox">

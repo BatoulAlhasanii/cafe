@@ -37,7 +37,7 @@ class ProductRepository extends BaseRepository implements ProductContract
      */
     public function listProducts(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
     {
-        return $this->all($columns, $order, $sort);
+        return $this->model->paginate(config('settings.items_per_page'));
     }
 
     public function listFeaturedProducts()

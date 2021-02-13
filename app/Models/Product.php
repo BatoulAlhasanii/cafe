@@ -35,10 +35,12 @@ class Product extends Model
             'stock' => 'required|integer',
             'is_featured' => 'required|boolean',
             'is_active' => 'required|boolean',
+            'product' => 'required|array',
+            'product.*' => 'required|array',
             'product.*.name' => 'required|string|max:255',
             'product.*.unit' => 'nullable|string|max:255',
-            'product.*.description' => 'nullable',
-            'product.*.attribute_value' => 'nullable'
+            'product.*.description' => 'nullable|string',
+            'product.*.attribute_value' => 'nullable|string'
         ];
     }
 

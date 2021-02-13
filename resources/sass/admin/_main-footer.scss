@@ -1,0 +1,15 @@
+.admin {
+    .main-footer-wrapper {
+        width: calc(100% - 24rem);
+        margin-left: 24rem;
+        margin-top: 38px;
+        main {
+            min-height: calc(100vh - 68px);
+        }
+        footer {
+            height: 30px;
+            background-color: #efd995;
+        }
+    }
+
+}

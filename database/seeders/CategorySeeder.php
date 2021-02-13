@@ -34,7 +34,7 @@ class CategorySeeder extends Seeder
         \App\Models\Category::create(
             [
                 'slug' => 'extraforte',
-                'image' => '/storage/images/intensity/Extraforte.png',
+                'image' => 'images/intensity/Extraforte.png',
                 'sequence' => 2,
                 'parent_id' => 1,
                 'is_active' => true,
@@ -53,7 +53,7 @@ class CategorySeeder extends Seeder
         \App\Models\Category::create(
             [
                 'slug' => 'classico',
-                'image' => '/storage/images/intensity/Classico.png',
+                'image' => 'images/intensity/Classico.png',
                 'sequence' => 2,
                 'parent_id' => 1,
                 'is_active' => true,
@@ -72,7 +72,7 @@ class CategorySeeder extends Seeder
         \App\Models\Category::create(
             [
                 'slug' => 'suave',
-                'image' => '/storage/images/intensity/Suave.png',
+                'image' => 'images/intensity/Suave.png',
                 'sequence' => 2,
                 'parent_id' => 1,
                 'is_active' => true,
@@ -91,7 +91,7 @@ class CategorySeeder extends Seeder
         \App\Models\Category::create(
             [
                 'slug' => 'descafeinado',
-                'image' => '/storage/images/intensity/Descafeinado.png',
+                'image' => 'images/intensity/Descafeinado.png',
                 'sequence' => 2,
                 'parent_id' => 1,
                 'is_active' => true,
@@ -110,7 +110,7 @@ class CategorySeeder extends Seeder
         \App\Models\Category::create(
             [
                 'slug' => 'intenso',
-                'image' => '/storage/images/intensity/Intenso.png',
+                'image' => 'images/intensity/Intenso.png',
                 'sequence' => 2,
                 'parent_id' => 1,
                 'is_active' => true,

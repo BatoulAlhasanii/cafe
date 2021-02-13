@@ -1,0 +1,47 @@
+.admin {
+    .main-footer-wrapper .form-page .page-title h1 {
+        padding-bottom: 8rem;
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        @media only screen and (max-width: 1270px) {
+            padding: 0 4rem;
+        }
+        @media only screen and (max-width: 768px)  {
+            max-width: 540px;
+        }
+    }
+    .form-page {
+        .col-6 {
+            flex: 0 0 50%;
+            padding: 0 15px;
+            @media only screen and (max-width: 768px) {
+                flex: 0 0 100%;
+            }
+        }
+        .col-12 {
+            flex: 0 0 100%;
+            padding: 0 15px;
+        }
+        .instance-img {
+            height: 100px;
+            margin-top: 1.6rem;
+        }
+        .seperate-line {
+            width: 80%;
+            margin: 70px auto;
+            display: block;
+            height: 2px;
+            background-color: #d5ae68;
+        }
+    }
+    .form-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
+}

@@ -78,7 +78,7 @@ html {
   font-size: 62.5%;
   line-height: 1.15;
 }
-@media only screen and (max-width: 75em) {
+@media only screen and (max-width: 1200px) {
   html {
     font-size: 56.25%;
   }
@@ -88,7 +88,7 @@ html {
     font-size: 50%;
   }
 }
-@media only screen and (min-width: 112.5em) {
+@media only screen and (min-width: 1800px) {
   html {
     font-size: 75%;
   }
@@ -106,6 +106,11 @@ p {
 a {
   text-decoration: none;
   color: #3a2419;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }
 
 ul,
@@ -2869,6 +2874,7 @@ footer .social-links-container .social-media-links li a i {
   border: 3px solid #dd2224;
   font-weight: 700;
   transition: all 300ms ease;
+  cursor: pointer;
 }
 .cart .cart-table .icon-cancel:before {
   content: "";
@@ -3285,4 +3291,289 @@ footer .social-links-container .social-media-links li a i {
   .checkout .columns-container .button-container .btn-wrapper {
     width: 58.3333333%;
   }
+}
+
+.admin header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 38px;
+  z-index: 2;
+  background: linear-gradient(170deg, #3f0a05 0%, #7e2b1d 100%);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 60px 10px 30px;
+  border-bottom: 2px solid #d5ae68;
+}
+.admin header .navbar-toggler {
+  display: none;
+}
+.admin header .navbar-nav {
+  margin-left: auto;
+}
+.admin header .navbar-nav .logout-btn {
+  border: transparent;
+  color: #d5ae68;
+  transition: 0.3s ease;
+  font-weight: 500;
+  font-size: 16px;
+  background: none;
+  font-family: "museo700", sans-serif;
+}
+
+.admin .main-footer-wrapper {
+  width: calc(100% - 24rem);
+  margin-left: 24rem;
+  margin-top: 38px;
+}
+.admin .main-footer-wrapper main {
+  min-height: calc(100vh - 68px);
+}
+.admin .main-footer-wrapper footer {
+  height: 30px;
+  background-color: #efd995;
+}
+
+.admin .sidebar {
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24rem;
+  height: 100%;
+  z-index: 1;
+  padding: 80px 16px 0;
+  background: linear-gradient(170deg, #3f0a05 0%, #7e2b1d 100%);
+}
+.admin .sidebar ul li {
+  text-align: center;
+}
+.admin .sidebar ul li.img-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.admin .sidebar ul li.img-wrapper img {
+  width: 100%;
+}
+.admin .sidebar ul li:not(:first-of-type) {
+  margin-bottom: 2.8rem;
+}
+.admin .sidebar ul li .sidebar-nav-link {
+  font-size: 2rem;
+  color: #d5ae68;
+  font-family: "museo700", sans-serif;
+}
+.admin #navbarNav {
+  max-height: 100vh;
+  height: 100vh;
+}
+.admin #navbarNav::-webkit-scrollbar {
+  width: 3px;
+  height: 90%;
+  margin: 0 5px;
+}
+.admin #navbarNav::-webkit-scrollbar:hover {
+  display: block;
+}
+.admin #navbarNav::-webkit-scrollbar-track {
+  background: #7e2b1d;
+  border-radius: 10px;
+}
+.admin #navbarNav::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #d5ae68;
+}
+.admin #navbarNav::-webkit-scrollbar-thumb:hover {
+  background: #7e2b1d;
+}
+
+.admin .main-footer-wrapper main {
+  padding-bottom: 6rem;
+}
+@media only screen and (max-width: 1465px) {
+  .admin .page-content.container {
+    padding: 0 4rem;
+  }
+}
+.admin .pagination-wrapper svg {
+  width: 2rem;
+}
+.admin .custom-btn {
+  color: #3a2419;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 20px;
+  background-color: #efd995;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 4rem;
+  border: 1px solid #d5af69;
+  box-shadow: 0 0.5rem 1rem rgba(110, 0, 255, 0.15);
+}
+
+.admin .main-footer-wrapper .page-content .page-title h1 {
+  font-size: 4rem;
+  color: #d5ae68;
+  font-family: "museo700", sans-serif;
+  text-align: center;
+  padding: 8rem 0 2rem;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table thead {
+  background-color: rgba(235, 207, 122, 0.8);
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table thead th {
+  border: 1px solid #d5ae68;
+  color: #3a2419;
+  font-size: 14px;
+  font-weight: 600;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody {
+  font-size: 14px;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody td {
+  border: 1px solid #d5ae68;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody td a {
+  color: #3a2419;
+  font-weight: 600;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody td .success, .admin .main-footer-wrapper .page-content .main-content .data-table tbody td .danger {
+  font-size: 15px;
+  font-weight: 600;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody td .success {
+  color: #1d980e;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody td .danger {
+  color: #F00;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody tr:nth-child(even) {
+  background-color: #efd995;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody .img-content img {
+  height: 90px;
+}
+
+.login-page {
+  background: linear-gradient(170deg, #3f0a05 0%, #7e2b1d 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-page .container .card {
+  width: 46.8rem;
+  padding: 4rem;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid #d5ae68;
+}
+@media only screen and (max-width: 420px) {
+  .login-page .container .card {
+    width: 100%;
+  }
+}
+.login-page .container .card .card-header {
+  margin-bottom: 2rem;
+}
+.login-page .container .card .card-header img {
+  margin: 0 auto;
+  display: block;
+}
+
+.admin .form-group {
+  margin-bottom: 1.3rem;
+  position: relative;
+}
+.admin .form-control {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  font-size: 12.8px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.4rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border: 1px solid #d5ae68;
+  font-family: "Montserrat", sans-serif;
+}
+.admin input.form-control, .admin select.form-control {
+  height: 4rem;
+}
+.admin label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 14.4px;
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
+.admin .submit-btn {
+  border: none;
+  border-radius: 4px;
+  background-color: #d5ae68;
+  min-width: 100px;
+  padding: 0 14px;
+  height: 38px;
+  transition: 0.3s ease;
+  font-weight: 500;
+  font-size: 14px;
+  color: #3a2419;
+}
+.admin .buttons-wrapper {
+  margin-top: 30px;
+}
+
+.admin .main-footer-wrapper .form-page .page-title h1 {
+  padding-bottom: 8rem;
+}
+.admin .form-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 1270px) {
+  .admin .form-container {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .admin .form-container {
+    max-width: 540px;
+  }
+}
+.admin .form-page .col-6 {
+  flex: 0 0 50%;
+  padding: 0 15px;
+}
+@media only screen and (max-width: 768px) {
+  .admin .form-page .col-6 {
+    flex: 0 0 100%;
+  }
+}
+.admin .form-page .col-12 {
+  flex: 0 0 100%;
+  padding: 0 15px;
+}
+.admin .form-page .instance-img {
+  height: 100px;
+  margin-top: 1.6rem;
+}
+.admin .form-page .seperate-line {
+  width: 80%;
+  margin: 70px auto;
+  display: block;
+  height: 2px;
+  background-color: #d5ae68;
+}
+.admin .form-wrapper {
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -1,0 +1,55 @@
+.admin {
+    .main-footer-wrapper {
+        .page-content {
+            .page-title h1 {
+                font-size: 4rem;
+                color: #d5ae68;
+                font-family: "museo700", sans-serif;
+                text-align: center;
+                padding: 8rem 0 2rem;
+            }
+            .main-content {
+                .data-table {
+                    thead {
+                            background-color: rgb(235 207 122 / 80%);
+                        th {
+                            border: 1px solid #d5ae68;
+                            color: #3a2419;
+                            font-size: 14px;
+                            font-weight: 600;
+                        }
+                    }
+                    tbody {
+                        font-size: 14px;
+
+                        td {
+                            border: 1px solid #d5ae68;
+                            a {
+                                color: #3a2419;
+                                font-weight: 600;
+                            }
+                            .success, .danger {
+                                font-size: 15px;
+                                font-weight: 600;
+                            }
+                            .success {
+                                color: #1d980e;
+                            }
+                            .danger {
+                                color: #F00;
+                            }
+                        }
+
+                        tr:nth-child(even) {
+                            background-color: rgb(239 217 149);
+                        }
+                        .img-content img {
+                            height: 90px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

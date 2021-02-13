@@ -47,7 +47,7 @@
                             <tr id="product-row-{{ $product->id }}">
                                 <td class="a-center">
                                     <a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Espresso em Cápsula Compatível com Nespresso" class="product-image">
-                                        <img src="{{ asset( explode(',', $product->images)[0] )}}" width="120" height="120" alt="Café Odebrecht Espresso em Cápsula Compatível com Nespresso">
+                                        <img src="{{ asset( '/storage/' . explode(',', $product->images)[0] )}}" width="120" height="120" alt="Café Odebrecht Espresso em Cápsula Compatível com Nespresso">
                                     </a>
                                 </td>
                                 <td>
@@ -70,7 +70,7 @@
                                     <span class="cart-price"><span id="total-price-{{ $product->id }}" class="price">{{ $product->getCurrentPrice() * $product->qty }} {{ config('currency.' . app()->getLocale()) }}</span></span>
                                 </td>
                                 <td class="a-center remove last">
-                                    <a data-product-id="{{ $product->id }}" title="Remover item" class="remove-item-btn small remover remove-ajax">
+                                    <a data-product-id="{{ $product->id }}" class="remove-item-btn small remover remove-ajax">
                                         <i class="icon-cancel"></i>
                                     </a>
                                 </td>
