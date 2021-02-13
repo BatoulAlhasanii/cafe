@@ -28,13 +28,13 @@ interface ProductContract
      * @param array $params
      * @return mixed
      */
-    public function createProduct(array $params);
+    public function createProduct($request);
 
     /**
      * @param array $params
      * @return mixed
      */
-    public function updateProduct(array $params);
+    public function updateProduct($request);
 
     /**
      * @param $id

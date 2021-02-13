@@ -3,12 +3,15 @@
 namespace App\Repositories;
 
 use App\Models\Product;
+use App\Models\ProductTranslation;
+use App\Models\Brand;
 use App\Traits\UploadAble;
 use Illuminate\Http\UploadedFile;
 use App\Contracts\ProductContract;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
+use Illuminate\Support\Str;
 
 /**
  * Class ProductRepository
@@ -69,24 +72,55 @@ class ProductRepository extends BaseRepository implements ProductContract
      * @param array $params
      * @return Product|mixed
      */
-    public function createProduct(array $params)
+    public function createProduct($request)
     {
         try {
-            $collection = collect($params);
-
-            $featured = $collection->has('featured') ? 1 : 0;
-            $status = $collection->has('status') ? 1 : 0;
-
-            $merge = $collection->merge(compact('status', 'featured'));
-
-            $product = new Product($merge->all());
-
-            $product->save();
-
-            if ($collection->has('categories')) {
-                $product->categories()->sync($params['categories']);
+            $images = [];
+            if ($request->images) {
+                foreach($request->images as $image) {
+                    if ($image instanceof  UploadedFile) {
+                        $images[] = $this->uploadOne($image, 'products');
+                    }
+                }
             }
+
+            $stringOfImages = implode(",", $images);
+
+            $product = new Product();
+            $product->fill([
+                'category_id' => $request->category_id,
+                'brand_id' => Brand::$odebrechtId,
+                'slug' => Str::slug(strtolower($request->product['en']['name']), "-"),
+                'price' => $request->price,
+                'discount_price' => $request->discount_price,
+                'images' => $stringOfImages,
+                'unit_amount' => $request->unit_amount,
+                'sku' => $request->sku,
+                'stock' => $request->stock,
+                'is_featured' => $request->is_featured,
+                'is_active' => $request->is_active
+            ]);
+
+
+            $productTranslations = [];
+            foreach ($request->product as $lang => $translation)
+            {
+                $productTranslations[] = new ProductTranslation([
+                    'name' => $translation['name'],
+                    'unit' => ProductTranslation::$units[$lang],
+                    'description' => $translation['description'],
+                    'attribute_value' => null,
+                    'lang' =>  $lang
+                ]);
+            }
+
+
+            if ($product->save()) {
+                $product->productTranslations()->saveMany($productTranslations);
+            }
+
             return $product;
+
 
         } catch (QueryException $exception) {
             throw new InvalidArgumentException($exception->getMessage());
@@ -97,7 +131,7 @@ class ProductRepository extends BaseRepository implements ProductContract
      * @param array $params
      * @return mixed
      */
-    public function updateProduct(array $params)
+    public function updateProduct($request)
     {
         $product = $this->findProductById($params['product_id']);
 
@@ -138,11 +172,19 @@ class ProductRepository extends BaseRepository implements ProductContract
     {
         $product = Product::where('slug', $slug)
             ->where('is_active', true)
+            ->whereHas('category', function($query) {
+                $query->where('is_active', true);
+            })
             ->with(array('productTranslations' => function($query) {
                 $query->where('lang', app()->getLocale());
             }))
             ->first();
 
-        return $product;
+
+        if($product) {
+            return $product;
+        } else {
+            throw new ModelNotFoundException();
+        }
     }
 }

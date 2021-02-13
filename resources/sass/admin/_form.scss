@@ -37,6 +37,21 @@
             height: 2px;
             background-color: #d5ae68;
         }
+        .invalid-feedback {
+            color: #c02230;
+        }
+        .input-instructions {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            font-size: 1.4rem;
+            background-color: #f9edd7;
+            border: 1px solid #c02230;
+            border-radius: 3px;
+            margin-top: 2rem;
+            ul {
+                margin-bottom: 1rem;
+            }
+        }
     }
     .form-wrapper {
         display: flex;

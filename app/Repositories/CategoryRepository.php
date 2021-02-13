@@ -89,19 +89,16 @@ class CategoryRepository extends BaseRepository implements CategoryContract
                 'is_active' => $request->is_active
             ]);
 
-            if ($category) {
 
-                $categoryTranslations = [];
-                foreach ($request->category as $lang => $translation)
-                {
-                    $categoryTranslations[] = new CategoryTranslation([
-                        'name' => $translation['name'],
-                        'lang' =>  $lang
-                    ]);
-
-                }
-
+            $categoryTranslations = [];
+            foreach ($request->category as $lang => $translation)
+            {
+                $categoryTranslations[] = new CategoryTranslation([
+                    'name' => $translation['name'],
+                    'lang' =>  $lang
+                ]);
             }
+
 
             if ($category->save()) {
                 $category->categoryTranslations()->saveMany($categoryTranslations);
@@ -193,13 +190,21 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
     public function findBySlug($slug)
     {
-        return Category::with('products')
-            ->where('slug', $slug)
+        $category = Category::where('slug', $slug)
             ->where('is_active', true)
-            ->with(array('products.productTranslations' => function($query) {
-                $query->where('lang', app()->getLocale())->select('product_id', 'name');
+            ->with(array('products' => function($query) {
+                $query->where('is_active', true)
+                ->with(array('productTranslations' => function($query) {
+                    $query->where('lang', app()->getLocale())->select('product_id', 'name');
+                }));
             }))
             ->first();
+
+        if ($category) {
+            return $category;
+        } else {
+            throw new ModelNotFoundException();
+        }
     }
 
     public function getCoffeeCategories()

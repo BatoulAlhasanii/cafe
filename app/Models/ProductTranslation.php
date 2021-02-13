@@ -9,6 +9,11 @@ class ProductTranslation extends Model
 {
     use HasFactory;
 
+    public static $units = [
+        'en' => 'g',
+        'tr' => 'g'
+    ];
+
     public $fillable = [
         'product_id',
         'name',

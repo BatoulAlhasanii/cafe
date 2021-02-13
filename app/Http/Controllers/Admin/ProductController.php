@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Contracts\CategoryContract;
 use App\Contracts\ProductContract;
 use App\Http\Controllers\BaseController;
-use App\Http\Requests\StoreProductFormRequest;
+use App\Models\Product;
 
 class ProductController extends BaseController
 {
@@ -38,16 +38,16 @@ class ProductController extends BaseController
         return view('admin.products.create', compact('categories'));
     }
 
-    public function store(StoreProductFormRequest $request)
+    public function store(Request $request)
     {
-        $params = $request->except('_token');
+        $this->validate($request, Product::rules());
 
-        $product = $this->productRepository->createProduct($params);
+        $product = $this->productRepository->createProduct($request);
 
         if (!$product) {
             return $this->responseRedirectBack('Error occurred while creating product.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.products.index', 'Product added successfully' ,'success',false, false);
+        return $this->responseRedirect('products.index', 'Product added successfully' ,'success',false, false);
     }
 
     public function edit($id)
@@ -60,15 +60,16 @@ class ProductController extends BaseController
         return view('admin.products.edit', compact('categories', 'brands', 'product'));
     }
 
-    public function update(StoreProductFormRequest $request)
+    public function update(Request $request)
     {
-        $params = $request->except('_token');
+        $this->validate($request, Product::rules());
 
-        $product = $this->productRepository->updateProduct($params);
+
+        $product = $this->productRepository->updateProduct($request);
 
         if (!$product) {
             return $this->responseRedirectBack('Error occurred while updating product.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.products.index', 'Product updated successfully' ,'success',false, false);
+        return $this->responseRedirect('products.index', 'Product updated successfully' ,'success',false, false);
     }
 }

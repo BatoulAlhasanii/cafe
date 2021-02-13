@@ -159,12 +159,24 @@
                                     <col>
                                 </colgroup>
                                 <tbody>
-                                    @foreach(json_decode( strval($product->productTranslations[0]->attribute_value) ) as $key => $value)
+                                <!--
+                                    (json_decode( strval($product->productTranslations[0]->attribute_value) ) as $key => $value)
                                     <tr class="first odd">
-                                        <th class="label">{{ $key }}</th>
-                                        <td class="data last">{{ $value }}</td>
+                                        <th class="label"></th>
+                                        <td class="data last"></td>
                                     </tr>
+
+                                -->
+                                @if($product->productTranslations[0]->attribute_value)
+                                    @foreach(explode(',' ,$product->productTranslations[0]->attribute_value) as $variable)
+                                        @if(count(explode(':', $variable)) === 2)
+                                            <tr class="first odd">
+                                                <th class="label">{{ trim(explode(':', $variable)[0]) }}</th>
+                                                <td class="data last">{{ trim(explode(':', $variable)[1]) }}</td>
+                                            </tr>
+                                        @endif
                                     @endforeach
+                                @endif
                                 </tbody>
                             </table>
                         </div>

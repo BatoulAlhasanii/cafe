@@ -26,9 +26,9 @@ class Product extends Model
     public static function rules() {
         return [
             'category_id' => 'required|exists:categories,id',
-            'brand_id' => 'required|exists:brands,id',
-            'price' => 'required|decimal:2',
-            'discount_price' => 'nullable|decimal:2',
+            'price' => 'required|numeric',
+            'discount_price' => 'nullable|numeric',
+            'images' => 'required|array',
             'images.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'unit_amount' => 'nullable|integer',
             'sku' => 'required|string|max:255',

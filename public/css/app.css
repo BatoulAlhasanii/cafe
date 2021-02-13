@@ -3573,6 +3573,21 @@ footer .social-links-container .social-media-links li a i {
   height: 2px;
   background-color: #d5ae68;
 }
+.admin .form-page .invalid-feedback {
+  color: #c02230;
+}
+.admin .form-page .input-instructions {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: 1.4rem;
+  background-color: #f9edd7;
+  border: 1px solid #c02230;
+  border-radius: 3px;
+  margin-top: 2rem;
+}
+.admin .form-page .input-instructions ul {
+  margin-bottom: 1rem;
+}
 .admin .form-wrapper {
   display: flex;
   flex-wrap: wrap;

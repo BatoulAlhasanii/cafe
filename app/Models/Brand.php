@@ -9,6 +9,8 @@ class Brand extends Model
 {
     use HasFactory;
 
+    public static $odebrechtId = 1;
+
     public $fillable = [
         'image',
         'is_active'

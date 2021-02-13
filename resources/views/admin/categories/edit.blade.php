@@ -41,9 +41,9 @@
                         </div>
                     @endforeach
                     <div class="form-group col-6">
-                        <label for="is_active">Is Shown to Customer</label>
+                        <label for="is_active">Shown to Customer</label>
                         <select id="is_active" name="is_active" class="form-control">
-                        @foreach (['1' => 'Yes','0' => 'No'] as $key => $val)
+                        @foreach (['0' => 'No','1' => 'Yes'] as $key => $val)
                             @if ( old('is_active') === strval($key) || (!old('is_active') && $category->is_active  === $key) )
                             <option value="{{ $key }}" selected>{{ $val }}</option>
                             @else
@@ -61,6 +61,7 @@
                         <label for="image">Category Image</label>
                         <br>
                         <input type="file" id="image" name="image"/>
+                        <br>
                         @error('image')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

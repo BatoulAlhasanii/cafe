@@ -13,6 +13,8 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
+        //'attribute_value' => '{"Filling Type": "High Vacuum", "Shelf life": "540 days after date of manufacture", "Type of inner packaging": "Aluminized", "External packaging type": "Cardboard box", "Package weight": "9 grams (inner package) + 26 grams (box)", "Repacking weight": "360g", "Composition": "100% Arabica Coffee", "Storage conditions": "Dry and arid place away from the presence of sun and chemicals.", "Maximum stacking": "8 boxes", "Product bar code": "7896295001012", "Brand": "Café Odebrecht"}',
+
         \App\Models\Product::create(
             [
                 'category_id' => 6,
@@ -32,14 +34,14 @@ class ProductSeeder extends Seeder
                 'name' => 'Café Odebrecht Superior',
                 'unit' => 'g',
                 'description' => 'Café Odebrecht Superior is a selection of the best coffee from Paraná blended with the best beans from the south of Minas Gerais, which determines a strong and full-bodied flavor of superior quality, medium dark roasting, medium fine grinding. The result is a product that meets the demands of consumers who demand a full-bodied flavor and a strong aroma.',
-                'attribute_value' => '{"Filling Type": "High Vacuum", "Shelf life": "540 days after date of manufacture", "Type of inner packaging": "Aluminized", "External packaging type": "Cardboard box", "Package weight": "9 grams (inner package) + 26 grams (box)", "Repacking weight": "360g", "Composition": "100% Arabica Coffee", "Storage conditions": "Dry and arid place away from the presence of sun and chemicals.", "Maximum stacking": "8 boxes", "Product bar code": "7896295001012", "Brand": "Café Odebrecht"}',
+                'attribute_value' => 'Filling Type: High Vacuum, Shelf life: 540 days after date of manufacture, Type of inner packaging: Aluminized, External packaging type: Cardboard box, Package weight: 9 grams (inner package) + 26 grams (box), Repacking weight: 360g, Composition: 100% Arabica Coffee, Storage conditions: Dry and arid place away from the presence of sun and chemicals., Maximum stacking: 8 boxes, Product bar code: 7896295001012, Brand: Café Odebrecht',
                 'lang' => 'en',
             ],
             [
                 'name' => 'Tr Café Odebrecht Superior',
                 'unit' => 'g',
                 'description' => 'Café Odebrecht Superior is a selection of the best coffee from Paraná blended with the best beans from the south of Minas Gerais, which determines a strong and full-bodied flavor of superior quality, medium dark roasting, medium fine grinding. The result is a product that meets the demands of consumers who demand a full-bodied flavor and a strong aroma.',
-                'attribute_value' => '{"Filling Type": "High Vacuum", "Shelf life": "540 days after date of manufacture", "Type of inner packaging": "Aluminized", "External packaging type": "Cardboard box", "Package weight": "9 grams (inner package) + 26 grams (box)", "Repacking weight": "360g", "Composition": "100% Arabica Coffee", "Storage conditions": "Dry and arid place away from the presence of sun and chemicals.", "Maximum stacking": "8 boxes", "Product bar code": "7896295001012", "Brand": "Café Odebrecht"}',
+                'attribute_value' => 'Filling Type: High Vacuum, Shelf life: 540 days after date of manufacture, Type of inner packaging: Aluminized, External packaging type: Cardboard box, Package weight: 9 grams (inner package) + 26 grams (box), Repacking weight: 360g, Composition: 100% Arabica Coffee, Storage conditions: Dry and arid place away from the presence of sun and chemicals., Maximum stacking: 8 boxes, Product bar code: 7896295001012, Brand: Café Odebrecht',
                 'lang' => 'tr',
             ]
         ]);
@@ -63,14 +65,14 @@ class ProductSeeder extends Seeder
                 'name' => 'Café Odebrecht Superior 250g',
                 'unit' => 'g',
                 'description' => 'Café Odebrecht Superior is a selection of the best coffee from Paraná blended with the best beans from the south of Minas Gerais, which determines a strong and full-bodied flavor of superior quality, medium dark roasting, medium fine grinding. The result is a product that meets the demands of consumers who demand a full-bodied flavor and a strong aroma.',
-                'attribute_value' => '{"Filling Type": "High Vacuum", "Shelf life": "540 days after date of manufacture", "Type of inner packaging": "Aluminized", "External packaging type": "Cardboard box", "Package weight": "9 grams (inner package) + 26 grams (box)", "Repacking weight": "360g", "Composition": "100% Arabica Coffee", "Storage conditions": "Dry and arid place away from the presence of sun and chemicals.", "Maximum stacking": "8 boxes", "Product bar code": "7896295001012", "Brand": "Café Odebrecht"}',
+                'attribute_value' => 'Filling Type: High Vacuum, Shelf life: 540 days after date of manufacture, Type of inner packaging: Aluminized, External packaging type: Cardboard box, Package weight: 9 grams (inner package) + 26 grams (box), Repacking weight: 360g, Composition: 100% Arabica Coffee, Storage conditions: Dry and arid place away from the presence of sun and chemicals., Maximum stacking: 8 boxes, Product bar code: 7896295001012, Brand: Café Odebrecht',
                 'lang' => 'en',
             ],
             [
                 'name' => 'Tr Café Odebrecht Superior 250g',
                 'unit' => 'g',
                 'description' => 'Café Odebrecht Superior is a selection of the best coffee from Paraná blended with the best beans from the south of Minas Gerais, which determines a strong and full-bodied flavor of superior quality, medium dark roasting, medium fine grinding. The result is a product that meets the demands of consumers who demand a full-bodied flavor and a strong aroma.',
-                'attribute_value' => '{"Filling Type": "High Vacuum", "Shelf life": "540 days after date of manufacture", "Type of inner packaging": "Aluminized", "External packaging type": "Cardboard box", "Package weight": "9 grams (inner package) + 26 grams (box)", "Repacking weight": "360g", "Composition": "100% Arabica Coffee", "Storage conditions": "Dry and arid place away from the presence of sun and chemicals.", "Maximum stacking": "8 boxes", "Product bar code": "7896295001012", "Brand": "Café Odebrecht"}',
+                'attribute_value' => 'Filling Type: High Vacuum, Shelf life: 540 days after date of manufacture, Type of inner packaging: Aluminized, External packaging type: Cardboard box, Package weight: 9 grams (inner package) + 26 grams (box), Repacking weight: 360g, Composition: 100% Arabica Coffee, Storage conditions: Dry and arid place away from the presence of sun and chemicals., Maximum stacking: 8 boxes, Product bar code: 7896295001012, Brand: Café Odebrecht',
                 'lang' => 'tr',
             ]
         ]);
@@ -94,14 +96,14 @@ class ProductSeeder extends Seeder
                 'name' => 'Café Odebrecht Superior 250g',
                 'unit' => 'g',
                 'description' => 'Café Odebrecht Superior is a selection of the best coffee from Paraná blended with the best beans from the south of Minas Gerais, which determines a strong and full-bodied flavor of superior quality, medium dark roasting, medium fine grinding. The result is a product that meets the demands of consumers who demand a full-bodied flavor and a strong aroma.',
-                'attribute_value' => '{"Filling Type": "High Vacuum", "Shelf life": "540 days after date of manufacture", "Type of inner packaging": "Aluminized", "External packaging type": "Cardboard box", "Package weight": "9 grams (inner package) + 26 grams (box)", "Repacking weight": "360g", "Composition": "100% Arabica Coffee", "Storage conditions": "Dry and arid place away from the presence of sun and chemicals.", "Maximum stacking": "8 boxes", "Product bar code": "7896295001012", "Brand": "Café Odebrecht"}',
+                'attribute_value' => 'Filling Type: High Vacuum, Shelf life: 540 days after date of manufacture, Type of inner packaging: Aluminized, External packaging type: Cardboard box, Package weight: 9 grams (inner package) + 26 grams (box), Repacking weight: 360g, Composition: 100% Arabica Coffee, Storage conditions: Dry and arid place away from the presence of sun and chemicals., Maximum stacking: 8 boxes, Product bar code: 7896295001012, Brand: Café Odebrecht',
                 'lang' => 'en',
             ],
             [
                 'name' => 'Tr Café Odebrecht Superior 250g',
                 'unit' => 'g',
                 'description' => 'Café Odebrecht Superior is a selection of the best coffee from Paraná blended with the best beans from the south of Minas Gerais, which determines a strong and full-bodied flavor of superior quality, medium dark roasting, medium fine grinding. The result is a product that meets the demands of consumers who demand a full-bodied flavor and a strong aroma.',
-                'attribute_value' => '{"Filling Type": "High Vacuum", "Shelf life": "540 days after date of manufacture", "Type of inner packaging": "Aluminized", "External packaging type": "Cardboard box", "Package weight": "9 grams (inner package) + 26 grams (box)", "Repacking weight": "360g", "Composition": "100% Arabica Coffee", "Storage conditions": "Dry and arid place away from the presence of sun and chemicals.", "Maximum stacking": "8 boxes", "Product bar code": "7896295001012", "Brand": "Café Odebrecht"}',
+                'attribute_value' => 'Filling Type: High Vacuum, Shelf life: 540 days after date of manufacture, Type of inner packaging: Aluminized, External packaging type: Cardboard box, Package weight: 9 grams (inner package) + 26 grams (box), Repacking weight: 360g, Composition: 100% Arabica Coffee, Storage conditions: Dry and arid place away from the presence of sun and chemicals., Maximum stacking: 8 boxes, Product bar code: 7896295001012, Brand: Café Odebrecht',
                 'lang' => 'tr',
             ]
         ]);
