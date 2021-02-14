@@ -53,17 +53,14 @@ class ProductController extends BaseController
     public function edit($id)
     {
         $product = $this->productRepository->findProductById($id);
-        $brands = $this->brandRepository->listBrands('name', 'asc');
         $categories = $this->categoryRepository->listCategories('name', 'asc');
 
-        $this->setPageTitle('Products', 'Edit Product');
-        return view('admin.products.edit', compact('categories', 'brands', 'product'));
+        return view('admin.products.edit', compact('categories', 'product'));
     }
 
     public function update(Request $request)
     {
-        $this->validate($request, Product::rules());
-
+        $this->validate($request, Product::editRules());
 
         $product = $this->productRepository->updateProduct($request);
 

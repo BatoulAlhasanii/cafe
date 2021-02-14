@@ -25,20 +25,28 @@ Route::group(['prefix' => '' /** TODO Add prefix for security e.g. admin-xvq734r
         'verify' => false, // Email Verification Routes...
     ]);
 
-    Route::get('/dashboard', 'App\Http\Controllers\Admin\HomeController@index')->name('dashboard');
-    Route::get('/categories', 'App\Http\Controllers\Admin\CategoryController@index')->name('categories.index');
-    Route::get('/categories/create', 'App\Http\Controllers\Admin\CategoryController@create')->name('categories.create');
-    Route::post('/categories', 'App\Http\Controllers\Admin\CategoryController@store')->name('categories.store');
-    Route::get('/categories/{id}', 'App\Http\Controllers\Admin\CategoryController@edit')->name('categories.edit');
-    Route::put('/categories/{id}', 'App\Http\Controllers\Admin\CategoryController@update')->name('categories.update');
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/dashboard', 'App\Http\Controllers\Admin\HomeController@index')->name('dashboard');
+        Route::get('/categories', 'App\Http\Controllers\Admin\CategoryController@index')->name('categories.index');
+        Route::get('/categories/create', 'App\Http\Controllers\Admin\CategoryController@create')->name('categories.create');
+        Route::post('/categories', 'App\Http\Controllers\Admin\CategoryController@store')->name('categories.store');
+        Route::get('/categories/{id}', 'App\Http\Controllers\Admin\CategoryController@edit')->name('categories.edit');
+        Route::put('/categories/{id}', 'App\Http\Controllers\Admin\CategoryController@update')->name('categories.update');
 
-    Route::get('/products', 'App\Http\Controllers\Admin\ProductController@index')->name('products.index');
-    Route::get('/products/create', 'App\Http\Controllers\Admin\ProductController@create')->name('products.create');
-    Route::post('/products', 'App\Http\Controllers\Admin\ProductController@store')->name('products.store');
-    Route::get('/products/{id}', 'App\Http\Controllers\Admin\ProductController@edit')->name('products.edit');
-    Route::put('/products/{id}', 'App\Http\Controllers\Admin\ProductController@update')->name('products.update');
+        Route::get('/products', 'App\Http\Controllers\Admin\ProductController@index')->name('products.index');
+        Route::get('/products/create', 'App\Http\Controllers\Admin\ProductController@create')->name('products.create');
+        Route::post('/products', 'App\Http\Controllers\Admin\ProductController@store')->name('products.store');
+        Route::get('/products/{id}', 'App\Http\Controllers\Admin\ProductController@edit')->name('products.edit');
+        Route::put('/products/{id}', 'App\Http\Controllers\Admin\ProductController@update')->name('products.update');
+
+        Route::get('/orders', 'App\Http\Controllers\Admin\OrderController@index')->name('orders.index');
+        Route::get('/orders/{id}', 'App\Http\Controllers\Admin\OrderController@edit')->name('orders.edit');
+        Route::put('/orders/{id}', 'App\Http\Controllers\Admin\OrderController@update')->name('orders.update');
+    });
 
 });
+
+
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/category/{slug}', 'App\Http\Controllers\Site\CategoryController@show')->name('category.show');

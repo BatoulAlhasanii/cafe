@@ -16,7 +16,7 @@
                 <a href="{{ route('products.index') }}" class="sidebar-nav-link">Products</a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="sidebar-nav-link">Orders</a>
+                <a href="{{ route('orders.index') }}" class="sidebar-nav-link">Orders</a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('dashboard') }}" class="sidebar-nav-link">Users</a>

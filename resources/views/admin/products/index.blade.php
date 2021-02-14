@@ -20,6 +20,7 @@
                         <th>Stock</th>
                         <th>Price</th>
                         <th>Discount Price</th>
+                        <th>Featured</th>
                         <th>Shown to Customer</th>
                         <th>Edit</th>
                     </tr>
@@ -49,6 +50,13 @@
                         </td>
                         <td class="a-center">
                             {{ $product->discount_price }} {{ config('currency.en') }}
+                        </td>
+                        <td class="a-center">
+                            @if($product->is_featured)
+                                <span class="success">Yes</span>
+                            @else
+                                <span class="danger">No</span>
+                            @endif
                         </td>
                         <td class="a-center">
                             @if($product->is_active)

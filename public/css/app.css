@@ -3397,6 +3397,38 @@ footer .social-links-container .social-media-links li a i {
     padding: 0 4rem;
   }
 }
+.admin .form-wrapper, .admin .view-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.admin .form-container, .admin .view-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 1270px) {
+  .admin .form-container, .admin .view-container {
+    padding: 0 4rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .admin .form-container, .admin .view-container {
+    max-width: 540px;
+  }
+}
+.admin .form-container .col-6, .admin .view-container .col-6 {
+  flex: 0 0 50%;
+  padding: 0 15px;
+}
+@media only screen and (max-width: 768px) {
+  .admin .form-container .col-6, .admin .view-container .col-6 {
+    flex: 0 0 100%;
+  }
+}
+.admin .form-container .col-12, .admin .view-container .col-12 {
+  flex: 0 0 100%;
+  padding: 0 15px;
+}
 .admin .pagination-wrapper svg {
   width: 2rem;
 }
@@ -3413,6 +3445,9 @@ footer .social-links-container .social-media-links li a i {
   box-shadow: 0 0.5rem 1rem rgba(110, 0, 255, 0.15);
 }
 
+.admin .main-footer-wrapper .page-content.orders-page h1 {
+  padding: 8rem 0 !important;
+}
 .admin .main-footer-wrapper .page-content .page-title h1 {
   font-size: 4rem;
   color: #d5ae68;
@@ -3448,6 +3483,21 @@ footer .social-links-container .social-media-links li a i {
 }
 .admin .main-footer-wrapper .page-content .main-content .data-table tbody td .danger {
   color: #F00;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody td .badge-success, .admin .main-footer-wrapper .page-content .main-content .data-table tbody td .badge-alert, .admin .main-footer-wrapper .page-content .main-content .data-table tbody td .badge-warning {
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody td .badge-success {
+  background-color: #46983c;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody td .badge-alert {
+  background-color: #f35840;
+}
+.admin .main-footer-wrapper .page-content .main-content .data-table tbody td .badge-warning {
+  background-color: #f8a610;
 }
 .admin .main-footer-wrapper .page-content .main-content .data-table tbody tr:nth-child(even) {
   background-color: #efd995;
@@ -3534,34 +3584,6 @@ footer .social-links-container .social-media-links li a i {
 .admin .main-footer-wrapper .form-page .page-title h1 {
   padding-bottom: 8rem;
 }
-.admin .form-container {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-@media only screen and (max-width: 1270px) {
-  .admin .form-container {
-    padding: 0 4rem;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .admin .form-container {
-    max-width: 540px;
-  }
-}
-.admin .form-page .col-6 {
-  flex: 0 0 50%;
-  padding: 0 15px;
-}
-@media only screen and (max-width: 768px) {
-  .admin .form-page .col-6 {
-    flex: 0 0 100%;
-  }
-}
-.admin .form-page .col-12 {
-  flex: 0 0 100%;
-  padding: 0 15px;
-}
 .admin .form-page .instance-img {
   height: 100px;
   margin-top: 1.6rem;
@@ -3588,7 +3610,44 @@ footer .social-links-container .social-media-links li a i {
 .admin .form-page .input-instructions ul {
   margin-bottom: 1rem;
 }
-.admin .form-wrapper {
+.admin .form-page .edit-product-images-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.admin .form-page .edit-product-images-wrapper .uploaded-img-wrapper {
+  position: relative;
+}
+.admin .form-page .edit-product-images-wrapper .uploaded-img-wrapper .remove-symbol {
+  position: absolute;
+  content: "x";
+  color: #8090b5;
+  z-index: 10;
+  width: 25px;
+  font-size: 16px;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.admin .view-wrapper {
+  margin-bottom: 6rem;
+}
+.admin .view-wrapper .table-wrapper {
+  margin-top: 2rem;
+}
+.admin .view-wrapper .field-wrapper {
+  margin-bottom: 16px;
+}
+.admin .view-wrapper .field-wrapper .field-label {
+  color: #d5ae68;
+  font-size: 15px;
+  font-weight: 700;
+}
+.admin .view-wrapper .field-wrapper .field-value {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #495057;
 }

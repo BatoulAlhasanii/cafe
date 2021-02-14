@@ -44,9 +44,9 @@
                                 </ul>
                                 <div>Example:<br>Filling Type: High Vacuum, Shelf life: 540 days after date of manufacture</div>
                             </div>
-                            <label for="variables-{{ $locale }}">{{ ucfirst($locale) }} Product Attributes and Values</label>
-                            <textarea id="variables-{{ $locale }}" class="form-control" name="product[{{ $locale }}][variables]" rows="4">{{ old('product.'.$locale.'.variables') }}</textarea>
-                            @error('product.'.$locale.'.variables')
+                            <label for="attribute_value-{{ $locale }}">{{ ucfirst($locale) }} Product Attributes and Values</label>
+                            <textarea id="attribute_value-{{ $locale }}" class="form-control" name="product[{{ $locale }}][attribute_value]" rows="4">{{ old('product.'.$locale.'.attribute_value') }}</textarea>
+                            @error('product.'.$locale.'.attribute_value')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

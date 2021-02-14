@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\City;
 use App\Models\OrderItem;
 use App\Contracts\OrderContract;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class OrderRepository extends BaseRepository implements OrderContract
 {
@@ -16,6 +17,23 @@ class OrderRepository extends BaseRepository implements OrderContract
     {
         parent::__construct($model);
         $this->model = $model;
+    }
+
+    public function listOrders(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
+    {
+        return $this->model->orderBy('id', 'desc')->paginate(config('settings.items_per_page'));
+    }
+
+    public function findOrderById(int $id)
+    {
+        try {
+            return $this->findOneOrFail($id);
+
+        } catch (ModelNotFoundException $e) {
+
+            throw new ModelNotFoundException($e);
+        }
+
     }
 
     public function storeOrderDetails($request)
@@ -71,9 +89,14 @@ class OrderRepository extends BaseRepository implements OrderContract
         return $order;
     }
 
-    public function listOrders(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
+    public function updateOrder($request)
     {
-        return $this->all($columns, $order, $sort);
+        $order = $this->findOrderById($request->id);
+
+        $order->status = $request->status;
+        $order->save();
+
+        return $order;
     }
 
     public function findOrderByNumber($orderNumber)

@@ -12,6 +12,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class ProductRepository
@@ -109,7 +110,7 @@ class ProductRepository extends BaseRepository implements ProductContract
                     'name' => $translation['name'],
                     'unit' => ProductTranslation::$units[$lang],
                     'description' => $translation['description'],
-                    'attribute_value' => null,
+                    'attribute_value' => $translation['attribute_value'],
                     'lang' =>  $lang
                 ]);
             }
@@ -133,22 +134,82 @@ class ProductRepository extends BaseRepository implements ProductContract
      */
     public function updateProduct($request)
     {
-        $product = $this->findProductById($params['product_id']);
+        DB::beginTransaction();
 
-        $collection = collect($params)->except('_token');
+        try {
 
-        $featured = $collection->has('featured') ? 1 : 0;
-        $status = $collection->has('status') ? 1 : 0;
+            $product = Product::where('id', $request->id)->lockForUpdate()->first();
 
-        $merge = $collection->merge(compact('status', 'featured'));
 
-        $product->update($merge->all());
+            $arrayOfProductImages = explode(',', $product->images);
+            if ($request->deleted_images && $product->images) {
 
-        if ($collection->has('categories')) {
-            $product->categories()->sync($params['categories']);
+                $arrayOfDeletedImages = explode(',', $request->deleted_images);
+
+                foreach ($arrayOfDeletedImages as $deletedImage) {
+                    $index = array_search($deletedImage, $arrayOfProductImages);
+                    if($index !== false){
+                        $this->deleteOne($deletedImage);
+                        unset($arrayOfProductImages[$index]);
+                    }
+                }
+            }
+
+            $images = [];
+            if ($request->images) {
+                foreach($request->images as $image) {
+                    if ($image instanceof  UploadedFile) {
+                        $images[] = $this->uploadOne($image, 'products');
+                    }
+                }
+            }
+
+            $stringOfImages = array_merge($arrayOfProductImages, $images);
+            $stringOfImages = implode(',', $stringOfImages);
+
+            $product->category_id = $request->category_id;
+            $product->slug = Str::slug(strtolower($request->product['en']['name']), "-");
+            $product->price = $request->price;
+            $product->discount_price = $request->discount_price;
+            $product->images = $stringOfImages;
+            $product->unit_amount = $request->unit_amount;
+            $product->sku = $request->sku;
+            $product->stock = $request->stock;
+            $product->is_featured = $request->is_featured;
+            $product->is_active = $request->is_active;
+            $product->save();
+
+            foreach($request->product as $lang => $translation) {
+
+                if ($translation['id']) {
+                    $productTranslation = ProductTranslation::find($translation['id']);
+                    if ($productTranslation) {
+                        $productTranslation->name = $translation['name'];
+                        $productTranslation->description = $translation['description'];
+                        $productTranslation->attribute_value = $translation['attribute_value'];
+                        $productTranslation->save();
+                    }
+                } else {
+                    $newProductTranslations = new ProductTranslation([
+                        'name' => $translation['name'],
+                        'unit' => ProductTranslation::$units[$lang],
+                        'description' => $translation['description'],
+                        'attribute_value' => $translation['attribute_value'],
+                        'lang' =>  $lang
+                    ]);
+                    $product->productTranslations()->save($newProductTranslations);
+                }
+            }
+            DB::commit();
+
+            return $product;
+
+        } catch (\Exception $e) {
+          DB::rollBack();
+          throw $e;
         }
 
-        return $product;
+
     }
 
     /**

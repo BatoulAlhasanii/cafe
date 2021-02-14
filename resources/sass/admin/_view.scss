@@ -1,0 +1,23 @@
+.admin {
+    .view-wrapper {
+        margin-bottom: 6rem;
+        .table-wrapper {
+            margin-top: 2rem;
+        }
+        .field-wrapper {
+            margin-bottom: 16px;
+            .field-label {
+                color: #d5ae68;
+                font-size: 15px;
+                font-weight: 700;
+            }
+            .field-value {
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 1.5;
+                color: #495057;
+            }
+        }
+    }
+
+}

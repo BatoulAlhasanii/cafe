@@ -13,10 +13,10 @@
     ?>
     <div class="page-content form-container form-page">
         <div class="page-title">
-            <h1>Create Category</h1>
+            <h1>Edit Category</h1>
         </div>
         <div class="main-content">
-            <form method="POST" action="{{ empty( $category ) ? route('categories.store') : route('categories.update',  $category->id ) }}" method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('categories.update',  $category->id ) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-wrapper">
@@ -44,7 +44,7 @@
                         <label for="is_active">Shown to Customer</label>
                         <select id="is_active" name="is_active" class="form-control">
                         @foreach (['0' => 'No','1' => 'Yes'] as $key => $val)
-                            @if ( old('is_active') === strval($key) || (!old('is_active') && $category->is_active  === $key) )
+                            @if ( old('is_active') === strval($key) || ( empty(old('is_active')) && $category->is_active  === $key) )
                             <option value="{{ $key }}" selected>{{ $val }}</option>
                             @else
                             <option value="{{ $key }}">{{ $val }}</option>

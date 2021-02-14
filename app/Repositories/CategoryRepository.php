@@ -43,7 +43,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
         if ($order !== 'id') {
             return $this->model->where('parent_id', Category::$coffeeId)
             ->with(['categoryTranslations' => function($query) use ($order, $sort) {
-                $query->where('lang', 'en')->select('category_id', 'name')->orderBy($order, $sort);
+                $query->where('lang', 'en')->select('category_id', 'name');
             }])->get();
         }
         return $this->model->where('parent_id', Category::$coffeeId)->paginate(config('settings.items_per_page'));
@@ -119,6 +119,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     {
         $category = $this->findCategoryById($request->id);
 
+        $image = null;
         if ($request->image && ($request->image instanceof  UploadedFile)) {
 
             if ($category->image != null) {
@@ -131,7 +132,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
         $updated = $category->update([
             'slug' => Str::slug(strtolower($request->category['en']['name']), "-"),
-            'image' => $image ?? null,
+            'image' => $image ?? $category->image,
             'sequence' => 2,
             'parent_id' => Category::$coffeeId,
             'is_active' => $request->is_active

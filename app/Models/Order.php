@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rule;
 
 class Order extends Model
 {
@@ -36,31 +37,42 @@ class Order extends Model
     public static $orderStatus = [
         1 => [
             'id' => 1,
-            'name' => 'pending'
+            'name' => 'Pending'
         ],
         2 => [
             'id' => 2,
-            'name' => 'processing'
+            'name' => 'Processing'
         ],
         3 => [
             'id' => 3,
-            'name' => 'paid'
+            'name' => 'Paid'
         ],
         4 => [
             'id' => 4,
-            'name' => 'delivered'
+            'name' => 'Waiting for Delivery'
         ],
         5 => [
             'id' => 5,
-            'name' => 'declined'
+            'name' => 'Delivered'
+        ],
+        6 => [
+            'id' => 6,
+            'name' => 'Failed'
         ]
     ];
     public static $statusPending = 1;
     public static $statusProcessing = 2;
     public static $statusPaid = 3;
-    public static $statusDelivered = 4;
-    public static $statusDeclined = 5;
+    public static $statusWaitingForDelivery = 4;
+    public static $statusDelivered = 5;
+    public static $statusFailed = 6;
 
+    public static function listOrderStatus() {
+        return [
+            self::$statusWaitingForDelivery,
+            self::$statusDelivered
+        ];
+    }
 
     public static function rules()
     {
@@ -78,6 +90,13 @@ class Order extends Model
             'lat' => 'nullable|numeric',
             'lng' => 'nullable|numeric',
             'coupon_code' => 'nullable|exists:coupons,code'
+        ];
+    }
+
+    public static function editRules()
+    {
+        return [
+            'status' => ['required', Rule::in(self::listOrderStatus())]
         ];
     }
 

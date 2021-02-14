@@ -1,6 +1,10 @@
 .admin {
     .main-footer-wrapper {
+
         .page-content {
+            &.orders-page h1{
+                padding: 8rem 0!important;
+            }
             .page-title h1 {
                 font-size: 4rem;
                 color: #d5ae68;
@@ -37,6 +41,21 @@
                             }
                             .danger {
                                 color: #F00;
+                            }
+                            .badge-success, .badge-alert, .badge-warning {
+                                padding: 3px 10px;
+                                border-radius: 5px;
+                                color: #fff;
+                                font-weight: 500;
+                            }
+                            .badge-success {
+                                background-color: #46983c;
+                            }
+                            .badge-alert {
+                                background-color: #f35840;
+                            }
+                            .badge-warning {
+                                background-color: #f8a610;
                             }
                         }
 
