@@ -7,6 +7,7 @@ use App\Contracts\CategoryContract;
 use App\Contracts\ProductContract;
 use App\Http\Controllers\BaseController;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends BaseController
 {

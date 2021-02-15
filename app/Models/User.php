@@ -46,7 +46,7 @@ class User extends Authenticatable
     public static function rules() {
         return [
             'name' => 'required|string',
-            'email' => 'required|email|unique:App\User,email',
+            'email' => 'required|email|unique:users,email,' . request()->id,
             'password' => [
                 'required',
                 'string',
@@ -63,5 +63,9 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(\App\Models\Role::class, 'role_id');
+    }
+
+    public function hasPermission($slug) {
+        return (bool) $this->role->permissions->where('slug', $slug)->count();
     }
 }

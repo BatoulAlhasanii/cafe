@@ -19,10 +19,7 @@
                 <a href="{{ route('orders.index') }}" class="sidebar-nav-link">Orders</a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="sidebar-nav-link">Users</a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('dashboard') }}" class="sidebar-nav-link">Permissions</a>
+                <a href="{{ route('users.index') }}" class="sidebar-nav-link">Users</a>
             </li>
         </ul>
     </div>

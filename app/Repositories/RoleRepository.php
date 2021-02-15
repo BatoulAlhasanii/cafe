@@ -34,7 +34,7 @@ class RoleRepository extends BaseRepository implements RoleContract
      */
     public function listRoles(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
     {
-        return $this->all($columns, $order, $sort);
+        return $this->model->orderBy('name','asc')->get();
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Contracts\UserContract;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository extends BaseRepository implements UserContract
 {
@@ -28,7 +29,7 @@ class UserRepository extends BaseRepository implements UserContract
      */
     public function listUsers(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
     {
-        return $this->all($columns, $order, $sort);
+        return $this->model->paginate(config('settings.items_per_page'));
     }
 
     /**
@@ -52,9 +53,21 @@ class UserRepository extends BaseRepository implements UserContract
      * @param array $params
      * @return Category|mixed
      */
-    public function createUser(array $params)
+    public function createUser($request)
     {
         try {
+
+            $user = new User();
+            $user->fill([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role_id' => $request->role_id
+            ]);
+
+            $user->save();
+
+            return $user;
 
         } catch (QueryException $exception) {
             throw new InvalidArgumentException($exception->getMessage());
@@ -65,9 +78,19 @@ class UserRepository extends BaseRepository implements UserContract
      * @param array $params
      * @return mixed
      */
-    public function updateUser(array $params)
+    public function updateUser($request)
     {
+        $user = $this->findUserById($request->id);
 
+
+        $updated = $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id
+        ]);
+
+        return $user;
     }
 
     /**

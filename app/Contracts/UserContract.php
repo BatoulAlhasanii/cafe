@@ -22,13 +22,13 @@ interface UserContract
      * @param array $params
      * @return mixed
      */
-    public function createUser(array $params);
+    public function createUser($request);
 
     /**
      * @param array $params
      * @return mixed
      */
-    public function updateUser(array $params);
+    public function updateUser($request);
 
     /**
      * @param $id

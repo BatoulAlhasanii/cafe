@@ -42,6 +42,12 @@ Route::group(['prefix' => '' /** TODO Add prefix for security e.g. admin-xvq734r
         Route::get('/orders', 'App\Http\Controllers\Admin\OrderController@index')->name('orders.index');
         Route::get('/orders/{id}', 'App\Http\Controllers\Admin\OrderController@edit')->name('orders.edit');
         Route::put('/orders/{id}', 'App\Http\Controllers\Admin\OrderController@update')->name('orders.update');
+
+        Route::get('/users', 'App\Http\Controllers\Admin\UserController@index')->name('users.index');
+        Route::get('/users/create', 'App\Http\Controllers\Admin\UserController@create')->name('users.create');
+        Route::post('/users', 'App\Http\Controllers\Admin\UserController@store')->name('users.store');
+        Route::get('/users/{id}', 'App\Http\Controllers\Admin\UserController@edit')->name('users.edit');
+        Route::put('/users/{id}', 'App\Http\Controllers\Admin\UserController@update')->name('users.update');
     });
 
 });
