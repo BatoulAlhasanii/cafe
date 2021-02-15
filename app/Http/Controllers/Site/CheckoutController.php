@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Contracts\OrderContract;
 use App\Contracts\CountryContract;
 use App\Contracts\CityContract;
+use App\Contracts\CartContract;
 use App\Http\Controllers\Controller;
 
 class CheckoutController extends Controller
@@ -15,16 +16,20 @@ class CheckoutController extends Controller
     protected $orderRepository;
     protected $countryRepository;
     protected $cityRepository;
+    protected $cartRepository;
 
-    public function __construct(OrderContract $orderRepository, CountryContract  $countryRepository, CityContract  $cityRepository)
+    public function __construct(OrderContract $orderRepository, CountryContract  $countryRepository, CityContract  $cityRepository, CartContract $cartRepository)
     {
         $this->orderRepository = $orderRepository;
         $this->countryRepository = $countryRepository;
         $this->cityRepository = $cityRepository;
+        $this->cartRepository = $cartRepository;
     }
 
     public function index()
     {
+        $this->cartRepository->updateProductsInCart();
+
         $country = $this->countryRepository->listCountries()[0];
         $cities = $this->cityRepository->listCitiesByCountry($country->id);
 

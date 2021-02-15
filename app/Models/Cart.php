@@ -79,7 +79,13 @@ class Cart
         return $this->items;
     }
 
-    public function setCartItems(array $newItems, $totalPrice, $totalQuantity)
+    public function setCartItems(array $newItems)
+    {
+        $this->items = [];
+        $this->items = $newItems;
+    }
+
+    public function setCartItemsAndTotals(array $newItems, $totalPrice, $totalQuantity)
     {
         $this->items = [];
         $this->items = $newItems;

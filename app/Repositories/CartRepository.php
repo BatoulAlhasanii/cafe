@@ -97,7 +97,26 @@ class CartRepository implements CartContract
 
             }
 
-            Session::get('cart')->setCartItems($items, $totalPrice, $totalQuantity);
+            Session::get('cart')->setCartItemsAndTotals($items, $totalPrice, $totalQuantity);
+        }
+    }
+
+    public function updateProductsInCart() {
+
+        if (Session::has('cart')) {
+            $items = Session::get('cart')->getCartItems();
+
+            foreach ($items as $id => $item) {
+                if (!$item['is_available_item']) {
+                    unset($items[$id]);
+                } else {
+                    $item['requested_qty'] = null;
+                    $item['product']->requested_qty = null;
+                    $items[$id] = $item;
+                }
+            }
+
+            Session::get('cart')->setCartItems($items);
         }
     }
 }

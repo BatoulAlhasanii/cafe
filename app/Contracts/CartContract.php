@@ -11,4 +11,6 @@ interface CartContract
     public function getCart($request);
 
     public function updateCart();
+
+    public function updateProductsInCart();
 }
