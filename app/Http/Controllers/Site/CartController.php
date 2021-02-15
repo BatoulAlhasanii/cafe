@@ -58,6 +58,10 @@ class CartController extends Controller
 
     public function removeItem(Request $request)
     {
+        $this->validate($request, [
+            'productId' => 'required|exists:products,id'
+        ]);
+
         $productId = $request->input('productId');
 
         $cart = $this->cartRepository->getCart($request);
@@ -76,6 +80,11 @@ class CartController extends Controller
 
     public function setProductQty(Request $request)
     {
+        $this->validate($request, [
+            'productId' => 'required|exists:products,id',
+            'quantity' => ['required', 'integer', 'min:1', new \App\Rules\ValidateProductSettedQty()]
+        ]);
+
         $productId = $request->input('productId');
         $qtyToSet = $request->input('quantity');
         $product = $this->productRepository->findProductById($productId);

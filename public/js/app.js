@@ -79,6 +79,18 @@ $(document).ready(function () {
           $('#cart-sub-total').html("".concat(data.cart_totals.sub_total, " ").concat(data.currency));
           $('#cart-total').html("".concat(data.cart_totals.total, " ").concat(data.currency));
           $("#load-overlay").removeClass("display-overlay");
+        },
+        error: function error(reject) {
+          $("#load-overlay").removeClass("display-overlay");
+
+          if (reject.status === 422) {
+            var errors = $.parseJSON(reject.responseText);
+            $messages = null;
+            $.each(errors.errors, function (key, val) {
+              $messages = "<li> ".concat(val, " </li>");
+            });
+            $('.messages').html("<li class=\"error-msg\">\n                                <ul>\n                                    <li> ".concat(errors.message, " </li>") + $messages + "</ul>\n                            </li>");
+          }
         }
       });
     }
@@ -110,6 +122,18 @@ $(document).ready(function () {
           $('#cart-sub-total').html("".concat(data.cart_totals.sub_total, " ").concat(data.currency));
           $('#cart-total').html("".concat(data.cart_totals.total, " ").concat(data.currency));
           $("#load-overlay").removeClass("display-overlay");
+        }
+      },
+      error: function error(reject) {
+        $("#load-overlay").removeClass("display-overlay");
+
+        if (reject.status === 422) {
+          var errors = $.parseJSON(reject.responseText);
+          $messages = null;
+          $.each(errors.errors, function (key, val) {
+            $messages = "<li> ".concat(val, " </li>");
+          });
+          $('.messages').html("<li class=\"error-msg\">\n                            <ul>\n                                <li> ".concat(errors.message, " </li>") + $messages + "</ul>\n                        </li>");
         }
       }
     });

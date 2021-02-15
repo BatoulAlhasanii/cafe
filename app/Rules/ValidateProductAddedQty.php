@@ -32,7 +32,6 @@ class ValidateProductAddedQty implements Rule
             $product = Session::get('cart')->getCartProductById(request('productId'));
 
             if ($product) {
-                // check value type
 
                 if ( (intval($product->qty) + intval($value)) <= intval($product->stock) ) {
                     return true;
@@ -41,7 +40,7 @@ class ValidateProductAddedQty implements Rule
                     //TODO
                     //Check is active
 
-                    //in case product in cart had stock 0 but product is available
+                    //in case product in cart had stock 0 but product is available in database with stock > 0
                     $product = \App\Models\Product::where('id', request('productId'))->first();
                     if ( (intval($product->qty) + intval($value)) <= intval($product->stock) ) {
                         return true;

@@ -25,6 +25,26 @@ $(document).ready(function() {
                     $('#cart-total').html(`${data.cart_totals.total} ${data.currency}`);
 
                     $("#load-overlay").removeClass("display-overlay");
+                },
+                error: function (reject) {
+
+                    $("#load-overlay").removeClass("display-overlay");
+
+                    if( reject.status === 422 ) {
+                        var errors = $.parseJSON(reject.responseText);
+                        $messages = null;
+                        $.each(errors.errors, function (key, val) {
+                            $messages = `<li> ${val} </li>`
+                        });
+
+                        $('.messages').html(
+                            `<li class="error-msg">
+                                <ul>
+                                    <li> ${errors.message} </li>`
+                                    + $messages +
+                                `</ul>
+                            </li>`);
+                    }
                 }
             });
         }
@@ -66,6 +86,25 @@ $(document).ready(function() {
                     $("#load-overlay").removeClass("display-overlay");
                 }
 
+            },
+            error: function (reject) {
+                $("#load-overlay").removeClass("display-overlay");
+
+                if( reject.status === 422 ) {
+                    var errors = $.parseJSON(reject.responseText);
+                    $messages = null;
+                    $.each(errors.errors, function (key, val) {
+                        $messages = `<li> ${val} </li>`
+                    });
+
+                    $('.messages').html(
+                        `<li class="error-msg">
+                            <ul>
+                                <li> ${errors.message} </li>`
+                                + $messages +
+                            `</ul>
+                        </li>`);
+                }
             }
         });
     });
