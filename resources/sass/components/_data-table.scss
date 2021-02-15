@@ -45,6 +45,9 @@ table {
 
     .error-table-row {
         background-color: #ff220080;
+        .product-image {
+            background-color: transparent;
+        }
     }
     .error-product-message {
         color: #dd2224;

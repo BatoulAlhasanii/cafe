@@ -902,6 +902,9 @@ table {
 .data-table .error-table-row {
   background-color: #ff220080;
 }
+.data-table .error-table-row .product-image {
+  background-color: transparent;
+}
 .data-table .error-product-message {
   color: #dd2224;
   font-weight: bold;

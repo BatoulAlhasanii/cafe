@@ -36,9 +36,20 @@ class ValidateProductAddedQty implements Rule
 
                 if ( (intval($product->qty) + intval($value)) <= intval($product->stock) ) {
                     return true;
-                } else {
-                    return false;
                 }
+                else {
+                    //TODO
+                    //Check is active
+
+                    //in case product in cart had stock 0 but product is available
+                    $product = \App\Models\Product::where('id', request('productId'))->first();
+                    if ( (intval($product->qty) + intval($value)) <= intval($product->stock) ) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
             }
         }
 

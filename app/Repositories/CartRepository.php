@@ -43,7 +43,9 @@ class CartRepository implements CartContract
 
                 //in case cart page was refreshed
                 if(array_key_exists('requested_qty', $item)) {
-                    $item['qty'] = $item['requested_qty'];
+                    if($item['requested_qty'] !== null) {
+                        $item['qty'] = $item['requested_qty'];
+                    }
                 }
 
                 $item['is_available_item'] = null; //Item still available in stock

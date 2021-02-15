@@ -36,6 +36,11 @@ class Cart
 
         if (!empty($this->items) && array_key_exists($id, $this->items)) {
             $newItem = $this->items[$id];
+
+            //in case we changed qty we don't want to overwrite it in updateCart
+            if(array_key_exists('requested_qty', $newItem)) {
+                $newItem['requested_qty'] = null;
+            }
         }
 
         $newItem['current_price'] = $product->getCurrentPrice();
@@ -60,6 +65,10 @@ class Cart
         $qtyToSet = $this->equalize($qtyToSet);
 
         if (!empty($this->items) && array_key_exists($id, $this->items)) {
+            if(array_key_exists('requested_qty', $this->items[$id])) {
+                $this->items[$id]['requested_qty'] = null;
+            }
+
             $this->items[$id]['qty'] = $qtyToSet;
             $this->calculateCartTotals();
         }
