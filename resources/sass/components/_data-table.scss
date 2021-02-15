@@ -42,4 +42,14 @@ table {
     .product-name {
         margin: 0;
     }
+
+    .error-table-row {
+        background-color: #ff220080;
+    }
+    .error-product-message {
+        color: #dd2224;
+        font-weight: bold;
+        margin-top: 8px;
+        font-size: 14px;
+    }
 }

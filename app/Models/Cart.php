@@ -46,28 +46,7 @@ class Cart
         $this->items[$id] = $newItem;
         $this->calculateCartTotals();
     }
-/*
-    public function removeFromCart($product, $id, $qtyToRemove = 1)
-    {
 
-        $qtyToRemove = $this->equalize($qtyToRemove);
-        $product->price = $this->equalize($product->price);
-
-
-        if (!empty($this->items) && array_key_exists($id, $this->items) && $qtyToRemove <= $this->items[$id]['qty']) {
-
-            $this->items[$id]['qty'] -= $qtyToRemove;
-            $this->items[$id]['price'] = $this->items[$id]['qty'] * $product->getCurrentPrice();
-
-            if ($this->items[$id]['qty'] <= 0) {
-                unset($this->items[$id]);
-            }
-
-            $this->totalQuantity -= $qtyToRemove;
-            $this->totalPrice -= $qtyToRemove * $product->price;
-        }
-    }
-*/
     public function removeItem($id)
     {
         if (!empty($this->items) && array_key_exists($id, $this->items)) {
@@ -86,16 +65,42 @@ class Cart
         }
     }
 
+    public function getCartItems()
+    {
+        return $this->items;
+    }
+
+    public function setCartItems(array $newItems, $totalPrice, $totalQuantity)
+    {
+        $this->items = [];
+        $this->items = $newItems;
+        $this->totalPrice = $totalPrice;
+        $this->totalQuantity = $totalQuantity;
+    }
+
+    public function getProductQty($productId)
+    {
+        if (!empty($this->items) && array_key_exists($productId, $this->items)) {
+            return $this->items[$productId]['qty'];
+        } else {
+            return 0;
+        }
+    }
+
     public function getCartProductById($productId)
     {
-        $item = $this->items[$productId];
-        $product = $item['product'];
+        if (!empty($this->items) && array_key_exists($productId, $this->items)) {
+            $item = $this->items[$productId];
+            $product = $item['product'];
 
-        $product->qty = $item['qty'];
-        $product->current_price = $item['current_price'];
-        $product->total = $item['qty'] * $item['current_price'];
+            $product->qty = $item['qty'];
+            $product->current_price = $item['current_price'];
+            $product->total = $item['qty'] * $item['current_price'];
 
-        return $product;
+            return $product;
+        } else {
+            return null;
+        }
     }
 
     public function calculateCartTotals()

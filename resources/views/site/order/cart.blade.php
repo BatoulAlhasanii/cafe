@@ -44,7 +44,8 @@
                         </tfoot>
                         <tbody>
                             @foreach(Session::get('cart')->getCartProducts() as $product)
-                            <tr id="product-row-{{ $product->id }}">
+
+                            <tr id="product-row-{{ $product->id }}" class="{{ !$product->is_available_item ? 'error-table-row': ''}}">
                                 <td class="a-center">
                                     <a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Espresso em Cápsula Compatível com Nespresso" class="product-image">
                                         <img src="{{ asset( '/storage/' . explode(',', $product->images)[0] )}}" width="120" height="120" alt="Café Odebrecht Espresso em Cápsula Compatível com Nespresso">
@@ -60,7 +61,14 @@
                                         <div class="box-qty">
                                             <input type="number" name="qty" id="product-qty-field-{{ $product->id }}" value="{{ $product->qty }}" min="{{ $product->stock > 0 ? 1 : 0 }}" max="{{ $product->stock }}" class="product-qty-field input-text qty"><span id="product-inc-qty-{{ $product->id }}" class="arrow inc" title="Aumentar">+</span><span id="product-dec-qty-{{ $product->id }}" class="arrow dec" title="Diminuir">-</span>
                                         </div>
-                                        <div id="warning-msg-{{ $product->id }}" class="warning-msg">Only {{ $product->stock }} items left!</div>
+                                        <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock }} items left!</div>
+                                        @if (!$product->is_available_item)
+                                            <div class="error-product-message">This product is not available anymore.</div>
+
+                                        @elseif ($product->is_available_item && !$product->is_qty_available)
+                                            <div class="error-product-message">{{ $product->qty }} items left! The requested quantity is not available anymore.</div>
+                                        @endif
+
                                     </div>
                                 </td>
                                 <td class="a-center">

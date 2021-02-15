@@ -84,9 +84,9 @@
                             <div class="add-to-box grid12-12 no-gutter">
                                 <div class="add-to-cart v-centered-content">
                                     <div class="qty-wrapper">
-                                        <span id="product-dec-qty-{{ $product->id }}" class="arrow dec">-</span><input type="number" name="qty" id="product-qty-field-{{ $product->id }}"  min="{{ $product->stock > 0 ? 1 : 0 }}" max="{{ $product->stock }}" value="{{ $product->stock > 0 ? 1 : 0 }}" class="input-text qty"><span id="product-inc-qty-{{ $product->id }}" class="arrow inc">+</span>
+                                        <span id="product-dec-qty-{{ $product->id }}" class="arrow dec">-</span><input type="number" name="qty" id="product-qty-field-{{ $product->id }}"  min="{{ ($product->stock > 0 && $product->stock > Session::get('cart')->getProductQty($product->id)) ? 1 : 0 }}" max="{{ $product->stock > Session::get('cart')->getProductQty($product->id) ? ($product->stock - Session::get('cart')->getProductQty($product->id)) : 0 }}" value="{{ ($product->stock > 0 && $product->stock > Session::get('cart')->getProductQty($product->id)) ? 1 : 0 }}" class="input-text qty"><span id="product-inc-qty-{{ $product->id }}" class="arrow inc">+</span>
                                     </div>
-                                    <div id="warning-msg-{{ $product->id }}" class="warning-msg">Only {{ $product->stock }} items left!</div>
+                                    <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock > Session::get('cart')->getProductQty($product->id) ? ($product->stock - Session::get('cart')->getProductQty($product->id)) : 0 }} items left!</div>
                                 </div>
                             </div>
                             <div class="preco-prod grid12-12 no-gutter">
@@ -197,65 +197,6 @@
 
 <script type="text/javascript" src="{{ asset('/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/example/hammer.js/1.0.5/jquery.hammer.min.js') }}"></script>
 <script>
-    $(document).ready(function() {
-
-        $('.tab-link').on('click', function(e) {
-            e.preventDefault();
-
-
-            $('.tab-link').removeClass('is-active');
-            $(this).addClass('is-active');
-            $('.tab-content').removeClass('is-open');
-            $($(this).attr('href')).addClass('is-open');
-        });
-
-
-        $("#add-to-cart-btn").click(function(e) {
-            e.preventDefault();
-
-            $('.messages').empty();
-
-            var _token = $("input[name='_token']").val();
-            var productId = $("input[name='product-id']").val();
-            var qty = parseInt($("input[name='qty']").val());
-
-            $.ajax({
-                url: "/product/add-to-cart",
-                type: "POST",
-                data: { _token: _token, productId: productId, quantity: qty },
-                beforeSend: function() {
-                    $("#add-to-cart-btn .submitting").addClass("show");
-                    $("#add-to-cart-btn .submit").addClass("hide");
-                    $("#add-to-cart-btn").attr("disabled", true);
-                    $("#add-to-cart-btn").addClass("cursor-wait");
-                },
-                success: function(data) {
-                    $("#add-to-cart-btn .submitting").removeClass("show");
-                    $("#add-to-cart-btn .submit").removeClass("hide");
-                    $("#add-to-cart-btn").attr("disabled", false);
-                    $("#add-to-cart-btn").removeClass("cursor-wait");
-
-
-                    if ( data.status ) {
-                        $('.messages').html(
-                        `<li class="success-msg">
-                            <ul>
-                                <li> ${data.message} </li>
-                            </ul>
-                        </li>`);
-
-                        $('#header-cart-container').html(
-                        `<div class="cart-qtd">
-                            <p class="amount">${data.cart_count}</p>
-                        </div>`);
-                    }
-
-                }
-            });
-        });
-
-    });
-
     (function ($) {
     $(document).ready(function() {
         $('.xzoom4, .xzoom-gallery4').xzoom({tint: '#006699', Xoffset: 15});

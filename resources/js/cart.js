@@ -136,6 +136,10 @@ $(document).ready(function() {
 
         if (!$(this).val()) {
             $(this).val( $(this).attr('min') );
+
+            if ( parseInt($(this).attr('min')) === 0) {
+                $('#warning-msg-' + productId).addClass('display-msg');
+            }
         }
 
         setProductQty(productId, parseInt($focusedFieldValue) ,parseInt($(this).val()));

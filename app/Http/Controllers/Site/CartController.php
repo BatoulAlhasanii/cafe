@@ -5,48 +5,47 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\ProductContract;
+use App\Contracts\CartContract;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
     protected $productRepository;
+    protected $cartRepository;
 
-
-    public function __construct(ProductContract $productRepository)
+    public function __construct(ProductContract $productRepository, CartContract $cartRepository)
     {
         $this->productRepository = $productRepository;
+        $this->cartRepository = $cartRepository;
     }
 
     public function showCart(Request $request)
     {
-        $cart = $this->getCart($request);
+        //Session::flush('cart');
+
+        $this->cartRepository->updateCart();
+        $cart = $this->cartRepository->getCart($request);
 
         $productsInfo = $cart->getCartProducts();
 
         return view('site.order.cart', compact('productsInfo'));
     }
 
-    public function getCart($request)
-    {
-        if (Session::has('cart')) {
-            $cart = Session::get('cart');
-        } else {
-            $cart = new Cart();
-            $request->session()->put('cart', $cart);
-        }
-
-        return $cart;
-    }
 
     public function addToCart(Request $request)
     {
+        $this->validate($request, [
+            'productId' => 'required|exists:products,id',
+            'quantity' => ['required', 'integer', 'min:1', new \App\Rules\ValidateProductAddedQty()]
+        ]);
+
         $productId = $request->input('productId');
         $qtyToAdd = $request->input('quantity');
 
         $product = $this->productRepository->findProductById($productId);
 
-        $cart = $this->getCart($request);
+        $cart = $this->cartRepository->getCart($request);
         $cart->addToCart($product, $productId, $qtyToAdd);
         return response()->json([
             'status' => 'true',
@@ -56,30 +55,12 @@ class CartController extends Controller
 
         //  return redirect()->back()->with('message', 'Item added to cart successfully.');
     }
-/*
-    public function removeFromCart(Request $request)
-    {
-        $productId = $request->input('productId');
-        $qtyToRemove = $request->input('quantity');
 
-        $product = $this->productRepository->findProductById($productId);
-
-        $cart = $this->getCart($request);
-        $cart->removeFromCart($product, $productId, $qtyToRemove);
-
-        return response()->json([
-            'status' => 'true',
-            'message' => 'Item removed from cart successfully.'
-        ]);
-
-        //  return redirect()->back()->with('message', 'Item removed from cart successfully.');
-    }
-*/
     public function removeItem(Request $request)
     {
         $productId = $request->input('productId');
 
-        $cart = $this->getCart($request);
+        $cart = $this->cartRepository->getCart($request);
         $cart->removeItem($productId);
 
         return response()->json([
@@ -99,7 +80,7 @@ class CartController extends Controller
         $qtyToSet = $request->input('quantity');
         $product = $this->productRepository->findProductById($productId);
 
-        $cart = $this->getCart($request);
+        $cart = $this->cartRepository->getCart($request);
         $cart->setProductQty($product, $productId, $qtyToSet);
 
         return response()->json([
