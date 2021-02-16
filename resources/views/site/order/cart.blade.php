@@ -64,7 +64,6 @@
                                         <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock }} items left!</div>
                                         @if (!$product->is_available_item)
                                             <div class="error-product-message">This product is not available anymore.</div>
-
                                         @elseif ($product->is_available_item && !$product->is_qty_available)
                                             <div class="error-product-message">{{ $product->qty }} items left! The requested quantity is not available anymore.</div>
                                         @endif

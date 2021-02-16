@@ -30,6 +30,10 @@ class CartRepository implements CartContract
 
         if (Session::has('cart')) {
 
+            if (Session::has('areItemsAvailable')) {
+                session()->forget('areItemsAvailable');
+            }
+
             $items = Session::get('cart')->getCartItems();
             $totalPrice = 0.00;
             $totalQuantity = 0;
@@ -77,13 +81,7 @@ class CartRepository implements CartContract
                     $item['is_qty_available'] = false;
                     $item['requested_qty'] = $item['qty'];
                     $item['qty'] = 0;
-                    $product->stock = 0;
                 }
-
-
-                $product->is_available_item = $item['is_available_item'];
-                $product->is_qty_available = $item['is_qty_available'];
-                $product->requested_qty = $item['requested_qty'];
 
                 $item['product'] = $product;
 

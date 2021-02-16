@@ -10,6 +10,8 @@ use App\Contracts\CountryContract;
 use App\Contracts\CityContract;
 use App\Contracts\CartContract;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+
 
 class CheckoutController extends Controller
 {
@@ -28,7 +30,9 @@ class CheckoutController extends Controller
 
     public function index()
     {
-        $this->cartRepository->updateProductsInCart();
+        if (!Session::has('areItemsAvailable')) {
+            $this->cartRepository->updateProductsInCart();
+        }
 
         $country = $this->countryRepository->listCountries()[0];
         $cities = $this->cityRepository->listCitiesByCountry($country->id);
@@ -38,7 +42,7 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
-        //when to check if items are available?
+
         $this->validate($request, Order::rules());
 
         $order = $this->orderRepository->storeOrderDetails($request);
@@ -49,6 +53,8 @@ class CheckoutController extends Controller
             //Do Payment
             //flush cart
             return redirect()->back()->with('message','Order was placed');
+        } else {
+            return redirect()->back()->withInput();
         }
 
         return redirect()->back()->with('message','Order not placed');

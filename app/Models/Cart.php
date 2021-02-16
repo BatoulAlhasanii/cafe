@@ -139,6 +139,17 @@ class Cart
             $product->current_price = $item["current_price"];
             $product->total = $item['qty'] * $item['current_price'];
 
+
+            if(array_key_exists('is_available_item', $item)) {
+                $product->is_available_item = $item['is_available_item'];
+                $product->is_qty_available = $item['is_qty_available'];
+                $product->requested_qty = $item['requested_qty'];
+
+                if (!$product->is_active) {
+                    $product->stock = 0;
+                }
+            }
+
             $productsInfo[] = $product;
         }
 

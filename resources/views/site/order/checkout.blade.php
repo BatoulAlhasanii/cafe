@@ -33,7 +33,7 @@
                             <div class="field_row">
                                 <div class="col-unique">
                                     <label class="osc_label" for="osc_field_billing_name">Name<em class="osc_required">*</em></label>
-                                    <input id="osc_field_billing_name" type="text" class="input-text osc_input billing_input billing_required required-field" name="name">
+                                    <input id="osc_field_billing_name" name="name" value="{{ old('name') }}" type="text" class="input-text osc_input billing_input billing_required required-field">
                                 </div>
                                 @error('name')
                                 <div class="alert-msg">
@@ -46,7 +46,7 @@
                             <div class="field_row">
                                 <div class="col-unique">
                                     <label class="osc_label" for="osc_field_billing_lastname">Surname<em class="osc_required">*</em></label>
-                                    <input id="osc_field_billing_lastname" type="text" class="input-text osc_input billing_input billing_required required-field" name="surname">
+                                    <input id="osc_field_billing_lastname" name="surname" value="{{ old('surname') }}" type="text" class="input-text osc_input billing_input billing_required required-field">
                                 </div>
                                 @error('surname')
                                 <div class="alert-msg">
@@ -59,7 +59,7 @@
                             <div class="field_row">
                                 <div class="col-unique">
                                     <label class="osc_label" for="osc_field_billing_cep">Postcode<em class="osc_required">*</em></label>
-                                    <input id="osc_field_billing_cep" type="text" class="input-text osc_input billing_input billing_required" name="postcode" maxlength="5">
+                                    <input id="osc_field_billing_cep" name="postcode" value="{{ old('postcode') }}" type="text" class="input-text osc_input billing_input billing_required" maxlength="5">
                                     <a class="fieldpart-postcode-link osc_anchor" target="_blank" href="http://www.buscacep.correios.com.br/sistemas/buscacep/default.cfm">Não sabe o CEP?</a>
                                 </div>
                                 @error('postcode')
@@ -73,7 +73,7 @@
                             <div class="field_row">
                                 <div class="col-unique">
                                     <label class="osc_label" for="osc_field_billing_address">Address<em class="osc_required">*</em></label>
-                                    <input id="osc_field_billing_address" type="text" class="input-text  osc_input billing_input billing_required required-field" name="address">
+                                    <input id="osc_field_billing_address" name="address" value="{{ old('address') }}" type="text" class="input-text  osc_input billing_input billing_required required-field">
                                 </div>
                                 @error('address')
                                 <div class="alert-msg">
@@ -104,7 +104,11 @@
                                     <select id="osc_field_billing_region" class="billing_select billing_input billing_required required-field" name="city_id">
                                         <option value="">Select city...</option>
                                         @foreach($cities as $city)
-                                        <option value="{{ $city->id }}">{{ $city->cityTranslations[0]->name }}</option>
+                                            @if ( intval(old('city_id')) === intval($city->id) )
+                                            <option value="{{ $city->id }}" selected>{{ $city->cityTranslations[0]->name }}</option>
+                                            @else
+                                            <option value="{{ $city->id }}">{{ $city->cityTranslations[0]->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -119,7 +123,7 @@
                             <div class="field_row">
                                 <div class="col-unique">
                                     <label class="osc_label" for="osc_field_billing_cellphone">Phone 1<em class="osc_required">*</em></label>
-                                    <input id="osc_field_billing_telephone" type="tel" class="minTel input-text osc_input billing_input billing_required required-field" name="phone1">
+                                    <input id="osc_field_billing_telephone" name="phone1" value="{{ old('phone1') }}" type="tel" class="minTel input-text osc_input billing_input billing_required required-field">
                                 </div>
                                 @error('phone1')
                                 <div class="alert-msg">
@@ -132,7 +136,7 @@
                             <div class="field_row">
                                 <div class="col-unique">
                                     <label class="osc_label" for="osc_field_billing_cellphone">Phone 2<em class="osc_required">*</em></label>
-                                    <input id="osc_field_billing_cellphone" max-length="15" type="tel" class="minCel input-text osc_input billing_input billing_cellphone billing_required required-field" name="phone2">
+                                    <input id="osc_field_billing_cellphone" name="phone2" value="{{ old('phone1') }}" max-length="15" type="tel" class="minCel input-text osc_input billing_input billing_cellphone billing_required required-field">
                                 </div>
                                 @error('phone2')
                                 <div class="alert-msg">
@@ -207,6 +211,7 @@
                             <br>
                             <div id="checkout-review-load">
                                 <div id="checkout-review-table-wrapper">
+                                are items avalaible {{ Session::has('areItemsAvailable') ? 'hel' . Session::get('areItemsAvailable')  : '' }}
                                     <table class="data-table" id="checkout-review-table">
                                         <thead>
                                             <tr class="headers-osc">
@@ -235,8 +240,13 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
+                                            <?php
+                                                $areItemsNotAvailable = Session::has('areItemsAvailable') && (Session::get('areItemsAvailable') === false);
+
+                                            ?>
                                             @foreach(Session::get('cart')->getCartProducts() as $product)
-                                            <tr class="bodies-osc">
+
+                                            <tr class="bodies-osc {{ $areItemsNotAvailable  && !$product->is_available_item ? 'error-table-row': ''}}">
                                                 <td>
                                                     <div class="img-wrapper">
                                                         <img class="img-product" src="{{ asset( '/storage/' . explode(',', $product->images)[0] )}}" width="50">
@@ -249,7 +259,15 @@
                                                         <span class="price">{{ $product->current_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                                     </span>
                                                 </td>
-                                                <td class="a-center">{{ $product->qty }}</td>
+                                                <td class="a-center">
+                                                    {{ $product->qty }}
+
+                                                    @if ($areItemsNotAvailable  && !$product->is_available_item)
+                                                        <div class="error-product-message">This product is not available anymore.</div>
+                                                    @elseif ($areItemsNotAvailable  && $product->is_available_item && !$product->is_qty_available)
+                                                        <div class="error-product-message">{{ $product->qty }} items left! The requested quantity is not available anymore.</div>
+                                                    @endif
+                                                </td>
                                                 <td class="a-right">
                                                     <span class="cart-price">
                                                             <span class="price">{{ $product->qty * $product->current_price }} {{ config('currency.' . app()->getLocale()) }}</span>

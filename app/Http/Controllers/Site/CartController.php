@@ -27,9 +27,8 @@ class CartController extends Controller
         $this->cartRepository->updateCart();
         $cart = $this->cartRepository->getCart($request);
 
-        $productsInfo = $cart->getCartProducts();
 
-        return view('site.order.cart', compact('productsInfo'));
+        return view('site.order.cart');
     }
 
 
