@@ -428,17 +428,24 @@
                 bottom: 4rem;
             }
 
+            @media screen and (max-width: 1220.8px) {
+                bottom: 3rem;
+            }
+
             ul {
                 display: flex;
                 justify-content: center;
+                margin: 0 auto;
+                max-width: 850px;
 
                 li {
                     display: flex;
                     position: relative;
+                    flex: 1 0 auto;
 
                     &:not(:last-of-type)::before {
                         content: "";
-                        width: 1px;
+                        width: .9px;
                         height: 80%;
 
 
@@ -456,12 +463,13 @@
                     }
 
                     a {
+                        margin: 0 auto;
                         color: #d5ae68;
                         text-transform: uppercase;
                         font-family: "museo700",sans-serif;
-                        font-size: 1.5rem;
+                        font-size: 15px;
                         @media screen and (max-width: 1080px) {
-                            font-size: 1.16vw;
+                            font-size: 1.7rem;
                         }
                         font-weight: 500;
                         white-space: nowrap;

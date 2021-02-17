@@ -9,10 +9,21 @@
 <!-- Products -->
 <section class="products-section">
     <div class="container products-container">
-        <div class="title-bar">
-            <h2>
-                <span>os produtos</span>Mais Vendidos
-            </h2>
+        <div class="breadcrumbs">
+            <ul>
+                <li class="home">
+                    <a href="{{ route('home') }}" itemprop="item" title="Ir para Página Inicial">
+                    <span>Home</span></a>
+                    <span class="separator">|</span>
+                </li>
+                <li class="category">
+                    <a href="{{ route('category.show', ['slug' => $category->slug ]) }}" itemprop="item" title="Ir para Página Inicial">
+                    <span class="current">{{ $category->categoryTranslations[0]->name }}</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="page-title category-title">
+            <h3>{{ $category->categoryTranslations[0]->name }}</h3>
         </div>
         <ul class="products-grid">
             @foreach($category->products as $product)

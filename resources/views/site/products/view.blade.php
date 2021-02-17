@@ -13,17 +13,21 @@
     <div class="container">
         <!-- Breadcrumb -->
         <div class="breadcrumbs">
-            <ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                <li class="home" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                    <a href="https://www.cafeodebrecht.com.br/" itemprop="item" title="Ir para Página Inicial">
-                    <span itemprop="name">Home</span></a>
-                    <span class="separator">|</span><meta itemprop="position" content="1">
+            <ul>
+                <li class="home">
+                    <a href="{{ route('home') }}" itemprop="item" title="Ir para Página Inicial">
+                    <span>Home</span></a>
+                    <span class="separator">|</span>
                 </li>
-                <li class="product" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                    <a class="current" href="https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" title="" itemprop="item">
-                        <h1 itemprop="name" class="current">Café Odebrecht Superior</h1>
+                <li class="category">
+                    <a href="{{ route('category.show', ['slug' => $product->category->slug ]) }}" itemprop="item" title="Ir para Página Inicial">
+                    <span>{{ $product->category->categoryTranslations[0]->name }}</span></a>
+                    <span class="separator">|</span>
+                </li>
+                <li class="product">
+                    <a class="current" href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="" itemprop="item">
+                        <h1 class="current">Café Odebrecht Superior</h1>
                     </a>
-                    <meta itemprop="position" content="2">
                 </li>
             </ul>
         </div>
@@ -56,7 +60,7 @@
                         <div id="info-secondaria" class="bloco-info-produto grid12-12 no-gutter">
                             <div class="grid12-4 no-gutter a-left">
                                 <div class="availability in-stock">
-                                    <span class="title-rating">Produto:</span> <span class="disponivel">{{ $product->stock > 0 ? 'Available' : 'Unavailable' }}</span>
+                                    <span class="title-rating">Product:</span> <span class="disponivel">{{ $product->stock > 0 ? 'Available' : 'Unavailable' }}</span>
                                 </div>
                             </div>
                             <div class="grid12-3 no-gutter sku-align">
@@ -64,7 +68,7 @@
                             </div>
                             <div class="grid12-5 no-gutter a-right">
                                 <div class="no-ratings">
-                                    <span class="amount ancora-avaliacoes"><a class="ancora-avaliacoes" href="#avaliacoes">Avaliação: </a></span>
+                                    <span class="amount ancora-avaliacoes"><a class="ancora-avaliacoes" href="#avaliacoes">Evaluation: </a></span>
                                     <div class="rating-box">
                                         <div class="rating" style="width:0%"></div>
                                     </div>
@@ -75,7 +79,7 @@
                             <br>
                             <div class="block">
                                 <div class="block-title">
-                                    <strong><span>Pdf Indisponível</span></strong>
+                                    <strong><span></span></strong>
                                     <br>
                                 </div>
                             </div>
@@ -93,17 +97,17 @@
                                 @if($isDiscountActivated && $product->discount_price > 0  && $product->discount_price < $product->price)
                                 <div class="price-box">
                                     <p class="old-price">
-                                        <span class="price-label">De:</span>
+                                        <span class="price-label">from:</span>
                                         <span class="price">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                     </p>
 
                                     <p class="special-price">
-                                        <span class="price-label">Por:</span>
+                                        <span class="price-label">to:</span>
                                         <span class="price">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                     </p>
                                     <div class="price-statement no-display">
                                         <div>
-                                            em até <span class="price-num">1</span><span class="xmark">x</span> de <span class="price">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                            up to <span class="price-num">1</span><span class="xmark">x</span> from <span class="price">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +118,7 @@
                                     </p>
                                     <div class="price-statement no-display">
                                         <div>
-                                            em até <span class="price-num">1</span><span class="xmark">x</span> de <span class="price">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                            up to <span class="price-num">1</span><span class="xmark">x</span> from <span class="price">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +130,7 @@
                                 <button type="button" id="add-to-cart-btn" title="Comprar" class="btn-special btn-cart"><span class="submitting">Adding..</span><span class="submit">Add to cart</span></button>
                         </div>
                         <div id="socialWrap">
-                            <h4 class="pr15">Compartilhe:</h4>
+                            <h4 class="pr15">Social media:</h4>
                             <ul id="share-product">
                                 <li>
                                     <a class="icon-facebook" title="Compartilhe no Facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" rel="nofollow"></a>
@@ -152,11 +156,11 @@
                         <ul class="accordion-tabs-minimal">
                             <li class="">
                                 <a href="#descricao" class="tab-link is-active">
-                                    Descrição
+                                    Description
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#atributos" class="tab-link" id="tab-atributos">Especificações</a>
+                                <a href="#atributos" class="tab-link" id="tab-atributos">Specifications</a>
                             </li>
                         </ul>
                         <div id="descricao" class="tab-content is-open">

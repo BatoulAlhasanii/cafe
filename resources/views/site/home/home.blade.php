@@ -19,7 +19,7 @@
     <section class="coffee-favours">
         <div class="container coffee-favours-container">
             <div class="coffee-favours--title">
-                <h3><span>escolha o sabor do</span>Seu Paladar</h3>
+                <h3><span>choose the flavor of</span>Your Taste</h3>
             </div>
             <div class="coffee-favours--items">
                 <ul class="favours">
@@ -39,7 +39,7 @@
         <div class="container products-container">
             <div class="title-bar">
                 <h2>
-                    <span>os produtos</span>Mais Vendidos
+                    <span>the best</span>Seller Products
                 </h2>
             </div>
             <ul class="products-grid">
@@ -94,11 +94,11 @@
                                     <img src="{{asset('/storage/images/recipes-slider/shot-cappuccino-baunilha_4.jpg')}}" alt="Shot de cappuccino com baunilha e sal">
                                 </a>
                             </figure>
-                            <div class="title">conheça nossas</div>
-                            <div class="subtitle">Deliciosas Receitas</div>
-                            <a href="#/" tabindex="-1">Shot de cappuccino com baunilha e sal</a>
-                            <div class="text-content"><p>Confira a receita deste delicioso&nbsp;Shot de cappuccino com baunilha e sal</p></div>
-                            <a class="read-more" href="#/" tabindex="-1">Leia Mais</a>
+                            <div class="title">meet our</div>
+                            <div class="subtitle">Delicious Recipes</div>
+                            <a href="#/" tabindex="-1">Cappuccino shot with vanilla and salt</a>
+                            <div class="text-content"><p>Check out the recipe for this delicious Cappuccino Shot with vanilla and salt</p></div>
+                            <a class="read-more" href="#/" tabindex="-1">Read more</a>
                         </li>
                     </ul>
                 </div>
@@ -106,15 +106,15 @@
                     <ul>
                         <li>
                             <figure class="slide-img">
-                                <a href="#" title="Shot de cappuccino com baunilha e sal" tabindex="-1">
-                                    <img src="{{asset('/storage/images/recipes-slider/shot-cappuccino-baunilha_4.jpg')}}" alt="Shot de cappuccino com baunilha e sal">
+                                <a href="#" title="Cappuccino shot with vanilla and salt" tabindex="-1">
+                                    <img src="{{asset('/storage/images/recipes-slider/shot-cappuccino-baunilha_4.jpg')}}" alt="Cappuccino shot with vanilla and salt">
                                 </a>
                             </figure>
-                            <div class="title">conheça nossas</div>
-                            <div class="subtitle">Deliciosas Receitas</div>
-                            <a href="#" tabindex="-1">Shot de cappuccino com baunilha e sal</a>
-                            <div class="text-content"><p>Confira a receita deste delicioso&nbsp;Shot de cappuccino com baunilha e sal</p></div>
-                            <a class="read-more" href="#" tabindex="-1">Leia Mais</a>
+                            <div class="title">meet our</div>
+                            <div class="subtitle">Delicious Recipes</div>
+                            <a href="#" tabindex="-1">Cappuccino shot with vanilla and salt</a>
+                            <div class="text-content"><p>Check out the recipe for this delicious Cappuccino Shot with vanilla and salt</p></div>
+                            <a class="read-more" href="#" tabindex="-1">Read more</a>
                         </li>
                     </ul>
                 </div>

@@ -1,0 +1,40 @@
+.breadcrumbs {
+    margin: 15px 0 20px 0;
+    padding: 0;
+    color: #3a2419;
+    display: flex;
+    &:before {
+        content: '\e817';
+        font-family: 'fontello';
+        font-size: 19px;
+        margin-right: 5px;
+        padding-top: 2px;
+        color: #3a2419;
+        line-height: 14px;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+        padding-top: 5px;
+        li {
+            margin: 0 5px 0 0;
+            line-height: 18px;
+            a {
+                font-size: 12.6px;
+                font-weight: 400;
+                color: #3a2419;
+                .current {
+                    font-size: 12.6px;
+                    font-weight: 400;
+                    color: #d5ae68;
+                    margin: 0;
+                }
+            }
+            .separator {
+                padding: 0 5px;
+            }
+
+        }
+    }
+}

@@ -89,13 +89,9 @@
         <div class="nav-container">
             <nav id="nav">
                 <ul class="cat level1">
-                    <li class="item1-1"><a href="#">Café Torrado e Moído</a></li>
-                    <li class="item2-1"><a href="#">Café em Grão</a></li>
-                    <li class="item3-1"><a href="#">Achocolatado</a></li>
-                    <li class="item4-1"><a href="#">Solúvel</a></li>
-                    <li class="item5-1"><a href="#">Cappuccino</a></li>
-                    <li class="item6-1"><a href="#">Máquinas</a></li>
-                    <li class="item7-1 parent"><a href="#">Acessórios</a></li>
+                    @foreach($categories as $category)
+                        <li class="item1-1"><a href="{{ route('category.show', ['slug' => $category->slug ]) }}">{{ $category->categoryTranslations[0]->name }}</a></li>
+                    @endforeach
                 </ul>
             </nav>
         </div>
@@ -104,12 +100,9 @@
 <div class="nav-mobile-container">
     <nav id="navMobile">
         <ul class="cat level1">
-            <li class="item1-1"><a href="#">Café Torrado e Moído</a></li>
-            <li class="item2-1"><a href="#">Café em Grão</a></li>
-            <li class="item3-1"><a href="#">Achocolatado</a></li>
-            <li class="item4-1"><a href="#">Solúvel</a></li>
-            <li class="item5-1"><a href="#">Cappuccino</a></li>
-            <li class="item6-1"><a href="#">Máquinas</a></li>
+            @foreach($categories as $category)
+                <li class="item1-1"><a href="{{ route('category.show', ['slug' => $category->slug ]) }}">{{ $category->categoryTranslations[0]->name }}</a></li>
+            @endforeach
         </ul>
     </nav>
 </div>

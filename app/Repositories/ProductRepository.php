@@ -47,6 +47,10 @@ class ProductRepository extends BaseRepository implements ProductContract
     public function listFeaturedProducts()
     {
         return Product::where(['is_active' => true, 'is_featured' => true])
+                ->where('is_active', true)
+                ->whereHas('category', function($query) {
+                    $query->where('is_active', true);
+                })
                 ->with(array('productTranslations' => function($query) {
                     $query->where('lang', app()->getLocale())->select('product_id', 'name');
                 }))->get();
@@ -236,6 +240,12 @@ class ProductRepository extends BaseRepository implements ProductContract
             ->whereHas('category', function($query) {
                 $query->where('is_active', true);
             })
+            ->with(array('category' => function($query) {
+                $query->where('is_active', true)
+                ->with('categoryTranslations', function ($query) {
+                    $query->where('lang', app()->getLocale());
+                });
+            }))
             ->with(array('productTranslations' => function($query) {
                 $query->where('lang', app()->getLocale());
             }))
