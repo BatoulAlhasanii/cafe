@@ -229,10 +229,15 @@
                             text-decoration: line-through;
                         }
                     }
-                    .special-price .price {
-                        font-size: 30px;
+                    .special-price .price, .regular-price .price {
+                        font-size: 3rem;
                         color: #aa0f14;
                         font-weight: bold;
+                    }
+                    .price-statement {
+                        .price-num, .xmark, .price {
+                            font-weight: 700;
+                        }
                     }
                 }
             }

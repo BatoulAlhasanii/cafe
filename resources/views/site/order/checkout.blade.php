@@ -211,7 +211,6 @@
                             <br>
                             <div id="checkout-review-load">
                                 <div id="checkout-review-table-wrapper">
-                                are items avalaible {{ Session::has('areItemsAvailable') ? 'hel' . Session::get('areItemsAvailable')  : '' }}
                                     <table class="data-table" id="checkout-review-table">
                                         <thead>
                                             <tr class="headers-osc">

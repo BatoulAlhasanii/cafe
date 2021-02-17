@@ -10,6 +10,8 @@
 __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 
 __webpack_require__(/*! ./single-product */ "./resources/js/single-product.js");
+
+__webpack_require__(/*! ./header */ "./resources/js/header.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -203,6 +205,26 @@ $(document).ready(function () {
     setProductQty(productId, parseInt($focusedFieldValue), parseInt($(this).val()));
     $focusedField = null;
     $focusedFieldValue = null;
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/header.js":
+/*!********************************!*\
+  !*** ./resources/js/header.js ***!
+  \********************************/
+/***/ (() => {
+
+$(document).ready(function () {
+  $('.open-mobile-nav').click(function () {
+    $('.open-mobile-nav').toggleClass('active');
+    $('.nav-mobile-container').toggleClass('speed-in');
+    $('#shadow-layer').toggleClass('is-visible');
+  });
+  $('.opensearch').click(function () {
+    $('.opensearch').toggleClass('active');
+    $('.mobile-search').toggleClass('active');
   });
 });
 

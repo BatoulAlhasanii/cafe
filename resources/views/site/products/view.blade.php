@@ -90,22 +90,35 @@
                                 </div>
                             </div>
                             <div class="preco-prod grid12-12 no-gutter">
+                                @if($isDiscountActivated && $product->discount_price > 0  && $product->discount_price < $product->price)
                                 <div class="price-box">
                                     <p class="old-price">
                                         <span class="price-label">De:</span>
-                                        <span class="price" id="old-price-52">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                        <span class="price">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                     </p>
 
                                     <p class="special-price">
                                         <span class="price-label">Por:</span>
-                                        <span class="price" id="product-price-52">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                        <span class="price">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                     </p>
-                                    <div class="parcelaBloco no-display">
-                                        <div class="parcela-semjuros">
-                                            em até<span class="parcela" data-parcela="1">1</span><span class="xparc">x</span> de <span class="price">{{ $product->discount_price }}</span>
+                                    <div class="price-statement no-display">
+                                        <div>
+                                            em até <span class="price-num">1</span><span class="xmark">x</span> de <span class="price">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                         </div>
                                     </div>
                                 </div>
+                                @else
+                                <div class="price-box">
+                                    <p class="regular-price">
+                                        <span class="price">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                    </p>
+                                    <div class="price-statement no-display">
+                                        <div>
+                                            em até <span class="price-num">1</span><span class="xmark">x</span> de <span class="price">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
                         </div>
                         <div class="add-to-cart-btn-container add-to-cart v-centered-content">

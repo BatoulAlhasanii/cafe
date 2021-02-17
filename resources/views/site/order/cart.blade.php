@@ -71,10 +71,10 @@
                                     </div>
                                 </td>
                                 <td class="a-center">
-                                    <span class="cart-price"><span id="current-price-{{ $product->id }}" class="price">{{ $product->getCurrentPrice() }} {{ config('currency.' . app()->getLocale()) }}</span</span>
+                                    <span class="cart-price"><span id="current-price-{{ $product->id }}" class="price">{{ $product->current_price }} {{ config('currency.' . app()->getLocale()) }}</span</span>
                                 </td>
                                 <td class="a-center total">
-                                    <span class="cart-price"><span id="total-price-{{ $product->id }}" class="price">{{ $product->getCurrentPrice() * $product->qty }} {{ config('currency.' . app()->getLocale()) }}</span></span>
+                                    <span class="cart-price"><span id="total-price-{{ $product->id }}" class="price">{{ $product->current_price * $product->qty }} {{ config('currency.' . app()->getLocale()) }}</span></span>
                                 </td>
                                 <td class="a-center remove last">
                                     <a data-product-id="{{ $product->id }}" class="remove-item-btn small remover remove-ajax">

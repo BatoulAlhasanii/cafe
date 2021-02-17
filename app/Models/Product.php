@@ -82,7 +82,9 @@ class Product extends Model
         return $this->hasMany(\App\Models\ProductTranslation::class, 'product_id');
     }
     public function getCurrentPrice() {
-        if ($this->discount_price !== 0.00) {
+        $activateDiscount = Setting::where('setting_name', Setting::$activateDiscountName)->first();
+
+        if (intval($activateDiscount->setting_value) === 1 && $this->discount_price > 0  && $this->discount_price < $this->price) {
             return $this->discount_price;
         } else {
             return $this->price;

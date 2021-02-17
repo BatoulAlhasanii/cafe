@@ -162,7 +162,7 @@ class OrderRepository extends BaseRepository implements OrderContract
 
                 $order = null;
 
-                if (Session::has('areItemsAvailable') && Session::get('areItemsAvailable')) {
+                if (Session::has('areItemsAvailable') && Session::get('areItemsAvailable') && $products && count($products)) {
                     //if available -> create order
                     $order = new Order();
                     $order->fill([

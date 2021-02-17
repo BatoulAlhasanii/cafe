@@ -99,7 +99,7 @@
                             display: block;
                             background: #d5ae68;
                             width: 30px;
-                            height: 4px;
+                            height: 3px;
                             border-radius: 9px;
                             opacity: 1;
                             filter: alpha(opacity=100);
@@ -109,10 +109,10 @@
                                 top: 0px;
                             }
                             &:nth-child(2), &:nth-child(3) {
-                                top: 8px;
+                                top: 9px;
                             }
                             &:nth-child(4) {
-                                top: 16px;
+                                top: 18px;
                             }
                         }
                     }
@@ -122,6 +122,7 @@
 
             .opensearch {
                 display: none;
+
                 @media only screen and (max-width: 769.8px) {
                     display: block;
                     width: 50px;
@@ -130,11 +131,13 @@
                     font-size: 22px;
                     text-align: center;
                     color: $color-primary-light;
+                    &.active {
+                        background: $color-primary-light;
+                        color: $color-white;
+                    }
+
                 }
-                .active {
-                    background: $color-primary-light;
-                    color: $color-white;
-                }
+
             }
 
             .logo-wrapper {
@@ -163,7 +166,8 @@
                     @media only screen and (max-width: 769.8px) {
                         width: auto;
                         max-width: unset;
-                        max-height: 50px;
+                        max-height: 44px;
+                        vertical-align: middle;
                     }
                 }
             }
@@ -303,6 +307,9 @@
                             color: #fff;
                             font-weight: 600;
                             background: #3a2419;
+                            @media screen and (max-width: 769.8px) {
+                                top: 4px;
+                            }
                         }
                     }
 
@@ -338,6 +345,10 @@
                             position: absolute;
                             top: 0;
                             right: 0;
+                            @media only screen and (max-width: 769.8px) {
+                                font-size: 3rem;
+                                top: -3px;
+                            }
                         }
                         .cart-qtd {
                             position: absolute;
@@ -353,6 +364,13 @@
                             border-radius: 0px 5px 5px 0px;
                             z-index: 3;
                             transform: translate(0, -50%);
+                            @media only screen and (max-width: 769.8px) {
+                                width: 2.4rem;
+                                height: 2.4rem;
+                                border: solid 2px #d5ae68;
+                                border-left: none;
+                                transform: translate(0, -50%);
+                            }
                             .amount {
                                 margin: 0;
                                 padding: 0;

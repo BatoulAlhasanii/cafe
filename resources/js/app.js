@@ -1,5 +1,6 @@
 require("./cart");
 require("./single-product");
+require("./header");
 
 /**
  * First we will load all of this project's JavaScript dependencies which

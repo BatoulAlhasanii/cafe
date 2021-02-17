@@ -1102,7 +1102,7 @@ input.error, select.error {
     display: block;
     background: #d5ae68;
     width: 30px;
-    height: 4px;
+    height: 3px;
     border-radius: 9px;
     opacity: 1;
     filter: alpha(opacity=100);
@@ -1113,10 +1113,10 @@ input.error, select.error {
     top: 0px;
   }
   .header-container header .header-primary-container .open-mobile-nav .icone span:nth-child(2), .header-container header .header-primary-container .open-mobile-nav .icone span:nth-child(3) {
-    top: 8px;
+    top: 9px;
   }
   .header-container header .header-primary-container .open-mobile-nav .icone span:nth-child(4) {
-    top: 16px;
+    top: 18px;
   }
 }
 .header-container header .header-primary-container .opensearch {
@@ -1132,10 +1132,10 @@ input.error, select.error {
     text-align: center;
     color: #d5ae68;
   }
-}
-.header-container header .header-primary-container .opensearch .active {
-  background: #d5ae68;
-  color: #fff;
+  .header-container header .header-primary-container .opensearch.active {
+    background: #d5ae68;
+    color: #fff;
+  }
 }
 .header-container header .header-primary-container .logo-wrapper {
   width: 17rem;
@@ -1167,7 +1167,8 @@ input.error, select.error {
   .header-container header .header-primary-container .logo-wrapper img {
     width: auto;
     max-width: unset;
-    max-height: 50px;
+    max-height: 44px;
+    vertical-align: middle;
   }
 }
 .header-container header .header-primary-container .header-wrapper {
@@ -1300,6 +1301,11 @@ input.error, select.error {
   font-weight: 600;
   background: #3a2419;
 }
+@media screen and (max-width: 769.8px) {
+  .header-container header .header-primary-container .header-wrapper .header-gutter--3 .form-search button {
+    top: 4px;
+  }
+}
 @media screen and (min-width: 770px) {
   .header-container header .header-primary-container .header-wrapper .header-gutter--3 {
     width: 41.6666667%;
@@ -1329,6 +1335,12 @@ input.error, select.error {
   top: 0;
   right: 0;
 }
+@media only screen and (max-width: 769.8px) {
+  .header-container header .header-primary-container .header-wrapper .header-gutter--4 .icone:before {
+    font-size: 3rem;
+    top: -3px;
+  }
+}
 .header-container header .header-primary-container .header-wrapper .header-gutter--4 .icone .cart-qtd {
   position: absolute;
   top: 50%;
@@ -1343,6 +1355,15 @@ input.error, select.error {
   border-radius: 0px 5px 5px 0px;
   z-index: 3;
   transform: translate(0, -50%);
+}
+@media only screen and (max-width: 769.8px) {
+  .header-container header .header-primary-container .header-wrapper .header-gutter--4 .icone .cart-qtd {
+    width: 2.4rem;
+    height: 2.4rem;
+    border: solid 2px #d5ae68;
+    border-left: none;
+    transform: translate(0, -50%);
+  }
 }
 .header-container header .header-primary-container .header-wrapper .header-gutter--4 .icone .cart-qtd .amount {
   margin: 0;
@@ -2459,10 +2480,13 @@ footer .social-links-container .social-media-links li a i {
   font-weight: bold;
   text-decoration: line-through;
 }
-.product-img-details .product-details .preco-comprar .preco-prod .price-box .special-price .price {
-  font-size: 30px;
+.product-img-details .product-details .preco-comprar .preco-prod .price-box .special-price .price, .product-img-details .product-details .preco-comprar .preco-prod .price-box .regular-price .price {
+  font-size: 3rem;
   color: #aa0f14;
   font-weight: bold;
+}
+.product-img-details .product-details .preco-comprar .preco-prod .price-box .price-statement .price-num, .product-img-details .product-details .preco-comprar .preco-prod .price-box .price-statement .xmark, .product-img-details .product-details .preco-comprar .preco-prod .price-box .price-statement .price {
+  font-weight: 700;
 }
 .product-img-details .product-details .preco-comprar .add-to-cart {
   margin: 0 0 15px 0;
@@ -3457,7 +3481,7 @@ footer .social-links-container .social-media-links li a i {
   box-shadow: 0 0.5rem 1rem rgba(110, 0, 255, 0.15);
 }
 
-.admin .main-footer-wrapper .page-content.orders-page h1 {
+.admin .main-footer-wrapper .page-content.orders-page h1, .admin .main-footer-wrapper .page-content.settings-page h1 {
   padding: 8rem 0 !important;
 }
 .admin .main-footer-wrapper .page-content .page-title h1 {

@@ -21,6 +21,9 @@
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="sidebar-nav-link">Users</a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('settings.index') }}" class="sidebar-nav-link">Settings</a>
+            </li>
         </ul>
     </div>
 </div>

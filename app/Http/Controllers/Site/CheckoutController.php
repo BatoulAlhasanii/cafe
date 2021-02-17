@@ -30,6 +30,12 @@ class CheckoutController extends Controller
 
     public function index()
     {
+        $previousRoute = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
+
+        if ($previousRoute !== 'checkout.placeOrder' && $previousRoute !== 'cart.show' && $previousRoute !== 'checkout.index') {
+            return redirect()->route('cart.show');
+        }
+
         if (!Session::has('areItemsAvailable')) {
             $this->cartRepository->updateProductsInCart();
         }

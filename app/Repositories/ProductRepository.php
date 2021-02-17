@@ -149,7 +149,7 @@ class ProductRepository extends BaseRepository implements ProductContract
                 foreach ($arrayOfDeletedImages as $deletedImage) {
                     $index = array_search($deletedImage, $arrayOfProductImages);
                     if($index !== false){
-                        $this->deleteOne($deletedImage);
+                        //$this->deleteOne($deletedImage);
                         unset($arrayOfProductImages[$index]);
                     }
                 }
