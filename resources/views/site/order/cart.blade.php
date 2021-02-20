@@ -1,18 +1,29 @@
 @extends('layout.app')
 
 @section('head-links-scripts')
-
 @endsection
 
+@section('header')
+  @include('layout.simple-header')
+@endsection
+
+@section('footer')
+  @include('layout.simple-footer')
+@endsection
+
+@section('page-wrapper')
+cart-page-wrapper
+@endsection
 
 @section('content')
+@if(Session::has('cart') && count(Session::get('cart')->getCartProducts()) > 0)
 <div class="main-container cart-page">
     <div class="container">
         <div class="cart">
             <div class="title-buttons">
-                <h1>Carrinho de compras</h1>
+                <h1>Shopping Cart</h1>
                 <div class="checkout-types">
-                        <a title="Fechar Pedido" class="button btn-proceed-checkout btn-checkout" href="{{ route('checkout.index') }}">Fechar Pedido</a>
+                        <a title="Proceed To Checkout" class="button btn-proceed-checkout btn-checkout" href="{{ route('checkout.index') }}">Proceed To Checkout</a>
                 </div>
             </div>
             <ul class="messages">
@@ -24,21 +35,17 @@
                         <thead>
                             <tr class="first last">
                                 <th class="col-img">&nbsp;</th>
-                                <th>Nome do Produto</th>
-                                <th class="a-center">Quantidade</th>
-                                <th class="col-unit-price a-center">Preço Unitário</th>
-                                <th class="a-center">Subtotal</th>
-                                <th class="a-center">Remover</th>
+                                <th>Product Name</th>
+                                <th class="a-center">Quantity</th>
+                                <th class="col-unit-price a-center">Subtotal</th>
+                                <th class="a-center">Total</th>
+                                <th class="a-center">Remove</th>
                             </tr>
                         </thead>
                             <tfoot>
                             <tr class="first last">
                                 <td>
-                                    <button type="button" title="Continuar Comprando" class="btn-continue btn-inline button" onclick="setLocation('https://www.cafeodebrecht.com.br/capsula-odebrecht-superior.html')">Voltar para loja</button>
-                                </td>
-                                <td colspan="5" class="a-right last">
-                                    <button type="button" class="btn-limpar btn-inline" title="Limpar Carrinho" onclick="setLocation('https://www.cafeodebrecht.com.br/checkout/cart/clear/')">Limpar Carrinho</button>
-                                    <button type="submit" name="update_cart_action" value="update_qty" title="Atualizar Valores" class="btn-update btn-inline">Atualizar Valores</button>
+                                    <a href="{{ route('home') }}" class="btn-with-row btn-inline">Back to store</a>
                                 </td>
                             </tr>
                         </tfoot>
@@ -53,7 +60,7 @@
                                 </td>
                                 <td>
                                     <h2 class="product-name">
-                                        <a href="{{ route('product.show', ['slug' => $product->slug ]) }}">{{ $product->productTranslations[0]->name }}</a>
+                                        <a href="{{ route('product.show', ['slug' => $product->slug ]) }}">{{ $product->productTranslations->where('lang', app()->getLocale())->first()->name }}</a>
                                     </h2>
                                 </td>
                                 <td class="a-center qty">
@@ -99,7 +106,7 @@
                             <tfoot>
                                 <tr>
                                     <td class="a-right">
-                                        <strong>Valor Total</strong>
+                                        <strong>Total</strong>
                                     </td>
                                     <td class="a-right">
                                         <strong><span id="cart-total" class="price">{{ Session::get('cart')->getCartTotals()['total'] }} {{ config('currency.' . app()->getLocale()) }}</span></strong>
@@ -117,14 +124,29 @@
                         </table>
                     </div>
                     <div class="checkout-types bottom">
-                        <a title="Fechar Pedido" class="button btn-proceed-checkout btn-checkout" href="{{ route('checkout.index') }}">Fechar Pedido</a>
+                        <a title="Proceed To Checkout" class="button btn-proceed-checkout btn-checkout" href="{{ route('checkout.index') }}">Proceed To Checkout</a>
                     </div>
                 </div>
                 <div class="grid-full no-gutter"></div>
             </div>
         </div>
+
     </div>
 </div>
+@else
+<div class="main-container empty-cart-page">
+    <div class="empty-cart container">
+        <div class="page-title">
+            <h1>Empty cart</h1>
+        </div>
+        <div class="empty-cart-message flex-column">
+            <h1 class="icon-emo-unhappy">What a pity!</h1>
+            <p>There are no items in your cart.</p>
+            <a href="{{ route('home') }}" class="btn-continue btn-inline btn-with-row">Back to store</a>
+        </div>
+    </div>
+</div>
+@endif
 @endsection
 
 

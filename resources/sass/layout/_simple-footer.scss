@@ -1,0 +1,36 @@
+.simple-footer {
+    height: 100px;
+    background-color: #f2f2f2;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.14), rgba(0,0,0,0.03) 3px, transparent);
+    padding: 15px 30px 10px;
+
+    .footer-copyright {
+        color: #3a2419;
+        font-family: verdana, sans-serif;
+        font-size: 11px;
+        text-align: center;
+        margin-top: 15px;
+        a {
+            color: #3a2419;
+            text-decoration: none;
+        }
+    }
+    .footer-bottom-part {
+        width: 100%;
+        color: #3a2419;
+        font-family: verdana, sans-serif;
+        font-size: 11px;
+        text-align: center;
+        ul {
+            li {
+                margin: 0 5px 0 0;
+                display: inline-block;
+                line-height: 1.6;
+                a {
+                    color: #3a2419;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

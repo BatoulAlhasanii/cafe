@@ -26,7 +26,7 @@
                 </li>
                 <li class="product">
                     <a class="current" href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="" itemprop="item">
-                        <h1 class="current">Café Odebrecht Superior</h1>
+                        <h1 class="current">{{ $product->productTranslations[0]->name }}</h1>
                     </a>
                 </li>
             </ul>
@@ -68,7 +68,6 @@
                             </div>
                             <div class="grid12-5 no-gutter a-right">
                                 <div class="no-ratings">
-                                    <span class="amount ancora-avaliacoes"><a class="ancora-avaliacoes" href="#avaliacoes">Evaluation: </a></span>
                                     <div class="rating-box">
                                         <div class="rating" style="width:0%"></div>
                                     </div>

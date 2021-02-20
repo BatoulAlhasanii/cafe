@@ -21,6 +21,10 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'Inventory Clerk',
                 'slug' => 'inventory-clerk',
+            ],
+            [
+                'name' => 'Permission Free',
+                'slug' => 'permission-free',
             ]
         ]);
 

@@ -10,13 +10,12 @@
       <div class="page-main-content">
         @yield('content')
       </div>
-      @include('layout.footer')
+      @yield('footer',\View::make('layout.footer'))
     </div>
 
   </body>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
   <script src="{{ asset(mix('/js/app.js')) }}"></script>
   @yield('javascript-scripts')
 

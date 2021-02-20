@@ -258,4 +258,21 @@ class ProductRepository extends BaseRepository implements ProductContract
             throw new ModelNotFoundException();
         }
     }
+
+    public function search($request)
+    {
+        $products = Product::where('is_active', true)
+        ->whereHas('category', function ($query) {
+            $query->where('is_active', true);
+        })
+        ->whereHas('productTranslations', function ($query) use ($request){
+            $query->where('name','LIKE','%'. $request->q .'%');
+        })
+        ->with(array('productTranslations' => function($query) {
+            $query->where('lang', app()->getLocale());
+        }))->get();
+
+
+        return $products;
+    }
 }

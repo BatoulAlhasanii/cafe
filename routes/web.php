@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+$locale = Request::segment(1);
+
+if (in_array($locale, Config::get('app.available_locales'))) {
+    \App::setLocale($locale);
+} else {
+    $locale = '';
+}
+
+
 //without lang
 Route::post('/product/add-to-cart', 'App\Http\Controllers\Site\CartController@addToCart')->name('product.add.cart');
 Route::post('/product/remove-item', 'App\Http\Controllers\Site\CartController@removeItem')->name('cart.remove.item');
@@ -59,10 +68,14 @@ Route::group(['prefix' => '' /** TODO Add prefix for security e.g. admin-xvq734r
 });
 
 
+Route::get('product/search', 'App\Http\Controllers\Site\ProductController@search')->name('product.search');
 
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
-Route::get('/category/{slug}', 'App\Http\Controllers\Site\CategoryController@show')->name('category.show');
-Route::get('/product/{slug}', 'App\Http\Controllers\Site\ProductController@show')->name('product.show');
-Route::get('/cart', 'App\Http\Controllers\Site\CartController@showCart')->name('cart.show');
-Route::get('/checkout', 'App\Http\Controllers\Site\CheckoutController@index')->name('checkout.index');
-
+Route::group([
+    'prefix' => $locale,
+    'middleware' => 'setlocale'], function() {
+        Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+        Route::get('/category/{slug}', 'App\Http\Controllers\Site\CategoryController@show')->name('category.show');
+        Route::get('/product/{slug}', 'App\Http\Controllers\Site\ProductController@show')->name('product.show');
+        Route::get('/cart', 'App\Http\Controllers\Site\CartController@showCart')->name('cart.show');
+        Route::get('/checkout', 'App\Http\Controllers\Site\CheckoutController@index')->name('checkout.index');
+});

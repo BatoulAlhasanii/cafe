@@ -9,12 +9,17 @@
 @import "components/messages";
 @import "components/products-grid";
 @import "components/breadcrumbs";
+@import "components/btn-with-row";
 @import "layout/header";
 @import "layout/footer";
+@import "layout/page-with-simple-header-footer";
+@import "layout/simple-header";
+@import "layout/simple-footer";
 @import "pages/home";
 @import "pages/single-product";
 @import "pages/cart";
 @import "pages/checkout";
+@import "pages/search-results";
 @import "admin/header";
 @import "admin/main-footer";
 @import "admin/sidebar";

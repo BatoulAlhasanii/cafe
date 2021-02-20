@@ -78,12 +78,4 @@
             </div>
         </div>
     </div>
-	<section class="store-location">
-		<div class="store-location-header container">
-			<div class="header-content">
-				<i class="icon-endereco"></i> <span>Find a close unit to you</span>
-			</div>
-		</div>
-		<iframe width="100%" height="400" src="https://maps.google.com/maps?width=100%&amp;height=400&amp;hl=en&amp;coord=-23.340850,-51.157220&amp;q=Av.%20Harry%20Prochet%2C%20305%20-%20BOX%2021%20-%20S%C3%A3o%20Jorge%2C%20Londrina%20-%20PR%2C%2086047-040+(Caf%C3%A9%20Odebrecht)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/create-google-map/">Google map generator</a></iframe>
-    </section>
 </footer>

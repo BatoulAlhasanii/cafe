@@ -167,11 +167,12 @@ class OrderRepository extends BaseRepository implements OrderContract
                     $order = new Order();
                     $order->fill([
                         'status' => Order::$statusPending,
+                        'order_number' => strval(rand(11111, 99999)),
                         'name' => $request->name,
                         'surname' => $request->surname,
-                        'postcode' => $request->postcode,
-                        'phone1' => $request->phone1,
-                        'phone2' => $request->phone2,
+                        'phone' => $request->phone,
+                        'email' => $request->email,
+                        'district' => $request->district,
                         'address' => $request->address,
                         'city_id' => $request->city_id,
                         'country_id' => $request->country_id
@@ -193,7 +194,7 @@ class OrderRepository extends BaseRepository implements OrderContract
 
                             $orderItems[] = new OrderItem([
                                 'product_id' => $product->id,
-                                'product_price' =>  $item['qty'] * $item['current_price'],
+                                'product_price' =>  $item['current_price'],
                                 'qty' => $item['qty']
                             ]);
 

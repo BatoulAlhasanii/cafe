@@ -32,9 +32,15 @@ class CheckoutController extends Controller
     {
         $previousRoute = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
 
+        if (!Session::has('cart') || ( Session::has('cart') && !count(Session::get('cart')->getCartItems()) ) ) {
+            return redirect()->route('cart.show');
+        }
+
         if ($previousRoute !== 'checkout.placeOrder' && $previousRoute !== 'cart.show' && $previousRoute !== 'checkout.index') {
             return redirect()->route('cart.show');
         }
+
+
 
         if (!Session::has('areItemsAvailable')) {
             $this->cartRepository->updateProductsInCart();
@@ -58,7 +64,7 @@ class CheckoutController extends Controller
             //$this->payPal->processPayment($order);
             //Do Payment
             //flush cart
-            return redirect()->back()->with('message','Order was placed');
+            return redirect()->route('cart.show')->with('message','Order was placed');
         } else {
             return redirect()->back()->withInput();
         }

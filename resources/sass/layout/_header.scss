@@ -229,6 +229,107 @@
                     font-size: 2.15rem;
                 }
 
+                .header-gutter--2 {
+                    li.fale:hover .tooltip {
+                        overflow: inherit;
+                        height: auto;
+                        left: -40px;
+                        transform: scaleY(1);
+                        opacity: 1;
+                        filter: alpha(opacity=100);
+                        transition: all 300ms ease;
+                    }
+
+                    .tooltip {
+                        overflow: hidden;
+                        transform-origin: top;
+                        height: 0;
+                        transform: scaleY(0);
+                        opacity: 0;
+                        filter: alpha(opacity=0);
+                        transition: all 300ms ease;
+                        z-index: 10;
+                        position: absolute;
+                        border: solid 1px #ebebeb;
+                        background: #fff;
+                        color: #000000;
+                        font-size: 13px;
+                        padding: 10px 10px 10px 20px;
+                        text-align: left;
+                        min-width: 245px;
+                        width: auto;
+                        left: -40px;
+                        top: 150%;
+                        cursor: pointer;
+                        border-radius: 3px;
+                        box-shadow: 2px 2px 5px 1px rgb(0 0 0 / 40%);
+                        &:before {
+                            bottom: 100%;
+                            left: 50%;
+                            border: solid transparent;
+                            content: " ";
+                            height: 0;
+                            width: 0;
+                            position: absolute;
+                            pointer-events: none;
+                            border-color: rgba(136,183,213,0);
+                            border-bottom-color: #fff;
+                            border-width: 6px;
+                            margin-left: -6px;
+                        }
+
+                        span {
+                            display: block;
+                            font-family: "museo700",sans-serif;
+                            color: #d5ae68;
+                            font-size: 20px;
+                            margin-bottom: 15px;
+                            text-align: center;
+                        }
+
+                        li {
+                            padding: 0;
+                            display: block;
+                            margin: 0 auto;
+                            width: 100%;
+                            margin-bottom: 5px;
+                            text-align: left;
+                            color: #fff;
+                            font-weight: 500;
+                            letter-spacing: 0px;
+
+                            &:nth-child(3) {
+                                margin: 10px 0;
+                            }
+
+                            i {
+                                color: #d5ae68;
+                            }
+
+                            &:not(:last-of-type) i {
+                                font-size: 17px;
+                            }
+
+                            &:last-of-type i.icon-newsletter-1 {
+                                font-size: 13px !important;
+                                margin-right: 7px;
+                            }
+
+                            a {
+                                color: #3a2419;
+                                font-size: 17px;
+                                font-weight: 600;
+                                position: relative;
+                                transition: color 0.3s ease;
+                            }
+                            &:last-child a {
+                                font-size: 13px;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+
                 .header-gutter--3 {
                     .mobile-search {
                         @media only screen and (max-width: 769.8px) {
@@ -272,22 +373,28 @@
                             font-family: 'fontello';
                             font-size: 2rem;
                             color: $color-primary-light;
-                            top: .8rem;
+                            top: 6px;
                             left: 8px;
                             color: #d8d8d8;
                             position: absolute;
                             transition: 0.3s ease;
+                            @media only screen and (max-width: 769.8px) {
+                                top: 4px;
+                            }
                         }
 
                         .input-text, .input-text::placeholder {
                             color: #999;
-                            font-size: 1.3rem;
+                            font-size: 14px;
+                            @media only screen and (max-width: 769.8px) {
+                                font-size: 13px;
+                            }
                         }
 
                         .input-text {
                             width: 100%;
                             height: 4rem;
-                            padding: 7px 10px 7px 3.2rem;
+                            padding: 7px 64px 6px 32px;
 
                             border: none;
                             background: #f6f6f6;

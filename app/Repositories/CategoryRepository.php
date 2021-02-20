@@ -193,6 +193,9 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     {
         $category = Category::where('slug', $slug)
             ->where('is_active', true)
+            ->with('categoryTranslations', function ($query) {
+                $query->where('lang', app()->getLocale());
+            })
             ->with(array('products' => function($query) {
                 $query->where('is_active', true)
                 ->with(array('productTranslations' => function($query) {

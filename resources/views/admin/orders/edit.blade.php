@@ -22,24 +22,32 @@
                 @method('PUT')
                 <div class="view-wrapper">
                     <div class="field-wrapper col-6">
-                        <div class="field-label">Full Name</div>
-                        <div class="field-value">{{ $order->name }} {{ $order->surname }}</div>
+                        <div class="field-label">Order Number</div>
+                        <div class="field-value">{{ $order->order_number . $order->id }}</div>
                     </div>
                     <div class="field-wrapper col-6">
                         <div class="field-label">Order Status</div>
                         <div class="field-value">{{ \App\Models\Order::$orderStatus[$order->status]['name'] }}</div>
                     </div>
-                    <div class="field-wrapper col-6">
-                        <div class="field-label">Phone 1</div>
-                        <div class="field-value">{{ $order->phone1 }}</div>
+                    <div class="field-wrapper col-12">
+                        <div class="field-label">Full Name</div>
+                        <div class="field-value">{{ $order->name }} {{ $order->surname }}</div>
                     </div>
                     <div class="field-wrapper col-6">
-                        <div class="field-label">Phone 2</div>
-                        <div class="field-value">{{ $order->phone2 }}</div>
+                        <div class="field-label">Phone</div>
+                        <div class="field-value">{{ $order->phone }}</div>
+                    </div>
+                    <div class="field-wrapper col-6">
+                        <div class="field-label">Email</div>
+                        <div class="field-value">{{ $order->email }}</div>
                     </div>
                     <div class="field-wrapper col-6">
                         <div class="field-label">City</div>
                         <div class="field-value">{{ $order->city->cityTranslations->where('lang', 'en')->first()->name }}</div>
+                    </div>
+                    <div class="field-wrapper col-6">
+                        <div class="field-label">District</div>
+                        <div class="field-value">{{ $order->district }}</div>
                     </div>
                     <div class="field-wrapper col-12">
                         <div class="field-label">Adderess</div>

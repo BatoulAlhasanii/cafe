@@ -3,6 +3,7 @@
     padding: 0;
     color: #3a2419;
     display: flex;
+
     &:before {
         content: '\e817';
         font-family: 'fontello';
@@ -10,16 +11,18 @@
         margin-right: 5px;
         padding-top: 2px;
         color: #3a2419;
-        line-height: 14px;
+        line-height: 13px;
     }
-
     ul {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         padding-top: 5px;
         li {
+            white-space: nowrap;
             margin: 0 5px 0 0;
             line-height: 18px;
+
             a {
                 font-size: 12.6px;
                 font-weight: 400;

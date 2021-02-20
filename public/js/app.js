@@ -12,6 +12,8 @@ __webpack_require__(/*! ./cart */ "./resources/js/cart.js");
 __webpack_require__(/*! ./single-product */ "./resources/js/single-product.js");
 
 __webpack_require__(/*! ./header */ "./resources/js/header.js");
+
+__webpack_require__(/*! ./autocomplete */ "./resources/js/autocomplete.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -47,6 +49,52 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 /*
 const app = new Vue({
    el: '#app',
+});
+*/
+
+/***/ }),
+
+/***/ "./resources/js/autocomplete.js":
+/*!**************************************!*\
+  !*** ./resources/js/autocomplete.js ***!
+  \**************************************/
+/***/ (() => {
+
+/*$(document).ready(function() {
+
+    function inputChange(inputElement) {
+        inputElement.val()
+        if (!inputElement.val() === '' ) {
+            var _token = $("input[name='_token']").val();
+
+            $.ajax({
+                url: "/product/set-quantity",
+                type: "POST",
+                data: { _token: _token, productId: productId, quantity: qty },
+                beforeSend: function() {
+                    $("#load-overlay").addClass("display-overlay");
+                },
+                success: function(data) {
+
+                    $('#header-cart-container').html(
+                        `<div class="cart-qtd">
+                            <p class="amount">${data.cart_count}</p>
+                        </div>`);
+                },
+                error: function (reject) {
+
+
+                    if( reject.status === 422 ) {
+
+                    }
+                }
+            });
+        }
+    }
+
+    $('product-search').change(function () {
+        inputChange($(this));
+    })
 });
 */
 

@@ -48,6 +48,12 @@ class AppServiceProvider extends ServiceProvider
             $view->with('isDiscountActivated', $isDiscountActivated);
         });
 
+        View::composer(['site.products.search_results'], function ($view) {
+            $activateDiscount = Setting::where('setting_name', Setting::$activateDiscountName)->first();
+            $isDiscountActivated = intval($activateDiscount->setting_value);
+            $view->with('isDiscountActivated', $isDiscountActivated);
+        });
+
         View::composer(['layout.header'], function ($view) {
             $categories = Category::where('parent_id', Category::$coffeeId)
                 ->where('is_active', true)

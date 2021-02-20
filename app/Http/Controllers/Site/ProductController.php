@@ -23,6 +23,13 @@ class ProductController extends Controller
         return view('site.products.view', compact('product'));
     }
 
+    public function search(Request $request)
+    {
+        $products = $this->productRepository->search($request);
+
+        return view('site.products.search_results', compact('products'));
+    }
+
     /*  public function addToCart(Request $request)
     {
         dd($request->all());

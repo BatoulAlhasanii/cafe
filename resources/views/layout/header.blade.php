@@ -45,7 +45,7 @@
                     <ul class="top-header-item central hide-on-small-screens">
                         <li>Central</li>
                         <li class="fale"><a>Consumer</a>
-                            <ul class="tooltip display-none">
+                            <ul class="tooltip">
                                 <span>Entre em contato:</span>
                                 <li><i class="icon-phone"></i> <a href="#" onclick="return false">(43) 3377-4141</a></li>
                                 <li><i class="icon-whatsapp"></i> <a class="whatsapp" href="https://web.whatsapp.com/send?phone=5543999848084&amp;text=Oi!%20Estou%20entrando%20em%20contato%20pelo%20chat%20Whatsapp%20da%20sua%20loja%20virtual.%20Poderia%20me%20ajudar?" target="_blank">43 99984-8084</a></li>
@@ -57,10 +57,9 @@
                 <div class="header-gutter header-gutter--3">
                     <div class="mobile-search">
                         <section class="form-search">
-                            <form id="search_mini_form" action="" method="get">
-                                <input id="search" type="text" name="q" value="" required="" class="input-text" title="digite o que procura" placeholder="digite o que procura" autocomplete="off">
-                                <button id="form-search-button" type="submit" title="Buscar"><span>Search</span></button>
-                                <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
+                            <form id="search_mini_form" action="{{ route('product.search') }}" method="get">
+                                <input id="product-search" type="text" name="q" value="{{ request('q') }}" class="input-text" placeholder="search for a product">
+                                <button id="form-search-button" type="submit"><span>Search</span></button>
                             </form>
                         </section>
                     </div>

@@ -24,7 +24,7 @@
                     </div>
                     <div class="form-group col-6">
                         <label for="email">Email</label>
-                        <input id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}" class="form-control" disabled>
+                        <input id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}" class="form-control">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -2,16 +2,22 @@
     width: 100%;
     color: #333;
     font-size: 13px;
+
+    @media only screen and (min-width: 770px) {
+        padding: 0 30px;
+    }
     .col1-button {
         display: flex;
         width: 100%;
         border-bottom: 1px solid #DDDDDD;
         margin: 0 0 15px;
         padding: 0 0 10px;
-
+        @media screen and (max-width: 769.8px) {
+            flex-wrap: wrap;
+        }
         .text-wrapper {
             @media screen and (min-width: 770px) {
-                    width: 75%;
+                    flex: 1;
                     padding-right: 15px;
             }
 
@@ -24,6 +30,9 @@
             @media screen and (min-width: 770px) {
                 width: 25%;
             }
+            @media screen and (max-width: 769.8px) {
+                width: 100%;
+            }
         }
         .button-top {
             width: 100%;
@@ -33,6 +42,10 @@
     .columns-container {
         display: flex;
         align-items: flex-start;
+        justify-content: center;
+        @media screen and (max-width: 769.8px) {
+            flex-wrap: wrap;
+        }
         .osc-title {
             display: flex;
             background: none repeat scroll 0 0 #f9f9f9;
@@ -62,6 +75,8 @@
                 font-size: 12px;
             }
         }
+
+
         .col3-left, .col3-middle, .col3-right {
             border-left: 1px solid #DDDDDD;
             border-right: 1px solid #DDDDDD;
@@ -70,22 +85,27 @@
             margin-bottom: 10px;
         }
         .col3-left {
-            width: 320px;
-            flex: 0 0 320px;
+            flex: 1;
             background: #fff;
-            margin-right: 0;
+            margin-right: 10px;
+            @media screen and (max-width: 769.8px) {
+                flex: 0 0 100%;
+                margin-right: 0px;
+            }
             #div_billing_address_form {
                 margin-bottom: 20px;
+            }
+            .inputs-wrapper {
+                max-width: max-content;
+                margin: 0 auto;
+                @media screen and (max-width: 510.8px) {
+                    max-width: unset;
+                }
             }
         }
         .form_billing_fs, .field_pf {
             padding: 0 15px;
             width: 100%;
-        }
-        fieldset {
-            border: none;
-            margin: 0;
-            padding: 0;
         }
         .col-unique, .field_row {
             position: relative;
@@ -95,6 +115,7 @@
         .col-unique {
             display: flex;
             align-items: center;
+            justify-content: flex-end;
         }
         .field_row {
             margin: 0 0 5px;
@@ -107,7 +128,7 @@
             text-align: right;
             padding: 0 5px 0 0;
             margin: 0;
-            width: 36%;
+            flex: 0 0 36%;
         }
         .osc_required {
             color: #F00;
@@ -151,10 +172,14 @@
             padding: 7px 10px;
             text-overflow: ellipsis;
         }
-        input.osc_input, .billing_select {
+        input.osc_input, textarea.osc_input, .billing_select {
             margin: 0;
             padding: 6px 2px;
-            width: 62%;
+            min-width: 280px;
+            flex: 1;
+            @media screen and (max-width: 510.8px) {
+                min-width: unset;
+            }
         }
         .mt10 {
             margin-top: 10px !important;
@@ -209,14 +234,20 @@
         dd,dt {
             margin-bottom: 5px;
         }
+
+        #checkout-review-table-wrapper {
+            padding: 10px;
+            @media only screen and (max-width: 400px) {
+                width: 79vw;
+                overflow-x: scroll;
+            }
+        }
+
         #shipping_methods, #checkout-review-table-wrapper {
-            width: 100%;
             font-family: "Montserrat",sans-serif;
         }
 
         #checkout-review-table {
-            margin: 10px;
-            width: 95%;
             thead {
                 background: #f9f9f9;
                 border-top: solid 1px #ddd;
@@ -276,11 +307,13 @@
             }
         }
         .col3-right {
-            width: 38%;
-            display: inline-block;
+            flex: 0 0 38%;
             margin: 0 0 10px;
             background: #fff;
             border: none !important;
+            @media screen and (max-width: 769.8px) {
+                flex: 0 0 100%;
+            }
         }
         .col3-right .border {
             width: 100%;
@@ -292,7 +325,7 @@
             margin: 10px 0 0;
             width: 100%;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
 
             .img-wrapper {
                 position: relative;

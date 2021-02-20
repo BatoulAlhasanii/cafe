@@ -24,11 +24,13 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers');
 
+            $table->string('order_number')->nullable();
+
             $table->string('name');
             $table->string('surname');
-            $table->string('postcode')->nullable();
-            $table->string('phone1');
-            $table->string('phone2');
+            $table->string('phone');
+            $table->string('email')->unique();
+            $table->string('district')->nullable();
             $table->text('address');
 
 
@@ -39,8 +41,6 @@ class CreateOrdersTable extends Migration
             $table->decimal('sub_total', 8, 2);
             $table->decimal('shipping_fees', 8, 2)->default( 0 );
             $table->decimal('total', 8, 2);
-            $table->double('lat')->nullable();
-            $table->double('lng')->nullable();
             $table->bigInteger('expected_delivery')->default(0); // YmdHis
             $table->bigInteger('actual_delivery')->default(0); // YmdHis
 
