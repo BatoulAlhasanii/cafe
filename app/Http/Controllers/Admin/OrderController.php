@@ -48,12 +48,15 @@ class OrderController extends BaseController
         return view('admin.orders.index', compact('orders', 'cities'));
     }
 
-    public function show($orderNumber)
+    public function show($id)
     {
-        $order = $this->orderRepository->findOrderByNumber($orderNumber);
+        $order = $this->orderRepository->findOrderById($id);
 
-        $this->setPageTitle('Order Details', $orderNumber);
-        return view('admin.orders.show', compact('order'));
+        if($order) {
+            $tax = $this->settingRepository->getOrderTax($order->created_at);
+        }
+
+        return view('admin.orders.view', compact('order','tax'));
     }
 
     public function edit($id)

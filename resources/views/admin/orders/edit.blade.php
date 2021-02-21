@@ -5,13 +5,6 @@
 
 
 @section('content')
-    <?php
-        $translations = null;
-        if(!empty($product)) {
-            $translations = $product->productTranslations;
-        }
-    ?>
-
     <div class="page-content form-container form-page">
         <div class="page-title">
             <h1>Edit Order</h1>

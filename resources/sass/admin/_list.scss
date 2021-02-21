@@ -20,7 +20,9 @@
 
                 .table-wrapper {
                     width: 100%;
-                    overflow-x: scroll;
+                    @media only screen and (max-width: 1088.8px) {
+                        overflow-x: scroll;
+                    }
                 }
                 .data-table {
                     thead {

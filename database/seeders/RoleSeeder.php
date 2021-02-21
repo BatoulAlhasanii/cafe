@@ -15,15 +15,23 @@ class RoleSeeder extends Seeder
     {
         \App\Models\Role::insert([
             [
-                'name' => 'admin',
+                'name' => 'admin', //1
                 'slug' => 'admin'
             ],
             [
-                'name' => 'Inventory Clerk',
-                'slug' => 'inventory-clerk',
+                'name' => 'Accountant', //2
+                'slug' => 'accountant',
             ],
             [
-                'name' => 'Permission Free',
+                'name' => 'Store Keeper', //3
+                'slug' => 'store-keeper',
+            ],
+            [
+                'name' => 'Supervisor', //4
+                'slug' => 'supervisor',
+            ],
+            [
+                'name' => 'Permission Free', //5
                 'slug' => 'permission-free',
             ]
         ]);

@@ -17,11 +17,14 @@ class PermissionMiddleware
     public function handle(Request $request, Closure $next, $permission)
     {
 
-        if (!$request->user()->can($permission)) {
+        $permissions = explode('|', $permission);
+        foreach ($permissions as $perm) {
 
-            abort(404);
+            if ($request->user()->can($perm)) {
+                return $next($request);
+            }
         }
+        abort(404);
 
-        return $next($request);
     }
 }

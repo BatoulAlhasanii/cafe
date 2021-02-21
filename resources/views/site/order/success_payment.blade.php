@@ -17,33 +17,18 @@ success-payment-page-wrapper
 
 @section('content')
 <div class="main-container successful-payment-page">
-    <div class="empty-cart container">
-        <div class="empty-cart-message flex-column">
+    <div class="container">
+        <div>
             <h1 class="icon-emo-happy">Successful Payment</h1>
             <p>Thanks for shopping with us</p>
             <div class="view-wrapper">
-                <div class="field-wrapper col-12">
-                    <div class="field-value">Order Number: {{ $order->order_number . $order->id }}</div>
-                </div>
-                <div class="field-wrapper col-12">
-                    <div class="field-value">{{ $order->name }} {{ $order->surname }}</div>
-                </div>
-                <div class="field-wrapper col-12">
-                    <div class="field-value">{{ $order->phone }}</div>
-                </div>
-                <div class="field-wrapper col-12">
-                    <div class="field-value">{{ $order->email }}</div>
-                </div>
-                <div class="field-wrapper col-12">
-                    <div class="field-value"></div>
-                </div>
-                <div class="field-wrapper col-12">
-                    <div class="field-label">District</div>
-                    <div class="field-value">{{ $order->city->cityTranslations->where('lang', 'en')->first()->name }} {{ $order->district ? ', ' .$order->district : '' }}</div>
-                </div>
-                <div class="field-wrapper col-12">
-                    <div class="field-label">Adderess</div>
-                    <div class="field-value">{{ $order->address }}</div>
+                <div class="order-info">
+                    <div>Order Number: {{ $order->order_number }}</div>
+                    <div>{{ $order->name }} {{ $order->surname }}</div>
+                    <div>{{ $order->phone }}</div>
+                    <div>{{ $order->email }}</div>
+                    <div>{{ $order->city->cityTranslations->where('lang', app()->getLocale())->first()->name }} {{ $order->district ? ', ' .$order->district : '' }}</div>
+                    <div>{{ $order->address }}</div>
                 </div>
                 <div class="col-12 table-wrapper">
                     <table class="data-table">
@@ -75,10 +60,10 @@ success-payment-page-wrapper
                                     {{ $orderItem->qty }}
                                 </td>
                                 <td class="a-center">
-                                    {{ $orderItem->product_price }} {{ config('currency.en') }}
+                                    {{ $orderItem->product_price }} {{ config('currency.' . app()->getLocale()) }}
                                 </td>
                                 <td class="a-center">
-                                    {{ $orderItem->product_price * $orderItem->qty }} {{ config('currency.en') }}
+                                    {{ $orderItem->product_price * $orderItem->qty }} {{ config('currency.' . app()->getLocale()) }}
                                 </td>
                             </tr>
                             @endforeach
@@ -87,7 +72,7 @@ success-payment-page-wrapper
                                     <strong>Subtotal</strong>
                                 </td>
                                 <td class="a-center">
-                                    {{ $order->sub_total }} {{ config('currency.en') }}
+                                    {{ $order->sub_total }} {{ config('currency.' . app()->getLocale()) }}
                                 </td>
                             </tr>
                             <tr>
@@ -95,7 +80,7 @@ success-payment-page-wrapper
                                     <strong>Shipping fee</strong>
                                 </td>
                                 <td class="a-center">
-                                    {{ $order->shipping_fees }} {{ config('currency.en') }}
+                                    {{ $order->shipping_fees }} {{ config('currency.' . app()->getLocale()) }}
                                 </td>
                             </tr>
                             <tr>
@@ -103,7 +88,7 @@ success-payment-page-wrapper
                                     <strong>Total</strong>
                                 </td>
                                 <td class="a-center">
-                                    {{ $order->total }} {{ config('currency.en') }}
+                                    {{ $order->total }} {{ config('currency.' . app()->getLocale()) }}
                                 </td>
                             </tr>
                         </tbody>

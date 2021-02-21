@@ -85,6 +85,7 @@
                         <th>City</th>
                         <th>Address</th>
                         <th>Total</th>
+                        <th>View</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
@@ -120,6 +121,9 @@
                         </td>
                         <td class="a-center">
                             {{ $order->total }} {{ config('currency.en') }}
+                        </td>
+                        <td class="a-center">
+                            <a href="{{ route('orders.show', ['id' => $order->id]) }}">View</a>
                         </td>
                         <td class="a-center">
                             <a href="{{ route('orders.edit', ['id' => $order->id]) }}">Edit</a>

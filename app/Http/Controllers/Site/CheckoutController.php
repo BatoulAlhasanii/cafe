@@ -11,8 +11,9 @@ use App\Contracts\CityContract;
 use App\Contracts\CartContract;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\BaseController;
 
-class CheckoutController extends Controller
+class CheckoutController extends BaseController
 {
     protected $orderRepository;
     protected $countryRepository;
@@ -43,6 +44,11 @@ class CheckoutController extends Controller
 
         if (!Session::has('areItemsAvailable')) {
             $this->cartRepository->updateProductsInCart();
+
+
+            if (!count(Session::get('cart')->getCartItems())) {
+                return $this->responseRedirectBack('No items left in cart', 'error', true, true);
+            }
         }
 
         $country = $this->countryRepository->listCountries()[0];
@@ -65,6 +71,14 @@ class CheckoutController extends Controller
             //flush cart
             return redirect()->route('cart.show')->with('message','Order was placed');
         } else {
+
+            if (!Session::has('areItemsAvailable')) {
+                $this->cartRepository->updateProductsInCart();
+                if (!count(Session::get('cart')->getCartItems())) {
+                    return $this->responseRedirect('cart.show', 'No items left in cart' ,'error',false, false);
+                }
+            }
+
             return redirect()->back()->withInput();
         }
 

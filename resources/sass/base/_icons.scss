@@ -26,6 +26,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+    .icone:hover {
+        opacity: .8;
+        filter: alpha(opacity=80);
+        transition: all 300ms ease;
+    }
 
   .icon-search:before { content: '\e800'; } /* '' */
   .icon-truck:before { content: '\e801'; } /* '' */

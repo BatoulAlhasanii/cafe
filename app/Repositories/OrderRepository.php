@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Redirect;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class OrderRepository extends BaseRepository implements OrderContract
 {
@@ -186,7 +187,6 @@ class OrderRepository extends BaseRepository implements OrderContract
                     $order = new Order();
                     $order->fill([
                         'status' => Order::$statusPending,
-                        'order_number' => strval(hexdec(uniqid())),
                         'name' => $request->name,
                         'surname' => $request->surname,
                         'phone' => $request->phone,
@@ -235,6 +235,14 @@ class OrderRepository extends BaseRepository implements OrderContract
                     $orderCreated = $order->save();
                     if ($orderCreated) {
                         $order->orderItems()->saveMany($orderItems);
+
+                        $firstOrderCurrentMonth = \App\Models\Order::whereYear('created_at', Carbon::now()->year)
+                        ->whereMonth('created_at', Carbon::now()->month)->count();
+                        $stringNumber = strval($firstOrderCurrentMonth);
+                        $orderNumber = Carbon::now()->format('y-m') . '-'.str_pad($stringNumber, 4, "0", STR_PAD_LEFT);
+                        $order->order_number = $orderNumber;
+                        $order->save();
+
                         session()->forget('cart');
                         session()->forget('areItemsAvailable');
                     }

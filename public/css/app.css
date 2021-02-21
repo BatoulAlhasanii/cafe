@@ -164,6 +164,10 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+input:focus, select:focus, textarea:focus, a:focus, button:focus {
+  outline: none;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
@@ -245,6 +249,12 @@ body {
   line-height: 1em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icone:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  transition: all 300ms ease;
 }
 
 .icon-search:before {
@@ -929,6 +939,9 @@ table {
   width: 100%;
   transition: 0.25s linear;
   text-align: center;
+}
+.btn-checkout:hover {
+  opacity: 0.8;
 }
 
 button:hover:enabled {
@@ -1790,6 +1803,11 @@ input.error, select.error, textarea.error {
   font-family: "museo400", sans-serif;
   font-size: 14px;
 }
+.header-container header .header-primary-container .header-wrapper .header-gutter--4 ul.language-switcher .lang-choice a:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  transition: all 300ms ease;
+}
 .header-container header .header-primary-container .header-wrapper .header-gutter--4 .lojas:before {
   content: "";
   top: 4px;
@@ -1859,6 +1877,11 @@ input.error, select.error, textarea.error {
   white-space: nowrap;
   padding: 15px 10px;
   transition: 0.3s ease;
+}
+.header-container .nav-container #nav ul li a:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  transition: all 300ms ease;
 }
 @media screen and (max-width: 1080px) {
   .header-container .nav-container #nav ul li a {
@@ -2884,6 +2907,9 @@ footer .social-links-container .social-media-links li a i {
     width: 100%;
   }
 }
+.product-img-details .product-details .add-to-cart-btn-container .btn-special:hover {
+  opacity: 0.8;
+}
 .product-img-details .product-details #socialWrap {
   padding-top: 20px;
   border-top: 1px solid #d9d9d9;
@@ -3291,23 +3317,6 @@ footer .social-links-container .social-media-links li a i {
 .cart .total-wrap-cart .checkout-types {
   width: 100%;
 }
-.cart .total-wrap-cart .checkout-types .btn-checkout {
-  width: 100%;
-  background: #55da44;
-  border: none;
-  border-radius: 0;
-  color: #FFFFFF;
-  display: inline-block;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 12px 15px;
-  text-decoration: none;
-  text-transform: capitalize;
-  text-shadow: 0 1px 0 #55da44;
-  box-shadow: none;
-  width: 100%;
-  transition: 0.25s linear;
-}
 
 .empty-cart-page {
   display: flex;
@@ -3711,7 +3720,56 @@ footer .social-links-container .social-media-links li a i {
   margin-top: 2rem;
 }
 
+.successful-payment-page h1 {
+  font-size: 3.5rem;
+  color: #d5ae68;
+  font-family: "museo700", sans-serif;
+  text-align: center;
+  padding: 2rem 0 0.8rem;
+}
+.successful-payment-page p {
+  color: #3a2419;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.successful-payment-page .order-info {
+  font-size: 14px;
+  margin-bottom: 6px;
+  text-align: center;
+  margin-bottom: 3rem;
+}
 .successful-payment-page .data-table .img-content img {
+  height: 90px;
+}
+.successful-payment-page .table-wrapper {
+  width: 100%;
+  overflow-x: scroll;
+}
+.successful-payment-page .table-wrapper .data-table {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.successful-payment-page .table-wrapper .data-table thead {
+  background-color: rgba(235, 207, 122, 0.8);
+}
+.successful-payment-page .table-wrapper .data-table thead th {
+  border: 1px solid #d5ae68;
+  color: #3a2419;
+  font-size: 14px;
+  font-weight: 600;
+}
+.successful-payment-page .table-wrapper .data-table tbody {
+  font-size: 14px;
+}
+.successful-payment-page .table-wrapper .data-table tbody td {
+  border: 1px solid #d5ae68;
+}
+.successful-payment-page .table-wrapper .data-table tbody tr:nth-child(even) {
+  background-color: #efd995;
+}
+.successful-payment-page .table-wrapper .data-table tbody .img-content img {
   height: 90px;
 }
 
@@ -3905,7 +3963,11 @@ footer .social-links-container .social-media-links li a i {
 }
 .admin .main-footer-wrapper .page-content .main-content .table-wrapper {
   width: 100%;
-  overflow-x: scroll;
+}
+@media only screen and (max-width: 1088.8px) {
+  .admin .main-footer-wrapper .page-content .main-content .table-wrapper {
+    overflow-x: scroll;
+  }
 }
 .admin .main-footer-wrapper .page-content .main-content .data-table thead {
   background-color: rgba(235, 207, 122, 0.8);

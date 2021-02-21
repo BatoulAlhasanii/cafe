@@ -229,15 +229,11 @@
                     </div>
 
                     <div class="form-group col-12">
-                        @if ($errors->any())
-                            <div class="">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        @error('images')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="buttons-wrapper form-group col-12">
                         <div>
