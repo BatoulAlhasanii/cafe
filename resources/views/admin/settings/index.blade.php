@@ -25,10 +25,14 @@
                             {{ $setting->setting_label }}
                         </td>
                         <td class="a-center">
-                            @if($setting->setting_value)
-                                <span class="success">Yes</span>
-                            @else
-                                <span class="danger">No</span>
+                            @if($setting->setting_name === 'activate_discount')
+                                @if($setting->setting_value)
+                                    <span class="success">Yes</span>
+                                @else
+                                    <span class="danger">No</span>
+                                @endif
+                            @elseif($setting->setting_name === 'tax')
+                                {{ $setting->setting_value }} %
                             @endif
                         </td>
                         <td class="a-center">

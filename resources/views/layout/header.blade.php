@@ -64,11 +64,15 @@
                         </section>
                     </div>
                 </div>
-
                 <div class="header-gutter header-gutter--4">
                     <ul class="hide-on-small-screens">
                         <li class="display-none top-header-item lojas"><a href="#"><span>Our</span>Stores</a></li>
                         <li class="display-none top-header-item favoritos"><i></i><a href="#" rel="nofollow"><span>My</span>Favourites</a></li>
+                    </ul>
+                    <ul class="language-switcher">
+                        <li class="lang-choice"><a href="{{ route('locale', ['locale' => 'tr']) }}">Tr</a></li>
+                        <li class="lang-choice"><a>|</a></li>
+                        <li class="lang-choice"><a href="{{ route('locale', ['locale' => 'en']) }}">En</a></li>
                     </ul>
                     <div class="cart-container">
                         <a id="header-cart-container" class="icone" href="{{ route('cart.show') }}" title="Ir para Meu Carrinho">
@@ -92,6 +96,7 @@
                         <li class="item1-1"><a href="{{ route('category.show', ['slug' => $category->slug ]) }}">{{ $category->categoryTranslations[0]->name }}</a></li>
                     @endforeach
                 </ul>
+
             </nav>
         </div>
     </div>
@@ -102,6 +107,11 @@
             @foreach($categories as $category)
                 <li class="item1-1"><a href="{{ route('category.show', ['slug' => $category->slug ]) }}">{{ $category->categoryTranslations[0]->name }}</a></li>
             @endforeach
+        </ul>
+        <ul class="language-switcher">
+            <li class="lang-choice"><a href="{{ route('locale', ['locale' => 'tr']) }}">Tr</a></li>
+            <li class="lang-choice"><a>|</a></li>
+            <li class="lang-choice"><a href="{{ route('locale', ['locale' => 'en']) }}">En</a></li>
         </ul>
     </nav>
 </div>

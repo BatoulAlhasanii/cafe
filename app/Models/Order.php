@@ -102,6 +102,11 @@ class Order extends Model
         return $this->hasMany(\App\Models\OrderItem::class, 'order_id');
     }
 
+    public function orderLogs()
+    {
+        return $this->hasMany(\App\Models\OrderLog::class, 'order_id');
+    }
+
     public function city()
     {
         return $this->belongsTo(\App\Models\City::class, 'city_id');

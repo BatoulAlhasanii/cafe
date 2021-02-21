@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\City;
+use App\Models\CityTranslation;
 use App\Contracts\CityContract;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -39,10 +40,12 @@ class CityRepository extends BaseRepository implements CityContract
 
     public function listCitiesByCountry($countryId)
     {
-        return City::where(['country_id' => $countryId, 'is_active' => true])
-                ->with('cityTranslations', function($query) {
-                    $query->where('lang', app()->getLocale());
-                })->get();
+        return CityTranslation::where('lang', app()->getLocale())
+                ->whereHas('city', function ($q) use ($countryId) {
+                    $q->where(['country_id' => $countryId, 'is_active' => true]);
+                  })
+                  ->with('city')
+                  ->orderBy('name', 'ASC')->get();
     }
 
     /**

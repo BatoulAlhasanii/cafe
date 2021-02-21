@@ -19,6 +19,12 @@ class SettingSeeder extends Seeder
                 'setting_label' => 'Activate Discount',
                 'setting_value' => false,
                 'setting_type' => 'select'
+            ],
+            [
+                'setting_name' => 'tax',
+                'setting_label' => 'Tax',
+                'setting_value' => 80,
+                'setting_type' => 'number'
             ]
         ]);
     }

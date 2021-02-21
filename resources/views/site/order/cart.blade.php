@@ -148,11 +148,3 @@ cart-page-wrapper
 </div>
 @endif
 @endsection
-
-
-@section('javascript-scripts')
-<script>
-
-
-</script>
-@endsection

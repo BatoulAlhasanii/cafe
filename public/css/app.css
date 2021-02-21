@@ -1774,6 +1774,22 @@ input.error, select.error, textarea.error {
 .header-container header .header-primary-container .header-wrapper .header-gutter--4 ul li span {
   display: block;
 }
+.header-container header .header-primary-container .header-wrapper .header-gutter--4 ul.language-switcher {
+  gap: 10px;
+  align-items: flex-end;
+  margin-right: 6px;
+}
+@media only screen and (max-width: 769.8px) {
+  .header-container header .header-primary-container .header-wrapper .header-gutter--4 ul.language-switcher {
+    display: none;
+  }
+}
+.header-container header .header-primary-container .header-wrapper .header-gutter--4 ul.language-switcher .lang-choice a {
+  color: #d5ae68;
+  text-transform: uppercase;
+  font-family: "museo400", sans-serif;
+  font-size: 14px;
+}
 .header-container header .header-primary-container .header-wrapper .header-gutter--4 .lojas:before {
   content: "";
   top: 4px;
@@ -1864,8 +1880,22 @@ input.error, select.error, textarea.error {
   background: #fff;
   transition: left 0.3s;
 }
-.nav-mobile-container.speed-in {
-  left: 0;
+@media only screen and (max-width: 769.8px) {
+  .nav-mobile-container.speed-in {
+    left: 0;
+  }
+}
+.nav-mobile-container #navMobile .language-switcher {
+  display: flex;
+  gap: 10px;
+  width: calc(100% - 48px);
+  padding-left: 15px;
+  line-height: 42px;
+}
+.nav-mobile-container #navMobile .language-switcher .lang-choice a {
+  color: #d5ae68;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
 }
 .nav-mobile-container #navMobile ul.level1 li:first-child {
   box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(0, 0, 0, 0.1);
@@ -1905,10 +1935,12 @@ input.error, select.error, textarea.error {
   }
 }
 
-#shadow-layer.is-visible {
-  display: block;
-  -webkit-animation: all 0.3s ease;
-          animation: all 0.3s ease;
+@media only screen and (max-width: 769.8px) {
+  #shadow-layer.is-visible {
+    display: block;
+    -webkit-animation: all 0.3s ease;
+            animation: all 0.3s ease;
+  }
 }
 
 #shadow-layer {
@@ -3679,6 +3711,10 @@ footer .social-links-container .social-media-links li a i {
   margin-top: 2rem;
 }
 
+.successful-payment-page .data-table .img-content img {
+  height: 90px;
+}
+
 .admin header {
   position: fixed;
   top: 0;
@@ -3787,6 +3823,42 @@ footer .social-links-container .social-media-links li a i {
   display: flex;
   flex-wrap: wrap;
 }
+.admin .form-wrapper .col-3, .admin .view-wrapper .col-3 {
+  flex: 0 0 25%;
+  padding: 0 15px;
+}
+@media only screen and (max-width: 1103.8px) {
+  .admin .form-wrapper .col-3, .admin .view-wrapper .col-3 {
+    flex: 0 0 33.333%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .admin .form-wrapper .col-3, .admin .view-wrapper .col-3 {
+    flex: 0 0 50%;
+  }
+}
+.admin .form-wrapper .col-6, .admin .view-wrapper .col-6 {
+  flex: 0 0 50%;
+  padding: 0 15px;
+}
+@media only screen and (max-width: 768px) {
+  .admin .form-wrapper .col-6, .admin .view-wrapper .col-6 {
+    flex: 0 0 100%;
+  }
+}
+.admin .form-wrapper .col-12, .admin .view-wrapper .col-12 {
+  flex: 0 0 100%;
+  padding: 0 15px;
+}
+.admin .form-wrapper .table-wrapper, .admin .view-wrapper .table-wrapper {
+  margin-bottom: 3rem;
+}
+.admin .form-wrapper .table-wrapper h3, .admin .view-wrapper .table-wrapper h3 {
+  color: #3a2419;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
 .admin .form-container, .admin .view-container {
   width: 100%;
   max-width: 1000px;
@@ -3801,19 +3873,6 @@ footer .social-links-container .social-media-links li a i {
   .admin .form-container, .admin .view-container {
     max-width: 540px;
   }
-}
-.admin .form-container .col-6, .admin .view-container .col-6 {
-  flex: 0 0 50%;
-  padding: 0 15px;
-}
-@media only screen and (max-width: 768px) {
-  .admin .form-container .col-6, .admin .view-container .col-6 {
-    flex: 0 0 100%;
-  }
-}
-.admin .form-container .col-12, .admin .view-container .col-12 {
-  flex: 0 0 100%;
-  padding: 0 15px;
 }
 .admin .pagination-wrapper svg {
   width: 2rem;
@@ -3840,6 +3899,13 @@ footer .social-links-container .social-media-links li a i {
   font-family: "museo700", sans-serif;
   text-align: center;
   padding: 8rem 0 2rem;
+}
+.admin .main-footer-wrapper .page-content .main-content .filter-form {
+  margin-bottom: 3rem;
+}
+.admin .main-footer-wrapper .page-content .main-content .table-wrapper {
+  width: 100%;
+  overflow-x: scroll;
 }
 .admin .main-footer-wrapper .page-content .main-content .data-table thead {
   background-color: rgba(235, 207, 122, 0.8);
@@ -3962,6 +4028,16 @@ footer .social-links-container .social-media-links li a i {
   font-weight: 500;
   font-size: 14px;
   color: #3a2419;
+}
+.admin a.submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admin .filter-btns-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 .admin .buttons-wrapper {
   margin-top: 30px;

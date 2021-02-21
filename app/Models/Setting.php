@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Rules\ValidateSettingValue;
 
 class Setting extends Model
 {
@@ -20,7 +21,7 @@ class Setting extends Model
 
     public static function rules() {
         return [
-            'setting_value' => 'required'
+            'setting_value' => ['required', new ValidateSettingValue()]
         ];
     }
 }

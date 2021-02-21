@@ -22,6 +22,23 @@ if (in_array($locale, Config::get('app.available_locales'))) {
 }
 
 
+Route::get('locale/{locale}', function($locale){
+
+    session(['locale' => $locale]);
+    app()->setLocale($locale);
+
+    $path = str_replace(url('/'). '/' , '', url()->previous());
+    $path = explode('/', $path);
+
+    array_shift($path);
+
+    $newUrl = url('/').'/'. implode('/', $path) ;
+
+    return redirect()->to($newUrl);
+
+})->name('locale');
+
+
 //without lang
 Route::post('/product/add-to-cart', 'App\Http\Controllers\Site\CartController@addToCart')->name('product.add.cart');
 Route::post('/product/remove-item', 'App\Http\Controllers\Site\CartController@removeItem')->name('cart.remove.item');
@@ -29,7 +46,7 @@ Route::post('/product/set-quantity', 'App\Http\Controllers\Site\CartController@s
 Route::post('/checkout', 'App\Http\Controllers\Site\CheckoutController@placeOrder')->name('checkout.placeOrder');
 
 
-Route::group(['prefix' => '' /** TODO Add prefix for security e.g. admin-xvq734r9v54k85e8*/], function () { //
+Route::group(['prefix' => 'K7JCVFW4RGtFkLKk0pDQWZciE4EONEhlUmO'], function () { //
 
     Auth::routes(['register' => false, // Registration Routes...
         'reset' => false, // Password Reset Routes...
@@ -78,4 +95,7 @@ Route::group([
         Route::get('/product/{slug}', 'App\Http\Controllers\Site\ProductController@show')->name('product.show');
         Route::get('/cart', 'App\Http\Controllers\Site\CartController@showCart')->name('cart.show');
         Route::get('/checkout', 'App\Http\Controllers\Site\CheckoutController@index')->name('checkout.index');
+        Route::get('/successful-payment/{orderNumber}', 'App\Http\Controllers\Site\CheckoutController@showSuccessfulPayment')->name('checkout.successful-payment');
+
+
 });

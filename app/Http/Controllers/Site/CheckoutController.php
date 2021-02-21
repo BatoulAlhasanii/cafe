@@ -12,7 +12,6 @@ use App\Contracts\CartContract;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
-
 class CheckoutController extends Controller
 {
     protected $orderRepository;
@@ -87,5 +86,12 @@ class CheckoutController extends Controller
 
         Cart::clear();
         return view('site.pages.success', compact('order'));
+    }
+
+    public function showSuccessfulPayment($orderNumber)
+    {
+        $order = $this->orderRepository->findOrderByNumber($orderNumber);
+
+        return view('site.order.success_payment', compact('order'));
     }
 }

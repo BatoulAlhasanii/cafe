@@ -17,7 +17,7 @@
             <h1>Edit Order</h1>
         </div>
         <div class="main-content">
-            <form method="POST" action="{{ route('orders.update', $order->id) }}" method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('orders.update', $order->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="view-wrapper">
@@ -29,7 +29,7 @@
                         <div class="field-label">Order Status</div>
                         <div class="field-value">{{ \App\Models\Order::$orderStatus[$order->status]['name'] }}</div>
                     </div>
-                    <div class="field-wrapper col-12">
+                    <div class="field-wrapper col-6">
                         <div class="field-label">Full Name</div>
                         <div class="field-value">{{ $order->name }} {{ $order->surname }}</div>
                     </div>
@@ -54,6 +54,7 @@
                         <div class="field-value">{{ $order->address }}</div>
                     </div>
                     <div class="col-12 table-wrapper">
+                        <h3>Order Items</h3>
                         <table class="data-table">
                             <thead>
                                 <tr class="first last">
@@ -92,6 +93,22 @@
                                 @endforeach
                                 <tr>
                                     <td colspan="4" class="a-center">
+                                        <strong>Subtotal without tax</strong>
+                                    </td>
+                                    <td class="a-center">
+                                        {{ $order->sub_total - ($order->sub_total * ($tax/100)) }} {{ config('currency.en') }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="a-center">
+                                        <strong>Tax ({{ $tax  }} %)</strong>
+                                    </td>
+                                    <td class="a-center">
+                                        {{  $order->sub_total * ($tax/100) }} {{ config('currency.en') }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="a-center">
                                         <strong>Subtotal</strong>
                                     </td>
                                     <td class="a-center">
@@ -114,6 +131,50 @@
                                         {{ $order->total }} {{ config('currency.en') }}
                                     </td>
                                 </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-12 table-wrapper">
+                        <h3>Order Log</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr class="first last">
+                                    <th>Status</th>
+                                    <th>User</th>
+                                    <th>Date Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="a-center">
+                                        Created
+                                    </td>
+                                    <td class="a-center">
+                                        Customer
+                                    </td>
+                                    <td class="a-center">
+                                        {{ $order->created_at }}
+                                    </td>
+                                </tr>
+                                @foreach($order->orderLogs as $orderLog)
+                                <tr>
+                                    <td class="a-center">
+                                        @if (\App\Models\Order::$statusWaitingForDelivery === $orderLog->status)
+                                            <span class="badge-alert">{{ \App\Models\Order::$orderStatus[$orderLog->status]['name'] }}</span>
+                                        @elseif(\App\Models\Order::$statusDelivered === $orderLog->status)
+                                            <span class="badge-success">{{ \App\Models\Order::$orderStatus[$orderLog->status]['name'] }}</span>
+                                        @else
+                                            <span class="badge-warning">{{ \App\Models\Order::$orderStatus[$orderLog->status]['name'] }}</span>
+                                        @endif
+                                    </td>
+                                    <td class="a-center">
+                                        {{ $orderLog->name }}
+                                    </td>
+                                    <td class="a-center">
+                                        {{ $orderLog->created_at }}
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

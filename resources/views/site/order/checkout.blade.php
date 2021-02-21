@@ -114,10 +114,10 @@ checkout-page-wrapper
                                         <select id="city_id" class="billing_select required-field" name="city_id">
                                             <option value="">Select city...</option>
                                             @foreach($cities as $city)
-                                                @if ( intval(old('city_id')) === intval($city->id) )
-                                                <option value="{{ $city->id }}" selected>{{ $city->cityTranslations[0]->name }}</option>
+                                                @if ( intval(old('city_id')) === intval($city->city_id) )
+                                                <option value="{{ $city->city_id }}" selected>{{ $city->name }}</option>
                                                 @else
-                                                <option value="{{ $city->id }}">{{ $city->cityTranslations[0]->name }}</option>
+                                                <option value="{{ $city->city_id }}">{{ $city->name }}</option>
                                                 @endif
                                             @endforeach
                                         </select>

@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\City;
 use App\Models\OrderItem;
+use App\Models\OrderLog;
 use App\Contracts\OrderContract;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
@@ -31,6 +32,24 @@ class OrderRepository extends BaseRepository implements OrderContract
     {
         try {
             return $this->findOneOrFail($id);
+
+        } catch (ModelNotFoundException $e) {
+
+            throw new ModelNotFoundException($e);
+        }
+    }
+
+    public function findOrderByNumber($orderNumber)
+    {
+        try {
+            $order = Order::where('order_number', $orderNumber)
+            ->first();
+
+        if($order) {
+            return $order;
+        } else {
+            throw new ModelNotFoundException();
+        }
 
         } catch (ModelNotFoundException $e) {
 
@@ -167,7 +186,7 @@ class OrderRepository extends BaseRepository implements OrderContract
                     $order = new Order();
                     $order->fill([
                         'status' => Order::$statusPending,
-                        'order_number' => strval(rand(11111, 99999)),
+                        'order_number' => strval(hexdec(uniqid())),
                         'name' => $request->name,
                         'surname' => $request->surname,
                         'phone' => $request->phone,
@@ -237,13 +256,48 @@ class OrderRepository extends BaseRepository implements OrderContract
         $order = $this->findOrderById($request->id);
 
         $order->status = $request->status;
-        $order->save();
+        $isOrderUpdated = $order->save();
+
+        if ($isOrderUpdated) {
+            OrderLog::create([
+                'order_id' => $request->id,
+                'status' => $request->status,
+                'user_id' => auth()->user()->id,
+                'name' => auth()->user()->name
+            ]);
+        }
 
         return $order;
     }
 
-    public function findOrderByNumber($orderNumber)
+    public function filter($orders, $request)
     {
-        return Order::where('order_number', $orderNumber)->first();
+        if (!empty(request('id'))) {
+            $orders = $orders->where('id', $request->id);
+        }
+        if (!empty(request('order_number'))) {
+            $orders = $orders->where('order_number', $request->order_number);
+        }
+        if (!empty(request('status')) && request('status') != -1) {
+            $orders = $orders->where('status', $request->status);
+        }
+        if (!empty(request('name'))) {
+            $orders = $orders->where('name','LIKE', '%'.$request->name.'%');
+        }
+        if (!empty(request('surname'))) {
+            $orders = $orders->where('surname','LIKE', '%'.$request->surname.'%');
+        }
+        if (!empty(request('city_id')) && request('city_id') != -1) {
+            $orders = $orders->where('city_id', $request->city_id);
+        }
+        if (!empty(request('from_date'))) {
+            $orders = $orders->whereDate('created_at','>=', $request->from_date);
+        }
+        if (!empty(request('to_date'))) {
+            $orders = $orders->whereDate('created_at','<=', $request->to_date);
+        }
+
+        return $orders;
     }
+
 }

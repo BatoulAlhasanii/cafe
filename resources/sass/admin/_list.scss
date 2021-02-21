@@ -13,6 +13,15 @@
                 padding: 8rem 0 2rem;
             }
             .main-content {
+
+                .filter-form {
+                    margin-bottom: 3rem;
+                }
+
+                .table-wrapper {
+                    width: 100%;
+                    overflow-x: scroll;
+                }
                 .data-table {
                     thead {
                             background-color: rgb(235 207 122 / 80%);

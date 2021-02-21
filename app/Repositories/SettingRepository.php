@@ -67,7 +67,16 @@ class SettingRepository extends BaseRepository implements SettingContract
             'setting_value' => $request->setting_value
         ]);
 
+        if ($setting->setting_name === 'tax') {
+            \App\Models\Tax::create(['tax' => floatval($request->setting_value)]);
+        }
+
         return $setting;
+    }
+
+    public function getOrderTax($orderCreationDate) {
+        $tax = \App\Models\Tax::where('created_at','<=', $orderCreationDate)->orderBy('created_at', 'desc')->first();
+        return floatval($tax->tax);
     }
 
 
