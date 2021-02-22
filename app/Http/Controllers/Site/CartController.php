@@ -23,6 +23,12 @@ class CartController extends Controller
     public function showCart(Request $request)
     {
         //Session::flush('cart');
+        //if no items left in cart after removing unavailable products in checkout
+        //, redirection from checkout to cart will happen and there will be
+        //error flash message
+        if (Session::has('error')) {
+            session()->flash('error', ['No items left in cart']);
+        }
 
         $this->cartRepository->updateCart();
         $cart = $this->cartRepository->getCart($request);

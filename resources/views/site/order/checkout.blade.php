@@ -32,7 +32,17 @@ checkout-page-wrapper
             @if (Session::has('message'))
                 <p class="alert alert-success">{{ Session::get('message') }}</p>
             @endif
-
+            <ul class="messages">
+                @if(Session::has('error'))
+                    @foreach(Session::get('error') as $key => $value)
+                    <li class="error-msg">
+                        <ul>
+                            <li>{{ $value }}</li>
+                        </ul>
+                    </li>
+                    @endforeach
+                @endif
+            </ul>
             <div class="columns-container">
                 <div class="col3-left">
                     <div id="div_billing_address_form">

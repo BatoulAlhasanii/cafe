@@ -151,6 +151,7 @@ footer {
                         margin-bottom: 0;
                         right: 3px;
                         position: relative;
+
                         @media screen and (max-width: 1110.8px) {
                             margin-right: 0px;
                         }
@@ -229,6 +230,9 @@ footer {
                     text-align: center;
                     border-radius: 5px;
                     transition: all 400ms ease;
+                    &:hover {
+                        background: #3a2419;
+                    }
                     i {
                         font-size: 25px;
                         margin: 0 auto;

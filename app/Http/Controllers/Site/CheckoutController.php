@@ -32,6 +32,10 @@ class CheckoutController extends BaseController
     {
         $previousRoute = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
 
+        if (Session::has('cart') && !count(Session::get('cart')->getCartItems())) {
+            session()->flash('error', ['No items left in cart']);
+        }
+
         if (!Session::has('cart') || ( Session::has('cart') && !count(Session::get('cart')->getCartItems()) ) ) {
             return redirect()->route('cart.show');
         }
@@ -64,6 +68,7 @@ class CheckoutController extends BaseController
 
         $order = $this->orderRepository->storeOrderDetails($request);
 
+
         // You can add more control here to handle if the order is not stored properly
         if ($order) {
             //$this->payPal->processPayment($order);
@@ -71,13 +76,6 @@ class CheckoutController extends BaseController
             //flush cart
             return redirect()->route('cart.show')->with('message','Order was placed');
         } else {
-
-            if (!Session::has('areItemsAvailable')) {
-                $this->cartRepository->updateProductsInCart();
-                if (!count(Session::get('cart')->getCartItems())) {
-                    return $this->responseRedirect('cart.show', 'No items left in cart' ,'error',false, false);
-                }
-            }
 
             return redirect()->back()->withInput();
         }

@@ -326,10 +326,14 @@
                         text-align: center;
                         border-radius: 5px;
                         display: inline-block;
+
                         &:before {
                             transition: 0.3s ease;
                             font-size: 30px;
                             color: #d5ae68;
+                        }
+                        &:hover:before {
+                            color: #3a2419;
                         }
                         &.icon-facebook:before {
                             content: '\f09a';

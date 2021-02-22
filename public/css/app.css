@@ -1236,6 +1236,11 @@ input.error, select.error, textarea.error {
   font-weight: 500;
   border-radius: 4px;
 }
+.products-section .products-grid .item .infobox .bt-add .btn-ajax:hover {
+  transition: all 200ms ease;
+  background: #55da44;
+  letter-spacing: 1.5px;
+}
 
 .breadcrumbs {
   margin: 15px 0 20px 0;
@@ -2212,6 +2217,9 @@ footer .social-links-container .social-media-links li a {
   border-radius: 5px;
   transition: all 400ms ease;
 }
+footer .social-links-container .social-media-links li a:hover {
+  background: #3a2419;
+}
 footer .social-links-container .social-media-links li a i {
   font-size: 25px;
   margin: 0 auto;
@@ -2948,6 +2956,9 @@ footer .social-links-container .social-media-links li a i {
   font-size: 30px;
   color: #d5ae68;
 }
+.product-img-details .product-details #socialWrap #share-product li a:hover:before {
+  color: #3a2419;
+}
 .product-img-details .product-details #socialWrap #share-product li a.icon-facebook:before {
   content: "";
 }
@@ -3329,6 +3340,9 @@ footer .social-links-container .social-media-links li a i {
   font-size: 26px;
   font-family: "Montserrat", sans-serif;
   color: #3a2419;
+}
+.empty-cart-page .empty-cart .messages {
+  margin-top: 1rem;
 }
 .empty-cart-page .empty-cart .empty-cart-message {
   flex: 1;

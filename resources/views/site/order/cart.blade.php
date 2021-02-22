@@ -139,6 +139,17 @@ cart-page-wrapper
         <div class="page-title">
             <h1>Empty cart</h1>
         </div>
+        <ul class="messages">
+            @if(Session::has('error'))
+                @foreach(Session::get('error') as $key => $value)
+                <li class="error-msg">
+                    <ul>
+                        <li>{{ $value }}</li>
+                    </ul>
+                </li>
+                @endforeach
+            @endif
+        </ul>
         <div class="empty-cart-message flex-column">
             <h1 class="icon-emo-unhappy">What a pity!</h1>
             <p>There are no items in your cart.</p>
