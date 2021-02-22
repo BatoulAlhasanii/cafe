@@ -33,7 +33,7 @@ class CheckoutController extends BaseController
         $previousRoute = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
 
         if (Session::has('cart') && !count(Session::get('cart')->getCartItems())) {
-            session()->flash('error', ['No items left in cart']);
+            Session::put('noItemsLeftInCart', true);
         }
 
         if (!Session::has('cart') || ( Session::has('cart') && !count(Session::get('cart')->getCartItems()) ) ) {

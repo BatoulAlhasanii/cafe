@@ -26,8 +26,9 @@ class CartController extends Controller
         //if no items left in cart after removing unavailable products in checkout
         //, redirection from checkout to cart will happen and there will be
         //error flash message
-        if (Session::has('error')) {
+        if (Session::has('noItemsLeftInCart')) {
             session()->flash('error', ['No items left in cart']);
+            session()->forget('noItemsLeftInCart');
         }
 
         $this->cartRepository->updateCart();

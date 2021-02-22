@@ -2507,6 +2507,26 @@ footer .social-links-container .social-media-links li a i {
   color: #846d61;
   font-size: 14px;
   transition: color 0.3s ease;
+  position: relative;
+}
+.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a:last-of-type:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  background: #d5ae68;
+  height: 1px;
+}
+.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a:first-of-type:hover + a, .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a:last-of-type:hover {
+  color: #d5ae68;
+}
+.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a:first-of-type:hover + a:after, .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a:last-of-type:hover:after {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 50%;
+  transition: all 0.9s ease;
 }
 .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img.intenso {
   height: 10rem;

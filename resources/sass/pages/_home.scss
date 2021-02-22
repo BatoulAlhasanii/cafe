@@ -140,6 +140,27 @@
                         color: #846d61;
                         font-size: 14px;
                         transition: color 0.3s ease;
+                        position: relative;
+                        &:last-of-type:after {
+                            content: "";
+                            position: absolute;
+                            left: 50%;
+                            right: 50%;
+                            bottom: 0;
+                            background: #d5ae68;
+                            height: 1px;
+                        }
+
+                        &:first-of-type:hover + a ,&:last-of-type:hover {
+                            color: #d5ae68;
+                            &:after {
+                                left: 0;
+                                right: 0;
+                                margin: 0 auto;
+                                max-width: 50%;
+                                transition: all 0.9s ease;
+                            }
+                        }
 
                         img {
                             &.intenso {

@@ -23,7 +23,7 @@ class SettingSeeder extends Seeder
             [
                 'setting_name' => 'tax',
                 'setting_label' => 'Tax',
-                'setting_value' => 80,
+                'setting_value' => 8,
                 'setting_type' => 'number'
             ]
         ]);
