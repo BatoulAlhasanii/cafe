@@ -3807,6 +3807,53 @@ footer .social-links-container .social-media-links li a i {
   height: 90px;
 }
 
+.info-page {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 8rem;
+}
+.info-page .page-title {
+  padding: 4rem 0;
+  text-align: center;
+}
+.info-page .page-title h1 {
+  margin: 0;
+  font-size: 26px;
+  font-family: "Montserrat", sans-serif;
+  color: #3a2419;
+}
+.info-page .text-wrapper > div {
+  margin-bottom: 3rem;
+}
+.info-page .text-wrapper.terms-of-service > div p:first-of-type {
+  font-weight: 600;
+}
+.info-page .text-wrapper.history-of-coffee {
+  text-align: center;
+}
+.info-page .text-wrapper.history-of-coffee img {
+  width: 30rem;
+  margin-bottom: 1rem;
+}
+.info-page .text-wrapper h2 {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.info-page .text-wrapper h3 {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.info-page .text-wrapper .margin-bottom {
+  margin-bottom: 1.6rem;
+}
+.info-page .text-wrapper ul li {
+  margin-bottom: 5px;
+}
+
 .admin header {
   position: fixed;
   top: 0;

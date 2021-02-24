@@ -253,7 +253,7 @@ checkout-page-wrapper
                             <div class="alert">Alerta</div>
                         </div>
                         <div class="back-to-cart">
-                            <a title="Voltar para o carrinho" href="">Forgot an item?</a>
+                            <a href="{{ route('cart.show') }}">Forgot an item?</a>
                         </div>
                     </div>
                     <div class="button-container">

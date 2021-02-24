@@ -1,0 +1,61 @@
+.info-page {
+
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 8rem;
+    .page-title {
+        padding: 4rem 0;
+        text-align: center;
+
+        h1 {
+            margin: 0;
+            font-size: 26px;
+            font-family: "Montserrat",sans-serif;
+            color: #3a2419;
+        }
+    }
+    .text-wrapper {
+        & > div {
+            margin-bottom: 3rem;
+        }
+
+        &.terms-of-service {
+            & > div p:first-of-type {
+                font-weight: 600;
+            }
+        }
+
+        &.history-of-coffee {
+            text-align: center;
+            img {
+                width: 30rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        h2 {
+            font-size: 16px;
+            line-height: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 14px;
+            line-height: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .margin-bottom {
+            margin-bottom: 1.6rem;
+        }
+
+        ul {
+            li {
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+}

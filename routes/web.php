@@ -124,5 +124,10 @@ Route::group([
         Route::get('/checkout', 'App\Http\Controllers\Site\CheckoutController@index')->name('checkout.index');
         Route::get('/successful-payment/{orderNumber}', 'App\Http\Controllers\Site\CheckoutController@showSuccessfulPayment')->name('checkout.successful-payment');
 
-
+        Route::get('/about-us', 'App\Http\Controllers\InfoController@aboutUs')->name('about-us');
+        Route::get('/delivery-policy', 'App\Http\Controllers\InfoController@deliveryPolicy')->name('delivery-policy');
+        Route::get('/history-of-coffee', 'App\Http\Controllers\InfoController@history')->name('history');
+        Route::get('/privacy-policy', 'App\Http\Controllers\InfoController@privacyPolicy')->name('privacy-policy');
+        Route::get('/return-policy', 'App\Http\Controllers\InfoController@returnPolicy')->name('return-policy');
+        Route::get('/terms-of-service', 'App\Http\Controllers\InfoController@termsOfService')->name('terms-of-service');
 });
