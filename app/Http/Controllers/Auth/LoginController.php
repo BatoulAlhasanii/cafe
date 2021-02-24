@@ -32,7 +32,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if (Auth::check()) {
-            return route('dashboard');
+            return route('orders.index');
         }
         return route('home');
     }

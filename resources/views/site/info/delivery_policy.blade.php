@@ -13,9 +13,10 @@
             <div class="text-wrapper">
             <div>
                 <h3>How long does the delivery take?</h3>
-                <p>Inside ISTANBUL: 3-5 business days
-                <br>Outside ISTANBUL (within Republic of Turkey): 5-10 business days
-                <br>You will receive an email that contains the tracking number within 2 business days after completing the purchase.
+                <p>- Inside ISTANBUL: 1-3 business days
+                <br>- Outside ISTANBUL (within Republic of Turkey): 2-4 business days
+                <br>- All orders before 3:00 pm. will be given to cargo at the same day</p>
+                <p>You will receive an email that contains the tracking number within 2 business days after completing the purchase.
                 <br>Please note that there is no delivery on Public Holidays or Weekends.</p>
             </div>
             <div>
