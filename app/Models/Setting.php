@@ -24,4 +24,13 @@ class Setting extends Model
             'setting_value' => ['required', new ValidateSettingValue()]
         ];
     }
+
+    public static function getMaxTotalToPayShippingFee() {
+        $setting = self::where('setting_name', 'max_total_to_pay_shipping_fee')->first();
+        if ($setting && is_numeric($setting->setting_value) && floatval($setting->setting_value) >= 0) {
+            return floatval($setting->setting_value);
+        } else {
+            return 70;
+        }
+    }
 }

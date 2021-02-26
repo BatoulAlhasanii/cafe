@@ -43,6 +43,7 @@ Route::get('locale/{locale}', function($locale){
 Route::post('/product/add-to-cart', 'App\Http\Controllers\Site\CartController@addToCart')->name('product.add.cart');
 Route::post('/product/remove-item', 'App\Http\Controllers\Site\CartController@removeItem')->name('cart.remove.item');
 Route::post('/product/set-quantity', 'App\Http\Controllers\Site\CartController@setProductQty')->name('cart.set.quantity');
+Route::post('/cart/set-shipping-fee', 'App\Http\Controllers\Site\CartController@setShippingFee')->name('cart.set.shippingFee');
 Route::post('/checkout', 'App\Http\Controllers\Site\CheckoutController@placeOrder')->name('checkout.placeOrder');
 
 

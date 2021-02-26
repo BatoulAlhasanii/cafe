@@ -8,7 +8,7 @@
     <div class="main-container">
         <div class="container">
             <div class="page-title">
-                <h1>About us</h1>
+                <h1>About Us</h1>
             </div>
             <div class="text-wrapper">
                 <p>GENİŞ DÜNYA GAYRİMENKUL VE GENEL İÇ VE DIŞ TİCARET LİMİTED ŞİRKETİ is the exclusive dealer of CAFÉ ODEBRECHT products in Republic of Turkey and Turkish Republic of Northern Cyprus.</p>

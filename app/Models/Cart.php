@@ -7,7 +7,9 @@ class Cart
     public $items;
     public $totalQuantity;
     public $totalPrice;
-
+    public $shippingFee;
+    public $isShippingFeeSet;
+    public $cityShippingFee;
     public function __construct()
     {
         $this->emptyBasket();
@@ -22,6 +24,9 @@ class Cart
     {
         $this->items = [];
         $this->totalPrice = $this->totalQuantity = 0;
+        $this->shippingFee = 0;
+        $this->isShippingFeeSet = false;
+        $this->cityShippingFee = 0;
     }
 
     public function addToCart($product, $id, $qtyToAdd = 1)
@@ -85,12 +90,41 @@ class Cart
         $this->items = $newItems;
     }
 
+    public function getIsShippingFeeSet()
+    {
+        return $this->isShippingFeeSet;
+    }
+
+    public function getShippingFee()
+    {
+        return $this->shippingFee;
+    }
+
+    public function setShippingFee()
+    {
+        $this->isShippingFeeSet = true;
+
+        if ($this->totalPrice < Setting::getMaxTotalToPayShippingFee()) {
+            $this->shippingFee = $this->cityShippingFee;
+        } else {
+            $this->shippingFee = 0;
+        }
+    }
+
+    public function setCityShippingFee($cityShippingFee)
+    {
+        $this->cityShippingFee = $cityShippingFee;
+        $this->setShippingFee();
+    }
+
     public function setCartItemsAndTotals(array $newItems, $totalPrice, $totalQuantity)
     {
         $this->items = [];
         $this->items = $newItems;
         $this->totalPrice = $totalPrice;
         $this->totalQuantity = $totalQuantity;
+
+        $this->setShippingFee();
     }
 
     public function getProductQty($productId)
@@ -126,8 +160,9 @@ class Cart
         foreach ($this->items as $item) {
             $this->totalPrice += $item["qty"] * $item["current_price"];
             $this->totalQuantity += $item["qty"];
-
         }
+
+        $this->setShippingFee();
     }
 
     public function getCartProducts()
@@ -163,8 +198,8 @@ class Cart
     public function getCartTotals() {
         return [
             'sub_total' => $this->totalPrice,
-            'shipping_fee' => 10,
-            'total' => $this->totalPrice + 10
+            'shipping_fee' => $this->shippingFee,
+            'total' => $this->totalPrice + $this->shippingFee
         ];
     }
 

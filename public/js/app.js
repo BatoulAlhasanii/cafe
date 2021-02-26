@@ -14,6 +14,8 @@ __webpack_require__(/*! ./single-product */ "./resources/js/single-product.js");
 __webpack_require__(/*! ./header */ "./resources/js/header.js");
 
 __webpack_require__(/*! ./autocomplete */ "./resources/js/autocomplete.js");
+
+__webpack_require__(/*! ./checkout */ "./resources/js/checkout.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -253,6 +255,73 @@ $(document).ready(function () {
     setProductQty(productId, parseInt($focusedFieldValue), parseInt($(this).val()));
     $focusedField = null;
     $focusedFieldValue = null;
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/checkout.js":
+/*!**********************************!*\
+  !*** ./resources/js/checkout.js ***!
+  \**********************************/
+/***/ (() => {
+
+$(document).ready(function () {
+  $('.submit-checkout-form').click(function () {
+    var isValid = true;
+    $('.submit-checkout-form').attr('disabled', true);
+    $('.required-field').each(function () {
+      if (!$(this).val()) {
+        isValid = false;
+        $(this).addClass('error');
+      } else if ($(this).hasClass('error')) {
+        $(this).removeClass('error');
+      }
+    });
+
+    if (isValid) {
+      $('#checkout-form').submit();
+    } else {
+      $('.submit-checkout-form').attr('disabled', false);
+    }
+  });
+  $('#checkout_city_id').change(function () {
+    var _token = $("input[name='_token']").val();
+
+    var city_id = $(this).val();
+    $.ajax({
+      url: "/cart/set-shipping-fee",
+      type: "POST",
+      data: {
+        _token: _token,
+        city_id: city_id
+      },
+      beforeSend: function beforeSend() {
+        $("#load-overlay").addClass("display-overlay");
+      },
+      success: function success(data) {
+        if ($('#checkout-shipping-fee-wrapper').hasClass('display-none')) {
+          $('#checkout-shipping-fee-wrapper').removeClass('display-none');
+        }
+
+        $('#checkout-sub-total').html("".concat(data.cart_totals.sub_total, " ").concat(data.currency));
+        $('#checkout-shipping-fee').html("".concat(data.cart_totals.shipping_fee, " ").concat(data.currency));
+        $('#checkout-total').html("".concat(data.cart_totals.total, " ").concat(data.currency));
+        $("#load-overlay").removeClass("display-overlay");
+      },
+      error: function error(reject) {
+        $("#load-overlay").removeClass("display-overlay");
+
+        if (reject.status === 422) {
+          var errors = $.parseJSON(reject.responseText);
+          $messages = null;
+          $.each(errors.errors, function (key, val) {
+            $messages = "<li> ".concat(val, " </li>");
+          });
+          $('.messages').html("<li class=\"error-msg\">\n                            <ul>\n                                <li> ".concat(errors.message, " </li>") + $messages + "</ul>\n                        </li>");
+        }
+      }
+    });
   });
 });
 

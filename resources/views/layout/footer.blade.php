@@ -9,37 +9,30 @@
             </div>
             <div class="footer-lists">
                 <div class="footer-list-wrapper">
-                    <h4>Ajuda</h4>
+                    <h4>About Us</h4>
                     <ul class="footer-link-list">
-                        <li><a href="#">Quem somos</a></li>
-                        <li><a href="#">Unidades</a></li>
-                        <li><a href="#">História do café</a></li>
-                        <li><a href="#">Como comprar</a></li>
-                        <li><a href="#">Pagamento e envio</a></li>
-                        <li><a href="#">Perguntas Frequentes</a></li>
-                        <li><a href="#">Tabalhe Conosco</a></li>
+                        <li><a href="{{ route('about-us') }}">About Us</a></li>
+                        <li><a href="{{ route('history') }}">History of Coffee</a></li>
                     </ul>
                 </div>
                 <div class="footer-list-wrapper">
-                    <h4>Minha Conta</h4>
+                    <h4>Service</h4>
                     <ul class="footer-link-list">
-                    <li><a href="#">Meu Cadastro</a></li>
-                    <li><a href="#">Meus Pedidos</a></li>
-                    <li><a href="#">Alterar Senha</a></li>
-                    <li><a href="#">Alterar Cadastro</a></li>
+                    <li><a href="{{ route('terms-of-service') }}">Terms of Service</a></li>
                     </ul>
                 </div>
                 <div class="footer-list-wrapper">
-                    <h4>Políticas</h4>
+                    <h4>Policies</h4>
                     <ul class="footer-link-list">
-                        <li><a href="#">Termos de Uso e Condições Gerais</a></li>
-                        <li><a href="#">Política de privacidade</a></li>
+                        <li><a href="{{ route('privacy-policy') }}">privacy Policy</a></li>
+                        <li><a href="{{ route('delivery-policy') }}">Delivery Policy</a></li>
+                        <li><a href="{{ route('return-policy') }}">Return Policy</a></li>
                     </ul>
                 </div>
             </div>
             <div class="social-links-container">
                 <div class="page-link">
-                        <a href="#">Café Odebrecht</a>
+                        <a href="{{ route('home') }}">Café Odebrecht</a>
                 </div>
                 <ul class="social-media-links footer-link-list">
                     <li>

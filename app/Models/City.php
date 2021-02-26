@@ -9,6 +9,8 @@ class City extends Model
 {
     use HasFactory;
 
+    public static $istanbulCityId = 1;
+
     public $fillable = [
         'country_id',
         'shipping_fees',

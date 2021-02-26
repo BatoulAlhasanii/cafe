@@ -120,8 +120,8 @@ checkout-page-wrapper
                             <div class="form_billing_fs">
                                 <div class="field_row">
                                     <div class="col-unique">
-                                        <label class="osc_label" for="city_id">City<em class="osc_required">*</em></label>
-                                        <select id="city_id" class="billing_select required-field" name="city_id">
+                                        <label class="osc_label" for="checkout_city_id">City<em class="osc_required">*</em></label>
+                                        <select id="checkout_city_id" class="billing_select required-field" name="city_id">
                                             <option value="">Select city...</option>
                                             @foreach($cities as $city)
                                                 @if ( intval(old('city_id')) === intval($city->city_id) )
@@ -197,15 +197,23 @@ checkout-page-wrapper
                                                     Subtotal
                                                 </td>
                                                 <td style="" class="a-right">
-                                                    <span class="price">{{ Session::get('cart')->getCartTotals()['sub_total'] }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                                    <span id="checkout-sub-total" class="price">{{ Session::get('cart')->getCartTotals()['sub_total'] }} {{ config('currency.' . app()->getLocale()) }}</span>
                                                 </td>
                                             </tr>
-                                                <tr>
+                                            <tr id="checkout-shipping-fee-wrapper" class="{{ Session::get('cart')->getIsShippingFeeSet() ? '' : 'display-none' }}">
+                                                <td style="" class="a-right" colspan="3">
+                                                    Shipping Fee
+                                                </td>
+                                                <td style="" class="a-right">
+                                                    <span id="checkout-shipping-fee" class="price">{{ Session::get('cart')->getCartTotals()['shipping_fee'] }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td style="" class="a-right" colspan="3">
                                                     <strong>Total</strong>
                                                 </td>
                                                 <td style="" class="a-right">
-                                                    <strong><span class="price">{{ Session::get('cart')->getCartTotals()['total'] }} {{ config('currency.' . app()->getLocale()) }}</span></strong>
+                                                    <strong><span id="checkout-total" class="price">{{ Session::get('cart')->getCartTotals()['total'] }} {{ config('currency.' . app()->getLocale()) }}</span></strong>
                                                 </td>
                                             </tr>
                                         </tfoot>
@@ -246,6 +254,11 @@ checkout-page-wrapper
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    <div id="load-overlay">
+                                        <div class="wrapper-spinner">
+                                            <div class="loader"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -270,26 +283,4 @@ checkout-page-wrapper
 
 
 @section('javascript-scripts')
-<script>
-    $(document).ready(function() {
-        $('.submit-checkout-form').click(function () {
-            var isValid = true;
-            $('.submit-checkout-form').attr('disabled', true);
-            $('.required-field').each(function() {
-                if (!$(this).val()) {
-                    isValid = false;
-                    $(this).addClass('error');
-                } else if ($(this).hasClass('error')) {
-                    $(this).removeClass('error');
-                }
-            });
-
-            if (isValid) {
-                $('#checkout-form').submit();
-            } else {
-                $('.submit-checkout-form').attr('disabled', false);
-            }
-        });
-    });
-</script>
 @endsection

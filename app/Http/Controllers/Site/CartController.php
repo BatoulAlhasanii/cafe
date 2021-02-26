@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\ProductContract;
 use App\Contracts\CartContract;
+use App\Contracts\CityContract;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Session;
 
@@ -13,11 +14,13 @@ class CartController extends Controller
 {
     protected $productRepository;
     protected $cartRepository;
+    protected $cityRepository;
 
-    public function __construct(ProductContract $productRepository, CartContract $cartRepository)
+    public function __construct(ProductContract $productRepository, CartContract $cartRepository, CityContract  $cityRepository)
     {
         $this->productRepository = $productRepository;
         $this->cartRepository = $cartRepository;
+        $this->cityRepository = $cityRepository;
     }
 
     public function showCart(Request $request)
@@ -109,5 +112,24 @@ class CartController extends Controller
 
         //  return redirect()->back()->with('message', 'Item removed from cart successfully.');
 
+    }
+
+    public function setShippingFee(Request $request)
+    {
+        $this->validate($request, [
+            'city_id' => 'required|exists:cities,id'
+        ]);
+
+        $city = $this->cityRepository->findCityById($request->city_id);
+
+        $cart = $this->cartRepository->getCart($request);
+
+        $cart->setCityShippingFee($city->shipping_fees);
+
+        return response()->json([
+            'status' => 'true',
+            'cart_totals' => Session::get('cart')->getCartTotals(),
+            'currency' => config('currency.' . app()->getLocale())
+        ]);
     }
 }

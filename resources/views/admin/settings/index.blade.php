@@ -33,6 +33,8 @@
                                 @endif
                             @elseif($setting->setting_name === 'tax')
                                 {{ $setting->setting_value }} %
+                            @elseif($setting->setting_name === 'max_total_to_pay_shipping_fee')
+                                {{ $setting->setting_value }} {{ config('currency.en') }}
                             @endif
                         </td>
                         <td class="a-center">

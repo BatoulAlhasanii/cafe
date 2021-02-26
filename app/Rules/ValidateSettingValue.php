@@ -33,7 +33,7 @@ class ValidateSettingValue implements Rule
                 return false;
             }
         }
-        else if (request('setting_name') === 'tax') {
+        else if (request('setting_name') === 'tax' || request('setting_name') === 'max_total_to_pay_shipping_fee') {
             if(is_numeric($value) && floatval($value) >= 0 ) {
                 return true;
             }

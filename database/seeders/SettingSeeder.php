@@ -25,6 +25,12 @@ class SettingSeeder extends Seeder
                 'setting_label' => 'Tax',
                 'setting_value' => 8,
                 'setting_type' => 'number'
+            ],
+            [
+                'setting_name' => 'max_total_to_pay_shipping_fee',
+                'setting_label' => 'Max Total To Pay Shipping Fee',
+                'setting_value' => 70,
+                'setting_type' => 'number'
             ]
         ]);
     }

@@ -74,6 +74,10 @@ class OrderRepository extends BaseRepository implements OrderContract
                 }
             }
 
+            if ( !count($items) ) {
+                Session::put('noItemsLeftInCart', true);
+            }
+
             Session::get('cart')->setCartItems($items);
         }
     }
@@ -225,10 +229,10 @@ class OrderRepository extends BaseRepository implements OrderContract
                         }
 
                         $city = City::find($request->city_id);
-                        $total = $sub_total + $city->shipping_fees;
+                        $total = $sub_total + Session::get('cart')->getShippingFee();
 
                         $order->sub_total = $sub_total;
-                        $order->shipping_fees = $city->shipping_fees;
+                        $order->shipping_fees = Session::get('cart')->getShippingFee();
                         $order->total = $total;
                     }
 
