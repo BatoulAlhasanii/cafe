@@ -4266,6 +4266,9 @@ footer .social-links-container .social-media-links li a i {
 .admin .view-wrapper {
   margin-bottom: 6rem;
 }
+.admin .view-wrapper .product-view-img {
+  height: 150px;
+}
 .admin .view-wrapper .table-wrapper {
   margin-top: 2rem;
 }

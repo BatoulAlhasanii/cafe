@@ -78,7 +78,9 @@ Route::group(['prefix' => 'K7JCVFW4RGtFkLKk0pDQWZciE4EONEhlUmO'], function () { 
         });
         Route::group(['middleware' => ['permission:manage-database|edit-products']], function () {
             Route::get('/products/{id}', 'App\Http\Controllers\Admin\ProductController@edit')->name('products.edit');
+            Route::get('/products/stock/{id}', 'App\Http\Controllers\Admin\ProductController@editStock')->name('products.stock.edit');
             Route::put('/products/{id}', 'App\Http\Controllers\Admin\ProductController@update')->name('products.update');
+            Route::put('/products/stock/{id}', 'App\Http\Controllers\Admin\ProductController@updateStock')->name('products.stock.update');
         });
 
         Route::group(['middleware' => ['permission:manage-database|view-orders']], function () {

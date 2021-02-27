@@ -178,7 +178,6 @@ class ProductRepository extends BaseRepository implements ProductContract
             $product->images = $stringOfImages;
             $product->unit_amount = $request->unit_amount;
             $product->sku = $request->sku;
-            $product->stock = $request->stock;
             $product->is_featured = $request->is_featured;
             $product->is_active = $request->is_active;
             $product->save();
@@ -214,6 +213,33 @@ class ProductRepository extends BaseRepository implements ProductContract
         }
 
 
+    }
+
+
+    public function updateStock($request) {
+        DB::beginTransaction();
+
+        try {
+
+            $product = Product::where('id', $request->id)->lockForUpdate()->first();
+
+            if ($request->operator === Product::$increaseProductLabel) {
+                $product->stock = $product->stock + $request->quantity;
+
+            } else if ($request->operator === Product::$decreaseProductLabel) {
+                $product->stock = $product->stock - $request->quantity;
+            }
+
+            $product->save();
+
+            DB::commit();
+
+            return $product;
+
+        } catch (\Exception $e) {
+          DB::rollBack();
+          throw $e;
+        }
     }
 
     /**

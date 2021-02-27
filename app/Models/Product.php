@@ -5,10 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Rules\ValidateProductImages;
+use Illuminate\Validation\Rule;
 
 class Product extends Model
 {
     use HasFactory;
+
+    public static $increaseProductLabel = 'increase';
+    public static $decreaseProductLabel = 'decrease';
 
     public $fillable = [
         'category_id',
@@ -55,7 +59,6 @@ class Product extends Model
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'unit_amount' => 'nullable|integer',
             'sku' => 'required|string|max:255',
-            'stock' => 'required|integer|min:0',
             'is_featured' => 'required|boolean',
             'is_active' => 'required|boolean',
             'product' => 'required|array',
@@ -64,6 +67,13 @@ class Product extends Model
             'product.*.unit' => 'nullable|string|max:255',
             'product.*.description' => 'nullable|string',
             'product.*.attribute_value' => 'nullable|string'
+        ];
+    }
+
+    public static function editStockRules() {
+        return [
+            'operator' => ['required', Rule::in(['increase', 'decrease'])],
+            'quantity' => 'required|integer|min:0'
         ];
     }
 

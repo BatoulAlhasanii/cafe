@@ -59,11 +59,30 @@ class ProductController extends BaseController
         return view('admin.products.edit', compact('categories', 'product'));
     }
 
+    public function editStock($id)
+    {
+        $product = $this->productRepository->findProductById($id);
+
+        return view('admin.products.edit_stock', compact('product'));
+    }
+
     public function update(Request $request)
     {
         $this->validate($request, Product::editRules());
 
         $product = $this->productRepository->updateProduct($request);
+
+        if (!$product) {
+            return $this->responseRedirectBack('Error occurred while updating product.', 'error', true, true);
+        }
+        return $this->responseRedirect('products.index', 'Product updated successfully' ,'success',false, false);
+    }
+
+    public function updateStock(Request $request)
+    {
+        $this->validate($request, Product::editStockRules());
+
+        $product = $this->productRepository->updateStock($request);
 
         if (!$product) {
             return $this->responseRedirectBack('Error occurred while updating product.', 'error', true, true);

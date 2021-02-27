@@ -23,6 +23,7 @@
                             <th>Discount Price</th>
                             <th>Featured</th>
                             <th>Shown to Customer</th>
+                            <th>Edit Stock</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
@@ -65,6 +66,9 @@
                                 @else
                                     <span class="danger">No</span>
                                 @endif
+                            </td>
+                            <td class="a-center">
+                                <a href="{{ route('products.stock.edit', ['id' => $product->id]) }}">Edit Stock</a>
                             </td>
                             <td class="a-center">
                                 <a href="{{ route('products.edit', ['id' => $product->id]) }}">Edit</a>

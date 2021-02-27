@@ -104,16 +104,6 @@
                     </div>
 
                     <div class="form-group col-6">
-                        <label for="stock">Stock</label>
-                        <input id="stock" type="text" name="stock" value="{{ old('stock') ?? $product->stock }}" placeholder="Stock" class="form-control">
-                        @error('stock')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group col-6">
                         <label for="weight">Weight (g)</label>
                         <input id="weight" type="text" name="unit_amount" value="{{ old('unit_amount') ?? $product->unit_amount }}" placeholder="Weight" class="form-control">
                         @error('weight')
@@ -270,6 +260,15 @@
                             </span>
                         @enderror
                     </div>
+                    @if ($errors->any())
+                        <div class="invalid-feedback">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="buttons-wrapper form-group col-12">
                         <div>
                             <button type="submit" class="btn submit-btn">Update</button>
