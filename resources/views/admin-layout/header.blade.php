@@ -1,6 +1,10 @@
 <header class="app-header navbar">
-    <button class="navbar-toggler" type="button" data-toggle="sidebar-show">
-        <span class="navbar-toggler-icon"></span>
+    <button id="admin-navbar-toggler" class="admin-navbar-toggler" type="button" data-toggle="sidebar-show">
+        <div class="navbar-toggler-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </button>
 
     <ul class="nav navbar-nav ml-auto">

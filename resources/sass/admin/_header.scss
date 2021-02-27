@@ -12,8 +12,25 @@
         padding: 10px 60px 10px 30px;
         border-bottom: 2px solid #d5ae68;
 
-        .navbar-toggler {
-            display: none;
+        .admin-navbar-toggler {
+            background-color: transparent;
+            border: none;
+            .navbar-toggler-icon {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                span {
+                    display: block;
+                    background: #d5ae68;
+                    width: 30px;
+                    height: 3px;
+                    border-radius: 9px;
+                    opacity: 1;
+                    filter: alpha(opacity=100);
+                    transform: rotate(0deg);
+                    transition: all 0.25s ease-in-out;
+                }
+            }
         }
         .navbar-nav{
             margin-left: auto;

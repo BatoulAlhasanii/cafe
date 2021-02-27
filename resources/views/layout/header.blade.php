@@ -46,7 +46,7 @@
                         <li>Central</li>
                         <li class="fale"><a>Consumer</a>
                             <ul class="tooltip">
-                                <span>Entre em contato:</span>
+                                <span>Contact us:</span>
                                 <li><i class="icon-phone"></i> <a href="#" onclick="return false">(43) 3377-4141</a></li>
                                 <li><i class="icon-whatsapp"></i> <a class="whatsapp" href="https://web.whatsapp.com/send?phone=5543999848084&amp;text=Oi!%20Estou%20entrando%20em%20contato%20pelo%20chat%20Whatsapp%20da%20sua%20loja%20virtual.%20Poderia%20me%20ajudar?" target="_blank">43 99984-8084</a></li>
                                 <li><i class="icon-newsletter-1"></i> <a class="maillink" href="mailto:sac@cafeodebrecht.com.br">sac@cafeodebrecht.com.br</a></li>

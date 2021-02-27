@@ -1,0 +1,20 @@
+.admin {
+    @media (min-width: 992px) {
+        .admin-navbar-toggler {
+            display: none;
+        }
+    }
+    @media (max-width: 991.98px) {
+        .sidebar:not(.show) {
+                display: none!important;
+        }
+        .main-footer-wrapper {
+            width: 100%;
+            margin-left: 0;
+        }
+        .admin-navbar-toggler {
+            display: block;
+        }
+    }
+
+}

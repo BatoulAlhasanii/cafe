@@ -30,15 +30,4 @@ class ProductController extends Controller
         return view('site.products.search_results', compact('products'));
     }
 
-    /*  public function addToCart(Request $request)
-    {
-        dd($request->all());
-        $product = $this->productRepository->findProductById($request->input('productId'));
-        $options = $request->except('_token', 'productId', 'price', 'qty');
-
-        Cart::add(uniqid(), $product->name, $request->input('price'), $request->input('qty'), $options);
-
-        return redirect()->back()->with('message', 'Item added to cart successfully.');
-    }*/
-
 }

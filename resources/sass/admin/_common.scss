@@ -20,14 +20,17 @@
             @media only screen and (max-width: 1103.8px) {
                 flex: 0 0 33.333%;
             }
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 768.8px) {
                 flex: 0 0 50%;
+            }
+            @media only screen and (max-width: 425.8px) {
+                flex: 0 0 100%;
             }
         }
         .col-6 {
             flex: 0 0 50%;
             padding: 0 15px;
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: 768.8px) {
                 flex: 0 0 100%;
             }
         }
@@ -69,8 +72,8 @@
     .custom-btn {
         color: #3a2419;
         font-weight: 600;
-        font-size: 15px;
-        padding: 10px 20px;
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
         background-color: #efd995;
         border-radius: 5px;
         display: inline-block;
