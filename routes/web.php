@@ -39,12 +39,7 @@ Route::get('locale/{locale}', function($locale){
 })->name('locale');
 
 
-//without lang
-Route::post('/product/add-to-cart', 'App\Http\Controllers\Site\CartController@addToCart')->name('product.add.cart');
-Route::post('/product/remove-item', 'App\Http\Controllers\Site\CartController@removeItem')->name('cart.remove.item');
-Route::post('/product/set-quantity', 'App\Http\Controllers\Site\CartController@setProductQty')->name('cart.set.quantity');
-Route::post('/cart/set-shipping-fee', 'App\Http\Controllers\Site\CartController@setShippingFee')->name('cart.set.shippingFee');
-Route::post('/checkout', 'App\Http\Controllers\Site\CheckoutController@placeOrder')->name('checkout.placeOrder');
+
 
 
 Route::group(['prefix' => 'K7JCVFW4RGtFkLKk0pDQWZciE4EONEhlUmO'], function () { //
@@ -120,6 +115,13 @@ Route::get('product/search', 'App\Http\Controllers\Site\ProductController@search
 Route::group([
     'prefix' => $locale,
     'middleware' => 'setlocale'], function() {
+        Route::post('/product/add-to-cart', 'App\Http\Controllers\Site\CartController@addToCart')->name('product.add.cart');
+        Route::post('/product/set-quantity', 'App\Http\Controllers\Site\CartController@setProductQty')->name('cart.set.quantity');
+        Route::post('/product/remove-item', 'App\Http\Controllers\Site\CartController@removeItem')->name('cart.remove.item');
+        Route::post('/checkout', 'App\Http\Controllers\Site\CheckoutController@placeOrder')->name('checkout.placeOrder');
+        Route::post('/cart/set-shipping-fee', 'App\Http\Controllers\Site\CartController@setShippingFee')->name('cart.set.shippingFee');
+
+
         Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
         Route::get('/category/{slug}', 'App\Http\Controllers\Site\CategoryController@show')->name('category.show');
         Route::get('/product/{slug}', 'App\Http\Controllers\Site\ProductController@show')->name('product.show');

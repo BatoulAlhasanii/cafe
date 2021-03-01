@@ -147,6 +147,16 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'name',
+        'surname' => 'surname',
+        'phone' => 'phone',
+        'email' => 'email',
+        'district' => 'district',
+        'address' => 'address',
+        'city_id' => 'city',
+        'country_id' => 'country',
+        'coupon_code' => 'coupon code'
+    ],
 
 ];

@@ -13,7 +13,7 @@
             <ul>
                 <li class="home">
                     <a href="{{ route('home') }}" itemprop="item" title="Ir para Página Inicial">
-                    <span>Home</span></a>
+                    <span>@lang("Home")</span></a>
                     <span class="separator">|</span>
                 </li>
                 <li class="category">
@@ -58,7 +58,7 @@
                         </div>
                     @endif
                     <div class="bt-add">
-                        <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Details</span></a>
+                        <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>@lang("Details")</span></a>
                         <!--<button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>-->
                     </div>
                 </div>

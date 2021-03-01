@@ -21,9 +21,11 @@ $(document).ready(function() {
         var productId = $("input[name='product-id']").val();
         var qty = parseInt($qtyField.val());
 
+        var locale = document.getElementsByTagName('html')[0].lang.trim();
+
         if ( parseInt($qtyField.attr('max')) > 0 && parseInt($qtyField.val()) > 0 ) {
             $.ajax({
-                url: "/product/add-to-cart",
+                url: "/" + locale + "/product/add-to-cart",
                 type: "POST",
                 data: { _token: _token, productId: productId, quantity: qty },
                 beforeSend: function() {

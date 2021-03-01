@@ -3975,6 +3975,9 @@ footer .social-links-container .social-media-links li a i {
     padding: 0 4rem;
   }
 }
+.admin .messages > li {
+  margin: 0 0 4rem;
+}
 .admin .form-wrapper, .admin .view-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -4019,6 +4022,9 @@ footer .social-links-container .social-media-links li a i {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 1rem;
+}
+.admin .form-wrapper .table-wrapper td.operator .success, .admin .form-wrapper .table-wrapper td.operator .danger, .admin .view-wrapper .table-wrapper td.operator .success, .admin .view-wrapper .table-wrapper td.operator .danger {
+  font-size: 25px !important;
 }
 .admin .form-container, .admin .view-container {
   width: 100%;

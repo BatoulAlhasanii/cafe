@@ -8,6 +8,7 @@ use App\Contracts\ProductContract;
 use App\Http\Controllers\BaseController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class ProductController extends BaseController
 {
@@ -84,6 +85,9 @@ class ProductController extends BaseController
 
         $product = $this->productRepository->updateStock($request);
 
+        if(Session::has('error')) {
+            return $this->responseRedirect('product.stock.edit','Quantity left in stock is less than the subtracted quantity.', 'error', true, true);
+        }
         if (!$product) {
             return $this->responseRedirectBack('Error occurred while updating product.', 'error', true, true);
         }

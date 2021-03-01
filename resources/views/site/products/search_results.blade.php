@@ -10,7 +10,7 @@
 <section class="products-section">
     <div class="container products-container">
         <div class="page-title search-results-title">
-            <h3>Search results for '{{ request('q') }}'</h3>
+            <h3>@lang("Search results for") '{{ request('q') }}'</h3>
         </div>
         <ul class="products-grid">
             @foreach($products as $product)
@@ -45,7 +45,7 @@
                         </div>
                     @endif
                     <div class="bt-add">
-                        <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Details</span></a>
+                        <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>@lang("Details")</span></a>
                         <!--<button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>-->
                     </div>
                 </div>

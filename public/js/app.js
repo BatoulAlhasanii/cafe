@@ -115,8 +115,9 @@ $(document).ready(function () {
     if (window.location.href.split('/').pop() === 'cart' && oldQty !== qty && qty > 0) {
       var _token = $("input[name='_token']").val();
 
+      var locale = document.getElementsByTagName('html')[0].lang.trim();
       $.ajax({
-        url: "/product/set-quantity",
+        url: "/" + locale + "/product/set-quantity",
         type: "POST",
         data: {
           _token: _token,
@@ -158,8 +159,9 @@ $(document).ready(function () {
     var _token = $("input[name='_token']").val();
 
     var productId = $(this).attr('data-product-id');
+    var locale = document.getElementsByTagName('html')[0].lang.trim();
     $.ajax({
-      url: "/product/remove-item",
+      url: "/" + locale + "/product/remove-item",
       type: "POST",
       data: {
         _token: _token,
@@ -291,8 +293,9 @@ $(document).ready(function () {
     var _token = $("input[name='_token']").val();
 
     var city_id = $(this).val();
+    var locale = document.getElementsByTagName('html')[0].lang.trim();
     $.ajax({
-      url: "/cart/set-shipping-fee",
+      url: "/" + locale + "/cart/set-shipping-fee",
       type: "POST",
       data: {
         _token: _token,
@@ -393,10 +396,11 @@ $(document).ready(function () {
 
     var productId = $("input[name='product-id']").val();
     var qty = parseInt($qtyField.val());
+    var locale = document.getElementsByTagName('html')[0].lang.trim();
 
     if (parseInt($qtyField.attr('max')) > 0 && parseInt($qtyField.val()) > 0) {
       $.ajax({
-        url: "/product/add-to-cart",
+        url: "/" + locale + "/product/add-to-cart",
         type: "POST",
         data: {
           _token: _token,

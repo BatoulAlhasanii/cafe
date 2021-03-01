@@ -100,4 +100,9 @@ class Product extends Model
             return $this->price;
         }
     }
+
+    public function productLogs()
+    {
+        return $this->hasMany(\App\Models\productLog::class, 'product_id');
+    }
 }

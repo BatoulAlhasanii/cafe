@@ -8,7 +8,7 @@
     <div class="main-container">
         <div class="container">
             <div class="page-title">
-                <h1>Delivery Policy</h1>
+                <h1>@lang("Delivery Policy")</h1>
             </div>
             <div class="text-wrapper">
             <div>

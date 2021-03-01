@@ -49,7 +49,7 @@ class CheckoutController extends BaseController
 
 
             if (!count(Session::get('cart')->getCartItems())) {
-                return $this->responseRedirectBack('No items left in cart', 'error', true, true);
+                return $this->responseRedirectBack(\Lang::get('messages.No items left in cart'), 'error', true, true);
             }
         }
 

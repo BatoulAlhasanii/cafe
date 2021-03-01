@@ -17,6 +17,7 @@
         <div class="page-title">
             <h1>Edit Stock</h1>
         </div>
+        @include('admin.components.session_messages')
         <div class="main-content">
             <form method="POST" action="{{ route('products.stock.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -47,7 +48,45 @@
                                 <img class="product-view-img" src="{{ asset('/storage/' . explode(',', $product->images)[0]) }}">
                             @endif
                         </div>
-
+                    </div>
+                    <div class="col-12 table-wrapper">
+                        <h3>Stock Edition Log</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr class="first last">
+                                    <th>Action</th>
+                                    <th>Quantity</th>
+                                    <th>Resulting Stock</th>
+                                    <th>User</th>
+                                    <th>Date Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($product->productLogs as $productLog)
+                                <tr>
+                                    <td class="a-center operator">
+                                        @if($productLog->action === \App\Models\Product::$increaseProductLabel)
+                                            <span class="success">+</span>
+                                        @else
+                                            <span class="danger">-</span>
+                                        @endif
+                                    </td>
+                                    <td class="a-center">
+                                        {{ $productLog->quantity }}
+                                    </td>
+                                    <td class="a-center">
+                                        {{ $productLog->stock }}
+                                    </td>
+                                    <td class="a-center">
+                                        {{ $productLog->name }}
+                                    </td>
+                                    <td class="a-center">
+                                        {{ $productLog->created_at }}
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="form-wrapper">

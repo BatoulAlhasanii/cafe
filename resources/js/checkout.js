@@ -21,8 +21,11 @@ $(document).ready(function() {
     $('#checkout_city_id').change(function () {
         var _token = $("input[name='_token']").val();
         var city_id = $(this).val();
+
+        var locale = document.getElementsByTagName('html')[0].lang.trim();
+
         $.ajax({
-            url: "/cart/set-shipping-fee",
+            url: "/" + locale + "/cart/set-shipping-fee",
             type: "POST",
             data: { _token: _token, city_id: city_id },
             beforeSend: function() {

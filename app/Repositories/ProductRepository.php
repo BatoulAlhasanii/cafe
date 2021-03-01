@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Session;
+use App\Models\ProductLog;
 
 /**
  * Class ProductRepository
@@ -221,16 +223,35 @@ class ProductRepository extends BaseRepository implements ProductContract
 
         try {
 
+            $isStockModified = false;
             $product = Product::where('id', $request->id)->lockForUpdate()->first();
 
             if ($request->operator === Product::$increaseProductLabel) {
+
                 $product->stock = $product->stock + $request->quantity;
+                $isStockModified = true;
 
             } else if ($request->operator === Product::$decreaseProductLabel) {
-                $product->stock = $product->stock - $request->quantity;
+                if ($product->stock >= $request->quantity) {
+                    $product->stock = $product->stock - $request->quantity;
+                    $isStockModified = true;
+                } else {
+                    session()->flash('error', ['Quantity left in stock is less than the subtracted quantity.']);
+                }
             }
 
-            $product->save();
+            $isProductUpdated = $product->save();
+
+            if ($isStockModified && $isProductUpdated) {
+                ProductLog::create([
+                    'product_id' => $request->id,
+                    'action' => $request->operator,
+                    'quantity' => $request->quantity,
+                    'stock' => $product->stock,
+                    'user_id' => auth()->user()->id,
+                    'name' => auth()->user()->name
+                ]);
+            }
 
             DB::commit();
 

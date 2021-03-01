@@ -16,7 +16,7 @@
             <ul>
                 <li class="home">
                     <a href="{{ route('home') }}" itemprop="item" title="Ir para Página Inicial">
-                    <span>Home</span></a>
+                    <span>@lang("Home")</span></a>
                     <span class="separator">|</span>
                 </li>
                 <li class="category">
@@ -60,11 +60,11 @@
                         <div id="info-secondaria" class="bloco-info-produto grid12-12 no-gutter">
                             <div class="grid12-4 no-gutter a-left">
                                 <div class="availability in-stock">
-                                    <span class="title-rating">Product:</span> <span class="disponivel">{{ $product->stock > 0 ? 'Available' : 'Unavailable' }}</span>
+                                    <span class="title-rating">@lang("Product"):</span> <span class="disponivel">{{ $product->stock > 0 ? 'Available' : 'Unavailable' }}</span>
                                 </div>
                             </div>
                             <div class="grid12-3 no-gutter sku-align">
-                                <span><span class="title-rating">SKU: </span><span>{{ $product->sku }}</span></span>
+                                <span><span class="title-rating">@lang("SKU"): </span><span>{{ $product->sku }}</span></span>
                             </div>
                             <div class="grid12-5 no-gutter a-right">
                                 <div class="no-ratings">
@@ -89,24 +89,24 @@
                                     <div class="qty-wrapper">
                                         <span id="product-dec-qty-{{ $product->id }}" class="arrow dec">-</span><input type="number" name="qty" id="product-qty-field-{{ $product->id }}"  min="{{ ($product->stock > 0 && $product->stock > Session::get('cart')->getProductQty($product->id)) ? 1 : 0 }}" max="{{ $product->stock > Session::get('cart')->getProductQty($product->id) ? ($product->stock - Session::get('cart')->getProductQty($product->id)) : 0 }}" value="{{ ($product->stock > 0 && $product->stock > Session::get('cart')->getProductQty($product->id)) ? 1 : 0 }}" class="input-text qty"><span id="product-inc-qty-{{ $product->id }}" class="arrow inc">+</span>
                                     </div>
-                                    <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock > Session::get('cart')->getProductQty($product->id) ? ($product->stock - Session::get('cart')->getProductQty($product->id)) : 0 }} items left!</div>
+                                    <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock > Session::get('cart')->getProductQty($product->id) ? ($product->stock - Session::get('cart')->getProductQty($product->id)) : 0 }} @lang("items left")!</div>
                                 </div>
                             </div>
                             <div class="preco-prod grid12-12 no-gutter">
                                 @if($isDiscountActivated && $product->discount_price > 0  && $product->discount_price < $product->price)
                                 <div class="price-box">
                                     <p class="old-price">
-                                        <span class="price-label">from:</span>
+                                        <span class="price-label">@lang("from"):</span>
                                         <span class="price">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                     </p>
 
                                     <p class="special-price">
-                                        <span class="price-label">to:</span>
+                                        <span class="price-label">@lang("to"):</span>
                                         <span class="price">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                     </p>
                                     <div class="price-statement no-display">
                                         <div>
-                                            up to <span class="price-num">1</span><span class="xmark">x</span> from <span class="price">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                        @lang("up to") <span class="price-num">1</span><span class="xmark">x</span> @lang("from") <span class="price">{{ $product->discount_price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                                     </p>
                                     <div class="price-statement no-display">
                                         <div>
-                                            up to <span class="price-num">1</span><span class="xmark">x</span> from <span class="price">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
+                                        @lang("up to") <span class="price-num">1</span><span class="xmark">x</span> @lang("from") <span class="price">{{ $product->price }} {{ config('currency.' . app()->getLocale()) }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -126,22 +126,22 @@
                         </div>
                         <div class="add-to-cart-btn-container add-to-cart v-centered-content">
                                 <input type="hidden" name="product-id" value="{{ $product->id }}">
-                                <button type="button" id="add-to-cart-btn" title="Comprar" class="btn-special btn-cart"><span class="submitting">Adding..</span><span class="submit">Add to cart</span></button>
+                                <button type="button" id="add-to-cart-btn" title="Comprar" class="btn-special btn-cart"><span class="submitting">@lang("Adding")..</span><span class="submit">@lang("Add to cart")</span></button>
                         </div>
                         <div id="socialWrap">
-                            <h4 class="pr15">Social media:</h4>
+                            <h4 class="pr15">@lang("Social media"):</h4>
                             <ul id="share-product">
                                 <li>
-                                    <a class="icon-facebook" title="Compartilhe no Facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" rel="nofollow"></a>
+                                    <a class="icon-facebook" target="_blank" rel="nofollow"></a>
                                 </li>
                                 <li>
-                                    <a class="icon-twitter" title="Compartilhe no Twitter" href="https://twitter.com/intent/tweet?original_referer=https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html&amp;tw_p=tweetbutton&amp;url=https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                                    <a class="icon-twitter" target="_blank" rel="nofollow"></a>
                                 </li>
                                 <li>
-                                    <a class="icon-gplus" title="Compartilhe no Google+" href="https://plus.google.com/share?url=https://www.cafeodebrecht.com.br/cafe-odebrecht-superior.html" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"></a>
+                                    <a class="icon-gplus" target="_blank" rel="nofollow"></a>
                                 </li>
                                 <li>
-                                    <a class="icon-mail-alt" title="Indique este produto para um amigo" href="https://www.cafeodebrecht.com.br/sendfriend/product/send/id/52/"></a>
+                                    <a class="icon-mail-alt" target="_blank" rel="nofollow"></a>
                                 </li>
                             </ul>
                         </div>
@@ -155,11 +155,11 @@
                         <ul class="accordion-tabs-minimal">
                             <li class="">
                                 <a href="#descricao" class="tab-link is-active">
-                                    Description
+                                @lang("Description")
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#atributos" class="tab-link" id="tab-atributos">Specifications</a>
+                                <a href="#atributos" class="tab-link" id="tab-atributos">@lang("Specifications")</a>
                             </li>
                         </ul>
                         <div id="descricao" class="tab-content is-open">
@@ -175,14 +175,6 @@
                                     <col>
                                 </colgroup>
                                 <tbody>
-                                <!--
-                                    (json_decode( strval($product->productTranslations[0]->attribute_value) ) as $key => $value)
-                                    <tr class="first odd">
-                                        <th class="label"></th>
-                                        <td class="data last"></td>
-                                    </tr>
-
-                                -->
                                 @if($product->productTranslations[0]->attribute_value)
                                     @foreach(explode(',' ,$product->productTranslations[0]->attribute_value) as $variable)
                                         @if(count(explode(':', $variable)) === 2)

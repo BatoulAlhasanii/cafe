@@ -6,7 +6,7 @@
             </h1>
             <ul class="header-contact-info">
                 <li class="last">
-                    <span class="bold">Attendance:</span>
+                    <span class="bold">@lang("Attendance"):</span>
                     <span class="tel">(43) 3377-4141</span>
                 </li>
             </ul>

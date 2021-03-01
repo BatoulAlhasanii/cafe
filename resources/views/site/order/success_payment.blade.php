@@ -19,11 +19,11 @@ success-payment-page-wrapper
 <div class="main-container successful-payment-page">
     <div class="container">
         <div>
-            <h1 class="icon-emo-happy">Successful Payment</h1>
-            <p>Thanks for shopping with us</p>
+            <h1 class="icon-emo-happy">@lang("Successful Payment")</h1>
+            <p>@lang("Thanks for shopping with us")</p>
             <div class="view-wrapper">
                 <div class="order-info">
-                    <div>Order Number: {{ $order->order_number }}</div>
+                    <div>@lang("Order Number"): {{ $order->order_number }}</div>
                     <div>{{ $order->name }} {{ $order->surname }}</div>
                     <div>{{ $order->phone }}</div>
                     <div>{{ $order->email }}</div>
@@ -34,11 +34,11 @@ success-payment-page-wrapper
                     <table class="data-table">
                         <thead>
                             <tr class="first last">
-                                <th class="col-img">Image</th>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Total</th>
+                                <th class="col-img">@lang("Image")</th>
+                                <th>@lang("Product Name")</th>
+                                <th>@lang("Quantity")</th>
+                                <th>@lang("Price")</th>
+                                <th>@lang("Total")</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,7 +69,7 @@ success-payment-page-wrapper
                             @endforeach
                             <tr>
                                 <td colspan="4" class="a-center">
-                                    <strong>Subtotal</strong>
+                                    <strong>@lang("Subtotal")</strong>
                                 </td>
                                 <td class="a-center">
                                     {{ $order->sub_total }} {{ config('currency.' . app()->getLocale()) }}
@@ -77,7 +77,7 @@ success-payment-page-wrapper
                             </tr>
                             <tr>
                                 <td colspan="4" class="a-center">
-                                    <strong>Shipping fee</strong>
+                                    <strong>@lang("Shipping fee")</strong>
                                 </td>
                                 <td class="a-center">
                                     {{ $order->shipping_fees }} {{ config('currency.' . app()->getLocale()) }}
@@ -85,7 +85,7 @@ success-payment-page-wrapper
                             </tr>
                             <tr>
                                 <td colspan="4" class="a-center">
-                                    <strong>Total</strong>
+                                    <strong>@lang("Total")</strong>
                                 </td>
                                 <td class="a-center">
                                     {{ $order->total }} {{ config('currency.' . app()->getLocale()) }}

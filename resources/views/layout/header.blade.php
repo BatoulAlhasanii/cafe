@@ -43,10 +43,9 @@
                 </div>
                 <div class="header-gutter header-gutter--2">
                     <ul class="top-header-item central hide-on-small-screens">
-                        <li>Central</li>
-                        <li class="fale"><a>Consumer</a>
+                        <li class="fale">@lang("Central<br><a>Consumer</a>")
                             <ul class="tooltip">
-                                <span>Contact us:</span>
+                                <span>@lang("Contact us"):</span>
                                 <li><i class="icon-phone"></i> <a href="#" onclick="return false">(43) 3377-4141</a></li>
                                 <li><i class="icon-whatsapp"></i> <a class="whatsapp" href="https://web.whatsapp.com/send?phone=5543999848084&amp;text=Oi!%20Estou%20entrando%20em%20contato%20pelo%20chat%20Whatsapp%20da%20sua%20loja%20virtual.%20Poderia%20me%20ajudar?" target="_blank">43 99984-8084</a></li>
                                 <li><i class="icon-newsletter-1"></i> <a class="maillink" href="mailto:sac@cafeodebrecht.com.br">sac@cafeodebrecht.com.br</a></li>
@@ -58,8 +57,8 @@
                     <div class="mobile-search">
                         <section class="form-search">
                             <form id="search_mini_form" action="{{ route('product.search') }}" method="get">
-                                <input id="product-search" type="text" name="q" value="{{ request('q') }}" class="input-text" placeholder="search for a product">
-                                <button id="form-search-button" type="submit"><span>Search</span></button>
+                                <input id="product-search" type="text" name="q" value="{{ request('q') }}" class="input-text" placeholder="@lang('search for a product')">
+                                <button id="form-search-button" type="submit"><span>@lang("Search")</span></button>
                             </form>
                         </section>
                     </div>

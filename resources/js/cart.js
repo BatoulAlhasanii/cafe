@@ -5,8 +5,10 @@ $(document).ready(function() {
 
             var _token = $("input[name='_token']").val();
 
+            var locale = document.getElementsByTagName('html')[0].lang.trim();
+
             $.ajax({
-                url: "/product/set-quantity",
+                url: "/" + locale + "/product/set-quantity",
                 type: "POST",
                 data: { _token: _token, productId: productId, quantity: qty },
                 beforeSend: function() {
@@ -58,8 +60,10 @@ $(document).ready(function() {
         var _token = $("input[name='_token']").val();
         var productId = $(this).attr('data-product-id');
 
+        var locale = document.getElementsByTagName('html')[0].lang.trim();
+
         $.ajax({
-            url: "/product/remove-item",
+            url: "/" + locale + "/product/remove-item",
             type: "POST",
             data: { _token: _token, productId: productId },
             beforeSend: function() {

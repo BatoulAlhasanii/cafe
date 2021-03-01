@@ -19,7 +19,7 @@
     <section class="coffee-favours">
         <div class="container coffee-favours-container">
             <div class="coffee-favours--title">
-                <h3><span>choose the flavor of</span>Your Taste</h3>
+                <h3>@lang("<span>choose the flavor of</span>Your Taste")</h3>
             </div>
             <div class="coffee-favours--items">
                 <ul class="favours">
@@ -39,7 +39,7 @@
         <div class="container products-container">
             <div class="title-bar">
                 <h2>
-                    <span>the best</span>Seller Products
+                @lang("<span>the best</span>Seller Products")
                 </h2>
             </div>
             <ul class="products-grid">
@@ -74,8 +74,7 @@
                         </div>
                         @endif
                         <div class="bt-add">
-                            <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Details</span></a>
-                            <!--<button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>-->
+                            <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>@lang("Details")</span></a>
                         </div>
                     </div>
                 </li>

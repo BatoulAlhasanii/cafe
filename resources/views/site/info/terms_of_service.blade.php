@@ -8,7 +8,7 @@
     <div class="main-container">
         <div class="container">
             <div class="page-title">
-                <h1>Terms of Service</h1>
+                <h1>@lang("Terms of Service")</h1>
             </div>
             <div class="text-wrapper terms-of-service">
                 <div>

@@ -21,9 +21,9 @@ cart-page-wrapper
     <div class="container">
         <div class="cart">
             <div class="title-buttons">
-                <h1>Shopping Cart</h1>
+                <h1>@lang("Shopping Cart")</h1>
                 <div class="checkout-types">
-                        <a title="Proceed To Checkout" class="button btn-proceed-checkout btn-checkout" href="{{ route('checkout.index') }}">Proceed To Checkout</a>
+                        <a title="Proceed To Checkout" class="button btn-proceed-checkout btn-checkout" href="{{ route('checkout.index') }}">@lang("Proceed To Checkout")</a>
                 </div>
             </div>
             <ul class="messages">
@@ -35,17 +35,17 @@ cart-page-wrapper
                         <thead>
                             <tr class="first last">
                                 <th class="col-img">&nbsp;</th>
-                                <th>Product Name</th>
-                                <th class="a-center">Quantity</th>
-                                <th class="col-unit-price a-center">Subtotal</th>
-                                <th class="a-center">Total</th>
-                                <th class="a-center">Remove</th>
+                                <th>@lang("Product Name")</th>
+                                <th class="a-center">@lang("Quantity")</th>
+                                <th class="col-unit-price a-center">@lang("Price")</th>
+                                <th class="a-center">@lang("Total")</th>
+                                <th class="a-center">@lang("Remove")</th>
                             </tr>
                         </thead>
                             <tfoot>
                             <tr class="first last">
                                 <td>
-                                    <a href="{{ route('home') }}" class="btn-with-row btn-inline">Back to store</a>
+                                    <a href="{{ route('home') }}" class="btn-with-row btn-inline">@lang("Back to store")</a>
                                 </td>
                             </tr>
                         </tfoot>
@@ -68,11 +68,11 @@ cart-page-wrapper
                                         <div class="box-qty">
                                             <input type="number" name="qty" id="product-qty-field-{{ $product->id }}" value="{{ $product->qty }}" min="{{ $product->stock > 0 ? 1 : 0 }}" max="{{ $product->stock }}" class="product-qty-field input-text qty"><span id="product-inc-qty-{{ $product->id }}" class="arrow inc" title="Aumentar">+</span><span id="product-dec-qty-{{ $product->id }}" class="arrow dec" title="Diminuir">-</span>
                                         </div>
-                                        <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock }} items left!</div>
+                                        <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock }} @lang("items left")!</div>
                                         @if (!$product->is_available_item)
-                                            <div class="error-product-message">This product is not available anymore.</div>
+                                            <div class="error-product-message">@lang("This product is not available anymore.")</div>
                                         @elseif ($product->is_available_item && !$product->is_qty_available)
-                                            <div class="error-product-message">{{ $product->qty }} items left! The requested quantity is not available anymore.</div>
+                                            <div class="error-product-message">{{ $product->qty }} @lang("items left! The requested quantity is not available anymore.")</div>
                                         @endif
 
                                     </div>
@@ -106,7 +106,7 @@ cart-page-wrapper
                             <tfoot>
                                 <tr>
                                     <td class="a-right">
-                                        <strong>Total</strong>
+                                        <strong>@lang("Total")</strong>
                                     </td>
                                     <td class="a-right">
                                         <strong><span id="cart-total" class="price">{{ Session::get('cart')->getCartTotals()['total'] }} {{ config('currency.' . app()->getLocale()) }}</span></strong>
@@ -116,7 +116,7 @@ cart-page-wrapper
                             <tbody>
                                 <tr>
                                     <td class="a-right">
-                                        Subtotal    </td>
+                                    @lang("Subtotal")    </td>
                                     <td class="a-right">
                                         <span id="cart-sub-total" class="price">{{ Session::get('cart')->getCartTotals()['sub_total'] }} {{ config('currency.' . app()->getLocale()) }}</span></td>
                                 </tr>
@@ -124,7 +124,7 @@ cart-page-wrapper
                         </table>
                     </div>
                     <div class="checkout-types bottom">
-                        <a title="Proceed To Checkout" class="button btn-proceed-checkout btn-checkout" href="{{ route('checkout.index') }}">Proceed To Checkout</a>
+                        <a title="Proceed To Checkout" class="button btn-proceed-checkout btn-checkout" href="{{ route('checkout.index') }}">@lang("Proceed To Checkout")</a>
                     </div>
                 </div>
                 <div class="grid-full no-gutter"></div>
@@ -137,7 +137,7 @@ cart-page-wrapper
 <div class="main-container empty-cart-page">
     <div class="empty-cart container">
         <div class="page-title">
-            <h1>Empty cart</h1>
+            <h1>@lang("Empty cart")</h1>
         </div>
         <ul class="messages">
             @if(Session::has('error'))
@@ -151,9 +151,9 @@ cart-page-wrapper
             @endif
         </ul>
         <div class="empty-cart-message flex-column">
-            <h1 class="icon-emo-unhappy">What a pity!</h1>
-            <p>There are no items in your cart.</p>
-            <a href="{{ route('home') }}" class="btn-continue btn-inline btn-with-row">Back to store</a>
+            <h1 class="icon-emo-unhappy">@lang("What a pity!")</h1>
+            <p>@lang("There are no items in your cart.")</p>
+            <a href="{{ route('home') }}" class="btn-continue btn-inline btn-with-row">@lang("Back to store")</a>
         </div>
     </div>
 </div>

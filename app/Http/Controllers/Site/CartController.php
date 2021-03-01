@@ -30,7 +30,7 @@ class CartController extends Controller
         //, redirection from checkout to cart will happen and there will be
         //error flash message
         if (Session::has('noItemsLeftInCart')) {
-            session()->flash('error', ['No items left in cart']);
+            session()->flash('error', [\Lang::get('messages.No items left in cart')]);
             session()->forget('noItemsLeftInCart');
         }
 
@@ -56,9 +56,10 @@ class CartController extends Controller
 
         $cart = $this->cartRepository->getCart($request);
         $cart->addToCart($product, $productId, $qtyToAdd);
+
         return response()->json([
             'status' => 'true',
-            'message' => 'Item added to cart successfully.',
+            'message' => \Lang::get('messages.Item added to cart successfully.'),
             'cart_count' => Session::get('cart')->getCartCount()
         ]);
 
@@ -78,7 +79,7 @@ class CartController extends Controller
 
         return response()->json([
             'status' => 'true',
-            'message' => 'Item removed from cart successfully.',
+            'message' => \Lang::get('messages.Item removed from cart successfully.'),
             'cart_count' => Session::get('cart')->getCartCount(),
             'cart_totals' => Session::get('cart')->getCartTotals(),
             'currency' => config('currency.' . app()->getLocale())
@@ -103,7 +104,7 @@ class CartController extends Controller
 
         return response()->json([
             'status' => 'true',
-            'message' => 'Item quantity updated successfully.',
+            'message' => \Lang::get('messages.Quantity updated successfully.'),
             'cart_count' => Session::get('cart')->getCartCount(),
             'product' => Session::get('cart')->getCartProductById($productId),
             'cart_totals' => Session::get('cart')->getCartTotals(),

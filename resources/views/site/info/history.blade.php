@@ -8,7 +8,7 @@
     <div class="main-container">
         <div class="container">
             <div class="page-title">
-                <h1>History and Origin of Coffee</h1>
+                <h1>@lang("History and Origin of Coffee")</h1>
             </div>
             <div class="text-wrapper history-of-coffee">
                 <div>

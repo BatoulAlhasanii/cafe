@@ -22,11 +22,11 @@ checkout-page-wrapper
             @csrf
             <div class="col1-button grid-container">
                 <div class="text-wrapper">
-                    <h1>Payment</h1>
-                    <p>Confirm the delivery address for your order and select a form of payment.</p>
+                    <h1>@lang("Payment")</h1>
+                    <p>@lang("Confirm the delivery address for your order and select a form of payment.")</p>
                 </div>
                 <div class="btn-wrapper">
-                    <button type="button" class="btn-checkout button-top">Proceed to Payment</button>
+                    <button type="button" class="btn-checkout button-top">@lang("Proceed to Payment")</button>
                 </div>
             </div>
             @if (Session::has('message'))
@@ -47,13 +47,13 @@ checkout-page-wrapper
                 <div class="col3-left">
                     <div id="div_billing_address_form">
                         <div class="osc-title">
-                            <span class="number">1</span><h2 class="title">Billing Address</h2>
+                            <span class="number">1</span><h2 class="title">@lang("Billing Address")</h2>
                         </div>
                         <div class="inputs-wrapper">
                             <div class="form_billing_fs field_pf">
                                 <div class="field_row">
                                     <div class="col-unique">
-                                        <label class="osc_label" for="name">Name<em class="osc_required">*</em></label>
+                                        <label class="osc_label" for="name">@lang("Name")<em class="osc_required">*</em></label>
                                         <input id="name" name="name" value="{{ old('name') }}" type="text" class="input-text osc_input required-field">
                                     </div>
                                     @error('name')
@@ -66,7 +66,7 @@ checkout-page-wrapper
                             <div class="form_billing_fs field_pf">
                                 <div class="field_row">
                                     <div class="col-unique">
-                                        <label class="osc_label" for="surname">Surname<em class="osc_required">*</em></label>
+                                        <label class="osc_label" for="surname">@lang("Surname")<em class="osc_required">*</em></label>
                                         <input id="surname" name="surname" value="{{ old('surname') }}" type="text" class="input-text osc_input required-field">
                                     </div>
                                     @error('surname')
@@ -79,7 +79,7 @@ checkout-page-wrapper
                             <div class="form_billing_fs">
                                 <div class="field_row">
                                     <div class="col-unique">
-                                        <label class="osc_label" for="phone">Phone<em class="osc_required">*</em></label>
+                                        <label class="osc_label" for="phone">@lang("Phone")<em class="osc_required">*</em></label>
                                         <input id="phone" name="phone" value="{{ old('phone') }}" type="tel" class="minTel input-text osc_input required-field">
                                     </div>
                                     @error('phone')
@@ -92,7 +92,7 @@ checkout-page-wrapper
                             <div class="form_billing_fs">
                                 <div class="field_row">
                                     <div class="col-unique">
-                                        <label class="osc_label" for="email">Email<em class="osc_required">*</em></label>
+                                        <label class="osc_label" for="email">@lang("Email")<em class="osc_required">*</em></label>
                                         <input id="email" name="email" value="{{ old('email') }}" type="email" class="minTel input-text osc_input required-field">
                                     </div>
                                     @error('email')
@@ -105,7 +105,7 @@ checkout-page-wrapper
                             <div class="form_billing_fs">
                                 <div class="field_row">
                                     <div class="col-unique">
-                                        <label class="osc_label" for="country_id">Country<em class="osc_required">*</em></label>
+                                        <label class="osc_label" for="country_id">@lang("Country")<em class="osc_required">*</em></label>
                                         <select id="country_id" class="billing_select required-field" name="country_id" readonly>
                                             <option value="{{ $country->id }}" selected="selected">{{ $country->countryTranslations[0]->name }}</option>
                                         </select>
@@ -120,9 +120,9 @@ checkout-page-wrapper
                             <div class="form_billing_fs">
                                 <div class="field_row">
                                     <div class="col-unique">
-                                        <label class="osc_label" for="checkout_city_id">City<em class="osc_required">*</em></label>
+                                        <label class="osc_label" for="checkout_city_id">@lang("City")<em class="osc_required">*</em></label>
                                         <select id="checkout_city_id" class="billing_select required-field" name="city_id">
-                                            <option value="">Select city...</option>
+                                            <option value="">@lang("Select city")...</option>
                                             @foreach($cities as $city)
                                                 @if ( intval(old('city_id')) === intval($city->city_id) )
                                                 <option value="{{ $city->city_id }}" selected>{{ $city->name }}</option>
@@ -142,7 +142,7 @@ checkout-page-wrapper
                             <div class="form_billing_fs">
                                 <div class="field_row">
                                     <div class="col-unique">
-                                        <label class="osc_label" for="district">District</label>
+                                        <label class="osc_label" for="district">@lang("District")</label>
                                         <input id="district" name="district" value="{{ old('district') }}" type="text" class="input-text  osc_input">
                                     </div>
                                     @error('district')
@@ -155,7 +155,7 @@ checkout-page-wrapper
                             <div class="form_billing_fs">
                                 <div class="field_row">
                                     <div class="col-unique">
-                                        <label class="osc_label" for="address">Address<em class="osc_required">*</em></label>
+                                        <label class="osc_label" for="address">@lang("Address")<em class="osc_required">*</em></label>
                                         <textarea id="address" name="address" class="input-text  osc_input required-field" rows="4">{{ old('address') }}</textarea>
                                     </div>
                                     @error('address')
@@ -167,7 +167,7 @@ checkout-page-wrapper
                             </div>
                             <br>
                             <div class="osc-validation">
-                                <span><em class="osc_required">*</em> Required field</span>
+                                <span><em class="osc_required">*</em> @lang("Required field")</span>
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@ checkout-page-wrapper
                     <div class="border">
                         <div class="review-container">
                             <div class="osc-title">
-                                <span class="number">2</span><h2 class="title">Order Review</h2>
+                                <span class="number">2</span><h2 class="title">@lang("Order Review")</h2>
                             </div>
                             <br>
                             <div id="checkout-review-load">
@@ -185,16 +185,16 @@ checkout-page-wrapper
                                     <table class="data-table" id="checkout-review-table">
                                         <thead>
                                             <tr class="headers-osc">
-                                                <th rowspan="1">Product</th>
-                                                <th colspan="1" class="a-center">Price</th>
-                                                <th rowspan="1" class="a-center">Quantity</th>
-                                                <th colspan="1" class="a-center">Subtotal</th>
+                                                <th rowspan="1">@lang("Product")</th>
+                                                <th colspan="1" class="a-center">@lang("Price")</th>
+                                                <th rowspan="1" class="a-center">@lang("Quantity")</th>
+                                                <th colspan="1" class="a-center">@lang("Subtotal")</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
                                                 <td style="" class="a-right" colspan="3">
-                                                    Subtotal
+                                                @lang("Subtotal")
                                                 </td>
                                                 <td style="" class="a-right">
                                                     <span id="checkout-sub-total" class="price">{{ Session::get('cart')->getCartTotals()['sub_total'] }} {{ config('currency.' . app()->getLocale()) }}</span>
@@ -202,7 +202,7 @@ checkout-page-wrapper
                                             </tr>
                                             <tr id="checkout-shipping-fee-wrapper" class="{{ Session::get('cart')->getIsShippingFeeSet() ? '' : 'display-none' }}">
                                                 <td style="" class="a-right" colspan="3">
-                                                    Shipping Fee
+                                                @lang("Shipping Fee")
                                                 </td>
                                                 <td style="" class="a-right">
                                                     <span id="checkout-shipping-fee" class="price">{{ Session::get('cart')->getCartTotals()['shipping_fee'] }} {{ config('currency.' . app()->getLocale()) }}</span>
@@ -210,7 +210,7 @@ checkout-page-wrapper
                                             </tr>
                                             <tr>
                                                 <td style="" class="a-right" colspan="3">
-                                                    <strong>Total</strong>
+                                                    <strong>@lang("Total")</strong>
                                                 </td>
                                                 <td style="" class="a-right">
                                                     <strong><span id="checkout-total" class="price">{{ Session::get('cart')->getCartTotals()['total'] }} {{ config('currency.' . app()->getLocale()) }}</span></strong>
@@ -240,9 +240,9 @@ checkout-page-wrapper
                                                     {{ $product->qty }}
 
                                                     @if ($areItemsNotAvailable  && !$product->is_available_item)
-                                                        <div class="error-product-message">This product is not available anymore.</div>
+                                                        <div class="error-product-message">@lang("This product is not available anymore.")</div>
                                                     @elseif ($areItemsNotAvailable  && $product->is_available_item && !$product->is_qty_available)
-                                                        <div class="error-product-message">{{ $product->qty }} items left! The requested quantity is not available anymore.</div>
+                                                        <div class="error-product-message">{{ $product->qty }} @lang("items left! The requested quantity is not available anymore.")</div>
                                                     @endif
                                                 </td>
                                                 <td class="a-right">
@@ -263,15 +263,15 @@ checkout-page-wrapper
                             </div>
                         </div>
                         <div class="alert-container">
-                            <div class="alert">Alerta</div>
+                            <div class="alert">@lang("Alert")</div>
                         </div>
                         <div class="back-to-cart">
-                            <a href="{{ route('cart.show') }}">Forgot an item?</a>
+                            <a href="{{ route('cart.show') }}">@lang("Forgot an item")?</a>
                         </div>
                     </div>
                     <div class="button-container">
                         <div class="btn-wrapper">
-                            <button type="button" class="submit-checkout-form btn-checkout">Proceed to Payment</button>
+                            <button type="button" class="submit-checkout-form btn-checkout">@lang("Proceed to Payment")</button>
                         </div>
                     </div>
                 </div>
