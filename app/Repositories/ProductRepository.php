@@ -81,7 +81,10 @@ class ProductRepository extends BaseRepository implements ProductContract
      */
     public function createProduct($request)
     {
+        DB::beginTransaction();
+
         try {
+
             $images = [];
             if ($request->images) {
                 foreach($request->images as $image) {
@@ -126,11 +129,13 @@ class ProductRepository extends BaseRepository implements ProductContract
                 $product->productTranslations()->saveMany($productTranslations);
             }
 
+            DB::commit();
+
             return $product;
 
-
-        } catch (QueryException $exception) {
-            throw new InvalidArgumentException($exception->getMessage());
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
         }
     }
 

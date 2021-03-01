@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Doctrine\Instantiator\Exception\InvalidArgumentException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class CategoryRepository
@@ -73,6 +74,8 @@ class CategoryRepository extends BaseRepository implements CategoryContract
      */
     public function createCategory($request)
     {
+        DB::beginTransaction();
+
         try {
 
             if ($request->image && ($request->image instanceof  UploadedFile)) {
@@ -104,10 +107,13 @@ class CategoryRepository extends BaseRepository implements CategoryContract
                 $category->categoryTranslations()->saveMany($categoryTranslations);
             }
 
+            DB::commit();
+
             return $category;
 
-        } catch (QueryException $exception) {
-            throw new InvalidArgumentException($exception->getMessage());
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
         }
     }
 
@@ -117,47 +123,57 @@ class CategoryRepository extends BaseRepository implements CategoryContract
      */
     public function updateCategory($request)
     {
-        $category = $this->findCategoryById($request->id);
+        DB::beginTransaction();
 
-        $image = null;
-        if ($request->image && ($request->image instanceof  UploadedFile)) {
+        try {
+            $category = $this->findCategoryById($request->id);
 
-            if ($category->image != null) {
-                $this->deleteOne($category->image);
+            $image = null;
+            if ($request->image && ($request->image instanceof  UploadedFile)) {
+
+                if ($category->image != null) {
+                    $this->deleteOne($category->image);
+                }
+
+                $image = $this->uploadOne($request->image, 'categories');
             }
 
-            $image = $this->uploadOne($request->image, 'categories');
-        }
 
+            $updated = $category->update([
+                'slug' => Str::slug(strtolower($request->category['en']['name']), "-"),
+                'image' => $image ?? $category->image,
+                'sequence' => 2,
+                'parent_id' => Category::$coffeeId,
+                'is_active' => $request->is_active
+            ]);
 
-        $updated = $category->update([
-            'slug' => Str::slug(strtolower($request->category['en']['name']), "-"),
-            'image' => $image ?? $category->image,
-            'sequence' => 2,
-            'parent_id' => Category::$coffeeId,
-            'is_active' => $request->is_active
-        ]);
+            if($updated) {
+                foreach($request->category as $lang => $translation) {
 
-        if($updated) {
-            foreach($request->category as $lang => $translation) {
-
-                if ($translation['id']) {
-                    $categoryTranslation = CategoryTranslation::find($translation['id']);
-                    if ($categoryTranslation) {
-                        $categoryTranslation->name = $translation['name'];
-                        $categoryTranslation->save();
+                    if ($translation['id']) {
+                        $categoryTranslation = CategoryTranslation::find($translation['id']);
+                        if ($categoryTranslation) {
+                            $categoryTranslation->name = $translation['name'];
+                            $categoryTranslation->save();
+                        }
+                    } else {
+                        $newCategoryTranslations = new CategoryTranslation([
+                            'name' => $translation['name'],
+                            'lang' =>  $lang
+                        ]);
+                        $category->categoryTranslations()->save($newCategoryTranslations);
                     }
-                } else {
-                    $newCategoryTranslations = new CategoryTranslation([
-                        'name' => $translation['name'],
-                        'lang' =>  $lang
-                    ]);
-                    $category->categoryTranslations()->save($newCategoryTranslations);
                 }
             }
-        }
 
-        return $category;
+            DB::commit();
+
+            return $category;
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 
     /**

@@ -10,6 +10,7 @@
             <h1>Categories</h1>
         </div>
         <a href="{{ route('categories.create') }}" class="custom-btn">+ Add Category</a>
+        @include('admin.components.session_messages')
         <div class="main-content">
             <div class="table-wrapper">
                 <table class="data-table">
