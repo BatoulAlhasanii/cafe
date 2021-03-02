@@ -18,6 +18,7 @@ class ProductSeeder extends Seeder
         \App\Models\Product::create(
             [
                 'category_id' => 2,
+                'flavor_id' => 4,
                 'brand_id' => 1,
                 'slug' => 'café-odebrecht-superior',
                 'price' => 10.00,
@@ -49,6 +50,7 @@ class ProductSeeder extends Seeder
         \App\Models\Product::create(
             [
                 'category_id' => 2,
+                'flavor_id' => 4,
                 'brand_id' => 1,
                 'price' => 10.00,
                 'discount_price' => 9.00,
@@ -80,6 +82,7 @@ class ProductSeeder extends Seeder
         \App\Models\Product::create(
             [
                 'category_id' => 2,
+                'flavor_id' => 1,
                 'brand_id' => 1,
                 'price' => 10.00,
                 'discount_price' => 9.00,
@@ -111,6 +114,7 @@ class ProductSeeder extends Seeder
         \App\Models\Product::create(
             [
                 'category_id' => 2,
+                'flavor_id' => 3,
                 'brand_id' => 1,
                 'price' => 10.00,
                 'discount_price' => 9.00,
@@ -142,6 +146,7 @@ class ProductSeeder extends Seeder
         \App\Models\Product::create(
             [
                 'category_id' => 3,
+                'flavor_id' => 4,
                 'brand_id' => 1,
                 'price' => 10.00,
                 'discount_price' => 9.00,
@@ -173,6 +178,7 @@ class ProductSeeder extends Seeder
         \App\Models\Product::create(
             [
                 'category_id' => 3,
+                'flavor_id' => 4,
                 'brand_id' => 1,
                 'price' => 10.00,
                 'discount_price' => 9.00,
@@ -204,6 +210,7 @@ class ProductSeeder extends Seeder
         \App\Models\Product::create(
             [
                 'category_id' => 3,
+                'flavor_id' => 4,
                 'brand_id' => 1,
                 'price' => 10.00,
                 'discount_price' => 9.00,
@@ -235,6 +242,7 @@ class ProductSeeder extends Seeder
         \App\Models\Product::create(
             [
                 'category_id' => 3,
+                'flavor_id' => 1,
                 'brand_id' => 1,
                 'price' => 10.00,
                 'discount_price' => 9.00,

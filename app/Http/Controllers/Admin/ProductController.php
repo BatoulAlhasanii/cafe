@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Contracts\CategoryContract;
 use App\Contracts\ProductContract;
+use App\Contracts\FlavorContract;
 use App\Http\Controllers\BaseController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
@@ -14,16 +15,18 @@ class ProductController extends BaseController
 {
 
     protected $categoryRepository;
-
     protected $productRepository;
+    protected $flavorRepository;
 
     public function __construct(
         CategoryContract $categoryRepository,
-        ProductContract $productRepository
+        ProductContract $productRepository,
+        FlavorContract $flavorRepository
     )
     {
         $this->categoryRepository = $categoryRepository;
         $this->productRepository = $productRepository;
+        $this->flavorRepository = $flavorRepository;
     }
 
     public function index()
@@ -36,8 +39,9 @@ class ProductController extends BaseController
     public function create()
     {
         $categories = $this->categoryRepository->listCategories('name', 'asc');
+        $flavors = $this->flavorRepository->listFlavors('name', 'asc');
 
-        return view('admin.products.create', compact('categories'));
+        return view('admin.products.create', compact('categories','flavors'));
     }
 
     public function store(Request $request)
@@ -56,8 +60,9 @@ class ProductController extends BaseController
     {
         $product = $this->productRepository->findProductById($id);
         $categories = $this->categoryRepository->listCategories('name', 'asc');
+        $flavors = $this->flavorRepository->listFlavors('name', 'asc');
 
-        return view('admin.products.edit', compact('categories', 'product'));
+        return view('admin.products.edit', compact('categories','flavors','product'));
     }
 
     public function editStock($id)

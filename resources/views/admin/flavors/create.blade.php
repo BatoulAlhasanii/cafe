@@ -1,0 +1,68 @@
+@extends('admin-layout.app')
+
+@section('head-links-scripts')
+@endsection
+
+
+@section('content')
+    <div class="page-content form-container form-page">
+        <div class="page-title">
+            <h1>Create Flavor</h1>
+        </div>
+        <div class="main-content">
+            <form method="POST" action="{{ route('flavors.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-wrapper">
+                    @foreach(config('app.available_locales') as $locale)
+                        <div class="form-group col-6">
+                            <label for="name-{{ $locale }}">{{ ucfirst($locale) }} Name</label>
+                            <input id="name-{{ $locale }}" type="text" placeholder="{{ ucfirst($locale) }} Name" name="flavor[{{ $locale }}][name]" value="{{ old('flavor.'.$locale.'.name') }}" class="form-control">
+                            @error('flavor.'.$locale.'.name')
+
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    @endforeach
+                    <div class="form-group col-6">
+                        <label for="is_active">Shown to Customer</label>
+                        <select id="is_active" name="is_active" class="form-control">
+                        @foreach (['0' => 'No','1' => 'Yes'] as $key => $val)
+                            @if ( old('is_active') === strval($key))
+                            <option value="{{ $key }}" selected>{{ $val }}</option>
+                            @else
+                            <option value="{{ $key }}">{{ $val }}</option>
+                            @endif
+                        @endforeach
+                        </select>
+                        @error('is_active')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="image">Flavor Image</label>
+                        <br>
+                        <input type="file" id="image" name="image"/>
+                        <br>
+                        @error('image')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="buttons-wrapper form-group col-12">
+                        <div>
+                            <button type="submit" class="btn submit-btn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
+
+@section('javascript-scripts')
+@endsection

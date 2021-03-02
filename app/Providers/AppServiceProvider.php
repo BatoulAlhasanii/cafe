@@ -47,8 +47,12 @@ class AppServiceProvider extends ServiceProvider
             $isDiscountActivated = intval($activateDiscount->setting_value);
             $view->with('isDiscountActivated', $isDiscountActivated);
         });
-
         View::composer(['site.products.search_results'], function ($view) {
+            $activateDiscount = Setting::where('setting_name', Setting::$activateDiscountName)->first();
+            $isDiscountActivated = intval($activateDiscount->setting_value);
+            $view->with('isDiscountActivated', $isDiscountActivated);
+        });
+        View::composer(['site.flavors.view'], function ($view) {
             $activateDiscount = Setting::where('setting_name', Setting::$activateDiscountName)->first();
             $isDiscountActivated = intval($activateDiscount->setting_value);
             $view->with('isDiscountActivated', $isDiscountActivated);

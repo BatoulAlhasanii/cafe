@@ -99,6 +99,7 @@ class ProductRepository extends BaseRepository implements ProductContract
             $product = new Product();
             $product->fill([
                 'category_id' => $request->category_id,
+                'flavor_id' => $request->flavor_id,
                 'brand_id' => Brand::$odebrechtId,
                 'slug' => Str::slug(strtolower($request->product['en']['name']), "-"),
                 'price' => $request->price,
@@ -179,6 +180,7 @@ class ProductRepository extends BaseRepository implements ProductContract
             $stringOfImages = implode(',', $stringOfImages);
 
             $product->category_id = $request->category_id;
+            $product->flavor_id = $request->flavor_id;
             $product->slug = Str::slug(strtolower($request->product['en']['name']), "-");
             $product->price = $request->price;
             $product->discount_price = $request->discount_price;

@@ -94,6 +94,25 @@
                     </div>
 
                     <div class="form-group col-6">
+                        <label for="flavor_id">Product Flavor</label>
+                        <select id="flavor_id" name="flavor_id" class="form-control">
+                        <option value="0" selected disabled hidden>Select Product Flavor...</option>
+                        @foreach ($flavors as $flavor )
+                            @if ( intval(old('flavor_id')) === intval($flavor->id) || ( empty(old('flavor_id')) && $product->flavor_id  === $flavor->id))
+                            <option value="{{ $flavor->id }}" selected>{{ $flavor->flavorTranslations[0]->name }}</option>
+                            @else
+                            <option value="{{ $flavor->id }}">{{ $flavor->flavorTranslations[0]->name }}</option>
+                            @endif
+                        @endforeach
+                        </select>
+                        @error('flavor_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-6">
                         <label for="sku">SKU</label>
                         <input id="sku" type="text" name="sku" value="{{ old('sku') ?? $product->sku }}" placeholder="SKU" class="form-control">
                         @error('sku')

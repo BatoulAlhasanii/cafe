@@ -105,6 +105,17 @@ Route::group(['prefix' => 'K7JCVFW4RGtFkLKk0pDQWZciE4EONEhlUmO'], function () { 
             Route::get('/settings/{id}', 'App\Http\Controllers\Admin\SettingController@edit')->name('settings.edit');
             Route::put('/settings/{id}', 'App\Http\Controllers\Admin\SettingController@update')->name('settings.update');
         });
+        Route::group(['middleware' => ['permission:manage-database|view-flavors']], function () {
+            Route::get('/flavors', 'App\Http\Controllers\Admin\FlavorController@index')->name('flavors.index');
+        });
+        Route::group(['middleware' => ['permission:manage-database|create-flavors']], function () {
+            Route::get('/flavors/create', 'App\Http\Controllers\Admin\FlavorController@create')->name('flavors.create');
+            Route::post('/flavors', 'App\Http\Controllers\Admin\FlavorController@store')->name('flavors.store');
+        });
+        Route::group(['middleware' => ['permission:manage-database|edit-flavors']], function () {
+            Route::get('/flavors/{id}', 'App\Http\Controllers\Admin\FlavorController@edit')->name('flavors.edit');
+            Route::put('/flavors/{id}', 'App\Http\Controllers\Admin\FlavorController@update')->name('flavors.update');
+        });
     });
 
 });
@@ -124,6 +135,7 @@ Route::group([
 
         Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
         Route::get('/category/{slug}', 'App\Http\Controllers\Site\CategoryController@show')->name('category.show');
+        Route::get('/flavor/{slug}', 'App\Http\Controllers\Site\FlavorController@show')->name('flavor.show');
         Route::get('/product/{slug}', 'App\Http\Controllers\Site\ProductController@show')->name('product.show');
         Route::get('/cart', 'App\Http\Controllers\Site\CartController@showCart')->name('cart.show');
         Route::get('/checkout', 'App\Http\Controllers\Site\CheckoutController@index')->name('checkout.index');

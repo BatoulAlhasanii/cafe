@@ -46,7 +46,7 @@ class OrderRepository extends BaseRepository implements OrderContract
             $order = Order::where('order_number', $orderNumber)
             ->first();
 
-        if($order) {
+        if ($order) {
             return $order;
         } else {
             throw new ModelNotFoundException();

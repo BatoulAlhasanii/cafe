@@ -25,6 +25,8 @@ use App\Contracts\CartContract;
 use App\Repositories\CartRepository;
 use App\Contracts\SettingContract;
 use App\Repositories\SettingRepository;
+use App\Contracts\FlavorContract;
+use App\Repositories\FlavorRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -40,6 +42,7 @@ class RepositoryServiceProvider extends ServiceProvider
         UserContract::class        =>          UserRepository::class,
         CartContract::class        =>          CartRepository::class,
         SettingContract::class        =>          SettingRepository::class,
+        FlavorContract::class        =>          FlavorRepository::class,
     ];
 
     /**

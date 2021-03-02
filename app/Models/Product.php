@@ -16,6 +16,7 @@ class Product extends Model
 
     public $fillable = [
         'category_id',
+        'flavor_id',
         'brand_id',
         'slug',
         'price',
@@ -31,6 +32,7 @@ class Product extends Model
     public static function rules() {
         return [
             'category_id' => 'required|exists:categories,id',
+            'flavor_id' => 'nullable|exists:flavors,id',
             'price' => 'required|numeric|min:0',
             'discount_price' => 'nullable|numeric|min:0',
             'images' => 'required|array',
@@ -52,6 +54,7 @@ class Product extends Model
     public static function editRules() {
         return [
             'category_id' => 'required|exists:categories,id',
+            'flavor_id' => 'nullable|exists:flavors,id',
             'price' => 'required|numeric|min:0',
             'discount_price' => 'nullable|numeric|min:0',
             'deleted_images' => ['nullable', 'string', new ValidateProductImages()],
@@ -85,6 +88,11 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(\App\Models\Category::class, 'category_id');
+    }
+
+    public function flavor()
+    {
+        return $this->belongsTo(\App\Models\Flavor::class, 'flavor_id');
     }
 
     public function productTranslations()

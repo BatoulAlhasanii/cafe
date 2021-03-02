@@ -23,10 +23,10 @@
             </div>
             <div class="coffee-favours--items">
                 <ul class="favours">
-                    @foreach($categories as $category)
+                    @foreach($flavors as $flavor)
                     <li class="flex-column">
-                        <a href="{{ route('category.show', ['slug' => $category->slug ]) }}"><img  class="{{ $category->slug }}" alt="{{ $category->categoryTranslations[0]->name }}" title="{{ $category->categoryTranslations[0]->name }}" src="{{asset( '/storage/' . $category->image )}}"></a>
-                        <a href="{{ route('category.show', ['slug' => $category->slug ]) }}">{{ $category->categoryTranslations[0]->name }}</a>
+                        <a href="{{ route('flavor.show', ['slug' => $flavor->slug ]) }}"><img  class="{{ $flavor->slug }}" alt="{{ $flavor->flavorTranslations[0]->name }}" title="{{ $flavor->flavorTranslations[0]->name }}" src="{{asset( '/storage/' . $flavor->image )}}"></a>
+                        <a href="{{ route('flavor.show', ['slug' => $flavor->slug ]) }}">{{ $flavor->flavorTranslations[0]->name }}</a>
                     </li>
                     @endforeach
                     <li class="coffee-cup"><img src="{{asset('/storage/images/home/cafe.png')}}"></li>

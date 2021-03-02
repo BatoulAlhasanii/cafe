@@ -16,6 +16,11 @@
                 <a href="{{ route('categories.index') }}" class="sidebar-nav-link">Categories</a>
             </li>
             @endif
+            @if(auth()->user()->hasPermission('view-flavors') || auth()->user()->hasPermission('manage-database'))
+            <li class="nav-item">
+                <a href="{{ route('flavors.index') }}" class="sidebar-nav-link">Flavors</a>
+            </li>
+            @endif
             @if(auth()->user()->hasPermission('view-products') || auth()->user()->hasPermission('manage-database'))
             <li class="nav-item">
                 <a href="{{ route('products.index') }}" class="sidebar-nav-link">Products</a>
