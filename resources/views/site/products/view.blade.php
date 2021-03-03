@@ -89,7 +89,7 @@
                                     <div class="qty-wrapper">
                                         <span id="product-dec-qty-{{ $product->id }}" class="arrow dec">-</span><input type="number" name="qty" id="product-qty-field-{{ $product->id }}"  min="{{ ($product->stock > 0 && $product->stock > Session::get('cart')->getProductQty($product->id)) ? 1 : 0 }}" max="{{ $product->stock > Session::get('cart')->getProductQty($product->id) ? ($product->stock - Session::get('cart')->getProductQty($product->id)) : 0 }}" value="{{ ($product->stock > 0 && $product->stock > Session::get('cart')->getProductQty($product->id)) ? 1 : 0 }}" class="input-text qty"><span id="product-inc-qty-{{ $product->id }}" class="arrow inc">+</span>
                                     </div>
-                                    <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock > Session::get('cart')->getProductQty($product->id) ? ($product->stock - Session::get('cart')->getProductQty($product->id)) : 0 }} @lang("items left")!</div>
+                                    <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock > Session::get('cart')->getProductQty($product->id) ? ($product->stock - Session::get('cart')->getProductQty($product->id)) : 0 }} @lang(Products Left)!</div>
                                 </div>
                             </div>
                             <div class="preco-prod grid12-12 no-gutter">
@@ -126,10 +126,10 @@
                         </div>
                         <div class="add-to-cart-btn-container add-to-cart v-centered-content">
                                 <input type="hidden" name="product-id" value="{{ $product->id }}">
-                                <button type="button" id="add-to-cart-btn" title="Comprar" class="btn-special btn-cart"><span class="submitting">@lang("Adding")..</span><span class="submit">@lang("Add to cart")</span></button>
+                                <button type="button" id="add-to-cart-btn" title="Comprar" class="btn-special btn-cart"><span class="submitting">@lang("Adding")..</span><span class="submit">@lang("Add to Cart")</span></button>
                         </div>
                         <div id="socialWrap">
-                            <h4 class="pr15">@lang("Social media"):</h4>
+                            <h4 class="pr15">@lang("Social Media"):</h4>
                             <ul id="share-product">
                                 <li>
                                     <a class="icon-facebook" target="_blank" rel="nofollow"></a>

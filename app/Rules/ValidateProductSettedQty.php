@@ -48,6 +48,6 @@ class ValidateProductSettedQty implements Rule
      */
     public function message()
     {
-        return 'The setted quantity is not valid.';
+        return 'The entered quantity is not valid.';
     }
 }

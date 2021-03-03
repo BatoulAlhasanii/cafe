@@ -74,6 +74,6 @@ class ValidateProductAddedQty implements Rule
      */
     public function message()
     {
-        return 'The added quantity is not available.';
+        return 'The requested quantity is not available.';
     }
 }

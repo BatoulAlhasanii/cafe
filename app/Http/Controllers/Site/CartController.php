@@ -26,11 +26,11 @@ class CartController extends Controller
     public function showCart(Request $request)
     {
         //Session::flush('cart');
-        //if no items left in cart after removing unavailable products in checkout
+        //if No products left in your cart after removing unavailable products in checkout
         //, redirection from checkout to cart will happen and there will be
         //error flash message
         if (Session::has('noItemsLeftInCart')) {
-            session()->flash('error', [\Lang::get('messages.No items left in cart')]);
+            session()->flash('error', [\Lang::get('messages.No products left in your cart')]);
             session()->forget('noItemsLeftInCart');
         }
 
@@ -59,11 +59,11 @@ class CartController extends Controller
 
         return response()->json([
             'status' => 'true',
-            'message' => \Lang::get('messages.Item added to cart successfully.'),
+            'message' => \Lang::get('messages.Product Added to Cart Successfully.'),
             'cart_count' => Session::get('cart')->getCartCount()
         ]);
 
-        //  return redirect()->back()->with('message', 'Item added to cart successfully.');
+        //  return redirect()->back()->with('message', 'Product Added to Cart Successfully.');
     }
 
     public function removeItem(Request $request)
@@ -79,13 +79,13 @@ class CartController extends Controller
 
         return response()->json([
             'status' => 'true',
-            'message' => \Lang::get('messages.Item removed from cart successfully.'),
+            'message' => \Lang::get('messages.Product Removed from Cart Successfully.'),
             'cart_count' => Session::get('cart')->getCartCount(),
             'cart_totals' => Session::get('cart')->getCartTotals(),
             'currency' => config('currency.' . app()->getLocale())
         ]);
 
-        //  return redirect()->back()->with('message', 'Item removed from cart successfully.');
+        //  return redirect()->back()->with('message', 'Product Removed from Cart Successfully.');
     }
 
     public function setProductQty(Request $request)
@@ -104,14 +104,14 @@ class CartController extends Controller
 
         return response()->json([
             'status' => 'true',
-            'message' => \Lang::get('messages.Quantity updated successfully.'),
+            'message' => \Lang::get('messages.Quantity Updated Successfully.'),
             'cart_count' => Session::get('cart')->getCartCount(),
             'product' => Session::get('cart')->getCartProductById($productId),
             'cart_totals' => Session::get('cart')->getCartTotals(),
             'currency' => config('currency.' . app()->getLocale())
         ]);
 
-        //  return redirect()->back()->with('message', 'Item removed from cart successfully.');
+        //  return redirect()->back()->with('message', 'Product Removed from Cart Successfully.');
 
     }
 

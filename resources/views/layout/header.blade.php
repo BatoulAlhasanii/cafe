@@ -57,7 +57,7 @@
                     <div class="mobile-search">
                         <section class="form-search">
                             <form id="search_mini_form" action="{{ route('product.search') }}" method="get">
-                                <input id="product-search" type="text" name="q" value="{{ request('q') }}" class="input-text" placeholder="@lang('search for a product')">
+                                <input id="product-search" type="text" name="q" value="{{ request('q') }}" class="input-text" placeholder="@lang('Search for a Product')">
                                 <button id="form-search-button" type="submit"><span>@lang("Search")</span></button>
                             </form>
                         </section>

@@ -134,6 +134,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'quantity' => [
+            'ValidateProductAddedQty' => 'The requested quantity is not available.',
+            'ValidateProductSettedQty' => 'The entered quantity is not valid.'
+        ]
     ],
 
     /*

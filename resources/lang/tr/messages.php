@@ -2,9 +2,9 @@
 
 return [
 
-    "Item added to cart successfully." => "Tr Item added to cart successfully.",
-    "Item removed from cart successfully." => "Tr Item removed from cart successfully.",
-    "Quantity updated successfully." => "Quantity updated successfully.",
-    "No items left in cart" => "Tr No items left in cart"
+    "Product Added to Cart Successfully." => "Ürün Sepete Başarıyla Eklendi.",
+    "Product Removed from Cart Successfully." => "Ürün Sepetten Başarıyla Kaldırıldı.",
+    "Quantity Updated Successfully." => "Miktar Başarıyla Güncellendi.",
+    "No products left in your cart" => "Sepetinizde herhangi bir ürün bulunmamaktadır"
 
 ];

@@ -4,7 +4,7 @@
             <div class="footer-desc">
                 <div class="desc-container">
                     <img src="{{asset('/storage/images/footer/logo-footer.png')}}" alt="">
-                    <p>@lang("More than half a century after its foundation, Odebrecht has been a solid company, currently among the 10 largest roasted and ground coffee companies in Brazil and the first in the southern region, exporting its products to more than 20 countries.") <span style="color: #ffffff;"><strong><a href="/quem-somos">@lang("Read more")</a></strong></span></p>
+                    <p>@lang("More than 60 Years after its foundation, Odebrecht is a solid company, currently among the 10 largest roasted and ground coffee companies in Brazil and the first in Brazilian southern region, exporting its products to more than 20 countries.") <span style="color: #ffffff;"><strong><a href="/quem-somos">@lang("Read more")</a></strong></span></p>
                 </div>
             </div>
             <div class="footer-lists">
@@ -22,9 +22,9 @@
                     </ul>
                 </div>
                 <div class="footer-list-wrapper">
-                    <h4>@lang("Policies")</h4>
+                    <h4>@lang("Website Policies")</h4>
                     <ul class="footer-link-list">
-                        <li><a href="{{ route('privacy-policy') }}">@lang("privacy Policy")</a></li>
+                        <li><a href="{{ route('privacy-policy') }}">@lang("Privacy Policy")</a></li>
                         <li><a href="{{ route('delivery-policy') }}">@lang("Delivery Policy")</a></li>
                         <li><a href="{{ route('return-policy') }}">@lang("Return Policy")</a></li>
                     </ul>
