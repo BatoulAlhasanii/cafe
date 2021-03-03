@@ -8,9 +8,15 @@ interface OrderContract
 
     public function findOrderById(int $id);
 
+    public function findOrderByNumber($orderNumber);
+
+    public function updateProductsInCart();
+
+    public function checkItemsInCart($request);
+
     public function storeOrderDetails($request);
 
     public function updateOrder($request);
 
-    public function findOrderByNumber($orderNumber);
+    public function filter($orders, $request);
 }

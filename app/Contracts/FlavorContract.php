@@ -48,4 +48,6 @@ interface FlavorContract
      */
     public function findBySlug($slug);
 
+    public function getFlavors();
+
 }

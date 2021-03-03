@@ -9,4 +9,6 @@ interface SettingContract
     public function findSettingById(int $id);
 
     public function updateSetting($request);
+
+    public function getOrderTax($orderCreationDate);
 }

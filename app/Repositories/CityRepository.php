@@ -65,43 +65,4 @@ class CityRepository extends BaseRepository implements CityContract
 
     }
 
-    /**
-     * @param array $params
-     * @return City|mixed
-     */
-    public function createCity(array $params)
-    {
-        try {
-
-
-        } catch (QueryException $exception) {
-            throw new InvalidArgumentException($exception->getMessage());
-        }
-    }
-
-    /**
-     * @param array $params
-     * @return mixed
-     */
-    public function updateCity(array $params)
-    {
-
-    }
-
-    /**
-     * @param $id
-     * @return bool|mixed
-     */
-    public function deleteCity($id)
-    {
-        $city = $this->findCityById($id);
-
-        if ($city->logo != null) {
-            $this->deleteOne($city->logo);
-        }
-
-        $city->delete();
-
-        return $city;
-    }
 }

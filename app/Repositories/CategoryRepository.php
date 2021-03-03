@@ -193,17 +193,6 @@ class CategoryRepository extends BaseRepository implements CategoryContract
         return $category;
     }
 
-    /**
-     * @return mixed
-     */
-    public function treeList()
-    {
-        return Category::orderByRaw('-name ASC')
-            ->get()
-            ->nest()
-            ->setIndent('|–– ')
-            ->listsFlattened('name');
-    }
 
     public function findBySlug($slug)
     {

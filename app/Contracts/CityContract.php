@@ -28,21 +28,4 @@ interface CityContract
      */
     public function findCityById(int $id);
 
-    /**
-     * @param array $params
-     * @return mixed
-     */
-    public function createCity(array $params);
-
-    /**
-     * @param array $params
-     * @return mixed
-     */
-    public function updateCity(array $params);
-
-    /**
-     * @param $id
-     * @return bool
-     */
-    public function deleteCity($id);
 }

@@ -68,7 +68,7 @@ cart-page-wrapper
                                         <div class="box-qty">
                                             <input type="number" name="qty" id="product-qty-field-{{ $product->id }}" value="{{ $product->qty }}" min="{{ $product->stock > 0 ? 1 : 0 }}" max="{{ $product->stock }}" class="product-qty-field input-text qty"><span id="product-inc-qty-{{ $product->id }}" class="arrow inc" title="Aumentar">+</span><span id="product-dec-qty-{{ $product->id }}" class="arrow dec" title="Diminuir">-</span>
                                         </div>
-                                        <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock }} @lang(Products Left)!</div>
+                                        <div id="warning-msg-{{ $product->id }}" class="warning-msg">{{ $product->stock }} @lang("Products Left")!</div>
                                         @if (!$product->is_available_item)
                                             <div class="error-product-message">@lang("This product is not available anymore.")</div>
                                         @elseif ($product->is_available_item && !$product->is_qty_available)

@@ -36,6 +36,8 @@ interface ProductContract
      */
     public function updateProduct($request);
 
+    public function updateStock($request);
+
     /**
      * @param $id
      * @return bool
@@ -47,4 +49,6 @@ interface ProductContract
      * @return mixed
      */
     public function findProductBySlug($slug);
+
+    public function search($request);
 }
