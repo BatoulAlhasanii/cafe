@@ -46,12 +46,12 @@
                 @foreach($products as $product)
                 <li class="item">
                     <div class="product-image-wrapper">
-                        <a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Superior" class="product-image">
+                        <a href="{{ route('product.show', ['slug' => $product->slug ]) }}" class="product-image">
                             <img src="{{ asset( '/storage/' . explode(',', $product->images)[0] ) }}" alt="Café Odebrecht Superior">
                         </a>
                     </div>
                     <div class="infobox">
-                        <h3 class="product-name"><a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Superior">{{ $product->productTranslations[0]->name }}</a></h3>
+                        <h3 class="product-name"><a href="{{ route('product.show', ['slug' => $product->slug ]) }}">{{ $product->productTranslations[0]->name }}</a></h3>
                         <div class="no-ratings">
                             <div class="rating-box">
                                 <div class="rating" style="width:0%"></div>
@@ -74,7 +74,7 @@
                         </div>
                         @endif
                         <div class="bt-add">
-                            <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>@lang("Details")</span></a>
+                            <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" data-id="52" class="btn-ajax ajax"><span>@lang("Details")</span></a>
                         </div>
                     </div>
                 </li>
@@ -89,7 +89,7 @@
                     <ul>
                         <li>
                             <figure class="slide-img">
-                                <a href="#/" title="Shot de cappuccino com baunilha e sal" tabindex="-1">
+                                <a href="#/" tabindex="-1">
                                     <img src="{{asset('/storage/images/recipes-slider/shot-cappuccino-baunilha_4.jpg')}}" alt="Shot de cappuccino com baunilha e sal">
                                 </a>
                             </figure>
@@ -105,7 +105,7 @@
                     <ul>
                         <li>
                             <figure class="slide-img">
-                                <a href="#" title="Cappuccino shot with vanilla and salt" tabindex="-1">
+                                <a href="#" tabindex="-1">
                                     <img src="{{asset('/storage/images/recipes-slider/shot-cappuccino-baunilha_4.jpg')}}" alt="Cappuccino shot with vanilla and salt">
                                 </a>
                             </figure>

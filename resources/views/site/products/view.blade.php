@@ -15,17 +15,17 @@
         <div class="breadcrumbs">
             <ul>
                 <li class="home">
-                    <a href="{{ route('home') }}" itemprop="item" title="Ir para Página Inicial">
+                    <a href="{{ route('home') }}">
                     <span>@lang("Home")</span></a>
                     <span class="separator">|</span>
                 </li>
                 <li class="category">
-                    <a href="{{ route('category.show', ['slug' => $product->category->slug ]) }}" itemprop="item" title="Ir para Página Inicial">
+                    <a href="{{ route('category.show', ['slug' => $product->category->slug ]) }}">
                     <span>{{ $product->category->categoryTranslations[0]->name }}</span></a>
                     <span class="separator">|</span>
                 </li>
                 <li class="product">
-                    <a class="current" href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="" itemprop="item">
+                    <a class="current" href="{{ route('product.show', ['slug' => $product->slug ]) }}">
                         <h1 class="current">{{ $product->productTranslations[0]->name }}</h1>
                     </a>
                 </li>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="xzoom-thumbs">
                             @foreach(explode(',', $product->images) as $image)
-                            <a href="{{ asset( '/storage/' . $image ) }}"><img class="xzoom-gallery4" width="80" src="{{ asset( '/storage/' . $image ) }}" title="The description goes here"></a>
+                            <a href="{{ asset( '/storage/' . $image ) }}"><img class="xzoom-gallery4" width="80" src="{{ asset( '/storage/' . $image ) }}"></a>
                             @endforeach
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                     {{ csrf_field() }}
                     <div class="product-shop">
                         <div class="product-name">
-                            <h2 itemprop="name">{{ $product->productTranslations[0]->name }}</h2>
+                            <h2>{{ $product->productTranslations[0]->name }}</h2>
                         </div>
                         <div id="info-secondaria" class="bloco-info-produto grid12-12 no-gutter">
                             <div class="grid12-4 no-gutter a-left">
@@ -126,7 +126,7 @@
                         </div>
                         <div class="add-to-cart-btn-container add-to-cart v-centered-content">
                                 <input type="hidden" name="product-id" value="{{ $product->id }}">
-                                <button type="button" id="add-to-cart-btn" title="Comprar" class="btn-special btn-cart"><span class="submitting">@lang("Adding")..</span><span class="submit">@lang("Add to Cart")</span></button>
+                                <button type="button" id="add-to-cart-btn" class="btn-special btn-cart"><span class="submitting">@lang("Adding")..</span><span class="submit">@lang("Add to Cart")</span></button>
                         </div>
                         <div id="socialWrap">
                             <h4 class="pr15">@lang("Social Media"):</h4>

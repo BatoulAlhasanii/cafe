@@ -64,8 +64,8 @@
                         </span>
                     </li>
                     <li>
-                        <a href="#" title="Chat Online"><i class="icon-chats"></i></a>
-                        <a href="#" title="Chat Online"><span class="pt10 pl8">@lang("Online<br>Chat")</span></a>
+                        <a href="#"><i class="icon-chats"></i></a>
+                        <a href="#"><span class="pt10 pl8">@lang("Online<br>Chat")</span></a>
                     </li>
                 </ul>
             </div>

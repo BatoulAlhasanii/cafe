@@ -24,7 +24,9 @@
     }
     .table-wrapper {
         width: 100%;
-        overflow-x: scroll;
+        @media only screen and (max-width: 550.8px) {
+            overflow-x: scroll;
+        }
         .data-table {
             max-width: 600px;
             margin: 0 auto;

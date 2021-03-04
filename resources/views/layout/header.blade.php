@@ -14,7 +14,7 @@
             </div>
             <div class="logo-wrapper">
                 <h1 class="logo">
-                    <a class="display-only-desk" href="{{ route('home') }}" title="Café Odebrecht">
+                    <a class="display-only-desk" href="{{ route('home') }}">
                         <picture>
                             <source media="(min-width: 770px)" srcset="{{secure_url(asset('/storage/images/header/logo.png'))}}" alt="@lang('Café Odebrecht')">
                             <img src="{{asset('/storage/images/header/logo_mobile.png')}}" alt="@lang('Café Odebrecht')">
@@ -74,7 +74,7 @@
                         <li class="lang-choice"><a href="{{ route('locale', ['locale' => 'en']) }}">En</a></li>
                     </ul>
                     <div class="cart-container">
-                        <a id="header-cart-container" class="icone" href="{{ route('cart.show') }}" title="Ir para Meu Carrinho">
+                        <a id="header-cart-container" class="icone" href="{{ route('cart.show') }}">
                             @if (Session::has('cart') && Session::get('cart')->getCartCount() > 0)
                             <div class="cart-qtd">
                                 <p class="amount">{{ Session::get('cart')->getCartCount() > 0 ? Session::get('cart')->getCartCount() : ''}}</p>

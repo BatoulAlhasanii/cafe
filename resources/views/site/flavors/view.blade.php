@@ -12,12 +12,12 @@
         <div class="breadcrumbs">
             <ul>
                 <li class="home">
-                    <a href="{{ route('home') }}" itemprop="item" title="Ir para Página Inicial">
+                    <a href="{{ route('home') }}">
                     <span>@lang("Home")</span></a>
                     <span class="separator">|</span>
                 </li>
                 <li class="flavor">
-                    <a href="{{ route('flavor.show', ['slug' => $flavor->slug ]) }}" itemprop="item" title="Ir para Página Inicial">
+                    <a href="{{ route('flavor.show', ['slug' => $flavor->slug ]) }}">
                     <span class="current">{{ $flavor->flavorTranslations[0]->name }}</span></a>
                 </li>
             </ul>
@@ -30,12 +30,12 @@
 
             <li class="item">
                 <div class="product-image-wrapper">
-                    <a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Superior" class="product-image">
+                    <a href="{{ route('product.show', ['slug' => $product->slug ]) }}" class="product-image">
                         <img src="{{ asset( '/storage/' . explode(',', $product->images)[0] ) }}" alt="Café Odebrecht Superior">
                     </a>
                 </div>
                 <div class="infobox">
-                    <h3 class="product-name"><a href="{{ route('product.show', ['slug' => $product->slug ]) }}" title="Café Odebrecht Superior">{{ $product->productTranslations[0]->name }}</a></h3>
+                    <h3 class="product-name"><a href="{{ route('product.show', ['slug' => $product->slug ]) }}">{{ $product->productTranslations[0]->name }}</a></h3>
                     <div class="no-ratings">
                         <div class="rating-box">
                             <div class="rating" style="width:0%"></div>
@@ -58,8 +58,7 @@
                         </div>
                     @endif
                     <div class="bt-add">
-                        <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>@lang("Details")</span></a>
-                        <!--<button type="button" title="Comprar" data-id="52" class="btn-ajax ajax"><span>Comprar</span></button>-->
+                        <a style="display: block;" href="{{ route('product.show', ['slug' => $product->slug ]) }}" type="button" data-id="52" class="btn-ajax ajax"><span>@lang("Details")</span></a>
                     </div>
                 </div>
             </li>

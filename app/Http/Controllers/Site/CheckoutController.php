@@ -30,7 +30,8 @@ class CheckoutController extends BaseController
 
     public function index()
     {
-        $previousRoute = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
+        $previousUrl = url()->previous();
+        //$previousRoute = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
 
 
 
@@ -38,9 +39,14 @@ class CheckoutController extends BaseController
             return redirect()->route('cart.show');
         }
 
+        if ((strpos($previousUrl, '/checkout') === false) && (strpos($previousUrl, '/cart') === false)) {
+            return redirect()->route('cart.show');
+        }
+        /*
         if ($previousRoute !== 'checkout.placeOrder' && $previousRoute !== 'cart.show' && $previousRoute !== 'checkout.index') {
             return redirect()->route('cart.show');
         }
+        */
 
 
 
@@ -72,7 +78,8 @@ class CheckoutController extends BaseController
             //$this->payPal->processPayment($order);
             //Do Payment
             //flush cart
-            return redirect()->route('cart.show')->with('message','Order was placed');
+            return redirect()->route('checkout.successful-payment');
+            //return redirect()->route('cart.show')->with('message','Order was placed');
         } else {
 
             return redirect()->back()->withInput();
@@ -82,10 +89,16 @@ class CheckoutController extends BaseController
     }
 
 
-    public function showSuccessfulPayment($orderNumber)
+    public function showSuccessfulPayment()
     {
-        $order = $this->orderRepository->findOrderByNumber($orderNumber);
+        $order = null;
 
-        return view('site.order.success_payment', compact('order'));
+        if (Session::has('order')) {
+            $order = Session::get('order');
+            return view('site.order.success_payment', compact('order'));
+        } else {
+            return redirect()->route('cart.show');
+        }
+
     }
 }

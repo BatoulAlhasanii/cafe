@@ -2,7 +2,7 @@
 	<div class="container">
 		<header>
             <h1>
-                <a href="{{ route('home') }}" title=""><img src="{{ asset('/storage/images/header/simple-header-logo.png') }}" alt=""></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('/storage/images/header/simple-header-logo.png') }}" alt=""></a>
             </h1>
             <ul class="header-contact-info">
                 <li class="last">

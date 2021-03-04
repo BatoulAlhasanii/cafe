@@ -248,6 +248,8 @@ class OrderRepository extends BaseRepository implements OrderContract
 
                         session()->forget('cart');
                         session()->forget('areItemsAvailable');
+
+                        session()->put('order', $order);
                     }
                 }
 

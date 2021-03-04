@@ -139,7 +139,7 @@ Route::group([
         Route::get('/product/{slug}', 'App\Http\Controllers\Site\ProductController@show')->name('product.show');
         Route::get('/cart', 'App\Http\Controllers\Site\CartController@showCart')->name('cart.show');
         Route::get('/checkout', 'App\Http\Controllers\Site\CheckoutController@index')->name('checkout.index');
-        Route::get('/successful-payment/{orderNumber}', 'App\Http\Controllers\Site\CheckoutController@showSuccessfulPayment')->name('checkout.successful-payment');
+        Route::get('/successful-payment', 'App\Http\Controllers\Site\CheckoutController@showSuccessfulPayment')->name('checkout.successful-payment');
 
         Route::get('/about-us', 'App\Http\Controllers\InfoController@aboutUs')->name('about-us');
         Route::get('/delivery-policy', 'App\Http\Controllers\InfoController@deliveryPolicy')->name('delivery-policy');

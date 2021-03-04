@@ -3779,7 +3779,11 @@ footer .social-links-container .social-media-links li a i {
 }
 .successful-payment-page .table-wrapper {
   width: 100%;
-  overflow-x: scroll;
+}
+@media only screen and (max-width: 550.8px) {
+  .successful-payment-page .table-wrapper {
+    overflow-x: scroll;
+  }
 }
 .successful-payment-page .table-wrapper .data-table {
   max-width: 600px;
