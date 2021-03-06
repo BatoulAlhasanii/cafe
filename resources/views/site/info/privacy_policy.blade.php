@@ -3,6 +3,10 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+@lang("Privacy Policy")
+@endsection
+
 @section('content')
 <div class="info-page">
     <div class="main-container">

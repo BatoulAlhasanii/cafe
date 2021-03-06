@@ -3,6 +3,10 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+@lang("Checkout")
+@endsection
+
 @section('header')
   @include('layout.simple-header')
 @endsection

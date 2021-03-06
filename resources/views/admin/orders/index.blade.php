@@ -3,6 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Orders
+@endsection
 
 @section('content')
     <div class="page-content container orders-page">

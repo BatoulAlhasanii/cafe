@@ -3,6 +3,10 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+@lang("Successful Payment")
+@endsection
+
 @section('header')
   @include('layout.simple-header')
 @endsection
@@ -20,7 +24,7 @@ success-payment-page-wrapper
     <div class="container">
         <div>
             <h1 class="icon-emo-happy">@lang("Successful Payment")</h1>
-            <p>@lang("Thanks for shopping with us")</p>
+            <p>@lang("Thanks for Shopping with Us")</p>
             <div class="view-wrapper">
                 <div class="order-info">
                     <div>@lang("Order Number"): {{ $order->order_number }}</div>
@@ -77,7 +81,7 @@ success-payment-page-wrapper
                             </tr>
                             <tr>
                                 <td colspan="4" class="a-center">
-                                    <strong>@lang("Shipping fee")</strong>
+                                    <strong>@lang("Shipping Fee")</strong>
                                 </td>
                                 <td class="a-center">
                                     {{ $order->shipping_fees }} {{ config('currency.' . app()->getLocale()) }}

@@ -1,0 +1,32 @@
+.admin {
+    .submit-btn {
+        border: none;
+        border-radius: 4px;
+        background-color: #d5ae68;
+        min-width: 100px;
+        padding: 0 14px;
+        height: 38px;
+        transition: 0.3s ease;
+        font-weight: 500;
+        font-size: 14px;
+        color: #3a2419;
+    }
+
+    a.submit-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .filter-btns-wrapper {
+        display: flex;
+        align-items: center;
+        & > *:not(:last-child) {
+            margin-right: 2rem;
+        }
+    }
+
+    .buttons-wrapper {
+        margin-top: 30px;
+    }
+}

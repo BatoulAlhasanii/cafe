@@ -4,11 +4,7 @@
     @media only screen and (max-width: 769.8px) {
         padding: 0;
     }
-    @media screen and (min-width: 770px){
-        .container {
-            //padding: 0 15px;
-        }
-    }
+
     .page-title {
         padding: 10px 0;
         margin-bottom: 2rem;
@@ -65,11 +61,8 @@
     .products-grid {
         display: flex;
         flex-wrap: wrap;
-        gap: 30px 25px;
         margin-bottom: 60px;
-        @media only screen and (max-width: 650.8px) {
-            gap: 30px 4%;
-        }
+
 
 
         .item {
@@ -77,15 +70,33 @@
             padding: 1%;
             background: #f6f6f5;
             transition: all 200ms ease;
+            margin-bottom: 30px;
+            margin-right: 25px;
 
-            @media only screen and (min-width: 900px) {
+            @media only screen and (min-width: 769px) {
                 padding: 8px;
+                &:nth-child(4n) {
+                    margin-right: 0;
+                }
             }
             @media only screen and (max-width: 769.8px) {
                 width: calc( (100% - (2 * 25px)) / 3 );
+                &:nth-child(4n) {
+                    margin-right: 25px;
+                }
+                &:nth-child(3n) {
+                    margin-right: 0;
+                }
             }
             @media only screen and (max-width: 650.8px) {
                 width: calc( (100% - 4%) / 2 );
+                margin-right: 4%;
+                &:nth-child(4n), &:nth-child(3n) {
+                    margin-right: 4%;
+                }
+                &:nth-child(2n) {
+                    margin-right: 0;
+                }
             }
 
             &:hover {

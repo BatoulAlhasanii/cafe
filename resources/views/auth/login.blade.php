@@ -1,5 +1,9 @@
 @extends('admin-layout.app')
 
+@section('title')
+Cafe Odebrecht | Login
+@endsection
+
 @section('content')
 <div class="login-page">
     <div class="container">

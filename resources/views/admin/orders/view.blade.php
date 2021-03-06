@@ -3,11 +3,14 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Order Details
+@endsection
 
 @section('content')
     <div class="page-content form-container form-page">
         <div class="page-title">
-            <h1>View Order</h1>
+            <h1>Order Details</h1>
         </div>
         <div class="main-content">
             <div class="view-wrapper">

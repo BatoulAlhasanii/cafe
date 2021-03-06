@@ -56,6 +56,13 @@ class ProductController extends BaseController
         return $this->responseRedirect('products.index', 'Product added successfully' ,'success',false, false);
     }
 
+    public function show($id)
+    {
+        $product = $this->productRepository->findProductById($id);
+
+        return view('admin.products.view', compact('product'));
+    }
+
     public function edit($id)
     {
         $product = $this->productRepository->findProductById($id);

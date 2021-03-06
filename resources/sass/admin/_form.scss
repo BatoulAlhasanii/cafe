@@ -3,6 +3,29 @@
         padding-bottom: 8rem;
     }
 
+    .form-group {
+        margin-bottom: 1.3rem;
+        position: relative;
+    }
+
+
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: .6rem 1.2rem;
+        font-size: 12.8px;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .4rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        border: 1px solid #d5ae68;
+        font-family: "Montserrat", sans-serif;
+    }
+
     .form-page {
         .instance-img {
             height: 100px;
@@ -32,7 +55,8 @@
         }
         .edit-product-images-wrapper {
             display: flex;
-            gap: 1rem;
+            margin-right: 1rem;
+            flex-wrap: wrap;
             margin-bottom: 1rem;
             .uploaded-img-wrapper {
                 position: relative;

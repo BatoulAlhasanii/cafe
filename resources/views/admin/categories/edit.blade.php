@@ -3,6 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Edit Category
+@endsection
 
 @section('content')
     <?php

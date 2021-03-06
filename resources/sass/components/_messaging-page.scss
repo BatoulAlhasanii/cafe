@@ -1,0 +1,40 @@
+
+
+.empty-cart-page, .messaging-page {
+    display: flex;
+    .container {
+        display: flex;
+        flex-direction: column;
+        .page-title h1 {
+            font-size: 26px;
+            font-family: "Montserrat",sans-serif;
+            color: #3a2419;
+        }
+        .messages {
+            margin-top: 1rem;
+        }
+        .empty-cart-message, .messaging-page-content {
+            flex: 1;
+            margin: 35px 0;
+            font-family: "Montserrat",sans-serif;
+            text-align: center;
+            color: #777;
+            width: 100%;
+            .icon-emo-unhappy {
+                font-weight: 300;
+                font-size: 32px;
+                margin: 20px 0;
+                &:before {
+                    margin-right: 10px;
+                }
+            }
+            p {
+                font-size: 14px;
+                margin: 0 0 20px;
+            }
+            .btn-with-arrow {
+                margin: 0 auto;
+            }
+        }
+    }
+}

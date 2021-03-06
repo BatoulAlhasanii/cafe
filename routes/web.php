@@ -66,6 +66,7 @@ Route::group(['prefix' => 'K7JCVFW4RGtFkLKk0pDQWZciE4EONEhlUmO'], function () { 
         });
         Route::group(['middleware' => ['permission:manage-database|view-products']], function () {
             Route::get('/products', 'App\Http\Controllers\Admin\ProductController@index')->name('products.index');
+            Route::get('/products/show/{id}', 'App\Http\Controllers\Admin\ProductController@show')->name('products.show');
         });
         Route::group(['middleware' => ['permission:manage-database|create-products']], function () {
             Route::get('/products/create', 'App\Http\Controllers\Admin\ProductController@create')->name('products.create');
@@ -73,8 +74,10 @@ Route::group(['prefix' => 'K7JCVFW4RGtFkLKk0pDQWZciE4EONEhlUmO'], function () { 
         });
         Route::group(['middleware' => ['permission:manage-database|edit-products']], function () {
             Route::get('/products/{id}', 'App\Http\Controllers\Admin\ProductController@edit')->name('products.edit');
-            Route::get('/products/stock/{id}', 'App\Http\Controllers\Admin\ProductController@editStock')->name('products.stock.edit');
             Route::put('/products/{id}', 'App\Http\Controllers\Admin\ProductController@update')->name('products.update');
+        });
+        Route::group(['middleware' => ['permission:manage-database|edit-stock']], function () {
+            Route::get('/products/stock/{id}', 'App\Http\Controllers\Admin\ProductController@editStock')->name('products.stock.edit');
             Route::put('/products/stock/{id}', 'App\Http\Controllers\Admin\ProductController@updateStock')->name('products.stock.update');
         });
 
@@ -131,6 +134,7 @@ Route::group([
         Route::post('/product/remove-item', 'App\Http\Controllers\Site\CartController@removeItem')->name('cart.remove.item');
         Route::post('/checkout', 'App\Http\Controllers\Site\CheckoutController@placeOrder')->name('checkout.placeOrder');
         Route::post('/cart/set-shipping-fee', 'App\Http\Controllers\Site\CartController@setShippingFee')->name('cart.set.shippingFee');
+        Route::post('/newsletter/subscribe', 'App\Http\Controllers\Site\NewsletterController@subscribe')->name('newsletter.subscribe');
 
 
         Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
@@ -140,6 +144,7 @@ Route::group([
         Route::get('/cart', 'App\Http\Controllers\Site\CartController@showCart')->name('cart.show');
         Route::get('/checkout', 'App\Http\Controllers\Site\CheckoutController@index')->name('checkout.index');
         Route::get('/successful-payment', 'App\Http\Controllers\Site\CheckoutController@showSuccessfulPayment')->name('checkout.successful-payment');
+        Route::get('/payment-failure', 'App\Http\Controllers\Site\CheckoutController@showPaymentFailureMessage')->name('checkout.payment-failure');
 
         Route::get('/about-us', 'App\Http\Controllers\InfoController@aboutUs')->name('about-us');
         Route::get('/delivery-policy', 'App\Http\Controllers\InfoController@deliveryPolicy')->name('delivery-policy');

@@ -3,7 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
-
+@section('title')
+{{ $category->categoryTranslations[0]->name }}
+@endsection
 
 @section('content')
 <!-- Products -->

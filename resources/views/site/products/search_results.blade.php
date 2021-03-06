@@ -3,7 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
-
+@section('title')
+@lang("Search Results")
+@endsection
 
 @section('content')
 <!-- Products -->

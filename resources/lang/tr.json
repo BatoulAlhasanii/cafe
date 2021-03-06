@@ -52,6 +52,7 @@
     "Product": "Ürün",
     "Price": "Fiyat",
     "Shipping Fee": "Kargo Ücreti",
+    "Shipping fee": "Kargo Ücreti",
     "Alert": "Uyarmak",
     "Forgot a Product": "Bir Ürün Unuttum",
     "Successful Payment": "Başarılı Ödeme",
@@ -69,5 +70,9 @@
     "Description": "Açıklama",
     "Specifications": "Teknik Özellikler",
     "<span>choose the flavor of</span>Your Taste": "Lezzet Seçiniz",
-    "<span>the best</span>Seller Products": "<span>En çok</span>Satan ürünler"
+    "<span>the best</span>Seller Products": "<span>En çok</span>Satan ürünler",
+    "Checkout": "Checkout",
+    "Search Results": "Search Results",
+    "Sorry, but this page does not exist.": "Sorry, but this page does not exist.",
+    "What can you do ?": "What can you do ?"
 }

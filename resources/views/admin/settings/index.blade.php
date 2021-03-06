@@ -3,6 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Settings
+@endsection
 
 @section('content')
     <div class="page-content container settings-page">

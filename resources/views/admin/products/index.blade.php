@@ -3,6 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Products
+@endsection
 
 @section('content')
     <div class="page-content container">
@@ -24,6 +27,7 @@
                             <th>Discount Price</th>
                             <th>Featured</th>
                             <th>Shown to Customer</th>
+                            <th>View</th>
                             <th>Edit Stock</th>
                             <th>Edit</th>
                         </tr>
@@ -67,6 +71,9 @@
                                 @else
                                     <span class="danger">No</span>
                                 @endif
+                            </td>
+                            <td class="a-center">
+                                <a href="{{ route('products.show', ['id' => $product->id]) }}">View</a>
                             </td>
                             <td class="a-center">
                                 <a href="{{ route('products.stock.edit', ['id' => $product->id]) }}">Edit Stock</a>

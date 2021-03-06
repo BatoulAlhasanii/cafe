@@ -18,8 +18,11 @@
             .navbar-toggler-icon {
                 display: flex;
                 flex-direction: column;
-                gap: 4px;
+
                 span {
+                    &:not(:last-of-type) {
+                        margin-bottom: 4px;
+                    }
                     display: block;
                     background: #d5ae68;
                     width: 30px;

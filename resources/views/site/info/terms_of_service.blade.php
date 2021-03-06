@@ -3,6 +3,10 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+@lang("Terms of Service")
+@endsection
+
 @section('content')
 <div class="info-page">
     <div class="main-container">

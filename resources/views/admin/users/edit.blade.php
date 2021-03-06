@@ -3,11 +3,14 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Edit User
+@endsection
 
 @section('content')
     <div class="page-content form-container form-page">
         <div class="page-title">
-            <h1>Create User</h1>
+            <h1>Edit User</h1>
         </div>
         <div class="main-content">
             <form method="POST" action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">

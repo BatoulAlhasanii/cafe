@@ -3,6 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Edit Product
+@endsection
 
 @section('content')
     <?php
@@ -258,10 +261,12 @@
                         @if($product->images)
                             <div class="edit-product-images-wrapper">
                                 @foreach(explode(',', $product->images) as $index => $image)
-                                <div class="uploaded-img-wrapper">
-                                    <span data-img-path="{{ $image }}" class="remove-symbol">x</span>
-                                    <img id="edit-product-img-{{ $index }}" class="instance-img" value="0" src="{{ asset('/storage/' . $image) }}">
-                                </div>
+                                    @if (!old('deleted_images') || ( old('deleted_images') && str_contains(old('deleted_images')?? '', $image ?? '') === false))
+                                    <div class="uploaded-img-wrapper">
+                                        <span data-img-path="{{ $image }}" class="remove-symbol">x</span>
+                                        <img id="edit-product-img-{{ $index }}" class="instance-img" value="0" src="{{ asset('/storage/' . $image) }}">
+                                    </div>
+                                    @endif
                                 @endforeach
                             </div>
                         @endif
@@ -299,21 +304,3 @@
     </div>
 @endsection
 
-@section('javascript-scripts')
-<script>
-    $(document).ready(function() {
-        $(".remove-symbol").click(function(e) {
-            var deletedImages = $("#product-deleted-images").val();
-            if (deletedImages) {
-                deletedImages = deletedImages.split(',');
-            } else {
-                deletedImages = [];
-            }
-            deletedImages.push($(this).data('img-path'));
-            $(this).parent().remove();
-            deletedImages = deletedImages.join(',');
-            $("#product-deleted-images").val(deletedImages);
-        });
-    });
-</script>
-@endsection

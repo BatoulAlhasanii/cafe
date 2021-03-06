@@ -1,0 +1,16 @@
+.admin {
+
+    label {
+        display: inline-block;
+        margin-bottom: 0.5rem;
+        font-size: 14.4px;
+        line-height: 1.5;
+        font-weight: 500;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    input.form-control, select.form-control {
+        height: 4rem;
+    }
+
+}

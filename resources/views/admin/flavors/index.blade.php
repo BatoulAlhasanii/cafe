@@ -3,6 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Flavors
+@endsection
 
 @section('content')
     <div class="page-content container">

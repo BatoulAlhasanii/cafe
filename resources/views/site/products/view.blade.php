@@ -1,11 +1,12 @@
 @extends('layout.app')
 
 @section('head-links-scripts')
-
 <!-- CSS STYLE-->
 <link rel="stylesheet" type="text/css" href="{{ asset('/Feature-rich-Product-Gallery-With-Image-Zoom-xZoom/dist/xzoom.css') }}" media="all" />
+@endsection
 
-
+@section('title')
+{{ $product->productTranslations[0]->name }}
 @endsection
 
 @section('content')

@@ -18,6 +18,8 @@ __webpack_require__(/*! ./autocomplete */ "./resources/js/autocomplete.js");
 __webpack_require__(/*! ./checkout */ "./resources/js/checkout.js");
 
 __webpack_require__(/*! ./sidebar */ "./resources/js/sidebar.js");
+
+__webpack_require__(/*! ./remove-product-image */ "./resources/js/remove-product-image.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -347,6 +349,31 @@ $(document).ready(function () {
   $('.opensearch').click(function () {
     $('.opensearch').toggleClass('active');
     $('.mobile-search').toggleClass('active');
+  });
+});
+
+/***/ }),
+
+/***/ "./resources/js/remove-product-image.js":
+/*!**********************************************!*\
+  !*** ./resources/js/remove-product-image.js ***!
+  \**********************************************/
+/***/ (() => {
+
+$(document).ready(function () {
+  $(".remove-symbol").click(function (e) {
+    var deletedImages = $("#product-deleted-images").val();
+
+    if (deletedImages) {
+      deletedImages = deletedImages.split(',');
+    } else {
+      deletedImages = [];
+    }
+
+    deletedImages.push($(this).data('img-path'));
+    $(this).parent().remove();
+    deletedImages = deletedImages.join(',');
+    $("#product-deleted-images").val(deletedImages);
   });
 });
 

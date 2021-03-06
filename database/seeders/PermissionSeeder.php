@@ -74,6 +74,22 @@ class PermissionSeeder extends Seeder
             [
                 'name' => 'Update Settings', //15
                 'slug' => 'update-settings',
+            ],
+            [
+                'name' => 'View Flavors', //16
+                'slug' => 'view-flavors'
+            ],
+            [
+                'name' => 'Create Flavors', //17
+                'slug' => 'create-flavors'
+            ],
+            [
+                'name' => 'Edit Flavors', //18
+                'slug' => 'edit-flavors'
+            ],
+            [
+                'name' => 'Edit Stock', //19
+                'slug' => 'edit-stock',
             ]
         ]);
     }

@@ -3,6 +3,10 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+@lang("History and Origin of Coffee")
+@endsection
+
 @section('content')
 <div class="info-page">
     <div class="main-container">

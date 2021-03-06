@@ -3,6 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Edit Stock
+@endsection
 
 @section('content')
     <?php

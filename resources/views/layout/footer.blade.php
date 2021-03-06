@@ -1,4 +1,27 @@
 <footer class="footer-container">
+    <div class="footer-newsletter">
+        <div class="container">
+            <div class="news-container">
+                <div class="container">
+                    <form action="{{ route('newsletter.subscribe') }}" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="subscribe-text">
+                            <i class="icon-newsletter-1"></i>
+                            <h3>Want more promotions?</h3>
+                            <label for="newsletter">Sign up for our newsletter</label>
+                        </div>
+                        <div class="subscribe-input">
+                            <div class="input-box">
+                                <input type="text" name="email" id="newsletteremail" title="digite seu e-mail" class="input-text required-entry validate-email">
+                                <button type="submit" class="btn primary" id="newsletter-button"><span>Send</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="footer-primary-container">
         <div class="container">
             <div class="footer-desc">

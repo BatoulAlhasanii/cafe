@@ -101,4 +101,8 @@ class CheckoutController extends BaseController
         }
 
     }
+    public function showPaymentFailureMessage()
+    {
+        return view('site.order.payment_failure_message');
+    }
 }

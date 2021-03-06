@@ -3,6 +3,9 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+Edit Order
+@endsection
 
 @section('content')
     <div class="page-content form-container form-page">

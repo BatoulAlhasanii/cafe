@@ -3,6 +3,10 @@
 @section('head-links-scripts')
 @endsection
 
+@section('title')
+@lang("Shopping Cart")
+@endsection
+
 @section('header')
   @include('layout.simple-header')
 @endsection
@@ -45,7 +49,7 @@ cart-page-wrapper
                             <tfoot>
                             <tr class="first last">
                                 <td>
-                                    <a href="{{ route('home') }}" class="btn-with-row btn-inline">@lang("Back to store")</a>
+                                    <a href="{{ route('home') }}" class="btn-with-arrow btn-inline">@lang("Back to store")</a>
                                 </td>
                             </tr>
                         </tfoot>
@@ -134,8 +138,8 @@ cart-page-wrapper
     </div>
 </div>
 @else
-<div class="main-container empty-cart-page">
-    <div class="empty-cart container">
+<div class="main-container messaging-page">
+    <div class="container">
         <div class="page-title">
             <h1>@lang("Empty cart")</h1>
         </div>
@@ -150,10 +154,10 @@ cart-page-wrapper
                 @endforeach
             @endif
         </ul>
-        <div class="empty-cart-message flex-column">
+        <div class="messaging-page-content flex-column">
             <h1 class="icon-emo-unhappy">@lang("What a pity!")</h1>
             <p>@lang("There are no items in your cart.")</p>
-            <a href="{{ route('home') }}" class="btn-continue btn-inline btn-with-row">@lang("Back to store")</a>
+            <a href="{{ route('home') }}" class="btn-continue btn-inline btn-with-arrow">@lang("Back to store")</a>
         </div>
     </div>
 </div>

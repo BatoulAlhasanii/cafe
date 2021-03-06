@@ -497,7 +497,9 @@
                             display: block;
                         }
                         &.language-switcher {
-                            gap: 10px;
+                            & > *:not(:last-child) {
+                                margin-right: 10px;
+                            }
                             align-items: flex-end;
                             margin-right: 6px;
 
@@ -641,7 +643,9 @@
 
     #navMobile .language-switcher {
         display: flex;
-        gap: 10px;
+        & > *:not(:last-child) {
+            margin-right: 10px;
+        }
         width: calc(100% - 48px);
         padding-left: 15px;
         line-height: 42px;

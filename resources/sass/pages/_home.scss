@@ -65,11 +65,9 @@
 
     .coffee-favours-container {
         display: flex;
-        gap: 40px;
 
         @media only screen and (max-width: 1100.8px) {
             flex-direction: column;
-            gap: 0px;
         }
         @media only screen and (max-width: 730.8px) {
             width: 90%;
@@ -79,6 +77,10 @@
             padding: 10px 0 20px;
         }
         .coffee-favours--title {
+            margin-right: 40px;
+            @media only screen and (max-width: 1100.8px) {
+                margin-right: 0px;
+            }
             h3 {
                 white-space: nowrap;
                 margin-top: 65%;
@@ -107,20 +109,29 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                gap: 1rem;
                 padding: 0 0 0 10px;
                 @media only screen and (max-width: 1100.8px){
                     justify-content: center;
-                    gap: 2rem;
                 }
                 @media only screen and (max-width: 730.8px) {
                     flex-wrap: wrap;
-                    gap: 0;
-                    row-gap: 15px;
                 }
 
                 li {
+                    &:not(:last-of-type) {
+                        margin-right: 1rem;
+                    }
+                    @media only screen and (max-width: 1100.8px){
+                        &:not(:last-of-type) {
+                            margin-right: 2rem;
+                        }
+                    }
                     @media only screen and (max-width: 730.8px) {
+                        &:not(:last-of-type) {
+                            margin-right: 0;
+                        }
+                        margin-bottom: 15px;
+
                         flex: 0 0 33%;
                         flex-direction: row;
 
