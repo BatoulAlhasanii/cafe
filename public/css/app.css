@@ -1047,7 +1047,7 @@ input.error, select.error, textarea.error {
     font-size: 20px;
   }
 }
-.products-section .page-title.category-title h3:before, .products-section .page-title.search-results-title h3:before {
+.products-section .page-title h3:before {
   content: "";
   font-family: "fontello";
   float: left;
@@ -1058,7 +1058,7 @@ input.error, select.error, textarea.error {
   color: #d5ae68;
 }
 @media only screen and (max-width: 430.8px) {
-  .products-section .page-title.category-title h3:before, .products-section .page-title.search-results-title h3:before {
+  .products-section .page-title h3:before {
     line-height: 1.2;
   }
 }
