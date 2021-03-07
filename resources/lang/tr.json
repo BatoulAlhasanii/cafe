@@ -74,5 +74,7 @@
     "Checkout": "Checkout",
     "Search Results": "Search Results",
     "Sorry, but this page does not exist.": "Sorry, but this page does not exist.",
-    "What can you do ?": "What can you do ?"
+    "What can you do ?": "What can you do ?",
+    "Payment Failed": "Payment Failed",
+    "We are sorry to tell you that your payment has been failed.": "We are sorry to tell you that your payment has been failed."
 }

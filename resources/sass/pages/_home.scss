@@ -174,16 +174,16 @@
                         }
 
                         img {
-                            &.intenso {
+                            &.intense {
                                 height: 10rem;
                                 width: auto;
                             }
 
-                            &:not(.intenso) {
+                            &:not(.intense) {
                                 width: 7.7rem;
                             }
 
-                            &:not(.intenso) , &.intenso {
+                            &:not(.intense) , &.intense {
                                 @media only screen and (max-width: 730.8px) {
                                     width: auto;
                                     height: auto;

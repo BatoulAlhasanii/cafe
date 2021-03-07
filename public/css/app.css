@@ -2729,15 +2729,15 @@ footer .social-links-container .social-media-links li a i {
   max-width: 50%;
   transition: all 0.9s ease;
 }
-.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img.intenso {
+.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img.intense {
   height: 10rem;
   width: auto;
 }
-.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img:not(.intenso) {
+.coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img:not(.intense) {
   width: 7.7rem;
 }
 @media only screen and (max-width: 730.8px) {
-  .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img:not(.intenso), .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img.intenso {
+  .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img:not(.intense), .coffee-favours .coffee-favours-container .coffee-favours--items .favours li a img.intense {
     width: auto;
     height: auto;
   }
